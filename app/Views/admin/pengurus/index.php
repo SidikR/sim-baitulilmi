@@ -131,8 +131,7 @@
                 <div class="modal-body">
                     <form action="pengurus/hapus/<?= $dp->id_pengurus; ?>" method="post">
                         <?= csrf_field(); ?>
-                        <input type="hidden" name="_DELETE">
-                        <p>Yakin data Pengurus <?= $dp->nama_lengkap; ?></p>
+                        <p>Yakin data Pengurus <b><?= $dp->nama_lengkap; ?></b> akan dihapus ?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
