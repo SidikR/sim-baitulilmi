@@ -59,4 +59,28 @@ class PengurusController extends BaseController
         $this->PengurusModel->where('id_pengurus', $id_pengurus)->delete();
         return redirect()->back()->with('success', 'Data Berhasil Dihapus');
     }
+
+    // public function detail($id_pengurus)
+    // {
+    //     $data = [
+    //         'title' => 'Detail Pengurus',
+    //         'nama_lengkap' => esc($this->request->getvar('nama_lengkap'))
+    //     ];
+    //     //$this->PengurusModel->read($id_pengurus, $data);
+    //     return view('admin/pengurus/detail/'<?= $id_pengurus
+    // }
+    public function detail($slug_pengurus)
+    {
+        $pengurus = $this->pengurusModel->getPengurus($slug_pengurus);
+        $data = [
+            'title' => 'Detail Pengurus',
+            'pengurus' => $this->pengurusModel->getPengurus($slug_pengurus),
+            'nama_lengkap' => esc($this->request->getvar('nama_lengkap'))
+        ];
+
+        if (empty($data['pengurus'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Nama Pengurus dengan slug : ' . $slug_pengurus . ' tidak ditemukan !');
+        }
+        return view('admin/pengurus/detail', $data);
+    }
 }

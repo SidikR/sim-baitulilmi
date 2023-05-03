@@ -36,11 +36,11 @@ class PengurusModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
-    public function getPengurus($slug = false)
+    public function getPengurus($slug_pengurus = false)
     {
-        if ($slug == false) {
+        if ($slug_pengurus == false) {
             return $this->findAll();
         }
-        return $this->where(['slug' => $slug])->first();
+        return $this->where(['slug_pengurus' => $slug_pengurus])->first();
     }
 }
