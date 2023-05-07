@@ -14,23 +14,35 @@
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
-                    <div class="card mb-3" style="max-width: 100%;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                    <div class="card mb-3 " style="max-width: 100%;">
+                        <div class="row g-0 align-items-center me-2">
+                            <div class="col-md-4 align-items-center px-3">
+                                <img style="max-width : 350px ; max-height : 350px ;  " src="<?php echo base_url('assets-admin/img/pengurus/' . $pengurus->foto_pengurus); ?>" class="img-fluid rounded float-start float-center ms-auto d-block " alt="foto <?= $pengurus->nama_lengkap; ?>">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <form>
                                         <fieldset disabled>
-                                            <legend>Disabled fieldset example</legend>
+                                            <legend>Detail dari <b><?= $pengurus->nama_lengkap; ?></b></legend>
                                             <div class="mb-3">
                                                 <label for="disabledTextInput" class="form-label">Nama Lengkap</label>
                                                 <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $pengurus->nama_lengkap; ?>'>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <div class="mb-3">
+                                                <label for="disabledTextInput" class="form-label">Jenis Kelamin</label>
+                                                <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $pengurus->jenis_kelamin; ?>'>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="disabledTextInput" class="form-label">Nomor Telepon</label>
+                                                <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $pengurus->nomor_telepon; ?>'>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="disabledTextInput" class="form-label">Alamat</label>
+                                                <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $pengurus->alamat_pengurus; ?>'>
+                                            </div>
                                         </fieldset>
                                     </form>
+                                    <a href="<?= '.././edit/' . $pengurus->slug_pengurus; ?>"><button type="submit" class="btn btn-primary">Edit</button></a>
                                 </div>
                             </div>
                         </div>
@@ -38,6 +50,7 @@
                 </div>
             </div>
         </div>
+
     </main>
     <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
@@ -52,4 +65,6 @@
         </div>
     </footer>
 </div>
+
+
 <?= $this->endSection() ?>

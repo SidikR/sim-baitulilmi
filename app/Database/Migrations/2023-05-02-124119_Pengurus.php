@@ -19,11 +19,23 @@ class Pengurus extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'slug' => [
+            'slug_pengurus' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
             'jenis_kelamin' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'nomor_telepon' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'alamat_pengurus' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'foto_pengurus' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
@@ -32,6 +44,10 @@ class Pengurus extends Migration
                 'null' => true,
             ],
             'updated_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'deleted_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],

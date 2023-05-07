@@ -11,14 +11,14 @@ class PengurusModel extends Model
     protected $primaryKey       = 'id_pengurus';
     protected $returnType       = 'object';
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_lengkap', 'slug_pengurus', 'jenis_kelamin'];
+    protected $allowedFields    = ['nama_lengkap', 'slug_pengurus', 'jenis_kelamin', 'nomor_telepon', 'alamat_pengurus', 'foto_pengurus'];
 
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    // protected $deletedField  = 'deleted_at';
+    protected $deletedField  = 'deleted_at';
 
     // // Validation
     // protected $validationRules      = [];
@@ -36,6 +36,7 @@ class PengurusModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
+
     public function getPengurus($slug_pengurus = false)
     {
         if ($slug_pengurus == false) {

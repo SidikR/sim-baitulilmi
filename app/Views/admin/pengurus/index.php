@@ -14,9 +14,9 @@
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#tambahModal">
-                        <i class="fas fa-plus"></i> Tambah
-                    </button>
+                    <a href="pengurus/tambah"><button type="button" class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal">
+                            <i class="fas fa-plus"></i> Tambah
+                        </button></a>
 
                     <!-- ini notifikasi Berhasil ditambah -->
                     <?php if (session('success')) : ?>
@@ -31,6 +31,7 @@
                                 <th>No</th>
                                 <th>Nama Lengkap</th>
                                 <th>Jenis Kelamin</th>
+                                <th>Alamat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -41,9 +42,10 @@
                                     <td><?= $no++; ?></td>
                                     <td><?= $dp->nama_lengkap; ?></td>
                                     <td><?= $dp->jenis_kelamin; ?></td>
+                                    <td><?= $dp->alamat_pengurus; ?></td>
                                     <td style="width: 15%;">
                                         <a href="<?= 'pengurus/detail/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-file-alt"></i> Lihat</button></a>
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $dp->id_pengurus; ?>"><i class="fas fa-edit"></i> Edit</button>
+                                        <a href="<?= 'pengurus/edit/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</button></a>
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dp->id_pengurus; ?>"><i class="fas fa-trash-alt"></i> Hapus</button>
                                     </td>
                                 </tr>
@@ -67,6 +69,7 @@
         </div>
     </footer>
 </div>
+
 <!-- Modal Tambah -->
 <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -80,7 +83,7 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="nama_lengkap" required>
+                        <input type="text" class="form-control <?= $validation->hasError('nama_lengkap') ? 'is-invalid' :  null ?>" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="nama_lengkap" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -104,6 +107,7 @@
                 <div class="modal-body">
                     <form action="pengurus/edit/<?= $dp->id_pengurus; ?>" method="post">
                         <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="PUT">
                         <div class="mb-3">
                             <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="nama_lengkap" value="<?= $dp->nama_lengkap; ?>" required>
@@ -131,38 +135,12 @@
                 <div class="modal-body">
                     <form action="pengurus/hapus/<?= $dp->id_pengurus; ?>" method="post">
                         <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
                         <p>Yakin data Pengurus <b><?= $dp->nama_lengkap; ?></b> akan dihapus ?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-<?php endforeach ?>
-
-<!-- Modal Edit -->
-<?php foreach ($daftar_pengurus as $dp) : ?>
-    <div class="modal fade" id="detailModal<?= $dp->id_pengurus; ?>" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-edit "></i> Detail Data Pengurus</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="pengurus/detail/<?= $dp->id_pengurus; ?>" method="post">
-                        <?= csrf_field(); ?>
-                        <div class="mb-3">
-                            <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="nama_lengkap" value="<?= $dp->nama_lengkap; ?>" required>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button> -->
-                    <button type="submit" class="btn btn-primary btn-sm">Ubah</button>
                 </div>
                 </form>
             </div>

@@ -34,10 +34,12 @@ $routes->get('/', 'Admin\DashboardController::index');
 // Routes Admin Dashboard
 $routes->get('dashboard', 'Admin\DashboardController::index');
 $routes->get('pengurus', 'Admin\PengurusController::index');
-$routes->post('/pengurus/tambah', 'Admin\PengurusController::create');
-$routes->post('/pengurus/edit/(:segment)', 'Admin\PengurusController::update/$1');
-$routes->post('/pengurus/hapus/(:segment)', 'Admin\PengurusController::delete/$1');
+$routes->post('/pengurus/save', 'Admin\PengurusController::save');
+$routes->get('/pengurus/tambah', 'Admin\PengurusController::create');
+$routes->put('/pengurus/edit/(:segment)', 'Admin\PengurusController::update/$1');
+$routes->delete('/pengurus/hapus/(:segment)', 'Admin\PengurusController::delete/$1');
 $routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1');
+$routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1');
 
 /*
  * --------------------------------------------------------------------
