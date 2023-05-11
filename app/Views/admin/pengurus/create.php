@@ -38,15 +38,35 @@
 
                             <select class="form-select <?= $validation->hasError('jenis_kelamin') ? 'is-invalid' : null; ?>" aria-label="Default select example" id="exampleFormControlInput1" placeholder="Jenis Kelamin" name="jenis_kelamin">
                                 <!-- <option selected>Open this select menu</option> -->
-                                <option selected>--Jenis Kelamin--</option>
+                                <option value="" selected>--pilih--</option>
                                 <option value="Laki-Laki">Laki-Laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
-
-
                             <?php if ($validation->hasError('jenis_kelamin')) : ?>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('jenis_kelamin'); ?>
+                                </div>
+
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="nama_jabatan" class="form-label">Jabatan</label>
+
+                            <select class="form-select <?= $validation->hasError('nama_jabatan') ? 'is-invalid' : null; ?>" aria-label="Default select example" id="exampleFormControlInput1" placeholder="Jenis Kelamin" name="nama_jabatan">
+                                <!-- <option selected>Open this select menu</option> -->
+                                <option value="" selected>--Pilih--</option>
+                                <?php foreach ($daftar_jabatan as $jb) : ?>
+                                    <option value=<?= $jb->id_jabatan; ?>><?= $jb->nama_jabatan; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                            <a href="/jabatan/tambah"><button type="button" class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal">
+                                    Tambah Jabatan
+                                </button></a>
+
+                            <?php if ($validation->hasError('nama_jabatan')) : ?>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('nama_jabatan'); ?>
                                 </div>
 
                             <?php endif; ?>
@@ -78,26 +98,50 @@
 
                         <div class="mb-4">
                             <label for="foto_pengurus" class="form-label">Foto Pengurus</label>
-                            <input type="file" class="form-control <?= $validation->hasError('foto_pengurus') ? 'is-invalid' : null; ?>" id="formFile" placeholder="Nama Lengkap" name="foto_pengurus">
+                            <input type="file" class="form-control" id="formFile" placeholder="Nama Lengkap" name="foto_pengurus" required>
 
-                            <?php if ($validation->hasError('foto_pengurus')) : ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('foto_pengurus'); ?>
-                                </div>
-
-                            <?php endif; ?>
                         </div>
+                        <div class="modal-footer m-3">
+                            <button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary ">Tambah</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
 
-                </div>
-                <div class="modal-footer m-3">
-                    <button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary ">Tambah</button>
-                </div>
+<!-- Modal Tambah Jabatan-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Form Tambah Jabatan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="././jabatan/tambah" method="post" enctype="multipart/form-data">
+                    <?= csrf_field(); ?>
+
+                    <div class="mb-4">
+                        <label for="nama_jabatan" class="form-label">Nama Jabatan</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama jabatan" name="nama_jabatan">
+
+                        <div class="mb-4">
+                            <label for="deskripsi_jabatan" class="form-label">Deskripsi</label>
+                            <input type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Isikan deskripsi Lengkap" name="deskripsi_jabatan" rows="3">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
                 </form>
             </div>
         </div>
+    </div>
 </div>
-</main>
 
-</div>
+
 <?= $this->endSection() ?>

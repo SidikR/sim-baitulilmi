@@ -15,8 +15,8 @@
                 </div>
                 <div class="card-body">
                     <div class="card mb-3 " style="max-width: 100%;">
-                        <div class="row g-0 align-items-center me-2">
-                            <div class="col-md-4 align-items-center px-3">
+                        <div class="row g-0 align-items-center offset-md-1 me-2 g-2">
+                            <div class="col-md-4 px-3">
                                 <img style="max-width : 350px ; max-height : 350px ;  " src="<?php echo base_url('assets-admin/img/pengurus/' . $pengurus->foto_pengurus); ?>" class="img-fluid rounded float-start float-center ms-auto d-block " alt="foto <?= $pengurus->nama_lengkap; ?>">
                             </div>
                             <div class="col-md-8">
@@ -42,6 +42,7 @@
                                             </div>
                                         </fieldset>
                                     </form>
+                                    <a href="<?php echo base_url('pengurus'); ?>"><button type="button" class="btn btn-danger">Kembali</button></a>
                                     <a href="<?= '.././edit/' . $pengurus->slug_pengurus; ?>"><button type="submit" class="btn btn-primary">Edit</button></a>
                                 </div>
                             </div>

@@ -9,8 +9,12 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+
+
 // use Model
-use App\Models\PengurusModel;
+
+
+
 
 /**
  * Class BaseController
@@ -41,7 +45,7 @@ abstract class BaseController extends Controller
     protected $helpers = [];
 
     // Myproperty
-    protected $PengurusModel;
+
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -60,6 +64,5 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
-        $this->PengurusModel = new PengurusModel();
     }
 }

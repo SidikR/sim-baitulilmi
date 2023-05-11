@@ -5,28 +5,35 @@ namespace App\Controllers\Admin;
 use CodeIgniter\Database\Database;
 use App\Controllers\BaseController;
 use App\Models\PengurusModel;
+use App\Models\JabatanModel;
 use CodeIgniter\Commands\Utilities\Publish;
 use CodeIgniter\Validation\Rules;
 use Config\App;
 use JetBrains\PhpStorm\Internal\ReturnTypeContract;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+
 
 class PengurusController extends BaseController
 {
-    protected $pengurusModel;
+    protected $PengurusModel;
+    protected $JabatanModel;
     protected $helpers = ['form'];
 
 
     public function __construct()
     {
-        $this->pengurusModel = new PengurusModel();
+        $this->JabatanModel = new JabatanModel();
+        $this->PengurusModel = new PengurusModel();
     }
 
     public function index()
     {
         $data = [
             'title' => 'Daftar Pengurus',
-            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->findAll(),
-            'validation' => \Config\Services::validation()
+            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->getAll(),
+            'daftar_jabatan' => $this->JabatanModel->orderBy('id_jabatan', 'DESC')->findAll(),
+            // 'validation' => \Config\Services::validation()
         ];
 
         return view('admin/pengurus/index', $data);
@@ -35,9 +42,12 @@ class PengurusController extends BaseController
     // Tambah Data Pengurus
     public function create()
     {
+        $daftar_jabatan = $this->JabatanModel->findAll();
         $data = [
+            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->getAll(),
             'title' => 'Tambah Pengurus',
             'validation' => \Config\Services::validation(),
+            'daftar_jabatan' => $daftar_jabatan
         ];
 
         return view('admin/pengurus/create', $data);
@@ -47,6 +57,10 @@ class PengurusController extends BaseController
 
     public function save()
     {
+        // $daftar_jabatan = $this->JabatanModel->findAll();
+        $uuid4 = Uuid::uuid4();
+        $id_pengurus = $uuid4->toString();
+
         // Deklarasi Nailai Slug Pengurus
         $slug = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
 
@@ -54,17 +68,21 @@ class PengurusController extends BaseController
         $gambar = $this->request->getFile('foto_pengurus');
 
         //Ambil Nama Gambar
-        $namaGambar = $gambar->getName();
+        $namaGambar = $gambar->getName('');
 
         //Menuliskan ke direktori
         $gambar->move(WRITEPATH . '../public/assets-admin/img/pengurus', $namaGambar);
 
         // Simpan Data ke DataBase
         $data = [
+            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->getAll(),
+            'daftar_jabatan' => $this->JabatanModel->orderBy('id_jabatan', 'DESC')->findAll(),
             'title' => 'Tambah Pengurus',
+            'id_pengurus' => $id_pengurus,
             'nama_lengkap' => esc($this->request->getvar('nama_lengkap')),
             'slug_pengurus' => $slug,
             'jenis_kelamin' => esc($this->request->getvar('jenis_kelamin')),
+            'id_jabatan' => esc($this->request->getvar('nama_jabatan')),
             'nomor_telepon' => esc($this->request->getvar('nomor_telepon')),
             'alamat_pengurus' => esc($this->request->getvar('alamat_pengurus')),
             'foto_pengurus' => $namaGambar,
@@ -72,7 +90,11 @@ class PengurusController extends BaseController
         ];
 
         $rules = $this->validate([
-            'nama_lengkap' => 'required'
+            'nama_lengkap' => 'required',
+            'jenis_kelamin' => 'required',
+            'nomor_telepon' => 'required',
+            'nama_jabatan' => 'required',
+            'alamat_pengurus' => 'required'
         ]);
 
         if (!$rules) {
@@ -112,11 +134,11 @@ class PengurusController extends BaseController
 
     public function form_update($slug_pengurus)
     {
-        $daftar_pengurus = $this->pengurusModel->getPengurus($slug_pengurus);
+        $daftar_pengurus = $this->PengurusModel->getPengurus($slug_pengurus);
 
         $data = [
             'title' => "Edit Data Pengurus",
-            'daftar_pengurus' => $this->pengurusModel->getPengurus($slug_pengurus),
+            'daftar_pengurus' => $this->PengurusModel->getPengurus($slug_pengurus),
         ];
 
         if (empty($data['daftar_pengurus'])) {
@@ -136,10 +158,10 @@ class PengurusController extends BaseController
 
     public function detail($slug_pengurus)
     {
-        $pengurus = $this->pengurusModel->getPengurus($slug_pengurus);
+        $pengurus = $this->PengurusModel->getPengurus($slug_pengurus);
         $data = [
             'title' => 'Detail Pengurus',
-            'pengurus' => $this->pengurusModel->getPengurus($slug_pengurus),
+            'pengurus' => $this->PengurusModel->getPengurus($slug_pengurus),
             'nama_lengkap' => esc($this->request->getvar('nama_lengkap'))
         ];
 

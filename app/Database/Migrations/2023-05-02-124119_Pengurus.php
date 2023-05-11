@@ -10,10 +10,12 @@ class Pengurus extends Migration
     {
         $this->forge->addField([
             'id_pengurus' => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
-                'auto_increment' => true,
+                'type'           => 'VARCHAR',
+                'constraint'     => 100,
+            ],
+            'id_jabatan' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 100,
             ],
             'nama_lengkap' => [
                 'type'       => 'VARCHAR',
