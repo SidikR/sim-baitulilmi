@@ -29,10 +29,18 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Admin\DashboardController::index');
+
+// Routes Pertama Kali di Eksekusi
+// Bisa diakses Tanpa Login
+$routes->get('/', 'Pages\HomeController::index');
+$routes->get('/about', 'Pages\AboutController::index', ['filter' => 'role:user']);
+
+
 
 // Routes Admin Dashboard
-$routes->get('dashboard', 'Admin\DashboardController::index');
+$routes->get('dashboard', 'Admin\DashboardController::index', ['filter' => 'role:admin']);
+
+// Routes Admin Data Pengurus
 $routes->get('pengurus', 'Admin\PengurusController::index');
 $routes->post('/pengurus/save', 'Admin\PengurusController::save');
 $routes->get('/pengurus/tambah', 'Admin\PengurusController::create');
@@ -41,6 +49,7 @@ $routes->delete('/pengurus/hapus/(:segment)', 'Admin\PengurusController::delete/
 $routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1');
 $routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1');
 
+// Routes Admin Data Jabatan
 $routes->get('jabatan', 'Admin\JabatanController::index');
 $routes->post('/jabatan/save', 'Admin\JabatanController::save');
 $routes->get('/jabatan/tambah', 'Admin\JabatanController::create');
@@ -48,6 +57,45 @@ $routes->put('/jabatan/edit/(:segment)', 'Admin\JabatanController::update/$1');
 $routes->delete('/jabatan/hapus/(:segment)', 'Admin\JabatanController::delete/$1');
 $routes->get('/jabatan/detail/(:segment)', 'Admin\JabatanController::detail/$1');
 $routes->get('/jabatan/edit/(:segment)', 'Admin\JabatanController::form_update/$1');
+
+// Routes Admin Data Inventaris
+$routes->get('inventaris', 'Admin\InventarisController::index');
+$routes->get('inventaris/tambah', 'Admin\InventarisController::create');
+$routes->post('inventaris/save', 'Admin\InventarisController::save');
+$routes->put('/inventaris/edit/(:segment)', 'Admin\InventarisController::update/$1');
+$routes->delete('/inventaris/hapus/(:segment)', 'Admin\InventarisController::delete/$1');
+$routes->get('/inventaris/detail/(:segment)', 'Admin\InventarisController::detail/$1');
+$routes->get('/inventaris/edit/(:segment)', 'Admin\InventarisController::form_update/$1');
+
+
+
+
+// Routes Bendahara Dashboard
+$routes->get('bendahara', 'Bendahara\DashboardController::index');
+
+// Routes Keuangan Bendahara
+$routes->get('keuangan', 'Bendahara\KeuanganController::index', ['filter' => 'role:bendahara']);
+
+// Routes Bendahara Pemasukan
+$routes->get('pemasukan', 'Bendahara\PemasukanController::index', ['filter' => 'role:bendahara']);
+$routes->get('keuangan/tambah-pemasukan', 'Bendahara\PemasukanController::create', ['filter' => 'role:bendahara']);
+$routes->post('keuangan/pemasukan-save', 'Bendahara\PemasukanController::save');
+$routes->put('/pemasukan/edit/(:segment)', 'Bendahara\PemasukanController::update/$1');
+$routes->delete('/pemasukan/hapus/(:segment)', 'Bendahara\PemasukanController::delete/$1');
+$routes->get('/pemasukan/detail/(:segment)', 'Bendahara\PemasukanController::detail/$1');
+$routes->get('/pemasukan/edit/(:segment)', 'Bendahara\PemasukanController::form_update/$1');
+
+// Routes Bendahara Pengeluaran
+$routes->get('pengeluaran', 'Bendahara\PengeluaranController::index');
+$routes->get('keuangan/tambah-pengeluaran', 'Bendahara\PengeluaranController::create');
+$routes->post('keuangan/pengeluaran-save', 'Bendahara\PengeluaranController::save');
+$routes->put('/pengeluaran/edit/(:segment)', 'Bendahara\PengeluaranController::update/$1');
+$routes->delete('/pengeluaran/hapus/(:segment)', 'Bendahara\PengeluaranController::delete/$1');
+$routes->get('/pengeluaran/detail/(:segment)', 'Bendahara\PengeluaranController::detail/$1');
+$routes->get('/pengeluaran/edit/(:segment)', 'Bendahara\PengeluaranController::form_update/$1');
+
+
+
 
 /*
  * --------------------------------------------------------------------

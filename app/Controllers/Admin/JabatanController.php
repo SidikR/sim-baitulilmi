@@ -130,7 +130,7 @@ class JabatanController extends BaseController
         $data = [
             'title' => 'Detail Jabatan',
             'jabatan' => $this->JabatanModel->getJabatan($slug_jabatan),
-            'nama_lengkap' => esc($this->request->getvar('nama_lengkap'))
+            // 'nama_lengkap' => esc($this->request->getvar('nama_lengkap'))
         ];
 
         if (empty($data['jabatan'])) {

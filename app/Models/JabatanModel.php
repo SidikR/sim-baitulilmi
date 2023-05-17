@@ -10,6 +10,7 @@ class JabatanModel extends Model
     protected $primaryKey       = 'id_jabatan';
     protected $returnType       = 'object';
     protected $protectFields    = true;
+    protected $useSoftDeletes   = true;
     protected $allowedFields    = ['id_jabatan', 'nama_jabatan', 'slug_jabatan', 'deskripsi_jabatan'];
 
 

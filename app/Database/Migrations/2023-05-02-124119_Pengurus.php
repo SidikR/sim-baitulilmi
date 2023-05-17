@@ -11,11 +11,11 @@ class Pengurus extends Migration
         $this->forge->addField([
             'id_pengurus' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 100,
+                'constraint'     => '100',
             ],
             'id_jabatan' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 100,
+                'constraint'     => '100',
             ],
             'nama_lengkap' => [
                 'type'       => 'VARCHAR',
@@ -56,6 +56,7 @@ class Pengurus extends Migration
         ]);
         $this->forge->addKey('id_pengurus', true);
         $this->forge->createTable('pengurus');
+        $this->forge->addForeignKey('id_jabatan', 'jabatan', 'id_jabatan', 'RESTRICT', 'RESTRICT');
     }
 
     public function down()
