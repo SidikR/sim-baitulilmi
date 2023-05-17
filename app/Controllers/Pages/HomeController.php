@@ -9,7 +9,7 @@ class HomeController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Dashboard Bendahara - SIM BAIM'
+            'title' => 'Selamat Datang - SIM BAIM'
         ];
         return view('pages/home', $data);
     }
