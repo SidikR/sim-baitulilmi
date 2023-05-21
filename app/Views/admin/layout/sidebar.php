@@ -20,6 +20,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Data Jabatan
                 </a>
+                <a class="nav-link" href="<?php echo base_url('list-peminjaman'); ?>">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Data Peminjaman
+                </a>
 
                 <div class="sb-sidenav-menu-heading">Addons</div>
                 <a class="nav-link" href="charts.html">

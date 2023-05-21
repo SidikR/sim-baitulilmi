@@ -57,6 +57,7 @@ class PeminjamanInventarisController extends BaseController
             'infaq' => esc($this->request->getvar('infaq')),
             'metode_infaq' => esc($this->request->getvar('metode_infaq')),
             'foto_identitas' => $namaGambar,
+            'agreement' => esc($this->request->getvar('agreement')),
             'validation' => \Config\Services::validation(),
             'daftar_inventaris' => $this->InventarisModel->orderBy('created_at', 'DESC')->findAll()
         ];

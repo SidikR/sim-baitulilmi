@@ -35,9 +35,9 @@ $routes->set404Override();
 $routes->get('/', 'Pages\HomeController::index');
 $routes->get('/about', 'Pages\AboutController::index');
 $routes->get('/guest-keuangan', 'Pages\GuestKeuanganController::index');
-$routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index');
+$routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
-$routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanInventarisController::save_masjid');
+$routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanInventarisController::save_masjid', ['filter' => 'role:user']);
 
 
 
@@ -70,6 +70,9 @@ $routes->put('/inventaris/edit/(:segment)', 'Admin\InventarisController::update/
 $routes->delete('/inventaris/hapus/(:segment)', 'Admin\InventarisController::delete/$1');
 $routes->get('/inventaris/detail/(:segment)', 'Admin\InventarisController::detail/$1');
 $routes->get('/inventaris/edit/(:segment)', 'Admin\InventarisController::form_update/$1');
+
+$routes->get('list-peminjaman', 'Admin\PeminjamanController::index');
+$routes->get('list-peminjaman-ok/(:segment)', 'Admin\PeminjamanController::accept/$1');
 
 
 

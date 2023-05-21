@@ -82,9 +82,6 @@
                                                 <h4><?= $di->nama_inventaris; ?></h4>
                                                 <h4><?= 'Stok : ' . $di->stok_inventaris; ?></h4>
                                                 <a href="<?= base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" title="<?= $di->nama_inventaris; ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    Launch demo modal
-                                                </button> -->
                                                 <a data-bs-toggle="modal" data-bs-target="#pinjamModal<?= $di->id_inventaris; ?>" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                             </div>
                                         </div><!-- End Portfolio Item -->
@@ -224,6 +221,10 @@
                                     <input type="file" class="form-control" id="formFile" name="foto_identitas" required>
                                 </div>
 
+                                <div class="mb-4">
+                                    <input type="checkbox" name="agreement" value="true" class="form-check-input" required><a href="" target="_blank"> Saya Setuju dengan Peraturan Peminjaman Inventaris Masjid</a>
+                                </div>
+
                                 <div class="modal-footer m-3">
                                     <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button></a>
                                     <button type="submit" class="btn btn-primary ">Tambah</button>
@@ -356,14 +357,7 @@
 
 
                                 <div class="mb-4">
-                                    <input type="checkbox" name="agreement" value="true" class="form-check-input <?= $validation->hasError('agreement') ? 'is-invalid' : null; ?>" required><a href=""> Saya Setuju dengan Peraturan Peminjaman Masjid</a>
-
-                                    <?php if ($validation->hasError('agreement')) : ?>
-                                        <div class="invalid-feedback">
-                                            <?= $validation->getError('agreement'); ?>
-                                        </div>
-
-                                    <?php endif; ?>
+                                    <input type="checkbox" name="agreement" value="true" class="form-check-input" required><a href="" target="_blank"> Saya Setuju dengan Peraturan Peminjaman Masjid</a>
                                 </div>
 
                                 <div class="modal-footer m-3">
@@ -489,6 +483,10 @@
                         <div class="mb-4">
                             <label for="foto_identitas" class="form-label">Foto KTP</label>
                             <input type="file" class="form-control" id="formFile" name="foto_identitas" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <input type="checkbox" name="agreement" value="true" class="form-check-input" required><a href="" target="_blank"> Saya Setuju dengan Peraturan Peminjaman Inventaris Masjid</a>
                         </div>
 
                         <div class="modal-footer">
