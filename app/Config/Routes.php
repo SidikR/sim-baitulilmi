@@ -33,7 +33,10 @@ $routes->set404Override();
 // Routes Pertama Kali di Eksekusi
 // Bisa diakses Tanpa Login
 $routes->get('/', 'Pages\HomeController::index');
-$routes->get('/about', 'Pages\AboutController::index', ['filter' => 'role:user']);
+$routes->get('/about', 'Pages\AboutController::index');
+$routes->get('/guest-keuangan', 'Pages\GuestKeuanganController::index');
+$routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index');
+$routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save');
 
 
 

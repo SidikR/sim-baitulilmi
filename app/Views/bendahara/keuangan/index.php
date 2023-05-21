@@ -38,7 +38,6 @@
                                 <th>Keterangan</th>
                                 <th>Masuk</th>
                                 <th>Keluar</th>
-                                <!-- <th>Aksi</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -58,10 +57,6 @@
                                             <?= 'Rp. ' . number_format($dp->keluar); ?>
                                         <?php endif; ?>
                                     </td>
-
-                                    <!-- <td style="width: 15%;">
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dp->id_keuangan; ?>"><i class="fas fa-trash-alt"></i> Hapus</button>
-                                    </td> -->
                                 </tr>
                             <?php endforeach ?>
                         </tbody>

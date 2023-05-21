@@ -55,8 +55,9 @@ class Pengurus extends Migration
             ],
         ]);
         $this->forge->addKey('id_pengurus', true);
-        $this->forge->createTable('pengurus');
+        $this->forge->addKey('id_jabatan');
         $this->forge->addForeignKey('id_jabatan', 'jabatan', 'id_jabatan', 'RESTRICT', 'RESTRICT');
+        $this->forge->createTable('pengurus');
     }
 
     public function down()

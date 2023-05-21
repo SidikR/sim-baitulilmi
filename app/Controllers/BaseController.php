@@ -42,7 +42,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['auth'];
 
     // Myproperty
 

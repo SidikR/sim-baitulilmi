@@ -65,7 +65,7 @@ class InventarisController extends BaseController
         // Simpan Data ke DataBase
         $data = [
             'title' => 'Tambah inventaris',
-            'id_inventaris' => $uuid4->toString(),
+            // 'id_inventaris' => $uuid4->toString(),
             'nama_inventaris' => esc($this->request->getvar('nama_inventaris')),
             'asal_inventaris' => esc($this->request->getvar('asal_inventaris')),
             'deskripsi_inventaris' => esc($this->request->getvar('deskripsi_inventaris')),
