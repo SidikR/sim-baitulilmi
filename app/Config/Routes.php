@@ -36,7 +36,8 @@ $routes->get('/', 'Pages\HomeController::index');
 $routes->get('/about', 'Pages\AboutController::index');
 $routes->get('/guest-keuangan', 'Pages\GuestKeuanganController::index');
 $routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index');
-$routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save');
+$routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
+$routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanInventarisController::save_masjid');
 
 
 
