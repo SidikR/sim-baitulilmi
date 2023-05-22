@@ -119,7 +119,6 @@ class PeminjamanInventarisController extends BaseController
             'tanggal_dipinjam' => 'required',
             'tanggal_selesai' => 'required',
             'infaq' => 'required',
-            // 'agreement' => 'required',
             'metode_infaq' => 'required'
         ]);
 

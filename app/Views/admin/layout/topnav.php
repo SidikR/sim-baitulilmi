@@ -11,8 +11,11 @@
         </div>
     </form>
     <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <p style="color: white;">Administrator</p>
+    <ul class="navbar-nav me-lg-4 d-flex align-items-center justify-content-center">
+        <div class="mt-3">
+            <p style="color: white;">Administrator</p>
+        </div>
+
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

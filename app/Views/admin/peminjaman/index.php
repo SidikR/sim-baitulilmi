@@ -52,24 +52,31 @@
                                     <td><?= $dpi->tanggal_pengembalian; ?></td>
                                     <td style="width: 15%;">
                                         <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#lihatModal<?= $dpi->id_peminjaman; ?>"><i class="fas fa-file-alt"></i> Lihat</button>
+
                                         <?php if ($dpi->status_peminjaman == 'pending') : ?>
-                                            <a href="<?= 'list-peminjaman-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-warning btn-sm glightbox preview-link" title="Terima Permohonan"><i class="far fa-check-circle"></i> Terima Permohonan</button></a>
+
+                                            <a href="<?= 'list-peminjaman-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-warning btn-sm glightbox preview-link" title="Terima Permohonan"><span class="bi bi-check-circle"></span> Terima</button></a>
+
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#tolakModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-x-square-fill"></i> Tolak</button>
+
 
                                         <?php elseif ($dpi->status_peminjaman == 'accepted') :  ?>
-                                            <a href="<?= 'list-peminjaman-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm glightbox preview-link" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Pengembalian</button></a>
+                                            <a href="<?= 'list-peminjaman-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm glightbox preview-link" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Kembali</button></a>
 
                                         <?php endif ?>
                                     </td>
                                     <td style="width: 15%;">
                                         <?php if ($dpi->status_peminjaman == 'pending') : ?>
-                                            <button type="button" class="btn btn-warning btn-sm glightbox preview-link" title="Terima Permohonan"><i class="far fa-clock"></i> Sedang ditinjau</button>
-
+                                            <button type="button" class="btn btn-warning btn-sm"><i class="far fa-clock"></i> Sedang ditinjau</button>
 
                                         <?php elseif ($dpi->status_peminjaman == 'accepted') :  ?>
-                                            <button type="button" class="btn btn-secondary btn-sm glightbox preview-link" title="Terima Permohonan"><i class="far fa-clock"></i> Belum dikembalikan</button>
+                                            <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-clock"></i> Belum dikembalikan</button>
 
                                         <?php elseif ($dpi->status_peminjaman == 'done') :  ?>
                                             <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-double"></i> Proses Selesai</button>
+
+                                        <?php elseif ($dpi->status_peminjaman == 'rejected') :  ?>
+                                            <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
 
                                         <?php endif ?>
                                     </td>
@@ -175,6 +182,39 @@
                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+
+<!-- Tolak Modaal -->
+<!-- Modal Detail Pengajuan Peminjaman Inventaris -->
+<?php foreach ($daftar_peminjaman_inventaris as $dpi) : ?>
+    <div class="modal fade" id="tolakModal<?= $dpi->id_peminjaman; ?>" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Detail Permohonan Peminjaman</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h2 class="mt-3 mb-4">Silakan Isi Pesan Penolakan Permohonan</h2>
+                    <form action="<?= 'list-peminjaman-no/' . $dpi->id_peminjaman; ?>" method="post" enctype="multipart/form-data">
+                        <?= csrf_field(); ?>
+
+                        <input type="hidden" class="form-control" id="exampleFormControlInput1" name="nama_inventaris" required>
+
+                        <div class="mb-4">
+                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" type="textarea" class="form-control" placeholder="Isikan Alasan Penolakan" name="pesan" required></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Selesai</button>
+                        </div>
                     </form>
                 </div>
             </div>

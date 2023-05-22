@@ -49,6 +49,9 @@
     <!-- favicon -->
     <link rel="icon" href="<?php echo base_url('assets/img/logobaimtp.png'); ?>" type="image/gif">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -74,7 +77,18 @@
                     <li><a class="nav-link scrollto" href="<?= base_url('peminjaman'); ?>">Peminjaman</a></li>
                     <li><a class="nav-link scrollto" href="<?= base_url('dashboard'); ?>">Admin</a></li>
                     <li><a class="nav-link scrollto" href="<?= base_url('keuangan'); ?>">Keuangan</a></li>
-                    <!-- <li><a class="nav-link   scrollto" href="/datatables">Data Tables</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">Settings</a></li>
+                            <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                            <!-- <li>
+                                <hr class="dropdown-divider" />
+                            </li> -->
+                            <li><a class="dropdown-item" href=<?= base_url('logout'); ?>>Logout</a></li>
+                    </li>
+                </ul>
+                <!-- <li><a class="nav-link   scrollto" href="/datatables">Data Tables</a></li>
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->

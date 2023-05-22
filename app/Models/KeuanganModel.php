@@ -68,4 +68,12 @@ class KeuanganModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    public function sum()
+    {
+        $builder = $this->db->table('keuangan');
+        $builder->selectSum('masuk');
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

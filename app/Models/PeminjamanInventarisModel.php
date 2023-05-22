@@ -13,7 +13,7 @@ class PeminjamanInventarisModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_user', 'id_barang', 'qty', 'instansi_peminjam', 'nama_penanggungjawab', 'tanggal_dipinjam', 'tanggal_pengembalian', 'infaq', 'metode_infaq', 'foto_identitas', 'agreement', 'status_peminjaman'];
+    protected $allowedFields    = ['id_user', 'id_barang', 'qty', 'instansi_peminjam', 'nama_penanggungjawab', 'tanggal_dipinjam', 'tanggal_pengembalian', 'infaq', 'metode_infaq', 'foto_identitas', 'agreement', 'status_peminjaman', 'pesan'];
 
     // Dates
     protected $useTimestamps = true;
@@ -42,6 +42,7 @@ class PeminjamanInventarisModel extends Model
     public function getAll()
     {
         $builder = $this->db->table('peminjaman_inventaris');
+        $builder->orderBy('id_peminjaman', 'DESC');
         $builder->join('users', 'users.id = peminjaman_inventaris.id_user');
         $builder->join('inventaris', 'inventaris.id_inventaris = peminjaman_inventaris.id_barang');
         $query = $builder->get();
@@ -54,16 +55,5 @@ class PeminjamanInventarisModel extends Model
             return $this->findAll();
         }
         return $this->join('users', 'users.id = peminjaman_inventaris.id_user')->join('inventaris', 'inventaris.id_inventaris = peminjaman_inventaris.id_barang')->where(['id_peminjaman' => $id_peminjaman])->first();
-    }
-
-
-    public function get_stok()
-    {
-        $builder = $this->db->table('peminjaman_inventaris');
-        $builder->join('users', 'users.id = peminjaman_inventaris.id_user');
-        $builder->join('inventaris', 'inventaris.id_inventaris = peminjaman_inventaris.id_barang');
-        $builder->select('stok_inventaris');
-        $query = $builder->get();
-        return $query;
     }
 }

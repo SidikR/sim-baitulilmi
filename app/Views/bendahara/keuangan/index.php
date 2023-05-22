@@ -28,6 +28,9 @@
                         </div>
                     <?php endif ?>
 
+                    <h1>Rincian Keuangan</h1>
+                    <?= $total_masuk; ?>
+
                     <table id="datatablesSimple" class="display" style="width:100%">
                         <thead>
                             <tr>

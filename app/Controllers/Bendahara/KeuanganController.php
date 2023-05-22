@@ -25,9 +25,11 @@ class KeuanganController extends BaseController
 
     public function index()
     {
+        $total_masuk = $this->KeuanganModel->sum();
         $data = [
             'title' => 'Keuangan BAIM',
-            'daftar_keuangan' => $this->KeuanganModel->orderBy('created_at', 'DESC')->getAll()
+            'daftar_keuangan' => $this->KeuanganModel->orderBy('created_at', 'DESC')->getAll(),
+            'total_masuk' => $total_masuk[0]->masuk
         ];
         return view('bendahara/keuangan/index', $data);
     }

@@ -29,7 +29,7 @@ class PeminjamanController extends BaseController
     {
         $data = [
             'title' => 'Daftar Peminjaman',
-            'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->orderBy('id_peminjaman', 'DESC')->getAll(),
+            'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->getAll(),
             // 'validation' => \Config\Services::validation()
         ];
 
@@ -43,13 +43,11 @@ class PeminjamanController extends BaseController
         $qty1 = $dpi->qty;
         $temp = $stok - $qty1;
         $data = [
-            // 'daftar_peminjaman_inventaris' => $dpi,
             'status_peminjaman' => 'accepted',
             'stok_inventaris' => $temp
         ];
-
         $this->PeminjamanInventarisModel->update($id_peminjaman, $data);
-        $this->InventarisModel->update($id_peminjaman, $data);
+        $this->InventarisModel->update($dpi->id_inventaris, $data);
         return redirect()->back();
     }
 
@@ -60,13 +58,25 @@ class PeminjamanController extends BaseController
         $qty1 = $dpi->qty;
         $temp = $stok + $qty1;
         $data = [
-            'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->orderBy('id_peminjaman', 'DESC')->getAll(),
+            'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->getAll(),
             'status_peminjaman' => 'done',
             'stok_inventaris' => $temp
         ];
 
         $this->PeminjamanInventarisModel->update($id_peminjaman, $data);
-        $this->InventarisModel->update($id_peminjaman, $data);
+        $this->InventarisModel->update($dpi->id_inventaris, $data);
+        return redirect()->back();
+    }
+
+    public function no($id_peminjaman)
+    {
+        $dpi = $this->PeminjamanInventarisModel->getPeminjaman($id_peminjaman);
+        $data = [
+            'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->getAll(),
+            'status_peminjaman' => 'rejected',
+            'pesan' => esc($this->request->getvar('pesan'))
+        ];
+        $this->PeminjamanInventarisModel->update($id_peminjaman, $data);
         return redirect()->back();
     }
 

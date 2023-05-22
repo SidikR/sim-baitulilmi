@@ -74,6 +74,7 @@ $routes->get('/inventaris/edit/(:segment)', 'Admin\InventarisController::form_up
 $routes->get('list-peminjaman', 'Admin\PeminjamanController::index');
 $routes->get('list-peminjaman-ok/(:segment)', 'Admin\PeminjamanController::accept/$1');
 $routes->get('list-peminjaman-done/(:segment)', 'Admin\PeminjamanController::done/$1');
+$routes->post('list-peminjaman-no/(:segment)', 'Admin\PeminjamanController::no/$1');
 
 
 
