@@ -110,7 +110,7 @@ class InventarisController extends BaseController
         if (empty($data['daftar_inventaris'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Nama inventaris dengan slug : ' . $slug_inventaris . ' tidak ditemukan !');
         }
-        return view('admin/inventaris/detail', $data);
+        return view('admin/inventaris/index', $data);
     }
 
     public function form_update($slug_inventaris)
@@ -155,6 +155,6 @@ class InventarisController extends BaseController
         $this->InventarisModel->update($id_inventaris, $data);
         $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-inventaris', $namaGambar);
 
-        return redirect()->back()->with('success', 'Data Inventaris Berhasil Diubah');
+        return redirect()->to('inventaris')->with('success', 'Data Inventaris Berhasil Diubah');
     }
 }

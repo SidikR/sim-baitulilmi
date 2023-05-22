@@ -9,17 +9,20 @@ use CodeIgniter\Validation\Rules;
 use Config\App;
 use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 use App\Models\PeminjamanInventarisModel;
+use App\Models\InventarisModel;
 
 
 class PeminjamanController extends BaseController
 {
     protected $PeminjamanInventarisModel;
+    protected $InventarisModel;
     protected $helpers = ['form', 'auth'];
 
 
     public function __construct()
     {
         $this->PeminjamanInventarisModel = new PeminjamanInventarisModel();
+        $this->InventarisModel = new InventarisModel();
     }
 
     public function index()
@@ -35,13 +38,36 @@ class PeminjamanController extends BaseController
 
     public function accept($id_peminjaman)
     {
+        $dpi = $this->PeminjamanInventarisModel->getPeminjaman($id_peminjaman);
+        $stok = $dpi->stok_inventaris;
+        $qty1 = $dpi->qty;
+        $temp = $stok - $qty1;
         $data = [
-            'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->orderBy('id_peminjaman', 'DESC')->getAll(),
-            'status_peminjaman' => 'accepted'
+            // 'daftar_peminjaman_inventaris' => $dpi,
+            'status_peminjaman' => 'accepted',
+            'stok_inventaris' => $temp
         ];
 
         $this->PeminjamanInventarisModel->update($id_peminjaman, $data);
-        return redirect()->back()->with('success', 'Peminjaman Berhasil di ACC');
+        $this->InventarisModel->update($id_peminjaman, $data);
+        return redirect()->back();
+    }
+
+    public function done($id_peminjaman)
+    {
+        $dpi = $this->PeminjamanInventarisModel->getPeminjaman($id_peminjaman);
+        $stok = $dpi->stok_inventaris;
+        $qty1 = $dpi->qty;
+        $temp = $stok + $qty1;
+        $data = [
+            'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->orderBy('id_peminjaman', 'DESC')->getAll(),
+            'status_peminjaman' => 'done',
+            'stok_inventaris' => $temp
+        ];
+
+        $this->PeminjamanInventarisModel->update($id_peminjaman, $data);
+        $this->InventarisModel->update($id_peminjaman, $data);
+        return redirect()->back();
     }
 
     // // Tambah Data Pengurus

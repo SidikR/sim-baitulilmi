@@ -47,4 +47,23 @@ class PeminjamanInventarisModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    public function getPeminjaman($id_peminjaman = false)
+    {
+        if ($id_peminjaman == false) {
+            return $this->findAll();
+        }
+        return $this->join('users', 'users.id = peminjaman_inventaris.id_user')->join('inventaris', 'inventaris.id_inventaris = peminjaman_inventaris.id_barang')->where(['id_peminjaman' => $id_peminjaman])->first();
+    }
+
+
+    public function get_stok()
+    {
+        $builder = $this->db->table('peminjaman_inventaris');
+        $builder->join('users', 'users.id = peminjaman_inventaris.id_user');
+        $builder->join('inventaris', 'inventaris.id_inventaris = peminjaman_inventaris.id_barang');
+        $builder->select('stok_inventaris');
+        $query = $builder->get();
+        return $query;
+    }
 }

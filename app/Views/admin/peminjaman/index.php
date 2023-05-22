@@ -29,11 +29,14 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Lengkap</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Jabatan</th>
-                                <th>Alamat</th>
+                                <th>Nama Barang</th>
+                                <th>Nama Penanggungjawab</th>
+                                <th>Instansi Peminjam</th>
+                                <th>Quantitas</th>
+                                <th>Tanggal Peminjaman</th>
+                                <th>Tanggal Pengembalian</th>
                                 <th>Aksi</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,18 +45,32 @@
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?= $dpi->nama_inventaris; ?></td>
-                                    <td><?= $dpi->instansi_peminjam; ?></td>
                                     <td><?= $dpi->nama_penanggungjawab; ?></td>
+                                    <td><?= $dpi->instansi_peminjam; ?></td>
+                                    <td><?= $dpi->qty; ?></td>
+                                    <td><?= $dpi->tanggal_dipinjam; ?></td>
                                     <td><?= $dpi->tanggal_pengembalian; ?></td>
                                     <td style="width: 15%;">
                                         <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#lihatModal<?= $dpi->id_peminjaman; ?>"><i class="fas fa-file-alt"></i> Lihat</button>
-
-                                        <?= "|" ?>
-
                                         <?php if ($dpi->status_peminjaman == 'pending') : ?>
-                                            <a href="<?= 'list-peminjaman-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-success btn-sm glightbox preview-link" title="Terima Permohonan"><i class="material-icons align-items-center">verified_user</i></button></a>
+                                            <a href="<?= 'list-peminjaman-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-warning btn-sm glightbox preview-link" title="Terima Permohonan"><i class="far fa-check-circle"></i> Terima Permohonan</button></a>
+
                                         <?php elseif ($dpi->status_peminjaman == 'accepted') :  ?>
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dpi->id_peminjaman; ?>"><i class="fas fa-trash-alt"></i> Hapus</button>
+                                            <a href="<?= 'list-peminjaman-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm glightbox preview-link" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Pengembalian</button></a>
+
+                                        <?php endif ?>
+                                    </td>
+                                    <td style="width: 15%;">
+                                        <?php if ($dpi->status_peminjaman == 'pending') : ?>
+                                            <button type="button" class="btn btn-warning btn-sm glightbox preview-link" title="Terima Permohonan"><i class="far fa-clock"></i> Sedang ditinjau</button>
+
+
+                                        <?php elseif ($dpi->status_peminjaman == 'accepted') :  ?>
+                                            <button type="button" class="btn btn-secondary btn-sm glightbox preview-link" title="Terima Permohonan"><i class="far fa-clock"></i> Belum dikembalikan</button>
+
+                                        <?php elseif ($dpi->status_peminjaman == 'done') :  ?>
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-double"></i> Proses Selesai</button>
+
                                         <?php endif ?>
                                     </td>
                                 </tr>
