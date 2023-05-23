@@ -8,7 +8,7 @@ use App\Models\KeuanganModel;
 class GuestKeuanganController extends BaseController
 {
     protected $KeuanganModel;
-    protected $helpers = ['form'];
+    protected $helpers = ['form', 'auth'];
 
     public function __construct()
     {

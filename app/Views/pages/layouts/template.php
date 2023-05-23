@@ -10,6 +10,18 @@
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css' rel="stylesheet">
     <link href='https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css' rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 
     <!-- DataTables -->
     <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -55,49 +67,8 @@
 </head>
 
 <body>
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top" data-scrollto-offset="0">
-        <div class="container-fluid d-flex align-items-center justify-content-between">
 
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0"><img src=" ?>" alt="" class="img-fluid"></a> -->
-            <!-- <h1 class="logo me-auto"><a href="index.html">Baitul Ilmi ITERA</a></h1> -->
-
-            <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="<?php echo base_url('assets/img/logobaimtp.png'); ?>" alt="">
-                <!-- <h1>Masjid Baitul Ilmi ITERA<span>.</span></h1> -->
-            </a>
-
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="/">Home</a></li>
-                    <li><a class="nav-link scrollto" href="<?= base_url('about'); ?>">About</a></li>
-                    <li><a class="nav-link scrollto" href="<?= base_url('guest-keuangan'); ?>">Transparansi Keuangan</a></li>
-                    <li><a class="nav-link scrollto" href="<?= base_url('peminjaman'); ?>">Peminjaman</a></li>
-                    <li><a class="nav-link scrollto" href="<?= base_url('dashboard'); ?>">Admin</a></li>
-                    <li><a class="nav-link scrollto" href="<?= base_url('keuangan'); ?>">Keuangan</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Settings</a></li>
-                            <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                            <!-- <li>
-                                <hr class="dropdown-divider" />
-                            </li> -->
-                            <li><a class="dropdown-item" href=<?= base_url('logout'); ?>>Logout</a></li>
-                    </li>
-                </ul>
-                <!-- <li><a class="nav-link   scrollto" href="/datatables">Data Tables</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-        </div>
-    </header>
-
+    <?= $this->include('pages/layouts/partials/navbar'); ?>
     <?= $this->renderSection('content'); ?>
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -112,35 +83,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
     <!-- ======= Footer ======= -->
-
-    <div class="footer-legal text-center">
-        <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
-
-            <div class="d-flex flex-column align-items-center align-items-lg-start">
-                <div class="copyright">
-                    &copy; Copyright <strong><span>HeroBiz</span></strong>. All Rights Reserved
-                </div>
-                <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
-            </div>
-
-            <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-
-        </div>
-    </div>
-
-    </footer><!-- End Footer -->
+    <?= $this->include('pages/layouts/partials/footer'); ?>
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -165,7 +108,6 @@
     <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
     <script src='https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js'></script>
     <script src='https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js'></script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>

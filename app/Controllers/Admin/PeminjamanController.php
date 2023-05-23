@@ -70,7 +70,7 @@ class PeminjamanController extends BaseController
 
     public function no($id_peminjaman)
     {
-        $dpi = $this->PeminjamanInventarisModel->getPeminjaman($id_peminjaman);
+        // $dpi = $this->PeminjamanInventarisModel->getPeminjaman($id_peminjaman);
         $data = [
             'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->getAll(),
             'status_peminjaman' => 'rejected',

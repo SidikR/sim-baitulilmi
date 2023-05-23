@@ -39,6 +39,9 @@ $routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index', ['fil
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanInventarisController::save_masjid', ['filter' => 'role:user']);
 
+$routes->get('/akun', 'Pages\AkunController::index', ['filter' => 'role:user']);
+$routes->post('peminjaman/batal/(:segment)', 'Pages\AkunController::batal/$1', ['filter' => 'role:user']);
+
 
 
 // Routes Admin Dashboard

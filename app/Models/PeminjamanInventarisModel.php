@@ -56,4 +56,15 @@ class PeminjamanInventarisModel extends Model
         }
         return $this->join('users', 'users.id = peminjaman_inventaris.id_user')->join('inventaris', 'inventaris.id_inventaris = peminjaman_inventaris.id_barang')->where(['id_peminjaman' => $id_peminjaman])->first();
     }
+
+    public function getAllWithType($tipe)
+    {
+        $builder = $this->db->table('peminjaman_inventaris');
+        $builder->orderBy('id_peminjaman', 'DESC');
+        $builder->join('users', 'users.id = peminjaman_inventaris.id_user');
+        $builder->join('inventaris', 'inventaris.id_inventaris = peminjaman_inventaris.id_barang');
+        $builder->where(['id_user' => $tipe]);
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

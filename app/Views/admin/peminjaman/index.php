@@ -78,6 +78,9 @@
                                         <?php elseif ($dpi->status_peminjaman == 'rejected') :  ?>
                                             <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
 
+                                        <?php elseif ($dpi->status_peminjaman == 'batal') :  ?>
+                                            <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-square"></i> Dibatalkan</button>
+
                                         <?php endif ?>
                                     </td>
                                 </tr>
@@ -190,7 +193,6 @@
 <?php endforeach ?>
 
 <!-- Tolak Modaal -->
-<!-- Modal Detail Pengajuan Peminjaman Inventaris -->
 <?php foreach ($daftar_peminjaman_inventaris as $dpi) : ?>
     <div class="modal fade" id="tolakModal<?= $dpi->id_peminjaman; ?>" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -204,7 +206,7 @@
                     <form action="<?= 'list-peminjaman-no/' . $dpi->id_peminjaman; ?>" method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
 
-                        <input type="hidden" class="form-control" id="exampleFormControlInput1" name="nama_inventaris" required>
+                        <!-- <input type="hidden" class="form-control" id="exampleFormControlInput1" name="nama_inventaris" required> -->
 
                         <div class="mb-4">
                             <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>

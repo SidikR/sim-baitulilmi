@@ -245,10 +245,10 @@ section {
   font-size: 16px;
   color: var(--color-white);
   background: var(--color-primary);
-  padding: 8px 23px;
+  /* padding: 5px; */
   border-radius: 4px;
   transition: 0.3s;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
 }
 
 .header .btn-getstarted:hover,
@@ -360,7 +360,7 @@ section {
     left: 0;
     top: 100%;
     margin: 0;
-    padding: 0 0 10px 0;
+    /* padding: 0 0 2px 0; */
     z-index: 99;
     opacity: 0;
     visibility: hidden;
