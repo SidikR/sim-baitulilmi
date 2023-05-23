@@ -124,38 +124,38 @@
     <script src="<?php echo base_url('assets-admin/demo/chart-area-demo.js'); ?>"></script>
     <script src="<?php echo base_url('assets-admin/demo/chart-bar-demo.js'); ?>"></script>
 
+
 </body>
 
 <script>
     $(document).ready(function() {
-        $('#datatablesSimple').DataTable({
-            dom: 'Bfrtip',
+        $('#datatables_logpeminjaman').DataTable({
+            dom: 'Blfrtip',
             buttons: [{
                     extend: 'copyHtml5',
                     exportOptions: {
-                        columns: [0, ':visible']
+                        columns: [0, 1, 2, 3, 4, 5, 6]
                     }
                 },
                 {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: ':visible'
+                        columns: [0, 1, 2, 3, 4, 5, 6]
                     }
                 },
                 {
                     extend: 'pdfHtml5',
                     exportOptions: {
-                        columns: [0, 1, 2, 3]
+                        columns: [0, 1, 2, 3, 4, 5, 6]
                     }
                 },
                 {
                     extend: 'print',
                     exportOptions: {
-                        columns: [0, 1, 2, 3]
+                        columns: [0, 1, 2, 3, 4, 5, 6]
                     }
                 },
-                'colvis',
-                'pageLength'
+                'colvis'
             ],
             lengthMenu: [
                 [10, 25, 50, -1],

@@ -64,11 +64,12 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <table id="datatablesSimple" class="display" style="width:100%">
+                                    <table id="datatables_logpeminjaman" class="display" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Barang</th>
+                                                <th>Quantitas</th>
                                                 <th>Tanggal Pinjam</th>
                                                 <th>Tanggal Kembali</th>
                                                 <th>Pesan</th>
@@ -82,6 +83,7 @@
                                                 <tr>
                                                     <td><?= $no++; ?></td>
                                                     <td><?= $di->nama_inventaris; ?></td>
+                                                    <td><?= $di->qty; ?></td>
                                                     <td><?= $di->tanggal_dipinjam; ?></td>
                                                     <td><?= $di->tanggal_pengembalian; ?></td>
                                                     <td><?= $di->pesan; ?></td>
