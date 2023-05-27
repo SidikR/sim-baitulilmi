@@ -25,7 +25,7 @@
                         </div>
                     <?php endif ?>
 
-                    <table id="datatablesSimple" class="display" style="width:100%">
+                    <table id="admin_pengurus" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -43,12 +43,12 @@
                                     <td><?= $no++; ?></td>
                                     <td><?= $dp->nama_lengkap; ?></td>
                                     <td><?= $dp->jenis_kelamin; ?></td>
-                                    <td><?= $dp->nama_jabatan; ?></td>
+                                    <td><?= $dp->jabatan; ?></td>
                                     <td><?= $dp->alamat_pengurus; ?></td>
                                     <td style="width: 15%;">
-                                        <a href="<?= 'pengurus/detail/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-file-alt"></i> Lihat</button></a>
-                                        <a href="<?= 'pengurus/edit/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</button></a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dp->id_pengurus; ?>"><i class="fas fa-trash-alt"></i> Hapus</button>
+                                        <a href="<?= 'pengurus/detail/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-file-alt"></i></button></a>
+                                        <a href="<?= 'pengurus/edit/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dp->id_pengurus; ?>"><i class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

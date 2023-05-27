@@ -5,25 +5,20 @@ namespace App\Controllers\Admin;
 use CodeIgniter\Database\Database;
 use App\Controllers\BaseController;
 use App\Models\PengurusModel;
-use App\Models\JabatanModel;
 use CodeIgniter\Commands\Utilities\Publish;
 use CodeIgniter\Validation\Rules;
 use Config\App;
 use JetBrains\PhpStorm\Internal\ReturnTypeContract;
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 
 class PengurusController extends BaseController
 {
     protected $PengurusModel;
-    protected $JabatanModel;
     protected $helpers = ['form'];
 
 
     public function __construct()
     {
-        $this->JabatanModel = new JabatanModel();
         $this->PengurusModel = new PengurusModel();
     }
 
@@ -31,36 +26,27 @@ class PengurusController extends BaseController
     {
         $data = [
             'title' => 'Daftar Pengurus',
-            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->getAll(),
-            'daftar_jabatan' => $this->JabatanModel->orderBy('id_jabatan', 'DESC')->findAll(),
-            // 'validation' => \Config\Services::validation()
+            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->findAll(),
         ];
 
         return view('admin/pengurus/index', $data);
     }
 
+
     // Tambah Data Pengurus
     public function create()
     {
-        $daftar_jabatan = $this->JabatanModel->findAll();
         $data = [
-            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->getAll(),
+            'daftar_pengurus' => $this->PengurusModel->findAll(),
             'title' => 'Tambah Pengurus',
-            'validation' => \Config\Services::validation(),
-            'daftar_jabatan' => $daftar_jabatan
+            'validation' => \Config\Services::validation()
         ];
 
         return view('admin/pengurus/create', $data);
     }
 
-
-
     public function save()
     {
-        // $daftar_jabatan = $this->JabatanModel->findAll();
-        $uuid4 = Uuid::uuid4();
-        $id_pengurus = $uuid4->toString();
-
         // Deklarasi Nailai Slug Pengurus
         $slug = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
 
@@ -70,19 +56,14 @@ class PengurusController extends BaseController
         //Ambil Nama Gambar
         $namaGambar = $gambar->getName('');
 
-        //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/pengurus', $namaGambar);
-
         // Simpan Data ke DataBase
         $data = [
-            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->getAll(),
-            'daftar_jabatan' => $this->JabatanModel->orderBy('id_jabatan', 'DESC')->findAll(),
+            'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->findAll(),
             'title' => 'Tambah Pengurus',
-            'id_pengurus' => $id_pengurus,
             'nama_lengkap' => esc($this->request->getvar('nama_lengkap')),
             'slug_pengurus' => $slug,
             'jenis_kelamin' => esc($this->request->getvar('jenis_kelamin')),
-            'id_jabatan' => esc($this->request->getvar('nama_jabatan')),
+            'jabatan' => esc($this->request->getvar('nama_jabatan')),
             'nomor_telepon' => esc($this->request->getvar('nomor_telepon')),
             'alamat_pengurus' => esc($this->request->getvar('alamat_pengurus')),
             'foto_pengurus' => $namaGambar,
@@ -102,6 +83,8 @@ class PengurusController extends BaseController
             return view('admin/pengurus/create', $data);
         } {
             $this->PengurusModel->insert($data);
+            //Menuliskan ke direktori
+            $gambar->move(WRITEPATH . '../public/assets-admin/img/pengurus', $namaGambar);
             return redirect()->to('/pengurus')->with('success', 'Data Pengurus Berhasil Ditambahkan');
         }
     }
@@ -109,32 +92,22 @@ class PengurusController extends BaseController
 
     public function update($id_pengurus)
     {
-        // Ambil Gambar
-        $gambar = $this->request->getFile('foto_pengurus');
-
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName();
-
-        //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/pengurus', $namaGambar);
         $slug = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
         //$daftar_pengurus = $this->pengurusModel->getPengurus($slug_pengurus);
         $data = [
             'nama_lengkap' => esc($this->request->getvar('nama_lengkap')),
             'slug_pengurus' => $slug,
             'jenis_kelamin' => esc($this->request->getvar('jenis_kelamin')),
+            'jabatan' => esc($this->request->getvar('nama_jabatan')),
             'nomor_telepon' => esc($this->request->getvar('nomor_telepon')),
             'alamat_pengurus' => esc($this->request->getvar('alamat_pengurus')),
-            'foto_pengurus' => $namaGambar
         ];
         $this->PengurusModel->update($id_pengurus, $data);
-        // $this->PengurusModel->save($data);
-        return redirect()->back()->with('success', 'Data Pengurus Berhasil Diubah');
+        return redirect()->to('pengurus')->with('success', 'Data Pengurus Berhasil Diubah');
     }
 
     public function form_update($slug_pengurus)
     {
-        $daftar_pengurus = $this->PengurusModel->getPengurus($slug_pengurus);
 
         $data = [
             'title' => "Edit Data Pengurus",
@@ -148,6 +121,29 @@ class PengurusController extends BaseController
     }
 
 
+    public function update_foto($id_pengurus)
+    {
+        // Ambil Gambar
+        $gambar = $this->request->getFile('foto_pengurus');
+
+        //Ambil Nama Gambar
+        $namaGambar = $gambar->getName('');
+
+        $data = [
+            'title' => 'Tambah Foto Pengurus',
+            'foto_pengurus' => $namaGambar,
+            'validation' => \Config\Services::validation()
+        ];
+
+        if (empty($namaGambar)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
+        }
+        $this->PengurusModel->update($id_pengurus, $data);
+        $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-pengurus', $namaGambar);
+        return redirect()->to('pengurus')->with('success', 'Data Pengurus Berhasil Diubah');
+    }
+
+
     public function delete($id_pengurus)
     {
         $this->PengurusModel->where('id_pengurus', $id_pengurus)->delete();
@@ -158,7 +154,6 @@ class PengurusController extends BaseController
 
     public function detail($slug_pengurus)
     {
-        $pengurus = $this->PengurusModel->getPengurus($slug_pengurus);
         $data = [
             'title' => 'Detail Pengurus',
             'pengurus' => $this->PengurusModel->getPengurus($slug_pengurus),

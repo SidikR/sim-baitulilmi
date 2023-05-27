@@ -55,15 +55,7 @@ $routes->put('/pengurus/edit/(:segment)', 'Admin\PengurusController::update/$1')
 $routes->delete('/pengurus/hapus/(:segment)', 'Admin\PengurusController::delete/$1');
 $routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1');
 $routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1');
-
-// Routes Admin Data Jabatan
-$routes->get('jabatan', 'Admin\JabatanController::index');
-$routes->post('/jabatan/save', 'Admin\JabatanController::save');
-$routes->get('/jabatan/tambah', 'Admin\JabatanController::create');
-$routes->put('/jabatan/edit/(:segment)', 'Admin\JabatanController::update/$1');
-$routes->delete('/jabatan/hapus/(:segment)', 'Admin\JabatanController::delete/$1');
-$routes->get('/jabatan/detail/(:segment)', 'Admin\JabatanController::detail/$1');
-$routes->get('/jabatan/edit/(:segment)', 'Admin\JabatanController::form_update/$1');
+$routes->put('/pengurus/edit/foto/(:segment)', 'Admin\PengurusController::update_foto/$1');
 
 // Routes Admin Data Inventaris
 $routes->get('inventaris', 'Admin\InventarisController::index');

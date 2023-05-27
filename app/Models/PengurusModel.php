@@ -10,7 +10,7 @@ class PengurusModel extends Model
     protected $primaryKey       = 'id_pengurus';
     protected $returnType       = 'object';
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_pengurus', 'nama_lengkap', 'slug_pengurus', 'jenis_kelamin', 'id_jabatan', 'nomor_telepon', 'alamat_pengurus', 'foto_pengurus'];
+    protected $allowedFields    = ['nama_lengkap', 'slug_pengurus', 'jenis_kelamin', 'jabatan', 'nomor_telepon', 'alamat_pengurus', 'foto_pengurus'];
 
     // Dates
     protected $useTimestamps = true;
@@ -20,21 +20,13 @@ class PengurusModel extends Model
     protected $deletedField  = 'deleted_at';
     protected $useSoftDeletes = false;
 
+
     // Fungsi Untuk Mengambil Data sesuai Slug
     public function getPengurus($slug_pengurus = false)
     {
         if ($slug_pengurus == false) {
-            return $this->findAll();
+            return $this->orderBy()->findAll();
         }
         return $this->where(['slug_pengurus' => $slug_pengurus])->first();
-    }
-
-    // Join Tabel Pengurus dan Jabatan
-    public function getAll()
-    {
-        $builder = $this->db->table('pengurus');
-        $builder->join('jabatan', 'jabatan.id_jabatan = pengurus.id_jabatan');
-        $query = $builder->get();
-        return $query->getResult();
     }
 }

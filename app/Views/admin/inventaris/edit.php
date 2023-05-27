@@ -137,7 +137,7 @@
                         </label>
                         <input type="file" id="userImage" name="foto_inventaris" onchange="readURL(this);" />
                     </p>
-                    <img id="image" width="100%" height="100%" />
+                    <img id="image" width="50%" height="50%" />
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success">Simpan</button>

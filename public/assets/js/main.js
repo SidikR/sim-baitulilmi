@@ -450,6 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('form').reset()
         table.draw();
     });
+    
 
 
 });

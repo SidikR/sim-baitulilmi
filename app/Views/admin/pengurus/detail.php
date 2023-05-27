@@ -15,10 +15,21 @@
                 </div>
                 <div class="card-body">
                     <div class="card mb-3 " style="max-width: 100%;">
-                        <div class="row g-0 align-items-center offset-md-1 me-2 g-2">
-                            <div class="col-md-4 px-3">
-                                <img style="max-width : 350px ; max-height : 350px ;  " src="<?php echo base_url('assets-admin/img/pengurus/' . $pengurus->foto_pengurus); ?>" class="img-fluid rounded float-start float-center ms-auto d-block " alt="foto <?= $pengurus->nama_lengkap; ?>">
+                        <div class="row">
+                            <div class="col-md-4 mt-auto mb-auto">
+                                <div class="col-md-12 mt-auto mb-auto ">
+                                    <div class="portfolio container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                                        <div class="portfolio-item">
+                                            <img style="max-width : 400px ; max-height : 400px ;  " src="<?php echo base_url('assets-admin/img/pengurus/' . $pengurus->foto_pengurus); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                                            <div class="portfolio-info">
+                                                <h4><?= $pengurus->nama_lengkap; ?></h4>
+                                                <a href="<?php echo base_url('assets-admin/img/pengurus/' . $pengurus->foto_pengurus); ?>" title="<?= $pengurus->nama_lengkap; ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <form>
@@ -27,6 +38,10 @@
                                             <div class="mb-3">
                                                 <label for="disabledTextInput" class="form-label">Nama Lengkap</label>
                                                 <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $pengurus->nama_lengkap; ?>'>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="disabledTextInput" class="form-label">Jenis Kelamin</label>
+                                                <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $pengurus->jenis_kelamin; ?>'>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="disabledTextInput" class="form-label">Jenis Kelamin</label>

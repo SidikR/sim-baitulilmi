@@ -69,8 +69,6 @@
 
     <!-- Template Main JS File -->
     <script src=<?php echo base_url('assets/js/main.js'); ?>></script>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
     <script src="<?php echo base_url('assets-admin/js/scripts.js'); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="<?php echo base_url('assets-admin/demo/chart-area-demo.js'); ?>"></script>
@@ -149,7 +147,109 @@
 
             });
 
+            $('#admin_pengurus').DataTable({
+                "columns": [{
+                        "width": "1%"
+                    },
+                    {
+                        "width": "15%"
+                    },
+                    {
+                        "width": "9%"
+                    },
+                    {
+                        "width": "15%"
+                    },
+                    {
+                        "width": "25%"
+                    },
+                    {
+                        "width": "35%"
+                    },
+                ],
+                dom: 'Bflrtip',
+                buttons: [{
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    'colvis',
+                ],
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, 'All'],
+                ],
+
+            });
+
+            $(document).ready(function() {
+                var table = $('#admin_peminjaman').DataTable({
+                    // "order": [
+                    //     [0, "asc"]
+                    // ],
+                    "ordering": true,
+                    dom: 'Blfrtip',
+                    buttons: [{
+                            extend: 'copyHtml5',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        {
+                            extend: 'excelHtml5',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        {
+                            extend: 'print',
+                            exportOptions: {
+                                columns: ':visible'
+                            }
+                        },
+                        'colvis'
+                    ],
+                    lengthMenu: [
+                        [10, 25, 50, -1],
+                        [10, 25, 50, 'All'],
+                    ],
+                    scrollX: true,
+                });
+            });
+
+
+
         });
+
+        $('.btn_tambahjabatan').click(function() {
+            document.getElementById('nama_jabatan').type = 'text';
+        });
+
 
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -162,110 +262,6 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var table = $('#admin_peminjaman').DataTable({
-                // "order": [
-                //     [0, "asc"]
-                // ],
-                // "ordering": true,
-                dom: 'Blfrtip',
-                buttons: [{
-                        extend: 'copyHtml5',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    'colvis'
-                ],
-                lengthMenu: [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, 'All'],
-                ],
-                scrollX: true,
-            });
-            $.fn.dataTable.ext.search.push(
-                function(settings, data, dataIndex) {
-                    var min = $('.date_range_filter').val();
-                    var max = $('.date_range_filter2').val();
-                    var createdAt = data[1]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
-                    if (
-                        (min == "" || max == "") ||
-                        (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
-                    ) {
-                        return true;
-                    }
-                    return false;
-                }
-            );
-            $.fn.dataTable.ext.search.push(
-                function(settings, data, dataIndex) {
-                    var akun = $('.akun_keuangan').val();
-                    var createdAt = data[2]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
-                    if (
-                        (akun == createdAt || akun == '--Pilih Akun Keuangan--') ||
-                        moment(createdAt).isSame(akun)
-                    ) {
-                        return true;
-                    }
-                    return false;
-                }
-            );
-            $.fn.dataTable.ext.search.push(
-                function(settings, data, dataIndex) {
-                    var akses = $('.akses_keuangan').val();
-                    var createdAt = data[3]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
-                    if (
-                        (akses == createdAt || akses == '--Pilih Akses Keuangan--') ||
-                        moment(createdAt).isSame(akses)
-                    ) {
-                        return true;
-                    }
-                    return false;
-                }
-            );
-            $('.pickdate').each(function() {
-                $(this).datepicker({
-                    format: 'yyyy/mm/dd'
-                });
-            });
-            $('.pickdate').change(function() {
-                table.draw();
-            });
-            $('.akun_k').change(function() {
-                table.draw();
-            });
-            $('.akses_k').change(function() {
-                table.draw();
-            });
-            $('.masuk , .keluar , .buku_besar').click(function() {
-                table.draw();
-            });
-            $('.reset').click(function() {
-                document.getElementById('form').reset()
-                table.draw();
-            });
-        });
     </script>
 
 </body>
