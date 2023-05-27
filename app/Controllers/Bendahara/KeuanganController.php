@@ -25,11 +25,28 @@ class KeuanganController extends BaseController
 
     public function index()
     {
-        $total_masuk = $this->KeuanganModel->sum();
+        $total_masuk = $this->KeuanganModel->sumMasuk();
+        $total_keluar = $this->KeuanganModel->sumKeluar();
+        $masuk_op = $this->KeuanganModel->sumAkunMasuk(2);
+        $keluar_op = $this->KeuanganModel->sumAkunKeluar(2);
+        $masuk_prs = $this->KeuanganModel->sumAkunMasuk(3);
+        $keluar_prs = $this->KeuanganModel->sumAkunKeluar(3);
+        $masuk_pem = $this->KeuanganModel->sumAkunMasuk(1);
+        $keluar_pem = $this->KeuanganModel->sumAkunKeluar(1);
         $data = [
             'title' => 'Keuangan BAIM',
-            'daftar_keuangan' => $this->KeuanganModel->orderBy('created_at', 'DESC')->getAll(),
-            'total_masuk' => $total_masuk[0]->masuk
+            'daftar_keuangan' => $this->KeuanganModel->getAll(),
+            'total_masuk' => $total_masuk[0]->masuk,
+            'total_keluar' => $total_keluar[0]->keluar,
+            'total_op' => $masuk_op[0]->masuk - $keluar_op[0]->keluar,
+            'total_prs' => $masuk_prs[0]->masuk - $keluar_prs[0]->keluar,
+            'total_pem' => $masuk_pem[0]->masuk - $keluar_pem[0]->keluar,
+            'total_kas' => $total_masuk[0]->masuk - $total_keluar[0]->keluar,
+            'daftar_akunkeuangan' => $this->AkunKeuanganModel->findAll(),
+            'daftar_akseskeuangan' => $this->AksesKeuanganModel->findAll(),
+            'daftar_pemasukan' => $this->KeuanganModel->getAllMasuk(),
+            'daftar_pengeluaran' => $this->KeuanganModel->getAllKeluar()
+
         ];
         return view('bendahara/keuangan/index', $data);
     }

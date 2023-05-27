@@ -13,7 +13,7 @@ class PeminjamanInventarisModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_user', 'id_barang', 'qty', 'instansi_peminjam', 'nama_penanggungjawab', 'tanggal_dipinjam', 'tanggal_pengembalian', 'infaq', 'metode_infaq', 'foto_identitas', 'agreement', 'status_peminjaman', 'pesan'];
+    protected $allowedFields    = ['id_user', 'status_infaq', 'id_barang', 'qty', 'instansi_peminjam', 'nama_penanggungjawab', 'tanggal_dipinjam', 'tanggal_pengembalian', 'infaq', 'metode_infaq', 'foto_identitas', 'agreement', 'status_peminjaman', 'pesan'];
 
     // Dates
     protected $useTimestamps = true;

@@ -6,8 +6,6 @@ use App\Controllers\BaseController;
 use App\Models\InventarisModel;
 use CodeIgniter\Database\Database;
 use CodeIgniter\Validation\Rules;
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class InventarisController extends BaseController
 {
@@ -56,16 +54,10 @@ class InventarisController extends BaseController
         //Ambil Nama Gambar
         $namaGambar = $gambar->getName('');
 
-        //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-inventaris', $namaGambar);
-
-        $uuid4 = Uuid::uuid4();
-
 
         // Simpan Data ke DataBase
         $data = [
             'title' => 'Tambah inventaris',
-            // 'id_inventaris' => $uuid4->toString(),
             'nama_inventaris' => esc($this->request->getvar('nama_inventaris')),
             'asal_inventaris' => esc($this->request->getvar('asal_inventaris')),
             'deskripsi_inventaris' => esc($this->request->getvar('deskripsi_inventaris')),
@@ -88,6 +80,8 @@ class InventarisController extends BaseController
             return view('admin/inventaris/create', $data);
         } {
             $this->InventarisModel->insert($data);
+            //Menuliskan ke direktori
+            $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-inventaris', $namaGambar);
             return redirect()->to('/inventaris')->with('success', 'Data inventaris Berhasil Ditambahkan');
         }
     }
@@ -97,6 +91,7 @@ class InventarisController extends BaseController
         $this->InventarisModel->join('akuninventaris', 'akuninventaris.id_akuninventaris = inventaris.id_akuninventaris')->join('aksesinventaris', 'aksesinventaris.id_aksesinventaris = inventaris.id_aksesinventaris')->where('id_inventaris', $id_inventaris)->delete();
         return redirect()->back()->with('success', 'Data Berhasil Dihapus');
     }
+
 
 
     public function detail($slug_inventaris)
@@ -110,8 +105,9 @@ class InventarisController extends BaseController
         if (empty($data['daftar_inventaris'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Nama inventaris dengan slug : ' . $slug_inventaris . ' tidak ditemukan !');
         }
-        return view('admin/inventaris/index', $data);
+        return view('admin/inventaris/detail', $data);
     }
+
 
     public function form_update($slug_inventaris)
     {
@@ -128,19 +124,10 @@ class InventarisController extends BaseController
         return view('admin/inventaris/edit', $data);
     }
 
+
     public function update($id_inventaris)
     {
-        // Ambil Gambar
-        $gambar = $this->request->getFile('foto_inventaris');
-
         $slug = url_title($this->request->getvar('nama_inventaris'), '-', TRUE);
-
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
-
-        //Menuliskan ke direktori
-
-
         $data = [
             'title' => 'Tambah inventaris',
             'nama_inventaris' => esc($this->request->getvar('nama_inventaris')),
@@ -148,13 +135,32 @@ class InventarisController extends BaseController
             'deskripsi_inventaris' => esc($this->request->getvar('deskripsi_inventaris')),
             'stok_inventaris' => esc($this->request->getvar('stok_inventaris')),
             'slug_inventaris' => $slug,
-            'foto_inventaris' => $namaGambar,
             'validation' => \Config\Services::validation()
         ];
 
         $this->InventarisModel->update($id_inventaris, $data);
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-inventaris', $namaGambar);
+        return redirect()->to('inventaris')->with('success', 'Data Inventaris Berhasil Diubah');
+    }
 
+    public function update_foto($id_inventaris)
+    {
+        // Ambil Gambar
+        $gambar = $this->request->getFile('foto_inventaris');
+
+        //Ambil Nama Gambar
+        $namaGambar = $gambar->getName('');
+
+        $data = [
+            'title' => 'Tambah inventaris',
+            'foto_inventaris' => $namaGambar,
+            'validation' => \Config\Services::validation()
+        ];
+
+        if (empty($namaGambar)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
+        }
+        $this->InventarisModel->update($id_inventaris, $data);
+        $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-inventaris', $namaGambar);
         return redirect()->to('inventaris')->with('success', 'Data Inventaris Berhasil Diubah');
     }
 }

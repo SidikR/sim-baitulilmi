@@ -25,7 +25,7 @@
                         </div>
                     <?php endif ?>
 
-                    <table id="datatablesSimple" class="display" style="width:100%">
+                    <table id="admin_inventaris" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -46,12 +46,12 @@
                                     <td><?= $di->stok_inventaris; ?></td>
                                     <td><?= $di->asal_inventaris; ?></td>
                                     <td><?= $di->deskripsi_inventaris; ?></td>
-                                    <td><img style="max-width : 100px ; max-height : 100px ;  " src="<?php echo base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" class="img-fluid rounded float-start float-center ms-auto d-block " alt="foto <?= $di->nama_inventaris; ?>"></td>
+                                    <td><img style="width : 100px ; height : 100px ;  " src="<?php echo base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" class="img-fluid rounded float-start float-center ms-auto d-block " alt="foto <?= $di->nama_inventaris; ?>"></td>
 
                                     <td style="width: 15%;">
-                                        <a href="<?= 'inventaris/detail/' . $di->slug_inventaris; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-file-alt"></i> Lihat</button></a>
-                                        <a href="<?= 'inventaris/edit/' . $di->slug_inventaris; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</button></a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $di->id_inventaris; ?>"><i class="fas fa-trash-alt"></i> Hapus</button>
+                                        <a href="<?= 'inventaris/detail/' . $di->slug_inventaris; ?>"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-book-fill"></i></button></a>
+                                        <a href="<?= 'inventaris/edit/' . $di->slug_inventaris; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></button></a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $di->id_inventaris; ?>"><i class="bi bi-trash3-fill"></i></button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -74,6 +74,7 @@
         </div>
     </footer>
 </div>
+
 
 <!-- Modal Hapus -->
 <?php foreach ($daftar_inventaris as $di) : ?>

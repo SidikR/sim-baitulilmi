@@ -295,4 +295,163 @@ document.addEventListener('DOMContentLoaded', () => {
     aos_init();
   });
 
+  $(document).ready(function() {
+    var user = $('#datatables_logpeminjaman').DataTable({
+        dom: 'Blfrtip',
+        buttons: [{
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            'colvis'
+        ],
+        lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, 'All'],
+        ],
+        scrollX: true,
+    });
+
+    
+    var table = $('#datatables_userkeuangan, #datatables_keuangankeluar, #datatables_keuanganmasuk').DataTable({
+        dom: 'Blfrtip',
+        buttons: [{
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            'colvis'
+        ],
+        lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, 'All'],
+        ],
+        scrollX: true,
+
+
+    });
+
+
+    $('#datatables_userkeuangan, #datatables_keuangankeluar, #datatables_keuanganmasuk').dataTable.ext.search.push(
+        function(settings, data, dataIndex) {
+            if (settings.nTable.id === 'datatables_userkeuangan' || settings.nTable.id === 'datatables_keuangankeluar' || settings.nTable.id === 'datatables_keuanganmasuk') {
+                var min = $('.date_range_filter').val();
+                var max = $('.date_range_filter2').val();
+                var createdAt = data[1]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
+                if (
+                    (min == "" || max == "") ||
+                    (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
+                ) {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+
+        }
+    );
+
+
+    $('#datatables_userkeuangan, #datatables_keuangankeluar, #datatables_keuanganmasuk').dataTable.ext.search.push(
+        function(settings, data, dataIndex) {
+            
+            if (settings.nTable.id === 'datatables_userkeuangan' || settings.nTable.id === 'datatables_keuangankeluar' || settings.nTable.id === 'datatables_keuanganmasuk') {
+                var akun = $('.akun_keuangan').val();
+                var createdAt = data[2]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
+                if (
+                    (akun == createdAt || akun == '--Pilih Akun Keuangan--') ||
+                    moment(createdAt).isSame(akun)
+                ) {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+
+        }
+    );
+
+
+    $('#datatables_userkeuangan, #datatables_keuangankeluar, #datatables_keuanganmasuk').dataTable.ext.search.push(
+        function(settings, data, dataIndex) {
+            if (settings.nTable.id === 'datatables_userkeuangan' || settings.nTable.id === 'datatables_keuangankeluar' || settings.nTable.id === 'datatables_keuanganmasuk') {
+                var akses = $('.akses_keuangan').val();
+                var createdAt = data[3]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
+                if (
+                    (akses == createdAt || akses == '--Pilih Akses Keuangan--') ||
+                    moment(createdAt).isSame(akses)
+                ) {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+
+        }
+    );
+
+
+    $('.pickdate').each(function() {
+        $(this).datepicker({
+            format: 'yyyy/mm/dd'
+        });
+    });
+    $('.pickdate').change(function() {
+        table.draw();
+    });
+    $('.akun_k').change(function() {
+        table.draw();
+    });
+    $('.akses_k').change(function() {
+        table.draw();
+    });
+    $('.masuk , .keluar , .buku_besar').click(function() {
+        table.draw();
+    });
+    $('.reset').click(function() {
+        document.getElementById('form').reset()
+        table.draw();
+    });
+
+
+});
+
 });

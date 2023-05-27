@@ -10,19 +10,25 @@ use Config\App;
 use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 use App\Models\PeminjamanInventarisModel;
 use App\Models\InventarisModel;
+use App\Models\KeuanganModel;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 
 class PeminjamanController extends BaseController
 {
     protected $PeminjamanInventarisModel;
     protected $InventarisModel;
+    protected $KeuanganModel;
     protected $helpers = ['form', 'auth'];
+
 
 
     public function __construct()
     {
         $this->PeminjamanInventarisModel = new PeminjamanInventarisModel();
         $this->InventarisModel = new InventarisModel();
+        $this->KeuanganModel = new KeuanganModel();
     }
 
     public function index()
@@ -65,6 +71,37 @@ class PeminjamanController extends BaseController
 
         $this->PeminjamanInventarisModel->update($id_peminjaman, $data);
         $this->InventarisModel->update($dpi->id_inventaris, $data);
+        return redirect()->back();
+    }
+
+    public function infaqok($id_peminjaman)
+    {
+        $dpi = $this->PeminjamanInventarisModel->getPeminjaman($id_peminjaman);
+        $dk  = $this->KeuanganModel->getAll();
+        // Deklarasi Nailai Slug Jabatan
+
+        $keterangan = 'Infaq Peminjaman Inventaris dari ' . $dpi->nama_penanggungjawab;
+
+        $slug = url_title($keterangan);
+
+        $uuid4 = Uuid::uuid4();
+
+
+        // Simpan Data ke DataBase
+        $data = [
+            'id_keuangan' => $uuid4->toString(),
+            'tanggal_transaksi' => $dpi->tanggal_pengembalian,
+            'id_akunkeuangan' => 1,
+            'id_akseskeuangan' => 1,
+            'keterangan' => esc($keterangan),
+            'masuk' => esc($dpi->infaq),
+            'slug' => $slug,
+            'status_infaq' => 'terbayar',
+            'validation' => \Config\Services::validation(),
+        ];
+
+        $this->KeuanganModel->insert($data);
+        $this->PeminjamanInventarisModel->update($id_peminjaman, $data);
         return redirect()->back();
     }
 

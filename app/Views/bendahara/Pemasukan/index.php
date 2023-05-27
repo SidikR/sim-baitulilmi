@@ -25,7 +25,7 @@
                         </div>
                     <?php endif ?>
 
-                    <table id="datatablesSimple" class="display" style="width:100%">
+                    <table id="pemasukan" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>

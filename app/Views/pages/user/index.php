@@ -106,7 +106,7 @@
                                                         <?php endif ?>
                                                     </td>
                                                     <td style="width: 15%;">
-                                                        <?php if ($di->status_peminjaman == 'pending' || $di->status_peminjaman == 'accepted') : ?>
+                                                        <?php if ($di->status_peminjaman == 'pending') : ?>
                                                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#batalModal<?= $di->id_peminjaman; ?>"><i class="bi bi-x-square-fill"></i> Batal</button>
                                                         <?php endif ?>
                                                     </td>
@@ -124,6 +124,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- Tolak Modaal -->
 <?php foreach ($daftar_peminjaman as $di) : ?>

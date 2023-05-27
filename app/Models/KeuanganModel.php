@@ -65,14 +65,61 @@ class KeuanganModel extends Model
         $builder = $this->db->table('keuangan');
         $builder->join('akunkeuangan', 'akunkeuangan.id_akunkeuangan = keuangan.id_akunkeuangan');
         $builder->join('akseskeuangan', 'akseskeuangan.id_akseskeuangan = keuangan.id_akseskeuangan');
+        $builder->orderBy('tanggal_transaksi', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }
 
-    public function sum()
+    public function sumMasuk()
     {
         $builder = $this->db->table('keuangan');
         $builder->selectSum('masuk');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function sumKeluar()
+    {
+        $builder = $this->db->table('keuangan');
+        $builder->selectSum('keluar');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function sumAkunMasuk($akun)
+    {
+        $builder = $this->db->table('keuangan');
+        $builder->where(['id_akunkeuangan' => $akun]);
+        $builder->selectSum('masuk');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function sumAkunKeluar($akun)
+    {
+        $builder = $this->db->table('keuangan');
+        $builder->where(['id_akunkeuangan' => $akun]);
+        $builder->selectSum('keluar');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getAllMasuk()
+    {
+        $builder = $this->db->table('keuangan');
+        $builder->join('akunkeuangan', 'akunkeuangan.id_akunkeuangan = keuangan.id_akunkeuangan');
+        $builder->join('akseskeuangan', 'akseskeuangan.id_akseskeuangan = keuangan.id_akseskeuangan');
+        $builder->where(['masuk !=' => null]);
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getAllKeluar()
+    {
+        $builder = $this->db->table('keuangan');
+        $builder->join('akunkeuangan', 'akunkeuangan.id_akunkeuangan = keuangan.id_akunkeuangan');
+        $builder->join('akseskeuangan', 'akseskeuangan.id_akseskeuangan = keuangan.id_akseskeuangan');
+        $builder->where(['keluar !=' => null]);
         $query = $builder->get();
         return $query->getResult();
     }

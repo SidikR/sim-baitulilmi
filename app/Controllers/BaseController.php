@@ -8,6 +8,9 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\KeuanganModel;
+use App\Models\AkunKeuanganModel;
+use App\Models\AksesKeuanganModel;
 
 
 
@@ -34,6 +37,10 @@ abstract class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
+    protected $KeuanganModel;
+    protected $AkunKeuanganModel;
+    protected $AksesKeuanganModel;
+
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -42,7 +49,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['auth'];
+    protected $helpers = ['auth', 'form'];
 
     // Myproperty
 
@@ -64,5 +71,9 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+
+        $this->KeuanganModel = new KeuanganModel();
+        $this->AkunKeuanganModel = new AkunKeuanganModel();
+        $this->AksesKeuanganModel = new AksesKeuanganModel();
     }
 }

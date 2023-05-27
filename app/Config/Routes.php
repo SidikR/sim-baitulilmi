@@ -70,6 +70,7 @@ $routes->get('inventaris', 'Admin\InventarisController::index');
 $routes->get('inventaris/tambah', 'Admin\InventarisController::create');
 $routes->post('inventaris/save', 'Admin\InventarisController::save');
 $routes->put('/inventaris/edit/(:segment)', 'Admin\InventarisController::update/$1');
+$routes->put('/inventaris/edit/foto/(:segment)', 'Admin\InventarisController::update_foto/$1');
 $routes->delete('/inventaris/hapus/(:segment)', 'Admin\InventarisController::delete/$1');
 $routes->get('/inventaris/detail/(:segment)', 'Admin\InventarisController::detail/$1');
 $routes->get('/inventaris/edit/(:segment)', 'Admin\InventarisController::form_update/$1');
@@ -77,6 +78,7 @@ $routes->get('/inventaris/edit/(:segment)', 'Admin\InventarisController::form_up
 $routes->get('list-peminjaman', 'Admin\PeminjamanController::index');
 $routes->get('list-peminjaman-ok/(:segment)', 'Admin\PeminjamanController::accept/$1');
 $routes->get('list-peminjaman-done/(:segment)', 'Admin\PeminjamanController::done/$1');
+$routes->get('list-peminjaman-infaq-ok/(:segment)', 'Admin\PeminjamanController::infaqok/$1');
 $routes->post('list-peminjaman-no/(:segment)', 'Admin\PeminjamanController::no/$1');
 
 

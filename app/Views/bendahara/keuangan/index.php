@@ -28,42 +28,221 @@
                         </div>
                     <?php endif ?>
 
-                    <h1>Rincian Keuangan</h1>
-                    <?= $total_masuk; ?>
+                    <div class="row">
+                        <div class="container" data-aos="fade-up">
 
-                    <table id="datatablesSimple" class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Tanggal Transaksi</th>
-                                <th>Akun Keuangan</th>
-                                <th>Akses Keuangan</th>
-                                <th>Keterangan</th>
-                                <th>Masuk</th>
-                                <th>Keluar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach ($daftar_keuangan as $dp) : ?>
-                                <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td><?= $dp->tanggal_transaksi; ?></td>
-                                    <td><?= $dp->keterangan_akunkeuangan; ?></td>
-                                    <td><?= $dp->keterangan_akseskeuangan; ?></td>
-                                    <td><?= $dp->keterangan; ?></td>
-                                    <td><?php if ($dp->masuk != null) : ?>
-                                            <?= 'Rp. ' . number_format($dp->masuk); ?>
-                                        <?php endif; ?>
-                                    </td>
-                                    <td><?php if ($dp->keluar != null) : ?>
-                                            <?= 'Rp. ' . number_format($dp->keluar); ?>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            <ul class=" tabs nav nav-tabs row gy-4 d-flex">
+
+                                <li class="nav-item col-12 col-md-4 col-lg-4 buku_besar">
+                                    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                                        <i class="bi bi-coin color-cyan"></i>
+                                        <h4>Buku Besar</h4>
+                                    </a>
+                                </li><!-- End Tab 1 Nav -->
+
+                                <li class="nav-item col-12 col-md-4 col-lg-4 masuk">
+                                    <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-2">
+                                        <i class="bi bi-box-arrow-in-right color-indigo"></i>
+                                        <h4>Pemasukan</h4>
+                                    </a>
+                                </li><!-- End Tab 2 Nav -->
+
+                                <li class="nav-item col-12 col-md-4 col-lg-4 keluar">
+                                    <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-3">
+                                        <i class="bi bi-box-arrow-left color-indigo"></i>
+                                        <h4>Pengeluaran</h4>
+                                    </a>
+                                </li><!-- End Tab 2 Nav -->
+                            </ul>
+
+                            <form action="" id="form">
+                                <div class="row">
+                                    <h4 class="mb-3 mt-3">Filter Keuangan</h4>
+                                    <div class="col-md-6">
+                                        <!-- <div class="row-md-6"> -->
+                                        <div class="col-md-12 mb-3">
+                                            <span>Pilih dari tanggal</span>
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                                    </svg>
+                                                </span>
+                                                <input type="text" class="form-control date_range_filter pickdate" placeholder="Tanggal Awal" aria-label="Tanggal Awal" aria-describedby="basic-addon1">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <span>Sampai tanggal</span>
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="basic-addon2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                                    </svg>
+                                                </span>
+                                                <input type="text" class="form-control date_range_filter2 pickdate" placeholder="Tanggal Akhir" aria-label="Tanggal Akhir" aria-describedby="basic-addon1">
+                                            </div>
+                                        </div>
+                                        <!-- </div> -->
+                                    </div>
+                                    <div class="col-md-6" style="margin-bottom: 20px">
+                                        <div class="col-md-12 mb-3">
+                                            <span>Akun Keuangan</span>
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="basic-addon2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                                    </svg>
+                                                </span>
+
+                                                <select name="" id="" class="form-control akun_keuangan akun_k">
+                                                    <option selected>--Pilih Akun Keuangan--</option>
+                                                    <?php foreach ($daftar_akunkeuangan as $dak) : ?>
+                                                        <option value="<?= $dak->keterangan_akunkeuangan; ?>"><?= $dak->keterangan_akunkeuangan; ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <span>Akses Keuangan</span>
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="basic-addon2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+                                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"></path>
+                                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                                    </svg>
+                                                </span>
+                                                <select name="" id="" class="form-control akses_keuangan akses_k" placeholder="sd">
+                                                    <option selected>--Pilih Akses Keuangan--</option>
+                                                    <?php foreach ($daftar_akseskeuangan as $dak) : ?>
+                                                        <option value="<?= $dak->keterangan_akseskeuangan; ?>"><?= $dak->keterangan_akseskeuangan; ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class=" d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <button type="button" class="btn btn-danger reset">Reset Filter</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active show mb-5" id="tab-1">
+                                    <div class="col-md-12">
+                                        <h2 class="mb-3">Buku Besar</h2>
+                                        <table id="datatables_userkeuangan" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Tanggal Transaksi</th>
+                                                    <th>Akun Keuangan</th>
+                                                    <th>Akses Keuangan</th>
+                                                    <th>Keterangan</th>
+                                                    <th>Masuk</th>
+                                                    <th>Keluar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $no = 1; ?>
+                                                <?php foreach ($daftar_keuangan as $dp) : ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $dp->tanggal_transaksi; ?></td>
+                                                        <td><?= $dp->keterangan_akunkeuangan; ?></td>
+                                                        <td><?= $dp->keterangan_akseskeuangan; ?></td>
+                                                        <td><?= $dp->keterangan; ?></td>
+                                                        <td><?php if ($dp->masuk != null) : ?>
+                                                                <?= 'Rp. ' . number_format($dp->masuk); ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td><?php if ($dp->keluar != null) : ?>
+                                                                <?= 'Rp. ' . number_format($dp->keluar); ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane show mb-5" id="tab-2">
+                                    <div class="col-md-12">
+                                        <h2 class="mb-3">Pemasukan Kas</h2>
+                                        <table id="datatables_keuanganmasuk" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Tanggal Transaksi</th>
+                                                    <th>Akun Keuangan</th>
+                                                    <th>Akses Keuangan</th>
+                                                    <th>Keterangan</th>
+                                                    <th>Masuk</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $no = 1; ?>
+                                                <?php foreach ($daftar_pemasukan as $dp) : ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $dp->tanggal_transaksi; ?></td>
+                                                        <td><?= $dp->keterangan_akunkeuangan; ?></td>
+                                                        <td><?= $dp->keterangan_akseskeuangan; ?></td>
+                                                        <td><?= $dp->keterangan; ?></td>
+                                                        <td><?php if ($dp->masuk != null) : ?>
+                                                                <?= 'Rp. ' . number_format($dp->masuk); ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane show" id="tab-3">
+                                    <div class="col-md-12">
+                                        <h2 class="mb-3">Pengeluaran Kas</h2>
+                                        <table id="datatables_keuangankeluar" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Tanggal Transaksi</th>
+                                                    <th>Akun Keuangan</th>
+                                                    <th>Akses Keuangan</th>
+                                                    <th>Keterangan</th>
+                                                    <th>Keluar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $no = 1; ?>
+                                                <?php foreach ($daftar_pengeluaran as $dp) : ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $dp->tanggal_transaksi; ?></td>
+                                                        <td><?= $dp->keterangan_akunkeuangan; ?></td>
+                                                        <td><?= $dp->keterangan_akseskeuangan; ?></td>
+                                                        <td><?= $dp->keterangan; ?></td>
+                                                        <td><?php if ($dp->keluar != null) : ?>
+                                                                <?= 'Rp. ' . number_format($dp->keluar); ?>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,5 +285,6 @@
         </div>
     </div>
 <?php endforeach ?>
+
 
 <?= $this->endSection() ?>

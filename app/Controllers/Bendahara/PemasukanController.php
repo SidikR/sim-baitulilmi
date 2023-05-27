@@ -55,7 +55,7 @@ class PemasukanController extends BaseController
         $slug = url_title($this->request->getvar('keterangan'), '-', TRUE);
 
         // Deklarasi Tabel Jabatan
-        $daftar_pemasukan = $this->KeuanganModel->orderBy('created_at', 'DESC')->getAll();
+        $daftar_pemasukan = $this->KeuanganModel->orderBy('created_at', 'DESC')->getAllMasuk();
         $uuid4 = Uuid::uuid4();
 
         // Simpan Data ke DataBase

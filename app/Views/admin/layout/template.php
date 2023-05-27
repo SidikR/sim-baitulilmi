@@ -26,6 +26,28 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+    <!-- Vendor CSS Files -->
+    <link href="<?php echo base_url('assets/vendor/aos/aos.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendor/remixicon/remixicon.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="<?php echo base_url('assets/css/main.css'); ?>" rel="stylesheet">
+    <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+
+    <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+    <link href="<?php echo base_url('assets/css/variables.css'); ?>" rel="stylesheet">
+
+    <style>
+        .image_upload>input {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -36,7 +58,17 @@
         <?= $this->renderSection('content') ?>
     </div>
 
+    <!-- Vendor JS Files -->
+    <script src=<?php echo base_url('assets/vendor/aos/aos.js'); ?>></script>
+    <script src=<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>></script>
+    <script src=<?php echo base_url('assets/vendor/glightbox/js/glightbox.min.js'); ?>></script>
+    <script src=<?php echo base_url('assets/vendor/isotope-layout/isotope.pkgd.min.js'); ?>></script>
+    <script src=<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.js'); ?>></script>
+    <script src=<?php echo base_url('assets/vendor/waypoints/noframework.waypoints.js'); ?>></script>
+    <script src=<?php echo base_url('assets/vendor/php-email-form/validate.js'); ?>></script>
 
+    <!-- Template Main JS File -->
+    <script src=<?php echo base_url('assets/js/main.js'); ?>></script>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
     <script src="<?php echo base_url('assets-admin/js/scripts.js'); ?>"></script>
@@ -57,6 +89,184 @@
 
     <!-- Awesom Font -->
     <script src="https://kit.fontawesome.com/9a976d004b.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#admin_inventaris').DataTable({
+                "columns": [{
+                        "width": "1%"
+                    },
+                    {
+                        "width": "20%"
+                    },
+                    {
+                        "width": "10%"
+                    },
+                    {
+                        "width": "15%"
+                    },
+                    {
+                        "width": "20%"
+                    },
+                    {
+                        "width": "20%"
+                    },
+                    {
+                        "width": "14%"
+                    }
+                ],
+                dom: 'Bflrtip',
+                buttons: [{
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    'colvis',
+                ],
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, 'All'],
+                ],
+
+            });
+
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#admin_peminjaman').DataTable({
+                // "order": [
+                //     [0, "asc"]
+                // ],
+                // "ordering": true,
+                dom: 'Blfrtip',
+                buttons: [{
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    'colvis'
+                ],
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, 'All'],
+                ],
+                scrollX: true,
+            });
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var min = $('.date_range_filter').val();
+                    var max = $('.date_range_filter2').val();
+                    var createdAt = data[1]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
+                    if (
+                        (min == "" || max == "") ||
+                        (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
+                    ) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var akun = $('.akun_keuangan').val();
+                    var createdAt = data[2]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
+                    if (
+                        (akun == createdAt || akun == '--Pilih Akun Keuangan--') ||
+                        moment(createdAt).isSame(akun)
+                    ) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var akses = $('.akses_keuangan').val();
+                    var createdAt = data[3]; // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
+                    if (
+                        (akses == createdAt || akses == '--Pilih Akses Keuangan--') ||
+                        moment(createdAt).isSame(akses)
+                    ) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+            $('.pickdate').each(function() {
+                $(this).datepicker({
+                    format: 'yyyy/mm/dd'
+                });
+            });
+            $('.pickdate').change(function() {
+                table.draw();
+            });
+            $('.akun_k').change(function() {
+                table.draw();
+            });
+            $('.akses_k').change(function() {
+                table.draw();
+            });
+            $('.masuk , .keluar , .buku_besar').click(function() {
+                table.draw();
+            });
+            $('.reset').click(function() {
+                document.getElementById('form').reset()
+                table.draw();
+            });
+        });
+    </script>
 
 </body>
 

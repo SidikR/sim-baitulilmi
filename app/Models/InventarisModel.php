@@ -38,6 +38,7 @@ class InventarisModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
+
     public function getInventaris($slug_inventaris = false)
     {
         if ($slug_inventaris == false) {

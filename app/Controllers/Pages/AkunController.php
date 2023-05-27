@@ -17,9 +17,11 @@ class AkunController extends BaseController
 
     public function index()
     {
+        $user_id = user_id();
+        $daftar_peminjaman = $this->PeminjamanInventarisModel->getAllWithType(user_id());
         $data = [
             'title' => 'Halaman Akun - ' . user()->nama_lengkap,
-            'daftar_peminjaman' => $this->PeminjamanInventarisModel->getAllWithType(user_id())
+            'daftar_peminjaman' => $daftar_peminjaman
         ];
         return view('pages/user/index', $data);
     }

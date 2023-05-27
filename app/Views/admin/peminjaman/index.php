@@ -25,7 +25,7 @@
                         </div>
                     <?php endif ?>
 
-                    <table id="datatablesSimple" class="display" style="width:100%">
+                    <table id="admin_peminjaman" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -55,13 +55,20 @@
 
                                         <?php if ($dpi->status_peminjaman == 'pending') : ?>
 
-                                            <a href="<?= 'list-peminjaman-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-warning btn-sm glightbox preview-link" title="Terima Permohonan"><span class="bi bi-check-circle"></span> Terima</button></a>
+                                            <a href="<?= 'list-peminjaman-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-warning btn-sm" title="Terima Permohonan"><span class="bi bi-check-circle"></span> Terima</button></a>
 
                                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#tolakModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-x-square-fill"></i> Tolak</button>
 
 
-                                        <?php elseif ($dpi->status_peminjaman == 'accepted') :  ?>
-                                            <a href="<?= 'list-peminjaman-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm glightbox preview-link" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Kembali</button></a>
+                                        <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq == 'belum bayar') :  ?>
+                                            <a href="<?= 'list-peminjaman-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Kembali</button></a>
+                                            <a href="<?= 'list-peminjaman-infaq-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-success btn-sm" title="Infaq"><i class="fas fa-check-double"></i> Konfirmasi Infaq</button></a>
+
+                                        <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq != 'belum bayar') : ?>
+                                            <a href="<?= 'list-peminjaman-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Kembali</button></a>
+
+                                        <?php elseif ($dpi->status_peminjaman == 'done' && $dpi->status_infaq == 'belum bayar') : ?>
+                                            <a href="<?= 'list-peminjaman-infaq-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Infaq</button></a>
 
                                         <?php endif ?>
                                     </td>
@@ -69,11 +76,17 @@
                                         <?php if ($dpi->status_peminjaman == 'pending') : ?>
                                             <button type="button" class="btn btn-warning btn-sm"><i class="far fa-clock"></i> Sedang ditinjau</button>
 
-                                        <?php elseif ($dpi->status_peminjaman == 'accepted') :  ?>
-                                            <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-clock"></i> Belum dikembalikan</button>
+                                        <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq != 'belum bayar') :  ?>
+                                            <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-clock"></i> Belum dikembalikan, sudah infaq</button>
 
-                                        <?php elseif ($dpi->status_peminjaman == 'done') :  ?>
+                                        <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq == 'belum bayar') :  ?>
+                                            <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-clock"></i> Belum dikembalikan, belum infaq</button>
+
+                                        <?php elseif ($dpi->status_peminjaman == 'done' && $dpi->status_infaq != 'belum bayar') :  ?>
                                             <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-double"></i> Proses Selesai</button>
+
+                                        <?php elseif ($dpi->status_peminjaman == 'done' && $dpi->status_infaq == 'belum bayar') :  ?>
+                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-check-double"></i> Proses Selesai Belum Bayar</button>
 
                                         <?php elseif ($dpi->status_peminjaman == 'rejected') :  ?>
                                             <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>

@@ -47,7 +47,7 @@
 
                         <div class="mb-4">
                             <label for="stok_inventaris" class="form-label">Stok</label>
-                            <input type="text" class="form-control <?= $validation->hasError('stok_inventaris') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Isikan Stok Inventaris" name="stok_inventaris">
+                            <input type="number" class="form-control <?= $validation->hasError('stok_inventaris') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Isikan Stok Inventaris" name="stok_inventaris">
 
                             <?php if ($validation->hasError('stok_inventaris')) : ?>
                                 <div class="invalid-feedback">
@@ -59,7 +59,8 @@
 
                         <div class="mb-4">
                             <label for="deskripsi_inventaris" class="form-label">Deskripsi Inventaris</label>
-                            <input type="text" class="form-control <?= $validation->hasError('deskripsi_inventaris') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Alamat Lengkap" name="deskripsi_inventaris" rows="3">
+
+                            <textarea type="text" class="form-control <?= $validation->hasError('deskripsi_inventaris') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Deskripsi Inventaris" name="deskripsi_inventaris" rows="3"></textarea>
 
                             <?php if ($validation->hasError('deskripsi_inventaris')) : ?>
                                 <div class="invalid-feedback">
@@ -71,7 +72,13 @@
 
                         <div class="mb-4">
                             <label for="foto_inventaris" class="form-label">Foto Inventaris</label>
-                            <input type="file" class="form-control" id="formFile" name="foto_inventaris" required>
+                            <p class="image_upload">
+                                <label for="userImage">
+                                    <a class="btn btn-secondary btn" rel="nofollow"><span class=''><i class="bi bi-upload"></i></span> Pilih Gambar</a>
+                                </label>
+                                <input type="file" id="userImage" name="foto_inventaris" onchange="readURL(this);" />
+                            </p>
+                            <img class="rounded" id="image" width="30%" height="30%" />
                         </div>
 
                         <div class="modal-footer m-3">
