@@ -57,6 +57,23 @@ $routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1
 $routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1');
 $routes->put('/pengurus/edit/foto/(:segment)', 'Admin\PengurusController::update_foto/$1');
 
+$routes->get('petugas-jumat', 'Admin\PetugasJumatController::index');
+$routes->post('/petugas-jumat/save', 'Admin\PetugasJumatController::save');
+$routes->get('/petugas-jumat/tambah', 'Admin\PetugasJumatController::create');
+$routes->put('/petugas-jumat/edit/(:segment)', 'Admin\PetugasJumatController::update/$1');
+$routes->delete('/petugas-jumat/hapus/(:segment)', 'Admin\PetugasJumatController::delete/$1');
+$routes->get('/petugas-jumat/detail/(:segment)', 'Admin\PetugasJumatController::detail/$1');
+$routes->get('/petugas-jumat/edit/(:segment)', 'Admin\PetugasJumatController::form_update/$1');
+$routes->put('/petugas-jumat/edit/foto/(:segment)', 'Admin\PetugasJumatController::update_foto/$1');
+
+$routes->get('pengumuman', 'Admin\PengumumanController::index');
+$routes->post('/pengumuman/save', 'Admin\PengumumanController::save');
+$routes->get('/pengumuman/tambah', 'Admin\PengumumanController::create');
+$routes->put('/pengumuman/edit/(:segment)', 'Admin\PengumumanController::update/$1');
+$routes->delete('/pengumuman/hapus/(:segment)', 'Admin\PengumumanController::delete/$1');
+$routes->get('/pengumuman/detail/(:segment)', 'Admin\PengumumanController::detail/$1');
+$routes->get('/pengumuman/edit/(:segment)', 'Admin\PengumumanController::form_update/$1');
+
 // Routes Admin Data Pengurus
 $routes->get('kegiatan', 'Admin\KegiatanController::index');
 $routes->post('/kegiatan/save', 'Admin\KegiatanController::save');

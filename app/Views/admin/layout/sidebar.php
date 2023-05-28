@@ -33,6 +33,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Petugas Jum'at
                 </a>
+                <a class="nav-link" href="<?php echo base_url('pengumuman'); ?>">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Pengumuman
+                </a>
 
                 <div class="sb-sidenav-menu-heading">Addons</div>
                 <a class="nav-link" href="charts.html">
