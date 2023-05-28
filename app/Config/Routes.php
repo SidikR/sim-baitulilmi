@@ -57,6 +57,16 @@ $routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1
 $routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1');
 $routes->put('/pengurus/edit/foto/(:segment)', 'Admin\PengurusController::update_foto/$1');
 
+// Routes Admin Data Pengurus
+$routes->get('kegiatan', 'Admin\KegiatanController::index');
+$routes->post('/kegiatan/save', 'Admin\KegiatanController::save');
+$routes->get('/kegiatan/tambah', 'Admin\KegiatanController::create');
+$routes->put('/kegiatan/edit/(:segment)', 'Admin\KegiatanController::update/$1');
+$routes->delete('/kegiatan/hapus/(:segment)', 'Admin\KegiatanController::delete/$1');
+$routes->get('/kegiatan/detail/(:segment)', 'Admin\KegiatanController::detail/$1');
+$routes->get('/kegiatan/edit/(:segment)', 'Admin\KegiatanController::form_update/$1');
+$routes->put('/kegiatan/edit/foto/(:segment)', 'Admin\KegiatanController::update_foto/$1');
+
 // Routes Admin Data Inventaris
 $routes->get('inventaris', 'Admin\InventarisController::index');
 $routes->get('inventaris/tambah', 'Admin\InventarisController::create');

@@ -25,6 +25,15 @@
                     Data Peminjaman
                 </a>
 
+                <a class="nav-link" href="<?php echo base_url('kegiatan'); ?>">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Data Kegiatan
+                </a>
+                <a class="nav-link" href="<?php echo base_url('petugas-jumat'); ?>">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Petugas Jum'at
+                </a>
+
                 <div class="sb-sidenav-menu-heading">Addons</div>
                 <a class="nav-link" href="charts.html">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>

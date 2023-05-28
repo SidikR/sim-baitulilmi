@@ -201,6 +201,115 @@
 
             });
 
+            $('#admin_kegiatan').DataTable({
+                // "columns": [{
+                //         "width": "1%"
+                //     },
+                //     {
+                //         "width": "15%"
+                //     },
+                //     {
+                //         "width": "15%"
+                //     },
+                //     {
+                //         "width": "15%"
+                //     },
+                //     {
+                //         "width": "25%"
+                //     },
+                //     {
+                //         "width": "30%"
+                //     },
+                // ],
+                dom: 'Bflrtip',
+                buttons: [{
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        },
+                        customize: function(doc) {
+                            doc.pageMargins = [10, 10, 10, 10];
+                            doc.defaultStyle.fontSize = 12;
+                            doc.styles.tableHeader.fontSize = 12;
+                            doc.styles.title.fontSize = 14;
+                            doc.content[1].margin = [25, 0, 25, 0]
+                            // Remove spaces around page title
+                            doc.content[0].text = doc.content[0].text.trim();
+                            // Create a footer
+                            doc['header'] = (function(page, pages) {
+                                return {
+                                    columns: [
+                                        'This is your left footer column',
+                                        {
+                                            // This is the right column
+                                            alignment: 'right',
+                                            text: ['page ', {
+                                                text: page.toString()
+                                            }, ' of ', {
+                                                text: pages.toString()
+                                            }]
+                                        }
+                                    ],
+                                    margin: [20]
+                                }
+                            });
+                            // Styling the table: create style object
+                            var objLayout = {};
+                            // Horizontal line thickness
+                            objLayout['hLineWidth'] = function(i) {
+                                return .5;
+                            };
+                            // Vertikal line thickness
+                            objLayout['vLineWidth'] = function(i) {
+                                return .5;
+                            };
+                            // Horizontal line color
+                            objLayout['hLineColor'] = function(i) {
+                                return '#aaa';
+                            };
+                            // Vertical line color
+                            objLayout['vLineColor'] = function(i) {
+                                return '#aaa';
+                            };
+                            // Left padding of the cell
+                            objLayout['paddingLeft'] = function(i) {
+                                return 4;
+                            };
+                            // Right padding of the cell
+                            objLayout['paddingRight'] = function(i) {
+                                return 4;
+                            };
+                            // Inject the object in the document
+                            doc.content[1].layout = objLayout;
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        },
+                    },
+                    'colvis',
+                ],
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, 'All'],
+                ],
+
+            });
+
             $(document).ready(function() {
                 var table = $('#admin_peminjaman').DataTable({
                     // "order": [
@@ -242,13 +351,26 @@
                 });
             });
 
-
+            function getBase64FromImageUrl(url) {
+                var img = new Image();
+                img.crossOrigin = "anonymous";
+                img.onload = function() {
+                    var canvas = document.createElement("canvas");
+                    canvas.width = this.width;
+                    canvas.height = this.height;
+                    var ctx = canvas.getContext("2d");
+                    ctx.drawImage(this, 0, 0);
+                    var dataURL = canvas.toDataURL("image/png");
+                    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+                };
+                img.src = url;
+            }
 
         });
 
-        $('.btn_tambahjabatan').click(function() {
-            document.getElementById('nama_jabatan').type = 'text';
-        });
+        // Function to convert an img URL to data URL
+
+
 
 
         function readURL(input) {
