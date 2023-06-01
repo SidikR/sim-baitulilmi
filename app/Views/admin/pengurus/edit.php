@@ -5,9 +5,6 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -21,16 +18,21 @@
                     <?php endif ?>
                     <div class="card mb-3 " style="max-width: 100%;">
                         <div class="row m-3">
-
                             <div class="col-md-4 mt-auto mb-auto">
                                 <div class="col-md-12 mt-auto mb-auto ">
-                                    <div class="portfolio container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                                    <div class="portfolio container-fluid mt-auto mb-auto" style="width : 90% ; height : 90% ;  ">
                                         <div class="portfolio-item">
-                                            <img style="max-width : 400px ; max-height : 400px ;  " src="<?php echo base_url('assets-admin/img/pengurus/' . $daftar_pengurus->foto_pengurus); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                                            <img style="max-width : 90% ; max-height : 90% ;  " src="<?php echo base_url('assets-admin/img/foto-pengurus/' . $daftar_pengurus->foto_pengurus); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
                                             <div class="portfolio-info">
-                                                <h4><?= $daftar_pengurus->nama_lengkap; ?></h4>
-                                                <a href="<?php echo base_url('assets-admin/img/pengurus/' . $daftar_pengurus->foto_pengurus); ?>" title="<?= $daftar_pengurus->nama_lengkap; ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                <a title="Edit" class="details-link" data-bs-toggle="modal" data-bs-target="#updateGambar"><i class="bi bi-upload"></i></a>
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <span class="text-white">Foto <?= $daftar_pengurus->nama_lengkap; ?></span>
+                                                    </div>
+                                                    <div class="col-4 g-2">
+                                                        <a href="<?php echo base_url('assets-admin/img/foto-pengurus/' . $daftar_pengurus->foto_pengurus); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                                        <a title="Edit Foto" class="details-link g-2" data-bs-toggle="modal" data-bs-target="#updateGambar"><i class="bi bi-upload"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +68,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="alamat_pengurus" class="form-label">Alamat Pengurus</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" name="alamat_pengurus" value="<?= $daftar_pengurus->alamat_pengurus; ?>" required>
+                                                <textarea rows="5" type="text" class="form-control" id="exampleFormControlInput1" name="alamat_pengurus" required><?= $daftar_pengurus->alamat_pengurus; ?></textarea>
                                             </div>
                                         </fieldset>
                                         <a href="<?php echo base_url('pengurus'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
@@ -79,28 +81,15 @@
                 </div>
             </div>
         </div>
-
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="updateGambar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <div class="modal-header bg-primary">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Foto <?= $daftar_pengurus->nama_lengkap; ?></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

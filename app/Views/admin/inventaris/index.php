@@ -5,9 +5,6 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -33,7 +30,6 @@
                                 <th>Stok Inventaris</th>
                                 <th>Asal Inventaris</th>
                                 <th>Deskripsi</th>
-                                <th>Foto</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -46,8 +42,6 @@
                                     <td><?= $di->stok_inventaris; ?></td>
                                     <td><?= $di->asal_inventaris; ?></td>
                                     <td><?= $di->deskripsi_inventaris; ?></td>
-                                    <td><img style="width : 100px ; height : 100px ;  " src="<?php echo base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" class="img-fluid rounded float-start float-center ms-auto d-block " alt="foto <?= $di->nama_inventaris; ?>"></td>
-
                                     <td style="width: 15%;">
                                         <a href="<?= 'inventaris/detail/' . $di->slug_inventaris; ?>"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-book-fill"></i></button></a>
                                         <a href="<?= 'inventaris/edit/' . $di->slug_inventaris; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></button></a>
@@ -61,18 +55,6 @@
             </div>
         </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 

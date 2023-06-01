@@ -5,9 +5,6 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -43,7 +40,7 @@
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="PUT">
                                         <fieldset>
-                                            <legend>Detail dari <b><?= $daftar_petugasjumat->nama_imam; ?></b></legend>
+                                            <legend>Detail Petugas Tanggal <b><?= date('d-F-Y', strtotime($daftar_petugasjumat->tanggal)); ?></b></legend>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="mb-3">
@@ -91,18 +88,6 @@
         </div>
 
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 <!-- Modal -->
@@ -110,7 +95,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Gambar Poster</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

@@ -14,12 +14,27 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="/">Home</a></li>
-                <li><a class="nav-link scrollto" href="<?= base_url('about'); ?>">About</a></li>
-                <li><a class="nav-link scrollto" href="<?= base_url('guest-keuangan'); ?>">Transparansi Keuangan</a></li>
-                <li><a class="nav-link scrollto" href="<?= base_url('peminjaman'); ?>">Peminjaman</a></li>
-                <li><a class="nav-link scrollto" href="<?= base_url('dashboard'); ?>">Admin</a></li>
-                <li><a class="nav-link scrollto" href="<?= base_url('keuangan'); ?>">Keuangan</a></li>
+                <?php
+                function getactive($segmnt)
+                {
+                    $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+                    $uri_segments = explode('/', $uri_path);
+                    if ($uri_segments[1] == $segmnt) : {
+                            echo 'class="active"';
+                        }
+                    endif;
+                } ?>
+
+                <li><a <?php getactive('');
+                        ?> href="/">Home</a></li>
+                <li><a <?php getactive('about');
+                        ?> href="<?= base_url('about'); ?>">About</a></li>
+                <li><a <?php getactive('guest-keuangan');
+                        ?> href="<?= base_url('guest-keuangan'); ?>">Transparansi Keuangan</a></li>
+                <li><a <?php getactive('peminjaman');
+                        ?> href="<?= base_url('peminjaman'); ?>">Peminjaman</a></li>
+                <li><a class="" href="<?= base_url('dashboard'); ?>">Admin</a></li>
+                <li><a class="" href="<?= base_url('keuangan'); ?>">Keuangan</a></li>
                 <?php if (!logged_in()) : ?>
                     <a href="<?= base_url('login'); ?>">
                         <button type="button" class="btn btn-primary">

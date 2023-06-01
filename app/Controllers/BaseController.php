@@ -11,6 +11,7 @@ use Psr\Log\LoggerInterface;
 use App\Models\KeuanganModel;
 use App\Models\AkunKeuanganModel;
 use App\Models\AksesKeuanganModel;
+use App\Models\PeminjamanMasjidModel;
 
 
 
@@ -40,6 +41,7 @@ abstract class BaseController extends Controller
     protected $KeuanganModel;
     protected $AkunKeuanganModel;
     protected $AksesKeuanganModel;
+    protected $PeminjamanMasjidModel;
 
 
     /**

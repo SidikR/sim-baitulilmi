@@ -26,7 +26,7 @@ class KegiatanController extends BaseController
     {
         $data = [
             'title' => 'Daftar Kegiatan',
-            'daftar_kegiatan' => $this->KegiatanModel->orderBy('id_kegiatan', 'DESC')->findAll(),
+            'daftar_kegiatan' => $this->KegiatanModel->orderBy('waktu_mulai_kegiatan', 'DESC')->findAll(),
         ];
 
         return view('admin/kegiatan/index', $data);
@@ -47,8 +47,10 @@ class KegiatanController extends BaseController
 
     public function save()
     {
+        $id_max = $this->KegiatanModel->getMaxId();
         // Deklarasi Nailai Slug Kegiatan
-        $slug = url_title($this->request->getvar('nama_kegiatan'), '-', TRUE);
+        $slugy = url_title($this->request->getvar('nama_kegiatan'), '-', TRUE);
+        $slug = $slugy . '-' . $id_max[0]->id_pengurus + 1;
 
         // Ambil Gambar
         $gambar = $this->request->getFile('foto_kegiatan');
@@ -58,7 +60,7 @@ class KegiatanController extends BaseController
 
         // Simpan Data ke DataBase
         $data = [
-            'daftar_kegiatan' => $this->KegiatanModel->orderBy('id_kegiatan', 'DESC')->findAll(),
+            'daftar_kegiatan' => $this->KegiatanModel->findAll(),
             'title' => 'Tambah Kegiatan',
             'nama_kegiatan' => esc($this->request->getvar('nama_kegiatan')),
             'slug_kegiatan' => $slug,
@@ -94,7 +96,8 @@ class KegiatanController extends BaseController
 
     public function update($id_kegiatan)
     {
-        $slug = url_title($this->request->getvar('nama_kegiatan'), '-', TRUE);
+        $slugy = url_title($this->request->getvar('nama_kegiatan'), '-', TRUE);
+        $slug = $slugy . '-' . $id_kegiatan;
         $data = [
             'nama_kegiatan' => esc($this->request->getvar('nama_kegiatan')),
             'slug_kegiatan' => $slug,

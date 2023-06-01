@@ -25,7 +25,7 @@ class PengurusController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Daftar Pengurus',
+            'title' => 'Daftar Pengurus Masjid',
             'daftar_pengurus' => $this->PengurusModel->orderBy('id_pengurus', 'DESC')->findAll(),
         ];
 
@@ -47,8 +47,11 @@ class PengurusController extends BaseController
 
     public function save()
     {
+        $id_max = $this->PengurusModel->getMaxId();
+
         // Deklarasi Nailai Slug Pengurus
-        $slug = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
+        $slugy = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
+        $slug = $slugy . '-' . $id_max[0]->id_pengurus + 1;
 
         // Ambil Gambar
         $gambar = $this->request->getFile('foto_pengurus');
@@ -84,7 +87,7 @@ class PengurusController extends BaseController
         } {
             $this->PengurusModel->insert($data);
             //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../public/assets-admin/img/pengurus', $namaGambar);
+            $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-pengurus', $namaGambar);
             return redirect()->to('/pengurus')->with('success', 'Data Pengurus Berhasil Ditambahkan');
         }
     }
@@ -92,7 +95,8 @@ class PengurusController extends BaseController
 
     public function update($id_pengurus)
     {
-        $slug = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
+        $slugy = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
+        $slug = $slugy . '-' . $id_pengurus;
         //$daftar_pengurus = $this->pengurusModel->getPengurus($slug_pengurus);
         $data = [
             'nama_lengkap' => esc($this->request->getvar('nama_lengkap')),

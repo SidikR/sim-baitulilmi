@@ -331,6 +331,41 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollX: true,
     });
 
+    var user_masjid = $('#datatables_logpeminjaman_masjid').DataTable({
+      dom: 'Blfrtip',
+      buttons: [{
+              extend: 'copyHtml5',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'excelHtml5',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'pdfHtml5',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          {
+              extend: 'print',
+              exportOptions: {
+                  columns: ':visible'
+              }
+          },
+          'colvis'
+      ],
+      lengthMenu: [
+          [10, 25, 50, -1],
+          [10, 25, 50, 'All'],
+      ],
+      scrollX: true,
+  });
+
     
     var table = $('#datatables_userkeuangan, #datatables_keuangankeluar, #datatables_keuanganmasuk').DataTable({
         dom: 'Blfrtip',
@@ -443,8 +478,11 @@ document.addEventListener('DOMContentLoaded', () => {
     $('.akses_k').change(function() {
         table.draw();
     });
-    $('.masuk , .keluar , .buku_besar').click(function() {
+    $('.masuk , .keluar , .buku_besar , .log_masjid').click(function() {
         table.draw();
+    });
+    $('.log_masjid').click(function() {
+        user_masjid.draw();
     });
     $('.reset').click(function() {
         document.getElementById('form').reset()

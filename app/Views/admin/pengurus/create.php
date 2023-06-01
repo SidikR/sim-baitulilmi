@@ -5,9 +5,6 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -107,7 +104,7 @@
                         </div>
 
                         <div class="modal-footer m-3">
-                            <button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button>
+                            <a href="<?= base_url('pengurus'); ?>"><button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button></a>
                             <button type="submit" class="btn btn-primary ">Tambah</button>
                         </div>
                     </form>

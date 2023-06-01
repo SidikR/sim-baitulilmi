@@ -37,10 +37,10 @@ $routes->get('/about', 'Pages\AboutController::index');
 $routes->get('/guest-keuangan', 'Pages\GuestKeuanganController::index');
 $routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
-$routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanInventarisController::save_masjid', ['filter' => 'role:user']);
-
 $routes->get('/akun', 'Pages\AkunController::index', ['filter' => 'role:user']);
 $routes->post('peminjaman/batal/(:segment)', 'Pages\AkunController::batal/$1', ['filter' => 'role:user']);
+$routes->post('peminjaman-masjid/batal/(:segment)', 'Pages\AkunController::batal_masjid/$1', ['filter' => 'role:user']);
+$routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanMasjidController::save_masjid', ['filter' => 'role:user']);
 
 
 
@@ -100,6 +100,17 @@ $routes->get('list-peminjaman-done/(:segment)', 'Admin\PeminjamanController::don
 $routes->get('list-peminjaman-infaq-ok/(:segment)', 'Admin\PeminjamanController::infaqok/$1');
 $routes->post('list-peminjaman-no/(:segment)', 'Admin\PeminjamanController::no/$1');
 
+
+$routes->get('peminjaman-masjid', 'Admin\PeminjamanMasjidController::index');
+$routes->get('peminjaman-masjid-ok/(:segment)', 'Admin\PeminjamanMasjidController::accept/$1');
+$routes->get('peminjaman-masjid-done/(:segment)', 'Admin\PeminjamanMasjidController::done/$1');
+$routes->get('peminjaman-masjid-infaq-ok/(:segment)', 'Admin\PeminjamanMasjidController::infaqok/$1');
+$routes->post('peminjaman-masjid-no/(:segment)', 'Admin\PeminjamanMasjidController::no/$1');
+$routes->post('peminjaman-masjid-bukti-transfer/(:segment)', 'Admin\PeminjamanMasjidController::infaqok/$1');
+
+$routes->get('invoice/(:segment)', 'Pages\PeminjamanMasjidController::index_transfer/$1');
+$routes->put('invoice/bukti-transfer/(:segment)', 'Pages\PeminjamanMasjidController::bukti_transfer/$1');
+$routes->get('pdfinvoice/(:segment)', 'Pages\PeminjamanMasjidController::generate/$1');
 
 
 

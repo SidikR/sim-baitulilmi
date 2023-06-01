@@ -5,71 +5,60 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
-                    <a href="pengurus/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
-                            <i class="fas fa-plus"></i> Tambah
-                        </button></a>
+                    <div class="container table-responsive">
+                        <a href="pengurus/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
+                                <i class="fas fa-plus"></i> Tambah
+                            </button></a>
 
-                    <!-- ini notifikasi Berhasil ditambah -->
-                    <?php if (session('success')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <?= session('success'); ?>
-                        </div>
-                    <?php endif ?>
-
-                    <table id="admin_pengurus" class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Lengkap</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Jabatan</th>
-                                <th>Alamat</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach ($daftar_pengurus as $dp) : ?>
+                        <!-- ini notifikasi Berhasil ditambah -->
+                        <?php if (session('success')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session('success'); ?>
+                            </div>
+                        <?php endif ?>
+                        <table id="admin_pengurus" class="display table-striped  width=" 100%">
+                            <thead>
                                 <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td><?= $dp->nama_lengkap; ?></td>
-                                    <td><?= $dp->jenis_kelamin; ?></td>
-                                    <td><?= $dp->jabatan; ?></td>
-                                    <td><?= $dp->alamat_pengurus; ?></td>
-                                    <td style="width: 15%;">
-                                        <a href="<?= 'pengurus/detail/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-file-alt"></i></button></a>
-                                        <a href="<?= 'pengurus/edit/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dp->id_pengurus; ?>"><i class="fas fa-trash-alt"></i></button>
-                                    </td>
+                                    <th>No</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Jabatan</th>
+                                    <th>Alamat</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1; ?>
+                                <?php foreach ($daftar_pengurus as $dp) : ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $dp->nama_lengkap; ?></td>
+                                        <td><?= $dp->jenis_kelamin; ?></td>
+                                        <td><?= $dp->jabatan; ?></td>
+                                        <td><?= $dp->alamat_pengurus; ?></td>
+                                        <td style="width: 15%;">
+                                            <a href="<?= 'pengurus/detail/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-success btn-sm mb-2"><i class="bi bi-book-fill"></i></button></a>
+                                            <a href="<?= 'pengurus/edit/' . $dp->slug_pengurus; ?>"><button type="button" class="btn btn-primary btn-sm mb-2"><i class="bi bi-pencil-square"></i></button></a>
+                                            <button type="button" class="btn btn-danger btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dp->id_pengurus; ?>"><i class="bi bi-trash3-fill"></i></button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 <!-- Modal Hapus -->

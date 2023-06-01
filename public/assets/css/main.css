@@ -333,6 +333,13 @@ section {
     transform: scaleX(0.7);
   }
 
+  .navbar a:focus:before,
+  .navbar li:focus>a:before,
+  .navbar .active:before {
+    visibility: visible;
+    transform: scaleX(0.7);
+  }
+
   .navbar a:hover,
   .navbar .active,
   .navbar .active:focus,
@@ -1229,7 +1236,7 @@ section {
 }
 
 .cta .content h3 {
-  color: var(--color-secondary);
+  color: var(--color-primary);
   font-size: 48px;
   font-weight: 700;
 }
@@ -1251,7 +1258,7 @@ section {
 }
 
 .cta .content p {
-  color: var(--color-secondary);
+  color: var(--color-black);
   font-weight: 600;
   font-size: 18px;
 }
@@ -1562,6 +1569,7 @@ section {
 --------------------------------------------------------------*/
 .tabs .nav-tabs {
   border: 0;
+  
   /* border-radius: 5px; */
 }
 
@@ -1599,7 +1607,7 @@ section {
 
 .tabs .nav-link.active {
   transition: 0.3s;
-  background: var(--color-secondary) linear-gradient(rgba(var(--color-primary-rgb), 0.95), rgba(var(--color-primary-rgb), 0.6));
+  background: var(--color-secondary) ;
   border-color: var(--color-primary);
 }
 
@@ -1622,7 +1630,7 @@ section {
 .tabs .tab-pane h3 {
   font-weight: 600;
   font-size: 36px;
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .tabs .tab-pane ul {
@@ -2037,6 +2045,7 @@ section {
   background: var(--color-white);
   box-shadow: none;
 }
+
 
 /*--------------------------------------------------------------
 # Portfolio Section

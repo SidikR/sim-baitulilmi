@@ -14,8 +14,8 @@
     </div>
 </section>
 
-<!-- ======= Features Section ======= -->
-<section id="features" class="features">
+<!-- ======= tabs Section ======= -->
+<section id="tabs" class="tabs">
     <div class="container" data-aos="fade-up">
 
         <ul class="nav nav-tabs row gy-4 d-flex">
@@ -36,21 +36,21 @@
 
             <li class="nav-item col-6 col-md-4 col-lg-4">
                 <a class="nav-link active show rounded" data-bs-toggle="tab" data-bs-target="#tab-1">
-                    <i class="bi bi-binoculars color-cyan"></i>
+                    <i class="bi bi-binoculars color-secondary"></i>
                     <h4>Daftar Inventaris</h4>
                 </a>
             </li><!-- End Tab 1 Nav -->
 
             <li class="nav-item col-6 col-md-4 col-lg-4">
                 <a class="nav-link rounded" data-bs-toggle="tab" data-bs-target="#tab-2">
-                    <i class="bi bi-box-seam color-indigo"></i>
+                    <i class="bi bi-box-seam color-secondary"></i>
                     <h4>Peminjaman Inventaris</h4>
                 </a>
             </li><!-- End Tab 2 Nav -->
 
             <li class="nav-item col-6 col-md-4 col-lg-4">
                 <a class="nav-link rounded" data-bs-toggle="tab" data-bs-target="#tab-3">
-                    <i class="bi bi-box-seam color-indigo"></i>
+                    <i class="bi bi-box-seam color-secondary"></i>
                     <h4>Peminjaman Masjid</h4>
                 </a>
             </li><!-- End Tab 2 Nav -->

@@ -5,33 +5,36 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     <?= $title; ?>
                 </div>
-                <div class="card-body">
-                    <div class="card mb-3 " style="max-width: 100%;">
-                        <div class="row">
+                <div class="card-body mt-auto mb-auto">
+                    <div class="card ms-4" style="max-width: 100%;">
+                        <div class="row ms-3">
                             <div class="col-md-4 mt-auto mb-auto">
-                                <div class="col-md-12 mt-auto mb-auto ">
-                                    <div class="portfolio container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
-                                        <div class="portfolio-item">
-                                            <img style="max-width : 400px ; max-height : 400px ;  " src="<?php echo base_url('assets-admin/img/pengurus/' . $pengurus->foto_pengurus); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
-                                            <div class="portfolio-info">
-                                                <h4><?= $pengurus->nama_lengkap; ?></h4>
-                                                <a href="<?php echo base_url('assets-admin/img/pengurus/' . $pengurus->foto_pengurus); ?>" title="<?= $pengurus->nama_lengkap; ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                <div class="col-md-12">
+                                    <div class="portfolio container-fluid" style="width : 90% ; height : 90% ;  ">
+                                        <div class="portfolio-item ">
+                                            <img style="max-width : 90% ; max-height : 90% ;  " src="<?php echo base_url('assets-admin/img/foto-pengurus/' . $pengurus->foto_pengurus); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                                            <div class="portfolio-info container-fluid">
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <span class="text-white">Foto <?= $pengurus->nama_lengkap; ?></span>
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href="<?php echo base_url('assets-admin/img/foto-pengurus/' . $pengurus->foto_pengurus); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-8">
-                                <div class="card-body">
+                            <div class="col-md-8 mt-auto mb-auto ms-auto mx-auto">
+                                <div class=" card-body">
                                     <form>
                                         <fieldset disabled>
                                             <legend>Detail dari <b><?= $pengurus->nama_lengkap; ?></b></legend>
@@ -53,7 +56,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="disabledTextInput" class="form-label">Alamat</label>
-                                                <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $pengurus->alamat_pengurus; ?>'>
+                                                <textarea type="text" id="disabledTextInput" class="form-control" rows="5" placeholder='<?= $pengurus->alamat_pengurus; ?>'></textarea>
                                             </div>
                                         </fieldset>
                                     </form>

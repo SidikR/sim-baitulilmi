@@ -15,7 +15,7 @@
             <div class="col-lg-12 col-md-6 content d-flex flex-column ">
                 <h3>Keuangan Masjid</h3>
                 <p> Keuangan Masjid Baitul Ilmi ITERA dibagi menjadi tiga bagian yang berbeda, sesuai dengan ketentuan akad dengan donatur, berikut total keuangan masjid pada setaip akun keuangan</p>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-xl-4 col-md-6">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">

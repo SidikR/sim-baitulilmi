@@ -29,4 +29,12 @@ class PengurusModel extends Model
         }
         return $this->where(['slug_pengurus' => $slug_pengurus])->first();
     }
+
+    public function getMaxId()
+    {
+        $builder = $this->db->table('pengurus');
+        $builder->selectMax('id_pengurus');
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }
