@@ -1,4 +1,4 @@
-<?= $this->extend('admin/layout/template'); ?>
+<?= $this->extend('layout/template'); ?>
 <?= $this->section('content') ?>
 
 <div id="layoutSidenav_content">
@@ -25,7 +25,7 @@
                         </div>
                     <?php endif ?>
 
-                    <table id="admin_peminjaman_masjid" class="display" style="width:100%">
+                    <table id="admin_peminjamanmasjid" class="display" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -111,18 +111,6 @@
             </div>
         </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 <!-- Modal Detail Pengajuan Peminjaman Inventaris -->
@@ -248,8 +236,6 @@
                                 </div>
                             </div>
                         </div>
-
-
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

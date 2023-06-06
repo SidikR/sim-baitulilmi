@@ -1,4 +1,4 @@
-<?= $this->extend('bendahara/layout/template'); ?>
+<?= $this->extend('layout/template'); ?>
 <?= $this->section('content') ?>
 
 <div id="layoutSidenav_content">
@@ -21,85 +21,87 @@
                     <?php endif ?>
                     <form action="./pemasukan-save" method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
-                        <div class="mb-4">
-                            <label for="tanggal_transaksi" class="form-label">Tanggal Tansaksi</label>
-                            <input type="date" class="form-control <?= $validation->hasError('tanggal_transaksi') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="tanggal_transaksi">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-4">
+                                    <label for="tanggal_transaksi" class="form-label">Tanggal Tansaksi</label>
+                                    <input type="date" class="form-control <?= $validation->hasError('tanggal_transaksi') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="tanggal_transaksi">
 
-                            <?php if ($validation->hasError('tanggal_transaksi')) : ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('tanggal_transaksi'); ?>
+                                    <?php if ($validation->hasError('tanggal_transaksi')) : ?>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tanggal_transaksi'); ?>
+                                        </div>
+
+                                    <?php endif; ?>
                                 </div>
 
-                            <?php endif; ?>
-                        </div>
+                                <div class="mb-4">
+                                    <label for="akunkeuangan" class="form-label">Akun Keuangan</label>
 
-                        <div class="mb-4">
-                            <label for="akunkeuangan" class="form-label">Akun Keuangan</label>
+                                    <select class="form-select <?= $validation->hasError('akunkeuangan') ? 'is-invalid' : null; ?>" aria-label="Default select example" id="exampleFormControlInput1" placeholder="Pilih Akun Keuangan" name="akunkeuangan">
+                                        <!-- <option selected>Open this select menu</option> -->
+                                        <option value="" selected>--Pilih--</option>
+                                        <?php foreach ($daftar_akunkeuangan as $dak) : ?>
+                                            <option value=<?= $dak->id_akunkeuangan; ?>><?= $dak->keterangan_akunkeuangan; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <?php if ($validation->hasError('akunkeuangan')) : ?>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('akunkeuangan'); ?>
+                                        </div>
 
-                            <select class="form-select <?= $validation->hasError('akunkeuangan') ? 'is-invalid' : null; ?>" aria-label="Default select example" id="exampleFormControlInput1" placeholder="Pilih Akun Keuangan" name="akunkeuangan">
-                                <!-- <option selected>Open this select menu</option> -->
-                                <option value="" selected>--Pilih--</option>
-                                <?php foreach ($daftar_akunkeuangan as $dak) : ?>
-                                    <option value=<?= $dak->id_akunkeuangan; ?>><?= $dak->keterangan_akunkeuangan; ?></option>
-                                <?php endforeach ?>
-                            </select>
-                            <?php if ($validation->hasError('akunkeuangan')) : ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('akunkeuangan'); ?>
+                                    <?php endif; ?>
                                 </div>
 
-                            <?php endif; ?>
-                        </div>
+                                <div class="mb-4">
+                                    <label for="akseskeuangan" class="form-label">Akses Keuangan</label>
 
-                        <div class="mb-4">
-                            <label for="akseskeuangan" class="form-label">Akses Keuangan</label>
+                                    <select class="form-select <?= $validation->hasError('akseskeuangan') ? 'is-invalid' : null; ?>" aria-label="Default select example" id="exampleFormControlInput1" placeholder="Jenis Kelamin" name="akseskeuangan">
+                                        <!-- <option selected>Open this select menu</option> -->
+                                        <option value="" selected>--Pilih--</option>
+                                        <?php foreach ($daftar_akseskeuangan as $dak) : ?>
+                                            <option value=<?= $dak->id_akseskeuangan; ?>><?= $dak->keterangan_akseskeuangan; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <?php if ($validation->hasError('akseskeuangan')) : ?>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('akseskeuangan'); ?>
+                                        </div>
 
-                            <select class="form-select <?= $validation->hasError('akseskeuangan') ? 'is-invalid' : null; ?>" aria-label="Default select example" id="exampleFormControlInput1" placeholder="Jenis Kelamin" name="akseskeuangan">
-                                <!-- <option selected>Open this select menu</option> -->
-                                <option value="" selected>--Pilih--</option>
-                                <?php foreach ($daftar_akseskeuangan as $dak) : ?>
-                                    <option value=<?= $dak->id_akseskeuangan; ?>><?= $dak->keterangan_akseskeuangan; ?></option>
-                                <?php endforeach ?>
-                            </select>
-                            <?php if ($validation->hasError('akseskeuangan')) : ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('akseskeuangan'); ?>
+                                    <?php endif; ?>
                                 </div>
 
-                            <?php endif; ?>
-                        </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-4">
+                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                    <textarea type="text" class="form-control <?= $validation->hasError('keterangan') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Keterangan Pemasukan" name="keterangan" rows="5"></textarea>
 
-                        <div class="mb-4">
-                            <label for="keterangan" class="form-label">Keterangan</label>
-                            <input type="text" class="form-control <?= $validation->hasError('keterangan') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Alamat Lengkap" name="keterangan" rows="3">
+                                    <?php if ($validation->hasError('keterangan')) : ?>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('keterangan'); ?>
+                                        </div>
 
-                            <?php if ($validation->hasError('keterangan')) : ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('keterangan'); ?>
+                                    <?php endif; ?>
                                 </div>
 
-                            <?php endif; ?>
-                        </div>
+                                <div class="mb-4">
+                                    <label for="masuk" class="form-label">Nominal Pemasukan</label>
+                                    <input type="number" class="form-control <?= $validation->hasError('masuk') ? 'is-invalid' : null; ?>" id="formFile" placeholder="Isikan Besarnya Pemasukan" name="masuk">
 
-                        <div class="mb-4">
-                            <label for="masuk" class="form-label">Nominal Pemasukan</label>
-                            <input type="text" class="form-control <?= $validation->hasError('masuk') ? 'is-invalid' : null; ?>" id="formFile" placeholder="Isikan Besarnya Pemasukan" name="masuk">
+                                    <?php if ($validation->hasError('masuk')) : ?>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('masuk'); ?>
+                                        </div>
 
-                            <?php if ($validation->hasError('masuk')) : ?>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('masuk'); ?>
+                                    <?php endif; ?>
                                 </div>
 
-                            <?php endif; ?>
+                            </div>
                         </div>
 
-                        <!-- <div class="mb-4">
-                            <label for="foto_pengurus" class="form-label">Foto Pengurus</label>
-                            <input type="file" class="form-control" id="formFile" placeholder="Nama Lengkap" name="foto_pengurus" required>
-
-                        </div> -->
-                        <div class="modal-footer m-3">
-                            <a href="/keuangan"><button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button></a>
+                        <div class="modal-footer">
+                            <a href="/keuangan"><button type="button" class="btn btn-danger m-1" data-bs-dismiss="modal">Batal</button></a>
                             <button type="submit" class="btn btn-primary ">Tambah</button>
                         </div>
                     </form>

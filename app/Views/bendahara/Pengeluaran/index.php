@@ -1,4 +1,4 @@
-<?= $this->extend('bendahara/layout/template'); ?>
+<?= $this->extend('layout/template'); ?>
 <?= $this->section('content') ?>
 
 <div id="layoutSidenav_content">

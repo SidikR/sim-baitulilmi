@@ -240,3 +240,107 @@ a {
 .portfolio-details .portfolio-description p {
   padding: 0;
 }
+
+/*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.tabs .nav .nav-tabs {
+  border: 0;
+  
+  /* border-radius: 5px; */
+}
+
+.tabs .nav .nav-link {
+  border: 0;
+  padding: 1rem 1rem;
+  color: var(--color-primary);
+  box-shadow: 5px 5px 25px rgba(var(--color-secondary-rgb), 0.15);
+  border-radius: 5px;
+  /* border-end-end-radius: 5, 5, 5, 5; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: 0s;
+  cursor: pointer;
+  height: 100%;
+}
+
+.tabs .nav .nav-link i {
+  font-size: 32px;
+  line-height: 0;
+}
+
+.tabs .nav .nav-link h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 3px 0 0 0;
+  color: var(--color-secondary);
+}
+
+.tabs .nav .nav-link:hover {
+  color: var(--color-primary);
+}
+
+.tabs .nav .nav-link.active {
+  transition: 0.3s;
+  background: var(--color-secondary) ;
+  border-color: var(--color-primary);
+}
+
+.tabs .nav-link.active {
+  transition: 0.3s;
+  background: var(--color-primary) ;
+  border-color: var(--color-primary);
+}
+
+.tabs .nav .nav-link.active h4 {
+  color: var(--color-white);
+}
+
+.tabs .nav .nav-link.active i {
+  color: var(--color-primary) !important;
+}
+
+.tabs .nav .tab-content {
+  margin-top: 30px;
+}
+
+.tabs .nav .tab-pane.active {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.tabs .nav .tab-pane h3 {
+  font-weight: 600;
+  font-size: 36px;
+  color: var(--color-primary);
+}
+
+.tabs .nav .tab-pane ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tabs .nav .tab-pane ul li {
+  padding-bottom: 10px;
+}
+
+.tabs .nav .tab-pane ul i {
+  font-size: 24px;
+  margin-right: 4px;
+  color: var(--color-primary);
+}
+
+.tabs .nav .tab-pane p:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,4 +1,4 @@
-<?= $this->extend('bendahara/layout/template'); ?>
+<?= $this->extend('layout/template'); ?>
 <?= $this->section('content') ?>
 
 <div id="layoutSidenav_content">
@@ -28,57 +28,62 @@
                                         <input type="hidden" name="_method" value="PUT">
                                         <fieldset>
                                             <legend>Detail dari <b><?= $daftar_pemasukan->keterangan; ?></b></legend>
-                                            <div class="mb-3">
-                                                <label for="disabledTextInput" class="form-label <?= $validation->hasError('tanggal_transaksi') ? 'is-invalid' : null; ?>">Tanggal Transaksi</label>
-                                                <input name="tanggal_transaksi" type="date" id="disabledTextInput" class="form-control" placeholder='<?= $daftar_pemasukan->tanggal_transaksi; ?>' value="<?= $daftar_pemasukan->tanggal_transaksi; ?>">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label for="disabledTextInput" class="form-label <?= $validation->hasError('tanggal_transaksi') ? 'is-invalid' : null; ?>">Tanggal Transaksi</label>
+                                                        <input name="tanggal_transaksi" type="date" id="disabledTextInput" class="form-control" placeholder='<?= $daftar_pemasukan->tanggal_transaksi; ?>' value="<?= $daftar_pemasukan->tanggal_transaksi; ?>">
 
-                                                <?php if ($validation->hasError('tanggal_transaksi')) : ?>
-                                                    <div class="invalid-feedback">
-                                                        <?= $validation->getError('tanggal_transaksi'); ?>
+                                                        <?php if ($validation->hasError('tanggal_transaksi')) : ?>
+                                                            <div class="invalid-feedback">
+                                                                <?= $validation->getError('tanggal_transaksi'); ?>
+                                                            </div>
+
+                                                        <?php endif; ?>
                                                     </div>
 
-                                                <?php endif; ?>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="disabledTextInput" class="form-label">Akun Keuangan</label>
-                                                <select class="form-select" aria-label=" Default select example" id="exampleFormControlInput1" placeholder="Pilih Akun Keuangan" name="akunkeuangan">
-                                                    <option value="<?= $daftar_pemasukan->id_akunkeuangan; ?>" selected><?= $daftar_pemasukan->keterangan_akunkeuangan; ?></option>
-                                                    <?php foreach ($daftar_akunkeuangan as $dak) : ?>
-                                                        <option value=<?= $dak->id_akunkeuangan; ?>><?= $dak->keterangan_akunkeuangan; ?></option>
-                                                    <?php endforeach ?>
-                                                </select required>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="disabledTextInput" class="form-label">Akses Keuangan</label>
-                                                <select class="form-select" aria-label=" Default select example" id="exampleFormControlInput1" placeholder="Pilih akses Keuangan" name="akseskeuangan">
-                                                    <option value="<?= $daftar_pemasukan->id_akseskeuangan; ?>" selected><?= $daftar_pemasukan->keterangan_akseskeuangan; ?></option>
-                                                    <?php foreach ($daftar_akseskeuangan as $dak) : ?>
-                                                        <option value=<?= $dak->id_akseskeuangan; ?>><?= $dak->keterangan_akseskeuangan; ?></option>
-                                                    <?php endforeach ?>
-                                                </select required>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="disabledTextInput" class="form-label">Nominal Pemasukan</label>
-                                                <input name="masuk" type="text" id="disabledTextInput" class="form-control" value="<?= $daftar_pemasukan->masuk; ?>">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="disabledTextInput" class="form-label">Keterangan</label>
-                                                <input name="keterangan" type="text" id="disabledTextInput" class="form-control <?= $validation->hasError('keterangan') ? 'is-invalid' : null; ?>" placeholder='<?= $daftar_pemasukan->keterangan; ?>' value="<?= $daftar_pemasukan->keterangan; ?>">
-
-                                                <?php if ($validation->hasError('keterangan')) : ?>
-                                                    <div class="invalid-feedback">
-                                                        <?= $validation->getError('keterangan'); ?>
+                                                    <div class="mb-3">
+                                                        <label for="disabledTextInput" class="form-label">Akun Keuangan</label>
+                                                        <select class="form-select" aria-label=" Default select example" id="exampleFormControlInput1" placeholder="Pilih Akun Keuangan" name="akunkeuangan">
+                                                            <option value="<?= $daftar_pemasukan->id_akunkeuangan; ?>" selected><?= $daftar_pemasukan->keterangan_akunkeuangan; ?></option>
+                                                            <?php foreach ($daftar_akunkeuangan as $dak) : ?>
+                                                                <option value=<?= $dak->id_akunkeuangan; ?>><?= $dak->keterangan_akunkeuangan; ?></option>
+                                                            <?php endforeach ?>
+                                                        </select required>
                                                     </div>
 
-                                                <?php endif; ?>
-                                            </div>
+                                                    <div class="mb-3">
+                                                        <label for="disabledTextInput" class="form-label">Akses Keuangan</label>
+                                                        <select class="form-select" aria-label=" Default select example" id="exampleFormControlInput1" placeholder="Pilih akses Keuangan" name="akseskeuangan">
+                                                            <option value="<?= $daftar_pemasukan->id_akseskeuangan; ?>" selected><?= $daftar_pemasukan->keterangan_akseskeuangan; ?></option>
+                                                            <?php foreach ($daftar_akseskeuangan as $dak) : ?>
+                                                                <option value=<?= $dak->id_akseskeuangan; ?>><?= $dak->keterangan_akseskeuangan; ?></option>
+                                                            <?php endforeach ?>
+                                                        </select required>
+                                                    </div>
 
+                                                </div>
+
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label for="disabledTextInput" class="form-label">Nominal Pemasukan</label>
+                                                        <input name="masuk" type="text" id="disabledTextInput" class="form-control" value="<?= $daftar_pemasukan->masuk; ?>">
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="disabledTextInput" class="form-label">Keterangan</label>
+                                                        <textarea name="keterangan" type="text" id="disabledTextInput" class="form-control <?= $validation->hasError('keterangan') ? 'is-invalid' : null; ?>" placeholder='<?= $daftar_pemasukan->keterangan; ?>' value="<?= $daftar_pemasukan->keterangan; ?>" rows="5"><?= $daftar_pemasukan->keterangan; ?></textarea>
+
+                                                        <?php if ($validation->hasError('keterangan')) : ?>
+                                                            <div class="invalid-feedback">
+                                                                <?= $validation->getError('keterangan'); ?>
+                                                            </div>
+
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
                                         </fieldset>
-                                        <a href="<?php echo base_url('pemasukan'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
+                                        <a href="<?php echo base_url('keuangan'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
                                         <button type="submit" class="btn btn-success">Simpan</button>
                                     </form>
                                 </div>
@@ -88,20 +93,7 @@
                 </div>
             </div>
         </div>
-
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 

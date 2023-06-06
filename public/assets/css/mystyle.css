@@ -1,6 +1,7 @@
-.datepicker td,th{
+.datepicker td, th{
     text-align: center;
     padding: 8px 12px;
     margin : 5px,5px,5px,5px;
     font-size: 14px;
+    color: black;
 }

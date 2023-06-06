@@ -99,21 +99,6 @@ class PemasukanController extends BaseController
     }
 
 
-    public function detail($id_keuangan)
-    {
-        $pemasukan = $this->KeuanganModel->getKeuangan($id_keuangan);
-        $data = [
-            'title' => 'Detail pemasukan',
-            'pemasukan' => $pemasukan,
-            // 'nama_lengkap' => esc($this->request->getvar('nama_lengkap'))
-        ];
-
-        if (empty($data['pemasukan'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Nama pemasukan dengan slug : ' . $id_keuangan . ' tidak ditemukan !');
-        }
-        return view('bendahara/pemasukan/detail', $data);
-    }
-
     public function form_update($id_keuangan)
     {
 
@@ -156,7 +141,7 @@ class PemasukanController extends BaseController
             return redirect()->to(current_url())->with('failed', 'Data pemasukan gagal ditambahkan !');
         } {
             $this->KeuanganModel->update($id_keuangan, $data);
-            return redirect()->to('pemasukan')->with('success', 'Data Pemasukan Berhasil Diubah');
+            return redirect()->to('keuangan')->with('success', 'Data Pemasukan Berhasil Diubah');
         }
     }
 }

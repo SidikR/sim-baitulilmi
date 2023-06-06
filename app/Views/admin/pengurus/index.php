@@ -1,4 +1,4 @@
-<?= $this->extend('admin/layout/template'); ?>
+<?= $this->extend('layout/template'); ?>
 <?= $this->section('content') ?>
 
 <div id="layoutSidenav_content">
@@ -22,7 +22,7 @@
                                 <?= session('success'); ?>
                             </div>
                         <?php endif ?>
-                        <table id="admin_pengurus" class="display table-striped  width=" 100%">
+                        <table id="admin_pengurus" class="display table-striped" width="100%">
                             <thead>
                                 <tr>
                                     <th>No</th>

@@ -110,6 +110,7 @@ class KeuanganModel extends Model
         $builder->join('akunkeuangan', 'akunkeuangan.id_akunkeuangan = keuangan.id_akunkeuangan');
         $builder->join('akseskeuangan', 'akseskeuangan.id_akseskeuangan = keuangan.id_akseskeuangan');
         $builder->where(['masuk !=' => null]);
+        $builder->orderBy('tanggal_transaksi', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }
@@ -120,6 +121,7 @@ class KeuanganModel extends Model
         $builder->join('akunkeuangan', 'akunkeuangan.id_akunkeuangan = keuangan.id_akunkeuangan');
         $builder->join('akseskeuangan', 'akseskeuangan.id_akseskeuangan = keuangan.id_akseskeuangan');
         $builder->where(['keluar !=' => null]);
+        $builder->orderBy('tanggal_transaksi', 'DESC');
         $query = $builder->get();
         return $query->getResult();
     }

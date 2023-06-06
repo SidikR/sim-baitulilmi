@@ -160,7 +160,7 @@ sup {
 
 a {
   color: #4e73df;
-  text-decoration: none;
+  text-decoration: none;       
   background-color: transparent;
 }
 
@@ -9708,7 +9708,8 @@ a.text-dark:hover, a.text-dark:focus {
     box-shadow: none !important;
   }
   a:not(.btn) {
-    text-decoration: underline;
+    text-decoration: none;
+    /* text-decoration: underline; */
   }
   abbr[title]::after {
     content: " (" attr(title) ")";
@@ -10634,7 +10635,7 @@ a:focus {
 }
 
 .sidebar-light .sidebar-heading {
-  color: #b7b9cc;
+  color: var(--primary);
 }
 
 .sidebar-light .nav-item .nav-link {
@@ -10686,7 +10687,7 @@ a:focus {
 }
 
 .sidebar-dark .sidebar-heading {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--primary);
 }
 
 .sidebar-dark .nav-item .nav-link {

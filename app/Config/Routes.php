@@ -38,6 +38,7 @@ $routes->get('/guest-keuangan', 'Pages\GuestKeuanganController::index');
 $routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
 $routes->get('/akun', 'Pages\AkunController::index', ['filter' => 'role:user']);
+$routes->put('/akun/(:segment)', 'Pages\AkunController::update/$1', ['filter' => 'role:user']);
 $routes->post('peminjaman/batal/(:segment)', 'Pages\AkunController::batal/$1', ['filter' => 'role:user']);
 $routes->post('peminjaman-masjid/batal/(:segment)', 'Pages\AkunController::batal_masjid/$1', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanMasjidController::save_masjid', ['filter' => 'role:user']);
@@ -47,66 +48,73 @@ $routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanMasjidController::save
 // Routes Admin Dashboard
 $routes->get('dashboard', 'Admin\DashboardController::index', ['filter' => 'role:admin']);
 
-// Routes Admin Data Pengurus
-$routes->get('pengurus', 'Admin\PengurusController::index');
-$routes->post('/pengurus/save', 'Admin\PengurusController::save');
-$routes->get('/pengurus/tambah', 'Admin\PengurusController::create');
-$routes->put('/pengurus/edit/(:segment)', 'Admin\PengurusController::update/$1');
-$routes->delete('/pengurus/hapus/(:segment)', 'Admin\PengurusController::delete/$1');
-$routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1');
-$routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1');
-$routes->put('/pengurus/edit/foto/(:segment)', 'Admin\PengurusController::update_foto/$1');
 
-$routes->get('petugas-jumat', 'Admin\PetugasJumatController::index');
-$routes->post('/petugas-jumat/save', 'Admin\PetugasJumatController::save');
-$routes->get('/petugas-jumat/tambah', 'Admin\PetugasJumatController::create');
-$routes->put('/petugas-jumat/edit/(:segment)', 'Admin\PetugasJumatController::update/$1');
-$routes->delete('/petugas-jumat/hapus/(:segment)', 'Admin\PetugasJumatController::delete/$1');
-$routes->get('/petugas-jumat/detail/(:segment)', 'Admin\PetugasJumatController::detail/$1');
-$routes->get('/petugas-jumat/edit/(:segment)', 'Admin\PetugasJumatController::form_update/$1');
-$routes->put('/petugas-jumat/edit/foto/(:segment)', 'Admin\PetugasJumatController::update_foto/$1');
-
-$routes->get('pengumuman', 'Admin\PengumumanController::index');
-$routes->post('/pengumuman/save', 'Admin\PengumumanController::save');
-$routes->get('/pengumuman/tambah', 'Admin\PengumumanController::create');
-$routes->put('/pengumuman/edit/(:segment)', 'Admin\PengumumanController::update/$1');
-$routes->delete('/pengumuman/hapus/(:segment)', 'Admin\PengumumanController::delete/$1');
-$routes->get('/pengumuman/detail/(:segment)', 'Admin\PengumumanController::detail/$1');
-$routes->get('/pengumuman/edit/(:segment)', 'Admin\PengumumanController::form_update/$1');
+$routes->get('users/index', 'Admin\UsersController::index', ['filter' => 'role:admin']);
+$routes->post('users/activate', 'Admin\UsersController::activate', ['filter' => 'role:admin']);
+$routes->get('users/changePassword/(:segment)', 'Admin\UsersController::changePassword/$1', ['filter' => 'role:admin']);
+$routes->post('users/setPassword', 'Admin\UsersController::setPassword', ['filter' => 'role:admin']);
+$routes->post('users/changeGroup', 'Admin\UsersController::changeGroup', ['filter' => 'role:admin']);
 
 // Routes Admin Data Pengurus
-$routes->get('kegiatan', 'Admin\KegiatanController::index');
-$routes->post('/kegiatan/save', 'Admin\KegiatanController::save');
-$routes->get('/kegiatan/tambah', 'Admin\KegiatanController::create');
-$routes->put('/kegiatan/edit/(:segment)', 'Admin\KegiatanController::update/$1');
-$routes->delete('/kegiatan/hapus/(:segment)', 'Admin\KegiatanController::delete/$1');
-$routes->get('/kegiatan/detail/(:segment)', 'Admin\KegiatanController::detail/$1');
-$routes->get('/kegiatan/edit/(:segment)', 'Admin\KegiatanController::form_update/$1');
-$routes->put('/kegiatan/edit/foto/(:segment)', 'Admin\KegiatanController::update_foto/$1');
+$routes->get('pengurus', 'Admin\PengurusController::index', ['filter' => 'role:admin']);
+$routes->post('/pengurus/save', 'Admin\PengurusController::save', ['filter' => 'role:admin']);
+$routes->get('/pengurus/tambah', 'Admin\PengurusController::create', ['filter' => 'role:admin']);
+$routes->put('/pengurus/edit/(:segment)', 'Admin\PengurusController::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/pengurus/hapus/(:segment)', 'Admin\PengurusController::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1', ['filter' => 'role:admin']);
+$routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1', ['filter' => 'role:admin']);
+$routes->put('/pengurus/edit/foto/(:segment)', 'Admin\PengurusController::update_foto/$1', ['filter' => 'role:admin']);
+
+$routes->get('petugas-jumat', 'Admin\PetugasJumatController::index', ['filter' => 'role:admin']);
+$routes->post('/petugas-jumat/save', 'Admin\PetugasJumatController::save', ['filter' => 'role:admin']);
+$routes->get('/petugas-jumat/tambah', 'Admin\PetugasJumatController::create', ['filter' => 'role:admin']);
+$routes->put('/petugas-jumat/edit/(:segment)', 'Admin\PetugasJumatController::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/petugas-jumat/hapus/(:segment)', 'Admin\PetugasJumatController::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/petugas-jumat/detail/(:segment)', 'Admin\PetugasJumatController::detail/$1', ['filter' => 'role:admin']);
+$routes->get('/petugas-jumat/edit/(:segment)', 'Admin\PetugasJumatController::form_update/$1', ['filter' => 'role:admin']);
+$routes->put('/petugas-jumat/edit/foto/(:segment)', 'Admin\PetugasJumatController::update_foto/$1', ['filter' => 'role:admin']);
+
+$routes->get('pengumuman', 'Admin\PengumumanController::index', ['filter' => 'role:admin']);
+$routes->post('/pengumuman/save', 'Admin\PengumumanController::save', ['filter' => 'role:admin']);
+$routes->get('/pengumuman/tambah', 'Admin\PengumumanController::create', ['filter' => 'role:admin']);
+$routes->put('/pengumuman/edit/(:segment)', 'Admin\PengumumanController::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/pengumuman/hapus/(:segment)', 'Admin\PengumumanController::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/pengumuman/detail/(:segment)', 'Admin\PengumumanController::detail/$1', ['filter' => 'role:admin']);
+$routes->get('/pengumuman/edit/(:segment)', 'Admin\PengumumanController::form_update/$1', ['filter' => 'role:admin']);
+
+// Routes Admin Data Pengurus
+$routes->get('kegiatan', 'Admin\KegiatanController::index', ['filter' => 'role:admin']);
+$routes->post('/kegiatan/save', 'Admin\KegiatanController::save', ['filter' => 'role:admin']);
+$routes->get('/kegiatan/tambah', 'Admin\KegiatanController::create', ['filter' => 'role:admin']);
+$routes->put('/kegiatan/edit/(:segment)', 'Admin\KegiatanController::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/kegiatan/hapus/(:segment)', 'Admin\KegiatanController::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/kegiatan/detail/(:segment)', 'Admin\KegiatanController::detail/$1', ['filter' => 'role:admin']);
+$routes->get('/kegiatan/edit/(:segment)', 'Admin\KegiatanController::form_update/$1', ['filter' => 'role:admin']);
+$routes->put('/kegiatan/edit/foto/(:segment)', 'Admin\KegiatanController::update_foto/$1', ['filter' => 'role:admin']);
 
 // Routes Admin Data Inventaris
-$routes->get('inventaris', 'Admin\InventarisController::index');
-$routes->get('inventaris/tambah', 'Admin\InventarisController::create');
-$routes->post('inventaris/save', 'Admin\InventarisController::save');
-$routes->put('/inventaris/edit/(:segment)', 'Admin\InventarisController::update/$1');
-$routes->put('/inventaris/edit/foto/(:segment)', 'Admin\InventarisController::update_foto/$1');
-$routes->delete('/inventaris/hapus/(:segment)', 'Admin\InventarisController::delete/$1');
-$routes->get('/inventaris/detail/(:segment)', 'Admin\InventarisController::detail/$1');
-$routes->get('/inventaris/edit/(:segment)', 'Admin\InventarisController::form_update/$1');
+$routes->get('inventaris', 'Admin\InventarisController::index', ['filter' => 'role:admin']);
+$routes->get('inventaris/tambah', 'Admin\InventarisController::create', ['filter' => 'role:admin']);
+$routes->post('inventaris/save', 'Admin\InventarisController::save', ['filter' => 'role:admin']);
+$routes->put('/inventaris/edit/(:segment)', 'Admin\InventarisController::update/$1', ['filter' => 'role:admin']);
+$routes->put('/inventaris/edit/foto/(:segment)', 'Admin\InventarisController::update_foto/$1', ['filter' => 'role:admin']);
+$routes->delete('/inventaris/hapus/(:segment)', 'Admin\InventarisController::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/inventaris/detail/(:segment)', 'Admin\InventarisController::detail/$1', ['filter' => 'role:admin']);
+$routes->get('/inventaris/edit/(:segment)', 'Admin\InventarisController::form_update/$1', ['filter' => 'role:admin']);
 
-$routes->get('list-peminjaman', 'Admin\PeminjamanController::index');
-$routes->get('list-peminjaman-ok/(:segment)', 'Admin\PeminjamanController::accept/$1');
-$routes->get('list-peminjaman-done/(:segment)', 'Admin\PeminjamanController::done/$1');
-$routes->get('list-peminjaman-infaq-ok/(:segment)', 'Admin\PeminjamanController::infaqok/$1');
-$routes->post('list-peminjaman-no/(:segment)', 'Admin\PeminjamanController::no/$1');
+$routes->get('list-peminjaman', 'Admin\PeminjamanController::index', ['filter' => 'role:admin']);
+$routes->get('list-peminjaman-ok/(:segment)', 'Admin\PeminjamanController::accept/$1', ['filter' => 'role:admin']);
+$routes->get('list-peminjaman-done/(:segment)', 'Admin\PeminjamanController::done/$1', ['filter' => 'role:admin']);
+$routes->get('list-peminjaman-infaq-ok/(:segment)', 'Admin\PeminjamanController::infaqok/$1', ['filter' => 'role:admin']);
+$routes->post('list-peminjaman-no/(:segment)', 'Admin\PeminjamanController::no/$1', ['filter' => 'role:admin']);
 
 
-$routes->get('peminjaman-masjid', 'Admin\PeminjamanMasjidController::index');
-$routes->get('peminjaman-masjid-ok/(:segment)', 'Admin\PeminjamanMasjidController::accept/$1');
-$routes->get('peminjaman-masjid-done/(:segment)', 'Admin\PeminjamanMasjidController::done/$1');
-$routes->get('peminjaman-masjid-infaq-ok/(:segment)', 'Admin\PeminjamanMasjidController::infaqok/$1');
-$routes->post('peminjaman-masjid-no/(:segment)', 'Admin\PeminjamanMasjidController::no/$1');
-$routes->post('peminjaman-masjid-bukti-transfer/(:segment)', 'Admin\PeminjamanMasjidController::infaqok/$1');
+$routes->get('peminjaman-masjid', 'Admin\PeminjamanMasjidController::index', ['filter' => 'role:admin']);
+$routes->get('peminjaman-masjid-ok/(:segment)', 'Admin\PeminjamanMasjidController::accept/$1', ['filter' => 'role:admin']);
+$routes->get('peminjaman-masjid-done/(:segment)', 'Admin\PeminjamanMasjidController::done/$1', ['filter' => 'role:admin']);
+$routes->get('peminjaman-masjid-infaq-ok/(:segment)', 'Admin\PeminjamanMasjidController::infaqok/$1', ['filter' => 'role:admin']);
+$routes->post('peminjaman-masjid-no/(:segment)', 'Admin\PeminjamanMasjidController::no/$1', ['filter' => 'role:admin']);
+$routes->post('peminjaman-masjid-bukti-transfer/(:segment)', 'Admin\PeminjamanMasjidController::infaqok/$1', ['filter' => 'role:admin']);
 
 $routes->get('invoice/(:segment)', 'Pages\PeminjamanMasjidController::index_transfer/$1');
 $routes->put('invoice/bukti-transfer/(:segment)', 'Pages\PeminjamanMasjidController::bukti_transfer/$1');
@@ -123,20 +131,20 @@ $routes->get('keuangan', 'Bendahara\KeuanganController::index', ['filter' => 'ro
 // Routes Bendahara Pemasukan
 $routes->get('pemasukan', 'Bendahara\PemasukanController::index', ['filter' => 'role:bendahara']);
 $routes->get('keuangan/tambah-pemasukan', 'Bendahara\PemasukanController::create', ['filter' => 'role:bendahara']);
-$routes->post('keuangan/pemasukan-save', 'Bendahara\PemasukanController::save');
-$routes->put('/pemasukan/edit/(:segment)', 'Bendahara\PemasukanController::update/$1');
-$routes->delete('/pemasukan/hapus/(:segment)', 'Bendahara\PemasukanController::delete/$1');
-$routes->get('/pemasukan/detail/(:segment)', 'Bendahara\PemasukanController::detail/$1');
-$routes->get('/pemasukan/edit/(:segment)', 'Bendahara\PemasukanController::form_update/$1');
+$routes->post('keuangan/pemasukan-save', 'Bendahara\PemasukanController::save', ['filter' => 'role:bendahara']);
+$routes->put('/pemasukan/edit/(:segment)', 'Bendahara\PemasukanController::update/$1', ['filter' => 'role:bendahara']);
+$routes->delete('/keuangan/hapus/(:segment)', 'Bendahara\PemasukanController::delete/$1', ['filter' => 'role:bendahara']);
+$routes->get('/pemasukan/detail/(:segment)', 'Bendahara\PemasukanController::detail/$1', ['filter' => 'role:bendahara']);
+$routes->get('/pemasukan/edit/(:segment)', 'Bendahara\PemasukanController::form_update/$1', ['filter' => 'role:bendahara']);
 
 // Routes Bendahara Pengeluaran
-$routes->get('pengeluaran', 'Bendahara\PengeluaranController::index');
-$routes->get('keuangan/tambah-pengeluaran', 'Bendahara\PengeluaranController::create');
-$routes->post('keuangan/pengeluaran-save', 'Bendahara\PengeluaranController::save');
-$routes->put('/pengeluaran/edit/(:segment)', 'Bendahara\PengeluaranController::update/$1');
-$routes->delete('/pengeluaran/hapus/(:segment)', 'Bendahara\PengeluaranController::delete/$1');
-$routes->get('/pengeluaran/detail/(:segment)', 'Bendahara\PengeluaranController::detail/$1');
-$routes->get('/pengeluaran/edit/(:segment)', 'Bendahara\PengeluaranController::form_update/$1');
+$routes->get('pengeluaran', 'Bendahara\PengeluaranController::index', ['filter' => 'role:bendahara']);
+$routes->get('keuangan/tambah-pengeluaran', 'Bendahara\PengeluaranController::create', ['filter' => 'role:bendahara']);
+$routes->post('keuangan/pengeluaran-save', 'Bendahara\PengeluaranController::save', ['filter' => 'role:bendahara']);
+$routes->put('/pengeluaran/edit/(:segment)', 'Bendahara\PengeluaranController::update/$1', ['filter' => 'role:bendahara']);
+$routes->delete('/pengeluaran/hapus/(:segment)', 'Bendahara\PengeluaranController::delete/$1', ['filter' => 'role:bendahara']);
+$routes->get('/pengeluaran/detail/(:segment)', 'Bendahara\PengeluaranController::detail/$1', ['filter' => 'role:bendahara']);
+$routes->get('/pengeluaran/edit/(:segment)', 'Bendahara\PengeluaranController::form_update/$1', ['filter' => 'role:bendahara']);
 
 
 

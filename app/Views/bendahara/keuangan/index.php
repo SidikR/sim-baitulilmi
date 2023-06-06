@@ -1,26 +1,60 @@
-<?= $this->extend('bendahara/layout/template'); ?>
+<?= $this->extend('layout/template'); ?>
 <?= $this->section('content') ?>
 
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-            <div class="card mb-4 mt-4">
+            <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    <?= $title; ?>
+                    <h3>Keuangan Masjid</h3>
                 </div>
                 <div class="card-body">
-                    <a href="keuangan/tambah-pengeluaran"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
-                            <i class="fas fa-plus"></i> Pengeluaran
-                        </button></a>
-                    <a href="keuangan/tambah-pemasukan"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
-                            <i class="fas fa-plus"></i> Pemasukan
-                        </button></a>
+                    <div class="row">
+                        <div class="col-md-2 d-grid gap-2 mb-3">
+                            <a href='keuangan/tambah-pemasukan' class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Pemasukan</a>
+                            <a href='keuangan/tambah-pengeluaran' class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Pengeluaran</a>
+                        </div>
 
+                        <div class="col-md-10">
+                            <section class="tabs">
+                                <ul class="nav nav-tabs row gy-4 d-flex">
+
+                                    <!-- Awal Tab Untuk Menampilan Buku Besar -->
+                                    <li class="nav-item col-12 col-md-4 col-lg-4 buku_besar">
+                                        <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                                            <i class="bi bi-coin color-cyan"></i>
+                                            <h4>Buku Besar</h4>
+                                        </a>
+                                    </li>
+                                    <!-- End Tab Buku Besar -->
+
+                                    <!-- Awal Tab Untuk Menampilkan Tabel Pemasukan -->
+                                    <li class="nav-item col-12 col-md-4 col-lg-4 masuk">
+                                        <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-2">
+                                            <i class="bi bi-box-arrow-in-right color-indigo"></i>
+                                            <h4>Pemasukan</h4>
+                                        </a>
+                                    </li><!-- End Tab 2 Nav -->
+
+                                    <!-- Awal Tab Untuk Menampilkan Tabel Penegluaran -->
+                                    <li class="nav-item col-12 col-md-4 col-lg-4 keluar">
+                                        <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-3">
+                                            <i class="bi bi-box-arrow-left color-indigo"></i>
+                                            <h4>Pengeluaran</h4>
+                                        </a>
+                                    </li><!-- End Tab 2 Nav -->
+                                </ul>
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid px-4">
+            <div class="card-body">
+                <div class="mb-4 mt-4">
                     <!-- ini notifikasi Berhasil ditambah -->
                     <?php if (session('success')) : ?>
                         <div class="alert alert-success" role="alert">
@@ -29,32 +63,31 @@
                     <?php endif ?>
 
                     <div class="row">
-                        <div class="container" data-aos="fade-up">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <h5 class="card-header text-center bg-success text-white">Ringkasan Keuangan</h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <h5 class=" col-12 col-md-12 col-lg-6">Pembangunan</h5>
+                                        <h5 class=" col-12 col-md-12 col-lg-6"><span class="badge bg-primary">: Rp. <?= number_format($total_pem, 0, '.', '.'); ?></span></h5>
+                                    </div>
+                                    <div class="row">
+                                        <h5 class=" col-12 col-md-12 col-lg-6">Sarana Prasarana</h5>
+                                        <h5 class=" col-12 col-md-12 col-lg-6"><span class="badge bg-primary">: Rp. <?= number_format($total_prs, 0, '.', '.'); ?></span></h5>
+                                    </div>
+                                    <div class="row">
+                                        <h5 class=" col-12 col-md-12 col-lg-6">Operasional</h5>
+                                        <h5 class=" col-12 col-md-12 col-lg-6"><span class="badge bg-primary">: Rp. <?= number_format($total_op, 0, '.', '.'); ?></span></h5>
+                                    </div>
+                                    <div class="row">
+                                        <h5 class=" col-12 col-md-12 col-lg-6">Total</h5>
+                                        <h5 class=" col-12 col-md-12 col-lg-6"><span class="badge bg-success">: Rp. <?= number_format($total_kas, 0, '.', '.'); ?></span></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                            <ul class=" tabs nav nav-tabs row gy-4 d-flex">
-
-                                <li class="nav-item col-12 col-md-4 col-lg-4 buku_besar">
-                                    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                                        <i class="bi bi-coin color-cyan"></i>
-                                        <h4>Buku Besar</h4>
-                                    </a>
-                                </li><!-- End Tab 1 Nav -->
-
-                                <li class="nav-item col-12 col-md-4 col-lg-4 masuk">
-                                    <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-2">
-                                        <i class="bi bi-box-arrow-in-right color-indigo"></i>
-                                        <h4>Pemasukan</h4>
-                                    </a>
-                                </li><!-- End Tab 2 Nav -->
-
-                                <li class="nav-item col-12 col-md-4 col-lg-4 keluar">
-                                    <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-3">
-                                        <i class="bi bi-box-arrow-left color-indigo"></i>
-                                        <h4>Pengeluaran</h4>
-                                    </a>
-                                </li><!-- End Tab 2 Nav -->
-                            </ul>
-
+                        <div class="col-md-8">
                             <form action="" id="form">
                                 <div class="row">
                                     <h4 class="mb-3 mt-3">Filter Keuangan</h4>
@@ -131,139 +164,173 @@
                                 </div>
                             </form>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active show mb-5" id="tab-1">
-                                    <div class="col-md-12">
-                                        <h2 class="mb-3">Buku Besar</h2>
-                                        <table id="datatables_userkeuangan" class="display" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Tanggal Transaksi</th>
-                                                    <th>Akun Keuangan</th>
-                                                    <th>Akses Keuangan</th>
-                                                    <th>Keterangan</th>
-                                                    <th>Masuk</th>
-                                                    <th>Keluar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $no = 1; ?>
-                                                <?php foreach ($daftar_keuangan as $dp) : ?>
-                                                    <tr>
-                                                        <td><?= $no++; ?></td>
-                                                        <td><?= $dp->tanggal_transaksi; ?></td>
-                                                        <td><?= $dp->keterangan_akunkeuangan; ?></td>
-                                                        <td><?= $dp->keterangan_akseskeuangan; ?></td>
-                                                        <td><?= $dp->keterangan; ?></td>
-                                                        <td><?php if ($dp->masuk != null) : ?>
-                                                                <?= 'Rp. ' . number_format($dp->masuk); ?>
-                                                            <?php endif; ?>
-                                                        </td>
-                                                        <td><?php if ($dp->keluar != null) : ?>
-                                                                <?= 'Rp. ' . number_format($dp->keluar); ?>
-                                                            <?php endif; ?>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane show mb-5" id="tab-2">
-                                    <div class="col-md-12">
-                                        <h2 class="mb-3">Pemasukan Kas</h2>
-                                        <table id="datatables_keuanganmasuk" class="display" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Tanggal Transaksi</th>
-                                                    <th>Akun Keuangan</th>
-                                                    <th>Akses Keuangan</th>
-                                                    <th>Keterangan</th>
-                                                    <th>Masuk</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $no = 1; ?>
-                                                <?php foreach ($daftar_pemasukan as $dp) : ?>
-                                                    <tr>
-                                                        <td><?= $no++; ?></td>
-                                                        <td><?= $dp->tanggal_transaksi; ?></td>
-                                                        <td><?= $dp->keterangan_akunkeuangan; ?></td>
-                                                        <td><?= $dp->keterangan_akseskeuangan; ?></td>
-                                                        <td><?= $dp->keterangan; ?></td>
-                                                        <td><?php if ($dp->masuk != null) : ?>
-                                                                <?= 'Rp. ' . number_format($dp->masuk); ?>
-                                                            <?php endif; ?>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane show" id="tab-3">
-                                    <div class="col-md-12">
-                                        <h2 class="mb-3">Pengeluaran Kas</h2>
-                                        <table id="datatables_keuangankeluar" class="display" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Tanggal Transaksi</th>
-                                                    <th>Akun Keuangan</th>
-                                                    <th>Akses Keuangan</th>
-                                                    <th>Keterangan</th>
-                                                    <th>Keluar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $no = 1; ?>
-                                                <?php foreach ($daftar_pengeluaran as $dp) : ?>
-                                                    <tr>
-                                                        <td><?= $no++; ?></td>
-                                                        <td><?= $dp->tanggal_transaksi; ?></td>
-                                                        <td><?= $dp->keterangan_akunkeuangan; ?></td>
-                                                        <td><?= $dp->keterangan_akseskeuangan; ?></td>
-                                                        <td><?= $dp->keterangan; ?></td>
-                                                        <td><?php if ($dp->keluar != null) : ?>
-                                                                <?= 'Rp. ' . number_format($dp->keluar); ?>
-                                                            <?php endif; ?>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
+                    </div>
 
+                    <div class="row">
+                        <section class="tabs">
+                            <div data-aos="fade-up">
+                                <!-- Tab Pertama -> Buku Besar -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active show mb-5" id="tab-1">
+                                        <div class="col-md-12">
+                                            <h2 class="mb-3">Buku Besar</h2>
+                                            <table id="datatables_userkeuangan" class="display" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Tanggal Transaksi</th>
+                                                        <th>Akun Keuangan</th>
+                                                        <th>Akses Keuangan</th>
+                                                        <th>Keterangan</th>
+                                                        <th>Masuk</th>
+                                                        <th>Keluar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $no = 1; ?>
+                                                    <?php foreach ($daftar_keuangan as $dp) : ?>
+                                                        <tr>
+                                                            <td><?= $no++; ?></td>
+                                                            <td><?= $dp->tanggal_transaksi; ?></td>
+                                                            <td><?= $dp->keterangan_akunkeuangan; ?></td>
+                                                            <td><?= $dp->keterangan_akseskeuangan; ?></td>
+                                                            <td><?= $dp->keterangan; ?></td>
+                                                            <td><?php if ($dp->masuk != null) : ?>
+                                                                    <?= 'Rp. ' . number_format($dp->masuk, 0, '.', '.'); ?>
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <td><?php if ($dp->keluar != null) : ?>
+                                                                    <?= 'Rp. ' . number_format($dp->keluar, 0, '.', '.'); ?>
+                                                                <?php endif; ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach ?>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="5"></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- Akhir dari Buku Besar -->
+
+                                    <!-- Tab 2 -> Pemasukan -->
+                                    <div class="tab-pane show mb-5" id="tab-2">
+                                        <div class="col-md-12">
+                                            <h2 class="mb-3">Pemasukan Kas</h2>
+                                            <table id="datatables_keuanganmasuk" class="display" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Tanggal Transaksi</th>
+                                                        <th>Akun Keuangan</th>
+                                                        <th>Akses Keuangan</th>
+                                                        <th>Keterangan</th>
+                                                        <th>Masuk</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $no = 1; ?>
+                                                    <?php foreach ($daftar_pemasukan as $dp) : ?>
+                                                        <tr>
+                                                            <td><?= $no++; ?></td>
+                                                            <td><?= $dp->tanggal_transaksi; ?></td>
+                                                            <td><?= $dp->keterangan_akunkeuangan; ?></td>
+                                                            <td><?= $dp->keterangan_akseskeuangan; ?></td>
+                                                            <td><?= $dp->keterangan; ?></td>
+                                                            <td><?php if ($dp->masuk != null) : ?>
+                                                                    <?= 'Rp. ' . number_format($dp->masuk, 0, '.', '.'); ?>
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <td style="width: 15%;">
+                                                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#detailMasuk<?= $dp->id_keuangan; ?>"><i class="fas fa-file-alt"></i></button>
+                                                                <a href="<?= 'pemasukan/edit/' . $dp->id_keuangan; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button></a>
+                                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusMasuk<?= $dp->id_keuangan; ?>"><i class="fas fa-trash-alt"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach ?>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="5"></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- Akhir Pemasukan -->
+
+                                    <!-- Awal Tab Untuk Menampilkan Tabel Pengeluaran -->
+                                    <div class="tab-pane show" id="tab-3">
+                                        <div class="col-md-12">
+                                            <h2 class="mb-3">Pengeluaran Kas</h2>
+                                            <table id="datatables_keuangankeluar" class="display" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Tanggal Transaksi</th>
+                                                        <th>Akun Keuangan</th>
+                                                        <th>Akses Keuangan</th>
+                                                        <th>Keterangan</th>
+                                                        <th>Keluar</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $no = 1; ?>
+                                                    <?php foreach ($daftar_pengeluaran as $dp) : ?>
+                                                        <tr>
+                                                            <td><?= $no++; ?></td>
+                                                            <td><?= $dp->tanggal_transaksi; ?></td>
+                                                            <td><?= $dp->keterangan_akunkeuangan; ?></td>
+                                                            <td><?= $dp->keterangan_akseskeuangan; ?></td>
+                                                            <td><?= $dp->keterangan; ?></td>
+                                                            <td><?php if ($dp->keluar != null) : ?>
+                                                                    <?= 'Rp. ' . number_format($dp->keluar, 0, '.', '.'); ?>
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <td style="width: 15%;">
+                                                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#detailMasuk<?= $dp->id_keuangan; ?>"><i class="fas fa-file-alt"></i></button>
+                                                                <a href="<?= 'pengeluaran/edit/' . $dp->id_keuangan; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button></a>
+                                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusKeluar<?= $dp->id_keuangan; ?>"><i class="fas fa-trash-alt"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach ?>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="5"></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- Akhir Tab Tabel Pengeluaran -->
+
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
+
         </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 <!-- Modal Hapus -->
 <?php foreach ($daftar_keuangan as $dp) : ?>
-    <div class="modal fade" id="hapusModal<?= $dp->id_keuangan; ?>" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="hapusMasuk<?= $dp->id_keuangan; ?>" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
@@ -285,6 +352,33 @@
         </div>
     </div>
 <?php endforeach ?>
+
+<?php foreach ($daftar_keuangan as $dp) : ?>
+    <div class="modal fade" id="hapusKeluar<?= $dp->id_keuangan; ?>" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Hapus Data Keuangan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="keuangan/hapus/<?= $dp->id_keuangan; ?>" method="post">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <p>Yakin data keuangan <b><?= $dp->keterangan; ?></b> akan dihapus ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endforeach ?>
+
+
+<?= $this->include('bendahara/pemasukan/modal_detail'); ?>
 
 
 <?= $this->endSection() ?>

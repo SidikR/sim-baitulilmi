@@ -34,7 +34,8 @@ class KeuanganController extends BaseController
         $masuk_pem = $this->KeuanganModel->sumAkunMasuk(1);
         $keluar_pem = $this->KeuanganModel->sumAkunKeluar(1);
         $data = [
-            'title' => 'Keuangan BAIM',
+            'title' => 'Keuangan Masjid Baitul Ilmi ITERA',
+            'validation' => \Config\Services::validation(),
             'daftar_keuangan' => $this->KeuanganModel->getAll(),
             'total_masuk' => $total_masuk[0]->masuk,
             'total_keluar' => $total_keluar[0]->keluar,

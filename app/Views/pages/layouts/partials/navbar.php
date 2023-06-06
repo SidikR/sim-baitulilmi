@@ -1,4 +1,3 @@
-<!-- ======= Header ======= -->
 <header id="header" class="header fixed-top" data-scrollto-offset="0">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
@@ -25,8 +24,8 @@
                     endif;
                 } ?>
 
-                <li><a <?php getactive('');
-                        ?> href="/">Home</a></li>
+                <li class="nav-link"><a <?php getactive('');
+                                        ?> href="/">Home</a></li>
                 <li><a <?php getactive('about');
                         ?> href="<?= base_url('about'); ?>">About</a></li>
                 <li><a <?php getactive('guest-keuangan');
@@ -46,27 +45,14 @@
                         </button>
                     </a>
                 <?php else : ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= base_url('akun'); ?>">Akun</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="<?= base_url('logout'); ?>">Logout</a></li>
-                        </ul>
-                    </li>
+
+
 
 
                 <?php endif ?>
 
             </ul>
-            <!-- <li><a class="nav-link   scrollto" href="/datatables">Data Tables</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
+
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
