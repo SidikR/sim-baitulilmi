@@ -53,7 +53,7 @@
         </div>
 
         <div class="container-fluid px-4">
-            <div class="card-body">
+            <div class="">
                 <div class="mb-4 mt-4">
                     <!-- ini notifikasi Berhasil ditambah -->
                     <?php if (session('success')) : ?>
@@ -168,7 +168,7 @@
                     </div>
 
                     <div class="row">
-                        <section class="tabs">
+                        <section class="tables">
                             <div data-aos="fade-up">
                                 <!-- Tab Pertama -> Buku Besar -->
                                 <div class="tab-content">

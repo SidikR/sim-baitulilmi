@@ -223,4 +223,33 @@
     </div>
 <?php endforeach ?>
 
+<!-- Modal -->
+<div class="modal fade" id="updateGambar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Foto <?= user()->nama_lengkap; ?></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="akun/foto/<?= user()->id; ?>" method="post" enctype="multipart/form-data">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="PUT">
+                    <p class="image_upload">
+                        <label for="userImage">
+                            <a class="btn btn-secondary btn-lg" rel="nofollow"><span class=''><i class="bi bi-upload"></i></span> Pilih Gambar</a>
+                        </label>
+                        <input type="file" id="userImage" name="foto_user" onchange="readURL(this);" />
+                    </p>
+                    <img id="image" width="50%" height="50%" />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?= $this->endSection(); ?>

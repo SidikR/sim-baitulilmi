@@ -33,12 +33,14 @@ $routes->set404Override();
 // Routes Pertama Kali di Eksekusi
 // Bisa diakses Tanpa Login
 $routes->get('/', 'Pages\HomeController::index');
+$routes->get('/home', 'Pages\HomeController::index');
 $routes->get('/about', 'Pages\AboutController::index');
 $routes->get('/guest-keuangan', 'Pages\GuestKeuanganController::index');
 $routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
 $routes->get('/akun', 'Pages\AkunController::index', ['filter' => 'role:user']);
 $routes->put('/akun/(:segment)', 'Pages\AkunController::update/$1', ['filter' => 'role:user']);
+$routes->put('/akun/foto/(:segment)', 'Pages\AkunController::update_foto/$1', ['filter' => 'role:user']);
 $routes->post('peminjaman/batal/(:segment)', 'Pages\AkunController::batal/$1', ['filter' => 'role:user']);
 $routes->post('peminjaman-masjid/batal/(:segment)', 'Pages\AkunController::batal_masjid/$1', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanMasjidController::save_masjid', ['filter' => 'role:user']);

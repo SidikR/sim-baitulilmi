@@ -38,7 +38,7 @@
     <!-- <link href="<?= base_url('assets/css/main.css'); ?>" rel="stylesheet"> -->
     
     <!-- Variabel -->
-    <link href="<?php echo base_url('assets/css/variables.css'); ?>" rel="stylesheet">
+    <!-- <link href="<?php echo base_url('assets/css/variables.css'); ?>" rel="stylesheet"> -->
 
     <!-- My CSS -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/mystyle.css'); ?>">

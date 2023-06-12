@@ -5,8 +5,8 @@ namespace App\Controllers\Pages;
 use App\Controllers\BaseController;
 use App\Models\PeminjamanInventarisModel;
 use App\Models\PeminjamanMasjidModel;
-// use App\Models\UserModel;
-use Myth\Auth\Models\UserModel;
+use App\Models\AkunModel;
+// use Myth\Auth\Models\UserModel;
 use Myth\Auth\Entities\User;
 use \Myth\Auth\Password;
 use \Myth\Auth\Authorization\GroupModel;
@@ -15,27 +15,22 @@ class AkunController extends BaseController
 {
     protected $PeminjamanInventarisModel;
     protected $PeminjamanMasjidModel;
-    protected $UserModel;
+    protected $AkunModel;
     protected $helpers = ['form', 'auth'];
 
     public function __construct()
     {
         $this->PeminjamanInventarisModel = new PeminjamanInventarisModel();
         $this->PeminjamanMasjidModel = new PeminjamanMasjidModel();
-        $UserModel = new UserModel();
-        // $this->UserModel = new UserModel();
+        $this->AkunModel = new AkunModel();
     }
 
     public function index()
     {
-        $user_id = user_id();
         $daftar_peminjaman = $this->PeminjamanInventarisModel->getAllWithType(user_id());
         $daftar_peminjaman_masjid = $this->PeminjamanMasjidModel->getAllWithType(user_id());
-        // $dataUser = $this->userModel->getUserbyId(user_id());
+        // $dataUser = $this->AkunModel->getUserbyId(user_id());
 
-        // dd($dataUser);
-        // $dataUser = $this->userModel->findAll();
-        // dd($dataUser);
         $data = [
             'title' => 'Halaman Akun - ' . user()->nama_lengkap,
             'daftar_peminjaman' => $daftar_peminjaman,
@@ -71,12 +66,8 @@ class AkunController extends BaseController
 
     public function update($id)
     {
-
-        // $userModel = new UserModel();
-        $user = $this->UserModel->find($id);
-
         $data = [
-            'title' => 'Akun Anda',
+            'title' => 'Akun Anda ',
             'username' => esc($this->request->getVar('username')),
             'nama_lengkap' => esc($this->request->getVar('nama_lengkap')),
             'nomor_hp' => esc($this->request->getVar('nomor_hp')),
@@ -84,7 +75,29 @@ class AkunController extends BaseController
             'alamat' => esc($this->request->getVar('alamat')),
         ];
 
-        $this->UserModel->update($id, $data);
+        $this->AkunModel->update($id, $data);
         return redirect()->to('akun')->with('success', 'Data Berhasil di Update!');
+    }
+
+    public function update_foto($id)
+    {
+        // Ambil Gambar
+        $gambar = $this->request->getFile('foto_user');
+
+        //Ambil Nama Gambar
+        $namaGambar = $gambar->getName('');
+
+        $data = [
+            'title' => 'Tambah inventaris',
+            'foto_user' => $namaGambar,
+            'validation' => \Config\Services::validation()
+        ];
+
+        if (empty($namaGambar)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
+        }
+        $this->AkunModel->update($id, $data);
+        $gambar->move(WRITEPATH . '../public/assets/img/foto-user', $namaGambar);
+        return redirect()->to('akun')->with('success', 'Foto Akun Anda Berhasil Diubah');
     }
 }

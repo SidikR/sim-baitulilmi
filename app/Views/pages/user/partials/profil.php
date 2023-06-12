@@ -28,7 +28,7 @@
                                                         </div>
                                                         <div class="col-4 g-2">
                                                             <a href="<?php echo base_url('assets/img/foto-user/' . user()->foto_user); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                            <a title="Edit Foto" class="details-link g-2" data-bs-toggle="modal" data-bs-target="#updateGambar"><i class="bi bi-upload"></i></a>
+                                                            <a title="Edit" class="details-link" data-bs-toggle="modal" data-bs-target="#updateGambar"><i class="bi bi-upload"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -48,16 +48,16 @@
                                                     <div class="col-6">
                                                         <div class="mb-3">
                                                             <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="nama_lengkap" placeholder="<?= user()->nama_lengkap; ?>" required>
+                                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="nama_lengkap" value="<?= user()->nama_lengkap; ?>" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="username" class="form-label">Username</label>
-                                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="username" placeholder="<?= user()->username; ?>" required>
+                                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="username" value="<?= user()->username; ?>" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                                            <select name="jenis_kelamin" id="exampleFormControlInput1" class="form-select" placeholder="<?= user()->jenis_kelamin; ?>" required>
-                                                                <!-- <option selected>--Jenis Kelamin--</option> -->
+                                                            <select name="jenis_kelamin" id="exampleFormControlInput1" class="form-select" value="<?= user()->jenis_kelamin; ?>" required>
+                                                                <option selected><?= user()->jenis_kelamin; ?></option>
                                                                 <option value="Laki-Laki">Laki-Laki</option>
                                                                 <option value="Perempuan">Perempuan</option>
                                                             </select>
@@ -66,11 +66,11 @@
                                                     <div class="col-6">
                                                         <div class="mb-3">
                                                             <label for="alamat" class="form-label">Alamat</label>
-                                                            <textarea type="text" class="form-control" id="exampleFormControlInput1" name="alamat" placeholder="<?= user()->alamat; ?>" required rows="4"><?= user()->alamat; ?></textarea>
+                                                            <textarea type="text" class="form-control" id="exampleFormControlInput1" name="alamat" value="<?= user()->alamat; ?>" required rows="4"><?= user()->alamat; ?></textarea>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="nomor_hp" class="form-label">Nomor HP</label>
-                                                            <input type="number" class="form-control" id="exampleFormControlInput1" name="nomor_hp" placeholder="<?= user()->nomor_hp; ?>" required>
+                                                            <input type="number" class="form-control" id="exampleFormControlInput1" name="nomor_hp" value="<?= user()->nomor_hp; ?>" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,34 +87,4 @@
             </div>
         </main>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="updateGambar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update Foto <?= user()->nama_lengkap; ?></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="./foto/<?= user()->id; ?>" method="post" enctype="multipart/form-data">
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="_method" value="PUT">
-                        <p class="image_upload">
-                            <label for="userImage">
-                                <a class="btn btn-secondary btn-lg" rel="nofollow"><span class=''><i class="bi bi-upload"></i></span> Pilih Gambar</a>
-                            </label>
-                            <input type="file" id="userImage" name="foto_pengurus" onchange="readURL(this);" />
-                        </p>
-                        <img id="image" width="50%" height="50%" />
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div><!-- End Tab Content 2 -->
