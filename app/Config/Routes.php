@@ -36,6 +36,15 @@ $routes->get('/', 'Pages\HomeController::index');
 $routes->get('/home', 'Pages\HomeController::index');
 $routes->get('/about', 'Pages\AboutController::index');
 $routes->get('/guest-keuangan', 'Pages\GuestKeuanganController::index');
+$routes->get('/pengurus-guest', 'Pages\PengurusController::index');
+$routes->get('/detail-pengurus-(:segment)', 'Pages\PengurusController::detail/$1');
+$routes->get('/kegiatan-guest', 'Pages\KegiatanController::index');
+$routes->get('/detail-kegiatan-(:segment)', 'Pages\KegiatanController::detail/$1');
+$routes->get('/post-guest', 'Pages\PostController::index');
+$routes->get('/detail/post-(:segment)', 'Pages\PostController::detail/$1');
+$routes->post('comment/add/(:segment)', 'Pages\PostController::store/$1');
+
+
 $routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
 $routes->get('/akun', 'Pages\AkunController::index', ['filter' => 'role:user']);
@@ -49,8 +58,6 @@ $routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanMasjidController::save
 
 // Routes Admin Dashboard
 $routes->get('dashboard', 'Admin\DashboardController::index', ['filter' => 'role:admin']);
-
-
 $routes->get('users/index', 'Admin\UsersController::index', ['filter' => 'role:admin']);
 $routes->post('users/activate', 'Admin\UsersController::activate', ['filter' => 'role:admin']);
 $routes->get('users/changePassword/(:segment)', 'Admin\UsersController::changePassword/$1', ['filter' => 'role:admin']);
@@ -93,6 +100,16 @@ $routes->delete('/kegiatan/hapus/(:segment)', 'Admin\KegiatanController::delete/
 $routes->get('/kegiatan/detail/(:segment)', 'Admin\KegiatanController::detail/$1', ['filter' => 'role:admin']);
 $routes->get('/kegiatan/edit/(:segment)', 'Admin\KegiatanController::form_update/$1', ['filter' => 'role:admin']);
 $routes->put('/kegiatan/edit/foto/(:segment)', 'Admin\KegiatanController::update_foto/$1', ['filter' => 'role:admin']);
+
+// Routes Admin Data Pengurus
+$routes->get('post', 'Admin\PostController::index', ['filter' => 'role:admin']);
+$routes->post('/post/save', 'Admin\PostController::save', ['filter' => 'role:admin']);
+$routes->get('/post/tambah', 'Admin\PostController::create', ['filter' => 'role:admin']);
+$routes->put('/post/edit/(:segment)', 'Admin\PostController::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/post/hapus/(:segment)', 'Admin\PostController::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/post/detail/(:segment)', 'Admin\PostController::detail/$1', ['filter' => 'role:admin']);
+$routes->get('/post/edit/(:segment)', 'Admin\PostController::form_update/$1', ['filter' => 'role:admin']);
+$routes->put('/post/edit/foto/(:segment)', 'Admin\PostController::update_foto/$1', ['filter' => 'role:admin']);
 
 // Routes Admin Data Inventaris
 $routes->get('inventaris', 'Admin\InventarisController::index', ['filter' => 'role:admin']);

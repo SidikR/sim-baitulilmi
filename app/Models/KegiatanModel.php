@@ -25,8 +25,16 @@ class KegiatanModel extends Model
     public function getKegiatan($slug_kegiatan = false)
     {
         if ($slug_kegiatan == false) {
-            return $this->orderBy()->findAll();
+            return $this->findAll();
         }
         return $this->where(['slug_kegiatan' => $slug_kegiatan])->first();
+    }
+
+    public function getTopFour()
+    {
+        $builder = $this->db->table('kegiatan');
+        $builder->orderBy('waktu_mulai_kegiatan', 'DESC')->limit(4);
+        $query = $builder->get();
+        return $query->getResult();
     }
 }

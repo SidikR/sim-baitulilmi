@@ -47,4 +47,12 @@ class InventarisModel extends Model
 
         return $this->where(['slug_inventaris' => $slug_inventaris])->first();
     }
+
+    public function getTopFour()
+    {
+        $builder = $this->db->table('inventaris');
+        $builder->orderBy('id_inventaris', 'DESC')->limit(4);
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

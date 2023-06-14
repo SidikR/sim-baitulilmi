@@ -13,7 +13,7 @@
     <div class="container text-center" data-aos="zoom-out">
         <div class="row g-5">
             <div class="col-lg-12 col-md-6 content d-flex flex-column ">
-                <h3>Keuangan Masjid</h3>
+                <h3 class="p-3 text-uppercase">Keuangan Masjid</h3>
                 <p> Keuangan Masjid Baitul Ilmi ITERA dibagi menjadi tiga bagian yang berbeda, sesuai dengan ketentuan akad dengan donatur, berikut total keuangan masjid pada setaip akun keuangan</p>
                 <div class="row mt-3">
                     <div class="col-xl-4 col-md-6">
@@ -22,7 +22,7 @@
                                 <h4>Pembangunan</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-center">
-                                <h2><?= 'Rp. ' . number_format($total_pem); ?></h2>
+                                <h2><?= 'Rp. ' . number_format($total_pem, 0, '.', '.'); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                                 <h4>Sarana Prasarana</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-center">
-                                <h2><?= 'Rp. ' . number_format($total_prs); ?></h2>
+                                <h2><?= 'Rp. ' . number_format($total_prs, 0, '.', '.'); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                 <h4>Operasional</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-center">
-                                <h2><?= 'Rp. ' . number_format($total_op); ?></h2>
+                                <h2><?= 'Rp. ' . number_format($total_op, 0, '.', '.'); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                                 <h4 class="text-white"><b>Total Keuangan</b></h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-center">
-                                <h2><?= 'Rp. ' . number_format($total_kas); ?></h2>
+                                <h2><?= 'Rp. ' . number_format($total_kas, 0, '.', '.'); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -81,14 +81,14 @@
 
                     <li class="nav-item col-12 col-md-4 col-lg-4 masuk">
                         <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-2">
-                            <i class="bi bi-box-arrow-in-right color-indigo"></i>
+                            <i class="bi bi-box-arrow-in-right color-cyan"></i>
                             <h4>Pemasukan</h4>
                         </a>
                     </li><!-- End Tab 2 Nav -->
 
                     <li class="nav-item col-12 col-md-4 col-lg-4 keluar">
                         <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-3">
-                            <i class="bi bi-box-arrow-left color-indigo"></i>
+                            <i class="bi bi-box-arrow-left color-cyan"></i>
                             <h4>Pengeluaran</h4>
                         </a>
                     </li><!-- End Tab 2 Nav -->
@@ -161,11 +161,9 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class=" d-grid gap-2 d-md-flex justify-content-md-end">
                                 <button type="button" class="btn btn-danger reset">Reset Filter</button>
                             </div>
-
                         </div>
                     </div>
                 </form>
