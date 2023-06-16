@@ -1049,6 +1049,7 @@ section {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
+
 @media (min-width: 992px) {
   .hero-animated .animated {
     max-width: 45%;
@@ -1556,6 +1557,8 @@ section {
 
 .featured-services .service-item:hover {
   transform: translateY(-10px);
+  background: url("../img/hero-bg.webp") center center;
+  background-size: cover;
   box-shadow: 0px 0 60px 0 rgba(var(--color-secondary-rgb), 0.1);
 }
 
@@ -2160,7 +2163,7 @@ section {
 }
 
 .services .details h3 {
-  color: var(--color-default);
+  color: white;
   font-weight: 700;
   margin: 10px 0 15px 0;
   font-size: 22px;
@@ -2175,6 +2178,15 @@ section {
 
 .services .service-item:hover .details h3 {
   color: var(--color-primary);
+}
+
+.services .service-item .details.box:hover {
+  background: url("../img/hero-bg.webp") center center;
+  background-size: cover;
+}
+
+.services .service-item .details.box:hover h3 {
+color: var(--color-primary);
 }
 
 .services .service-item:hover .details .icon {
@@ -2615,6 +2627,128 @@ section {
   opacity: 1;
   inset: auto 10px 0 10px;
 }
+
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+.program .portfolio-flters {
+  padding: 0;
+  margin: 0 auto 30px auto;
+  list-style: none;
+  text-align: center;
+}
+
+.program .portfolio-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0 10px;
+  line-height: 1;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.program .portfolio-flters li:hover,
+.program .portfolio-flters li.filter-active {
+  color: var(--color-primary);
+}
+
+.program .portfolio-flters li:first-child {
+  margin-left: 0;
+}
+
+.program .portfolio-flters li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 575px) {
+  .program .portfolio-flters li {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+}
+
+@media (min-width: 992px) {
+  .carousel-lg img {
+    object-fit: cover;
+    height: 45rem; /* Ganti dengan tinggi yang Anda inginkan */
+  }
+}
+
+/* .program .portfolio-item {
+  position: relative;
+  border: 1px solid var(--color-white);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.program .portfolio-item img {
+  transition: all 0.3s;
+}
+
+.program .portfolio-item:before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  background: rgba(var(--color-secondary-rgb), 0.8);
+  z-index: 2;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.program .portfolio-item .portfolio-info {
+  opacity: 0;
+  position: absolute;
+  inset: auto 40px 40px 40px;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  padding: 20px;
+}
+
+.program .portfolio-item .portfolio-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-white);
+  padding-right: 50px;
+}
+
+.program .portfolio-item .portfolio-info .preview-link,
+.program .portfolio-item .portfolio-info .details-link {
+  position: absolute;
+  right: 50px;
+  font-size: 24px;
+  top: calc(50% - 14px);
+  color: rgba(var(--color-white-rgb), 0.7);
+  transition: 0.3s;
+  line-height: 0;
+}
+
+.program .portfolio-item .portfolio-info .preview-link:hover,
+.program .portfolio-item .portfolio-info .details-link:hover {
+  color: var(--color-white);
+}
+
+.program .portfolio-item .portfolio-info .details-link {
+  right: 14px;
+  font-size: 28px;
+}
+
+.program .portfolio-item:hover:before {
+  visibility: visible;
+  opacity: 1;
+}
+
+.program .portfolio-item:hover img {
+  transform: scale(1.2);
+}
+
+.program .portfolio-item:hover .portfolio-info {
+  opacity: 1;
+  inset: auto 10px 0 10px;
+} */
 
 /*--------------------------------------------------------------
 # Team Section
@@ -3986,3 +4120,27 @@ section {
   background-image: none;
 }
 
+#myMarquee {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+
+.btn.btn-lihat-selengkapnya{
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 1rem;
+}
+
+.btn.btn-lihat-selengkapnya:hover{
+  background: url("../img/hero-bg.webp") center center;
+  background-size: cover;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}

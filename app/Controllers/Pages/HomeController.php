@@ -6,6 +6,9 @@ use App\Controllers\BaseController;
 use App\Models\KeuanganModel;
 use App\Models\KegiatanModel;
 use App\Models\InventarisModel;
+use App\Models\PostModel;
+use App\Models\FeedbackModel;
+use PhpParser\Node\Stmt\Return_;
 
 class HomeController extends BaseController
 {
@@ -13,12 +16,16 @@ class HomeController extends BaseController
     protected $KeuanganModel;
     protected $KegiatanModel;
     protected $InventarisModel;
+    protected $PostModel;
+    protected $FeedbackModel;
 
     public function __construct()
     {
         $this->KeuanganModel = new KeuanganModel();
         $this->KegiatanModel = new KegiatanModel();
         $this->InventarisModel = new InventarisModel();
+        $this->PostModel = new PostModel();
+        $this->FeedbackModel = new FeedbackModel();
     }
 
     public function index()
@@ -44,8 +51,23 @@ class HomeController extends BaseController
             'total_prs' => $masuk_prs[0]->masuk - $keluar_prs[0]->keluar,
             'total_pem' => $masuk_pem[0]->masuk - $keluar_pem[0]->keluar,
             'total_kas' => $total_masuk[0]->masuk - $total_keluar[0]->keluar,
+            'daftar_post' => $this->PostModel->getTopThree(),
             'validation' => \Config\Services::validation(),
         ];
         return view('pages/home', $data);
+    }
+
+    public function send_feedback()
+    {
+        $data = [
+            'nama' => esc($this->request->getVar('name')),
+            'no_telepon' => esc($this->request->getVar('no_telepon')),
+            'email' => esc($this->request->getVar('email')),
+            'subject' => esc($this->request->getVar('subject')),
+            'feedback' => esc($this->request->getVar('feedback'))
+        ];
+
+        $this->FeedbackModel->insert($data);
+        return redirect()->back()->with('succes', 'Feedback Anda Berhasil diKirim');
     }
 }

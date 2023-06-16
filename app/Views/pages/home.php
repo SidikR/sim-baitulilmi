@@ -15,23 +15,23 @@
     </div>
 </section>
 
-
 <!-- Our Service -->
 <section id="services" class="services">
     <div class="container" data-aos="fade-up">
-        <div class="row">
+        <div class="row d-flex flex-column">
 
-            <div class="col-12 mb-5">
-                <div class="section-header text-primary">
-                    <h1 class="color-primary ">Layanan</h1>
+            <div class="col-12 pb-5 mb-5">
+                <div class="section-header">
+                    <h2 class="color-primary ">Layanan</h2>
                     <p>Silakan pilih layanan yang kami sediakan.</p>
                 </div>
             </div>
 
-            <div class="row mt-5 pt-5 gy-5 mb-5 pb-5">
-                <div class="col-12 col-xl-4 col-md-6 mb-5" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="service-item ">
-                        <div class="details position-relative bg-img-primary">
+            <div class="row d-flex">
+
+                <div class="col-12 col-xl-4 col-md-12 mb-5 pb-5  mt-5 pb-5" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="service-item">
+                        <div class="details box position-relative bg-primary">
                             <div class="icon">
                                 <i class="bi bi-box-seam-fill"></i>
                             </div>
@@ -42,9 +42,10 @@
                         </div>
                     </div>
                 </div><!-- End Service Item -->
-                <div class="col-12 col-xl-4 col-md-6 mb-5" data-aos="zoom-in" data-aos-delay="200">
+
+                <div class="col-12 col-xl-4 col-md-12 mb-5 pb-5 mt-5 pb-5" data-aos="zoom-in" data-aos-delay="200">
                     <div class="service-item ">
-                        <div class="details position-relative bg-img-primary">
+                        <div class="details box position-relative bg-primary">
                             <div class="icon">
                                 <i class="bi bi-currency-dollar"></i>
                             </div>
@@ -55,9 +56,10 @@
                         </div>
                     </div>
                 </div><!-- End Service Item -->
-                <div class="col-12 col-xl-4 col-md-6 mb-5" data-aos="zoom-in" data-aos-delay="200">
+
+                <div class="col-12 col-xl-4 col-md-12 mt-5 pb-5" data-aos="zoom-in" data-aos-delay="200">
                     <div class="service-item ">
-                        <div class="details position-relative bg-img-primary">
+                        <div class="details box position-relative bg-primary">
                             <div class="icon">
                                 <i class="bi bi-envelope-heart-fill"></i>
                             </div>
@@ -68,9 +70,8 @@
                         </div>
                     </div>
                 </div><!-- End Service Item -->
+
             </div>
-
-
         </div>
 </section>
 <!-- End Our Service -->
@@ -79,14 +80,14 @@
 <section id="cta" class="cta mt-5 bg-img-primary">
     <div class="container text-center" data-aos="zoom-out">
         <div class="row g-5">
-            <div class="col-lg-12 col-md-6 d-flex flex-column ">
+            <div class="col-lg-12 col-md-12 col-12 d-flex flex-column ">
                 <div class="section-header">
                     <h2 class="p-3 color-primary">Keuangan Masjid</h2>
                     <p> Keuangan Masjid Baitul Ilmi ITERA dibagi menjadi tiga bagian yang berbeda, sesuai dengan ketentuan akad dengan donatur, berikut total keuangan masjid pada setaip akun keuangan</p>
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-xl-4 col-md-6">
+                    <div class="col-xl-4 col-md-12">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">
                                 <h4>Pembangunan</h4>
@@ -96,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6">
+                    <div class="col-xl-4 col-md-12">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">
                                 <h4>Sarana Prasarana</h4>
@@ -106,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6">
+                    <div class="col-xl-4 col-md-12">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">
                                 <h4>Operasional</h4>
@@ -128,7 +129,7 @@
                             </div>
                         </div>
                         <div class="p-2">
-                            <a href="<?= base_url('guest-keuangan'); ?>" class="btn btn-primary">Lihat Selengkapnya</a>
+                            <a href="<?= base_url('guest-keuangan'); ?>" class="btn btn-lihat-selengkapnya">Lihat Selengkapnya</a>
                         </div>
                     </div>
                 </div>
@@ -146,7 +147,7 @@
             <p>Berikut ini Beberapa Kegiatan di Masjid Baitul Ilmi</p>
         </div>
 
-        <div class="row gy-3 d-flex align-items-center justify-content-center">
+        <div class="row gy-3 d-flex justify-content-center">
             <?php foreach ($daftar_kegiatan as $dk) : ?>
                 <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
                     <div class="service-item">
@@ -172,12 +173,88 @@
             <?php endforeach ?>
 
             <div class="row pt-3 mt-3 col-xl-4 ">
-                <a class="btn btn-primary" href="<?= base_url('kegiatan-guest'); ?>">Lihat Selengkapnya</a>
+                <a class="btn btn-lihat-selengkapnya" href="<?= base_url('kegiatan-guest'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
 
     </div>
 </section><!-- End Services Section -->
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="program" data-aos="fade-up">
+
+    <div class="container">
+
+        <div class="section-header">
+            <h2>Program Masjid</h2>
+            <p>Non hic nulla eum consequatur maxime ut vero memo vero totam officiis pariatur eos dolorum sed fug dolorem est possimus esse quae repudiandae. Dolorem id enim officiis sunt deserunt esse soluta consequatur quaerat</p>
+        </div>
+
+    </div>
+
+    <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
+
+        <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+            <ul class="portfolio-flters">
+                <li data-filter="*" class="filter-active">All</li>
+                <li data-filter=".filter-app">App</li>
+                <li data-filter=".filter-product">Product</li>
+                <li data-filter=".filter-branding">Branding</li>
+                <li data-filter=".filter-books">Books</li>
+            </ul><!-- End Portfolio Filters -->
+
+            <div class="row g-0 portfolio-container">
+
+                <div class="col-12 portfolio-item filter-app">
+                    <div class="carousel carousel-lg">
+                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active " data-bs-interval="1000">
+                                    <img src="<?= base_url('assets/img/blog/blog-1.jpg'); ?>" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>First slide label</h5>
+                                        <p>Some representative placeholder content for the first slide.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="1000">
+                                    <img src="..." class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Second slide label</h5>
+                                        <p>Some representative placeholder content for the second slide.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="1000">
+                                    <img src="..." class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Third slide label</h5>
+                                        <p>Some representative placeholder content for the third slide.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div><!-- End Portfolio Item -->
+
+            </div><!-- End Portfolio Container -->
+
+        </div>
+
+    </div>
+</section><!-- End Portfolio Section -->
 
 <section id="team" class="team bg-img-primary">
     <div class="container" data-aos="fade-up">
@@ -243,7 +320,7 @@
                 </div>
             </div><!-- End Team Member -->
             <div class="row pt-3 mt-3 col-xl-4 ">
-                <a class="btn btn-primary" href="<?= base_url('pengurus-guest'); ?>">Lihat Selengkapnya</a>
+                <a class="btn btn-lihat-selengkapnya" href="<?= base_url('pengurus-guest'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
 </section><!-- End Team Section -->
@@ -256,39 +333,87 @@
             <h2 class="color-primary">Daftar Inventaris</h2>
             <p>Berikut ini beberapa Invenntaris di Masjid Baitul Ilmi</p>
         </div>
-    </div>
 
-    <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
-        <div class="portfolio-isotope">
-            <div class="row d-flex align-items-center justify-content-center">
+        <div class="row d-flex align-items-center justify-content-center">
+            <?php foreach ($daftar_inventaris as $di) :  ?>
+                <div class="col-xl-3 g-4 col-lg-4 col-md-6 portfolio-item filter-app rounded" style="width: 300px; height : 300px">
+                    <img src="<?= base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" class="img-fluid rounded" alt="Foto Inventaris">
+                    <div class="portfolio-info">
+                        <h4><?= $di->nama_inventaris; ?></h4>
+                        <h4> <?php if ($di->stok_inventaris == 0) {
+                                    'Stok : Habis';
+                                } else {
+                                    echo 'Stok : ' . $di->stok_inventaris;
+                                }
+                                ?></h4>
+                        <a href="<?= base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" title="<?= $di->nama_inventaris; ?>" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a data-bs-toggle="modal" data-bs-target="#pinjamModal<?= $di->id_inventaris; ?>" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    </div>
+                </div><!-- End Portfolio Item -->
+            <?php endforeach ?>
 
-                <?php foreach ($daftar_inventaris as $di) :  ?>
-                    <div class="col-xl-3 g-4 col-lg-4 col-md-6 portfolio-item filter-app rounded" style="width: 300px; height : 300px">
-                        <img src="<?= base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" class="img-fluid rounded" alt="Foto Inventaris">
-                        <div class="portfolio-info">
-                            <h4><?= $di->nama_inventaris; ?></h4>
-                            <h4> <?php if ($di->stok_inventaris == 0) {
-                                        'Stok : Habis';
-                                    } else {
-                                        echo 'Stok : ' . $di->stok_inventaris;
-                                    }
-                                    ?></h4>
-                            <a href="<?= base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" title="<?= $di->nama_inventaris; ?>" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                            <a data-bs-toggle="modal" data-bs-target="#pinjamModal<?= $di->id_inventaris; ?>" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                        </div>
-                    </div><!-- End Portfolio Item -->
-                <?php endforeach ?>
-
-                <div class="row pt-3 mt-3 col-xl-4 ">
-                    <a class="btn btn-primary" href="">Lihat Selengkapnya</a>
-                </div>
-            </div><!-- End Portfolio Container -->
+            <div class="row pt-3 mt-3 col-xl-4 ">
+                <a class="btn btn-lihat-selengkapnya" href="">Lihat Selengkapnya</a>
+            </div>
         </div>
-    </div>
+    </div><!-- End Portfolio Container -->
 </section><!-- End Portfolio Section -->
 
+<!-- ======= Recent Blog Posts Section ======= -->
+<section id="recent-blog-posts" class="recent-blog-posts bg-img-primary">
+
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+            <h2>Post</h2>
+            <p>Belikut ini beberapa post masjid Baitul Ilmi ITERA</p>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <?php foreach ($daftar_post as $post) : ?>
+                <div class="col-lg-4 p-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="post-box">
+                        <div class="post-img"><img src="<?= base_url('assets-admin/img/post/' . $post->foto_post); ?>" class="img-fluid" alt=""></div>
+                        <div class="meta">
+                            <span class="post-date"><i class="bi bi-clock"></i> <a><time>
+                                        <?php $newFormat = date("d-M-Y", strtotime($post->created_at));
+                                        echo $newFormat
+                                        ?></time></a></span>
+                        </div>
+                        <h3 class="post-title"><?= $post->nama_post; ?></h3>
+                        <p><?php
+                            $content_news =  $post->deskripsi_post;
+
+                            // Menghapus semua tag HTML
+                            $strippedContent = strip_tags($content_news);
+
+                            $news = substr($strippedContent, 0, 70) . "...";
+
+                            // Memisahkan paragraf menjadi array
+                            $paragraphs = explode("\n", $news);
+
+                            // Menggabungkan setiap paragraf menjadi elemen <p>
+                            $result = '';
+                            foreach ($paragraphs as $paragraph) {
+                                $result .= "<p>$paragraph</p>";
+                            }
+
+                            echo $result;
+                            ?></p>
+                        <a href="<?= base_url('detail/post-' . $post->id_post); ?>" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            <?php endforeach ?>
+            <div class="row pt-3 mt-3 col-xl-4 ">
+                <a class="btn btn-lihat-selengkapnya" href="<?= base_url('post-guest'); ?>">Lihat Selengkapnya</a>
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Recent Blog Posts Section -->
+
 <!-- ======= Contact Section ======= -->
-<section id="contact" class="contact bg-img-primary">
+<section id="contact" class="contact">
     <div class="container">
 
         <div class="section-header">
@@ -299,7 +424,7 @@
     </div>
 
     <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.378277032061!2d105.3100171746343!3d-5.3591161946196575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c4a9dd27799f%3A0x93f2bd8e5315535!2sBaitul%20Ilmi%20Mosque!5e0!3m2!1sen!2sus!4v1684575604207!5m2!1sen!2sus" frameborder="0" allowfullscreen></iframe>
     </div><!-- End Google Maps -->
 
     <div class="container">
@@ -341,27 +466,30 @@
             </div>
 
             <div class="col-lg-8">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <input type="text" name="name" class="form-control border-success rounded-2" id="name" placeholder="Your Name" required>
+                <form action="/send-feedback" method="post" class="">
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control border-success rounded-2" name="name" id="name" placeholder="Isi Nama Anda" required>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 form-group mt-md-0">
+                            <input type="text" name="no_telepon" class="form-control border-success rounded-2" id="no_telepon" placeholder="Misal. 0895 xxx xxx" required>
                         </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <input type="email" class="form-control border-success rounded-2" name="email" id="email" placeholder="Your Email" required>
+                        <div class="col-md-6 form-group mt-md-0">
+                            <input type="email" name="email" class="form-control border-success rounded-2" placeholder="Your Email" required>
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <input type="text" class="form-control border-success rounded-2" name="subject" id="subject" placeholder="Subject" required>
                     </div>
                     <div class="form-group mt-3">
-                        <textarea class="form-control border-success rounded-2" name="message" placeholder="Message" required></textarea>
+                        <textarea class="form-control border-success rounded-2" name="feedback" placeholder="feedback" required></textarea>
                     </div>
                     <div class="my-3">
                         <div class="loading">Loading</div>
                         <div class="error-message"></div>
                         <div class="sent-message">Your message has been sent. Thank you!</div>
                     </div>
-                    <div class="text-center"><button type="submit">Send Message</button></div>
+                    <div class="text-center"><button class="btn btn-lihat-selengkapnya" type="submit">Send Message</button></div>
                 </form>
             </div><!-- End Contact Form -->
 
@@ -495,7 +623,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-lihat-selengkapnya">Save changes</button>
                     </div>
                     </form>
                 </div>

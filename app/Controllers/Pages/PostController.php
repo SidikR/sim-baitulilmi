@@ -74,7 +74,7 @@ class PostController extends BaseController
         $userID = $this->request->getVar('user_id');
         $comment = $this->request->getVar('comment');
         $parentID = $this->request->getVar('parent_id'); // ID komentar yang dibalas, jika ada
-        $createdAt = date('Y-m-d H:i:s');
+        $createdAt = date('Y-m-d');
 
         $data = [
             'post_id' => $postID,

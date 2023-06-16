@@ -30,10 +30,10 @@ class PostModel extends Model
         return $this->where(['id_post' => $id_post])->first();
     }
 
-    public function getTopFour()
+    public function getTopThree()
     {
         $builder = $this->db->table('post');
-        $builder->orderBy('waktu_mulai_post', 'DESC')->limit(4);
+        $builder->orderBy('created_at', 'DESC')->limit(3);
         $query = $builder->get();
         return $query->getResult();
     }
