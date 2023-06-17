@@ -14,15 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
     <!-- Material Icon -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    
 
     <!-- DataTables -->
     <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -34,14 +27,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap.min.css" />
 
     <!-- Vendor CSS Files -->
-    <link href="<?php echo base_url('assets/vendor/aos/aos.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/bootstrap1/css/bootstrap.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/remixicon/remixicon.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('vendor/aos/aos.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('vendor/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('vendor/bootstrap/bootstrap-icons/font/bootstrap-icons.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('vendor/remixicon/remixicon.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
     
 
     <!-- Template Main CSS File -->
@@ -65,36 +57,24 @@
 <body>    
     <?= $this->include('pages/layouts/partials/navbar'); ?>
     <?= $this->renderSection('content'); ?>`
-    <!-- ======= Footer ======= -->
     <?= $this->include('pages/layouts/partials/footer'); ?>
+
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- <div id="preloader"></div> -->
-
-    <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
-
-
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
-    
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script> -->
-   
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script> -->
 
     <script src=<?php echo base_url('assets/js/main.js'); ?>></script>
 
     <!-- Vendor JS Files -->
-    <script src=<?php echo base_url('assets/vendor/aos/aos.js'); ?>></script>
-    <script src=<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>></script>
-    <script src=<?php echo base_url('assets/vendor/bootstrap1/js/bootstrap.bundle.min.js'); ?>></script>
-    <script src=<?php echo base_url('assets/vendor/glightbox/js/glightbox.min.js'); ?>></script>
-    <script src=<?php echo base_url('assets/vendor/isotope-layout/isotope.pkgd.min.js'); ?>></script>
-    <script src=<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.js'); ?>></script>
-    <script src=<?php echo base_url('assets/vendor/waypoints/noframework.waypoints.js'); ?>></script>
-    <script src=<?php echo base_url('assets/vendor/php-email-form/validate.js'); ?>></script>
+    <script src=<?php echo base_url('vendor/aos/aos.js'); ?>></script>
+    <script src=<?php echo base_url('vendor/bootstrap/dist/js/bootstrap.min.js'); ?>></script>
+    <script src=<?php echo base_url('vendor/glightbox/js/glightbox.min.js'); ?>></script>
+    <script src=<?php echo base_url('vendor/isotope-layout/isotope.pkgd.min.js'); ?>></script>
+    <script src=<?php echo base_url('vendor/swiper/swiper-bundle.min.js'); ?>></script>
+    <script src=<?php echo base_url('vendor/waypoints/noframework.waypoints.js'); ?>></script>
+    <script src=<?php echo base_url('vendor/php-email-form/validate.js'); ?>></script>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -124,13 +104,6 @@
     <script src="<?= base_url('assets-admin/vendor/jquery-easing/jquery.easing.min.js'); ?>;"></script>
 
     <script src="<?= base_url('assets-admin/js/sb-admin-2.js'); ?>"></script>
-
-    <!-- Page level plugins -->
-    <script src="<?= base_url('assets-admin/vendor/chart.js/Chart.min.js'); ?>"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="<?= base_url('assets-admin/js/demo/chart-area-demo.js'); ?>"></script>
-    <script src="<?= base_url('assets-admin/js/demo/chart-pie-demo.js'); ?>"></script>
 
     <!-- JS Datatables -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -252,23 +225,7 @@
                             i : 0;
                     };
 
-                    // // Total over all pages
-                    // masuk = api
-                    //     .column( currentPosition1 )
-                    //     .data()
-                    //     .reduce( function (a, b) {
-                    //         return intVal(a) + intVal(b);
-                    //     }, 0 );
-
-                    // // Total over all pages
-                    // keluar = api
-                    //     .column( currentPosition2 )
-                    //     .data()
-                    //     .reduce( function (a, b) {
-                    //         return intVal(a) + intVal(b);
-                    //     }, 0 );
-
-                    // Total over this page
+                                    // Total over this page
                     pageTotalMasuk = api
                         .column(currentPosition1, {
                             page: 'current'

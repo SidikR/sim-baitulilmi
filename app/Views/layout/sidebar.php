@@ -43,6 +43,7 @@
                         <a class="collapse-item" href="<?= base_url('kegiatan'); ?>">Kegiatan</a>
                         <a class="collapse-item" href="<?= base_url('pengumuman'); ?>">Pengumuman</a>
                         <a class="collapse-item" href="<?= base_url('post'); ?>">Post</a>
+                        <a class="collapse-item" href="<?= base_url('program'); ?>">Program</a>
                     </div>
                 </div>
             </li>

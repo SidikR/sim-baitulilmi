@@ -101,6 +101,16 @@ $routes->get('/kegiatan/detail/(:segment)', 'Admin\KegiatanController::detail/$1
 $routes->get('/kegiatan/edit/(:segment)', 'Admin\KegiatanController::form_update/$1', ['filter' => 'role:admin']);
 $routes->put('/kegiatan/edit/foto/(:segment)', 'Admin\KegiatanController::update_foto/$1', ['filter' => 'role:admin']);
 
+
+$routes->get('program', 'Admin\ProgramController::index', ['filter' => 'role:admin']);
+$routes->post('/program/save', 'Admin\ProgramController::save', ['filter' => 'role:admin']);
+$routes->get('/program/tambah', 'Admin\ProgramController::create', ['filter' => 'role:admin']);
+$routes->put('/program/edit/(:segment)', 'Admin\ProgramController::update/$1', ['filter' => 'role:admin']);
+$routes->delete('/program/hapus/(:segment)', 'Admin\ProgramController::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/program/detail/(:segment)', 'Admin\ProgramController::detail/$1', ['filter' => 'role:admin']);
+$routes->get('/program/edit/(:segment)', 'Admin\ProgramController::form_update/$1', ['filter' => 'role:admin']);
+$routes->put('/program/edit/foto/(:segment)', 'Admin\ProgramController::update_foto/$1', ['filter' => 'role:admin']);
+
 // Routes Admin Data Pengurus
 $routes->get('post', 'Admin\PostController::index', ['filter' => 'role:admin']);
 $routes->post('/post/save', 'Admin\PostController::save', ['filter' => 'role:admin']);

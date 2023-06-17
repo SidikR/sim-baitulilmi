@@ -8,6 +8,7 @@ use App\Models\KegiatanModel;
 use App\Models\InventarisModel;
 use App\Models\PostModel;
 use App\Models\FeedbackModel;
+use App\Models\ProgramModel;
 use PhpParser\Node\Stmt\Return_;
 
 class HomeController extends BaseController
@@ -18,6 +19,7 @@ class HomeController extends BaseController
     protected $InventarisModel;
     protected $PostModel;
     protected $FeedbackModel;
+    protected $ProgramModel;
 
     public function __construct()
     {
@@ -26,6 +28,7 @@ class HomeController extends BaseController
         $this->InventarisModel = new InventarisModel();
         $this->PostModel = new PostModel();
         $this->FeedbackModel = new FeedbackModel();
+        $this->ProgramModel = new ProgramModel();
     }
 
     public function index()
@@ -51,6 +54,8 @@ class HomeController extends BaseController
             'total_prs' => $masuk_prs[0]->masuk - $keluar_prs[0]->keluar,
             'total_pem' => $masuk_pem[0]->masuk - $keluar_pem[0]->keluar,
             'total_kas' => $total_masuk[0]->masuk - $total_keluar[0]->keluar,
+            'daftar_program' => $this->ProgramModel->findAll(),
+            'daftar_filter' => $this->ProgramModel->getFilter(),
             'daftar_post' => $this->PostModel->getTopThree(),
             'validation' => \Config\Services::validation(),
         ];
