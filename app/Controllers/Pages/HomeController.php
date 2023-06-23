@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Pages;
 
+use App\Controllers\Admin\PetugasjumatController;
 use App\Controllers\BaseController;
 use App\Models\KeuanganModel;
 use App\Models\KegiatanModel;
@@ -9,6 +10,7 @@ use App\Models\InventarisModel;
 use App\Models\PostModel;
 use App\Models\FeedbackModel;
 use App\Models\ProgramModel;
+use App\Models\PetugasJumatModel;
 use PhpParser\Node\Stmt\Return_;
 
 class HomeController extends BaseController
@@ -20,6 +22,7 @@ class HomeController extends BaseController
     protected $PostModel;
     protected $FeedbackModel;
     protected $ProgramModel;
+    protected $PetugasJumatModel;
 
     public function __construct()
     {
@@ -29,6 +32,7 @@ class HomeController extends BaseController
         $this->PostModel = new PostModel();
         $this->FeedbackModel = new FeedbackModel();
         $this->ProgramModel = new ProgramModel();
+        $this->PetugasJumatModel = new PetugasJumatModel();
     }
 
     public function index()
@@ -58,9 +62,11 @@ class HomeController extends BaseController
             'daftar_filter' => $this->ProgramModel->getFilter(),
             'daftar_post' => $this->PostModel->getTopThree(),
             'validation' => \Config\Services::validation(),
+            'petugas_jumat' => $this->PetugasJumatModel->getPetugas()
         ];
         return view('pages/home', $data);
     }
+
 
     public function send_feedback()
     {

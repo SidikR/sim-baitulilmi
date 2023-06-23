@@ -24,7 +24,7 @@
                                 <i class="bi bi-calendar4-week"></i>
                             </div>
                             <a href="<?= base_url('detail-kegiatan-' . $dk->slug_kegiatan); ?>">
-                                <h3><?= $dk->nama_kegiatan; ?></h3>
+                                <h3 class="color-primary"><?= $dk->nama_kegiatan; ?></h3>
                             </a>
                             <div class="d-flex flex-column align-items-center justify-content-start">
                                 <p>Penyelenggara : <?= $dk->penyelenggara_kegiatan; ?></p>

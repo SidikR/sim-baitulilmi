@@ -379,6 +379,7 @@
 
 
 <?= $this->include('bendahara/pemasukan/modal_detail'); ?>
+<?= $this->include('bendahara/pengeluaran/modal_detail'); ?>
 
 
 <?= $this->endSection() ?>

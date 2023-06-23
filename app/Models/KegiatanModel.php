@@ -33,7 +33,15 @@ class KegiatanModel extends Model
     public function getTopFour()
     {
         $builder = $this->db->table('kegiatan');
-        $builder->orderBy('waktu_mulai_kegiatan', 'DESC')->limit(4);
+        $builder->orderBy('waktu_mulai_kegiatan', 'DESC')->limit(3);
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getMaxId()
+    {
+        $builder = $this->db->table('kegiatan');
+        $builder->selectMax('id_kegiatan');
         $query = $builder->get();
         return $query->getResult();
     }

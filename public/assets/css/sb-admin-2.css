@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 :root {
 
   /* Fonts */
@@ -135,60 +136,13 @@
   --bs-body-bg: #fff;
 
 }
+.card-dashboard:hover{
+  transition: transform 0.2s linear;
+  will-change: transform;
+  transform: scale(1.1);
+  backface-visibility: hidden;
+}
 
-/*--------------------------------------------------------------
-# 3. Set color and background class names
---------------------------------------------------------------*/
-/* Fonts */
-.font-default { font-family: var(--font-default) !important; }
-.font-primary { font-family: var(--font-primary) !important;}
-.font-secondary { font-family: var(--font-secondary) !important; }
-
-/* Text Colors */
-.color-default { color: var(--color-default) !important; }
-.color-links { color: var(--color-links) !important; }
-.color-links:hover { color: var(--color-links-hover) !important; }
-.color-primary { color: var(--color-primary) !important; }
-.color-primary-light { color: var(--color-primary-light) !important; }
-.color-primary-dark { color: var(--color-primary-dark) !important; }
-.color-secondary { color: var(--color-secondary) !important; }
-.color-secondary-light { color: var(--color-secondary-light) !important; }
-.color-secondary-dark { color: var(--color-secondary-dark) !important; }
-.color-blue { color: var(--color-blue) !important; }
-.color-indigo { color: var(--color-indigo) !important; }
-.color-purple { color: var(--color-purple) !important; }
-.color-pink { color: var(--color-pink) !important; }
-.color-red { color: var(--color-red) !important; }
-.color-orange { color: var(--color-orange) !important; }
-.color-yellow { color: var(--color-yellow) !important; }
-.color-green { color: var(--color-green) !important; }
-.color-teal { color: var(--color-teal) !important; }
-.color-cyan { color: var(--color-cyan) !important; }
-.color-white { color: var(--color-white) !important; }
-.color-gray { color: var(--color-gray) !important; }
-.color-black { color: var(--color-black) !important; }
-
-/* Background Colors */
-.bg-default { background-color: var(--color-default) !important; }
-.bg-primary { background-color: var(--color-primary) !important; }
-.bg-primary-light { background-color: var(--color-primary-light) !important; }
-.bg-primary-dark { background-color: var(--color-primary-dark) !important; }
-.bg-secondary { background-color: var(--color-secondary) !important; }
-.bg-secondary-light { background-color: var(--color-secondary-light) !important; }
-.bg-secondary-dark { background-color: var(--color-secondary-dark) !important; }
-.bg-blue { background-color: var(--color-blue) !important; }
-.bg-indigo { background-color: var(--color-indigo) !important; }
-.bg-purple { background-color: var(--color-purple) !important; }
-.bg-pink { background-color: var(--color-pink) !important; }
-.bg-red { background-color: var(--color-red) !important; }
-.bg-orange { background-color: var(--color-orange) !important; }
-.bg-yellow { background-color: var(--color-yellow) !important; }
-.bg-green { background-color: var(--color-green) !important; }
-.bg-teal { background-color: var(--color-teal) !important; }
-.bg-cyan { background-color: var(--color-cyan) !important; }
-.bg-white { background-color: var(--color-white) !important; }
-.bg-gray { background-color: var(--color-gray) !important; }
-.bg-black { background-color: var(--color-black) !important; }
 
 .table {
   width: 100%;
@@ -6386,7 +6340,8 @@ a:focus {
   }
 }
 .sidebar-light {
-  background-color: #f8f9fc;
+  background: url("../img/hero-bg.webp") center center;
+  background-size: cover;
 }
 .sidebar-light .sidebar-brand {
   color: #6e707e;
@@ -6395,7 +6350,7 @@ a:focus {
   border-top: 1px solid #eaecf4;
 }
 .sidebar-light .sidebar-heading {
-  color: var(--color-primary);
+  color: var(--color-black);
 }
 .sidebar-light .nav-item .nav-link {
   color: #858796;
@@ -6419,13 +6374,13 @@ a:focus {
   color: #6e707e;
 }
 .sidebar-light #sidebarToggle {
-  background-color: #eaecf4;
+  background-color: var(--color-primary);
 }
 .sidebar-light #sidebarToggle::after {
-  color: #b7b9cc;
+  color: white;
 }
 .sidebar-light #sidebarToggle:hover {
-  background-color: #dddfeb;
+  background-color: var(--color-secondary);
 }
 
 .sidebar-dark .sidebar-brand {

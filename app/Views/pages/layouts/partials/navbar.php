@@ -79,23 +79,23 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                                         <?php if (in_groups('admin')) : ?>
                                             <a class="dropdown-item" href="<?= base_url('dashboard'); ?>">
-                                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                <i class="bi bi-speedometer2 pe-2 color-primary"></i>
                                                 Dashboard
                                             </a>
                                         <?php elseif (in_groups('bendahara')) : ?>
                                             <a class="dropdown-item" href="<?= base_url('keuangan'); ?>">
-                                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                <i class="bi bi-speedometer2 pe-2 color-primary"></i>
                                                 Dashboard
                                             </a>
                                         <?php elseif (in_groups('user')) : ?>
                                             <a class="dropdown-item" href="<?= base_url('akun'); ?>">
-                                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                <i class="bi bi-speedometer2 pe-2 color-primary"></i>
                                                 Akun
                                             </a>
                                         <?php endif ?>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            <i class="bi bi-box-arrow-right pe-2 color-primary"></i>
                                             Logout
                                         </a>
                                     </div>

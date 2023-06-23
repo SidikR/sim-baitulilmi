@@ -35,20 +35,8 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('peminjaman'); ?>">Peminjaman Inventaris</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('peminjaman'); ?>">Peminjaman Masjid</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('keuangan-guest'); ?>">Transparansi Keuangan</a></li>
-                        <!-- <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li> -->
                     </ul>
                 </div>
-
-                <!-- <div class="col-lg-4 col-md-6 footer-newsletter"> -->
-                <!-- <h4>Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
-                    </form> -->
-
-                <!-- </div> -->
-
             </div>
         </div>
     </div>
@@ -65,16 +53,12 @@
                     <!-- You can delete the links only if you purchased the pro version. -->
                     <!-- Licensing information: https://bootstrapmade.com/license/ -->
                     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Customed by. <a href="<?= base_url('home'); ?>">Masjid Baitul Ilmi ITERA</a>
+                    Designed UI by <a href="https://bootstrapmade.com/">BootstrapMade</a> Customed by. <a href="<?= base_url('home'); ?>">Masjid Baitul Ilmi ITERA</a>
                 </div>
             </div>
 
             <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-                <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> -->
-                <!-- <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> -->
                 <a href="https://www.instagram.com/baim.itera/" class="instagram"><i class="bi bi-instagram"></i></a>
-                <!-- <a href="#" class="google-plus"><i class="bi bi-skype"></i></a> -->
-                <!-- <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a> -->
             </div>
 
         </div>

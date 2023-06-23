@@ -47,10 +47,10 @@ class KegiatanController extends BaseController
 
     public function save()
     {
-        $id_max = $this->KegiatanModel->getMaxId();
+        $id_max = $this->KegiatanModel->getMaxId() ?? 0;
         // Deklarasi Nailai Slug Kegiatan
         $slugy = url_title($this->request->getvar('nama_kegiatan'), '-', TRUE);
-        $slug = $slugy . '-' . $id_max[0]->id_pengurus + 1;
+        $slug = $slugy . '-' . $id_max[0]->id_kegiatan + 1;
 
         // Ambil Gambar
         $gambar = $this->request->getFile('foto_kegiatan');

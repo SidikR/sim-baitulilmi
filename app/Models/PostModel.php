@@ -22,12 +22,12 @@ class PostModel extends Model
 
 
     // Fungsi Untuk Mengambil Data sesuai Slug
-    public function getPost($id_post = false)
+    public function getPost($slug_post = false)
     {
-        if ($id_post == false) {
+        if ($slug_post == false) {
             return $this->findAll();
         }
-        return $this->where(['id_post' => $id_post])->first();
+        return $this->where(['slug_post' => $slug_post])->first();
     }
 
     public function getTopThree()

@@ -20,7 +20,7 @@
 
     <!-- Material Icon -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
 
     <!-- DataTables -->
     <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -31,9 +31,7 @@
 
     <!-- Vendor CSS Files -->
     <link href="<?php echo base_url('assets/vendor/aos/aos.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/vendor/remixicon/remixicon.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
 
 
@@ -53,7 +51,7 @@
     </style>
 </head>
 
-<body>    
+<body>
     <?= $this->include('pages/layouts/partials/navbar'); ?>
     <?= $this->renderSection('content'); ?>`
     <?= $this->include('pages/layouts/partials/footer'); ?>
@@ -69,7 +67,6 @@
     <script src=<?php echo base_url('assets/vendor/glightbox/js/glightbox.min.js'); ?>></script>
     <script src=<?php echo base_url('assets/vendor/isotope-layout/isotope.pkgd.min.js'); ?>></script>
     <script src=<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.js'); ?>></script>
-    <script src=<?php echo base_url('assets/vendor/waypoints/noframework.waypoints.js'); ?>></script>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -118,7 +115,7 @@
                 buttons: [{
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: ':visible' 
+                            columns: ':visible'
                         }
                     },
                     {
@@ -199,7 +196,7 @@
                             i : 0;
                     };
 
-                                    // Total over this page
+                    // Total over this page
                     pageTotalMasuk = api
                         .column(currentPosition1, {
                             page: 'current'
@@ -939,7 +936,7 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        
+
         // Fungsi untuk memformat angka dengan pemisah ribuan
         function formatNumber(number) {
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");

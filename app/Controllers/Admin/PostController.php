@@ -161,9 +161,10 @@ class PostController extends BaseController
 
         $data = [
             'title' => 'Detail Post',
-            'post' => $this->PostModel->getPost($slug_post),
-            'nama_post' => esc($this->request->getvar('nama_post'))
+            'post' => $this->PostModel->getPost($slug_post)
         ];
+
+        // dd($data);
 
         if (empty($data['post'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Nama Post dengan slug : ' . $slug_post . ' tidak ditemukan !');

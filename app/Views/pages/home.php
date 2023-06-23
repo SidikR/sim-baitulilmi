@@ -149,8 +149,30 @@
         </div>
 
         <div class="row gy-3 d-flex justify-content-center">
+            <div class="col-12 col-xl-3 col-md-6 bg-primary p-4 rounded-3" data-aos="zoom-in" data-aos-delay="600">
+                <div class="service-item">
+                    <div class="img">
+                        <img src="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="img-fluid" alt="">
+                    </div>
+                    <div class="details position-relative">
+                        <div class="icon">
+                            <i class="bi bi-calendar4-week"></i>
+                        </div>
+                        <a href="#" class="stretched-link">
+                            <h3 class="color-primary"><?= "Sholat Jumat " . "<br>" . date("d-M-Y", strtotime($petugas_jumat[0]->tanggal)); ?></h3>
+                        </a>
+                        <a href="#" class="stretched-link"></a>
+                        <div class="d-flex flex-column align-items-center justify-content-start">
+                            <p>Imam : <?= $petugas_jumat[0]->nama_imam; ?></p>
+                            <p>Khatib : <?= $petugas_jumat[0]->nama_khatib; ?></p>
+                            <p>Muadzin : <?= $petugas_jumat[0]->nama_muadzin; ?></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div><!-- End Service Item -->
             <?php foreach ($daftar_kegiatan as $dk) : ?>
-                <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
+                <div class="col-12 col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
                     <div class="service-item">
                         <div class="img">
                             <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
@@ -172,8 +194,9 @@
                     </div>
                 </div><!-- End Service Item -->
             <?php endforeach ?>
-
-            <div class="row pt-3 mt-3 col-xl-2 ">
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 pt-3 mt-3 col-xl-2 ">
                 <a class="btn btn-lihat-selengkapnya" href="<?= base_url('kegiatan-guest'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
@@ -308,7 +331,9 @@
                     </div>
                 </div>
             </div><!-- End Team Member -->
-            <div class="row pt-3 mt-3 col-xl-4 ">
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 pt-3 mt-3 col-xl-2 ">
                 <a class="btn btn-lihat-selengkapnya" href="<?= base_url('pengurus-guest'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
@@ -340,9 +365,10 @@
                     </div>
                 </div><!-- End inventaris Item -->
             <?php endforeach ?>
-
-            <div class="row pt-3 mt-3 col-xl-4 ">
-                <a class="btn btn-lihat-selengkapnya" href="">Lihat Selengkapnya</a>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 pt-3 mt-3 col-xl-2 ">
+                <a class="btn btn-lihat-selengkapnya" href="<?= base_url('peminjaman'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
     </div><!-- End Portfolio Container -->
@@ -393,7 +419,9 @@
                     </div>
                 </div>
             <?php endforeach ?>
-            <div class="row pt-3 mt-3 col-xl-4 ">
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 pt-3 mt-3 col-xl-2 ">
                 <a class="btn btn-lihat-selengkapnya" href="<?= base_url('post-guest'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
@@ -471,7 +499,7 @@
                         <input type="text" class="form-control border-success rounded-2" name="subject" id="subject" placeholder="Subject" required>
                     </div>
                     <div class="form-group mt-3">
-                        <textarea class="form-control border-success rounded-2" name="feedback" placeholder="feedback" required></textarea>
+                        <textarea class="form-control border-success rounded-2" name="feedback" placeholder="feedback" rows="10" required></textarea>
                     </div>
                     <div class="text-center pt-4"><button class="btn btn-lihat-selengkapnya" type="submit">Send Message</button></div>
                 </form>

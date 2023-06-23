@@ -29,4 +29,15 @@ class PetugasJumatModel extends Model
         }
         return $this->where(['id_petugas' => $id_petugas])->first();
     }
+
+    public function getPetugas()
+    {
+        $builder = $this->db->table('petugas_jumat');
+        $builder->select('*');
+        $builder->where('DAYOFWEEK(tanggal) =', 6); // 6 untuk hari Jumat
+        $builder->where('tanggal >=', date('Y-m-d', strtotime('this week Monday')));
+        $builder->where('tanggal <=', date('Y-m-d', strtotime('this week Sunday')));
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }
