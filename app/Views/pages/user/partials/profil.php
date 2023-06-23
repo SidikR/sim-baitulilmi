@@ -1,4 +1,4 @@
-<div class="tab-pane" id="tab-2">
+<div class="tab-pane" id="tab-3">
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
@@ -45,7 +45,7 @@
                                             <fieldset>
                                                 <legend>Detail dari <b><?= user()->nama_lengkap; ?></b></legend>
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                                             <input type="text" class="form-control" id="exampleFormControlInput1" name="nama_lengkap" value="<?= user()->nama_lengkap; ?>" required>
@@ -63,12 +63,12 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="alamat" class="form-label">Alamat</label>
                                                             <textarea type="text" class="form-control" id="exampleFormControlInput1" name="alamat" value="<?= user()->alamat; ?>" required rows="4"><?= user()->alamat; ?></textarea>
                                                         </div>
-                                                        <div class="mb-3">
+                                                        <div class="mb-3 pt-3">
                                                             <label for="nomor_hp" class="form-label">Nomor HP</label>
                                                             <input type="number" class="form-control" id="exampleFormControlInput1" name="nomor_hp" value="<?= user()->nomor_hp; ?>" required>
                                                         </div>

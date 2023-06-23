@@ -895,6 +895,7 @@ section {
 .navbar .nav-item .nav-link .img-profile {
   height: 2rem;
   width: 2rem;
+  object-fit: cover;
 }
 
 }

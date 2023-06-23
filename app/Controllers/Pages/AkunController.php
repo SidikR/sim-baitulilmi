@@ -6,7 +6,6 @@ use App\Controllers\BaseController;
 use App\Models\PeminjamanInventarisModel;
 use App\Models\PeminjamanMasjidModel;
 use App\Models\AkunModel;
-// use Myth\Auth\Models\UserModel;
 use Myth\Auth\Entities\User;
 use \Myth\Auth\Password;
 use \Myth\Auth\Authorization\GroupModel;

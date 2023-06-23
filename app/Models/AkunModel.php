@@ -12,7 +12,7 @@ class AkunModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_lengkap', 'jenis_kelamin', 'foto_user', 'alamat', 'nomor_hp'];
+    protected $allowedFields    = ['nama_lengkap', 'username', 'jenis_kelamin', 'foto_user', 'alamat', 'nomor_hp'];
 
     // Dates
     protected $useTimestamps = false;

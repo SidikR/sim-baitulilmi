@@ -3,19 +3,13 @@
 <?= $this->section('content'); ?>
 <section id="hero-animated" class="hero-animated d-flex align-items-center">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-        <!-- <img src="assets/img/hero-carousel/baim-hero.png" class="img-fluid animated"> -->
         <h1>Halaman Anda </h1>
         <h2><span><?= user()->nama_lengkap; ?></span></h2>
-        <p>Et voluptate esse accusantium accusamus natus reiciendis quidem voluptates similique aut.</p>
-        <!-- <div class="d-flex">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://youtu.be/pvatqsfi6mg" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-        </div> -->
     </div>
 </section>
 
-<!-- ======= Features Section ======= -->
-<section id="features" class="features">
+<!-- ======= Tabs Section ======= -->
+<section id="tabs" class="tabs">
     <div class="container" data-aos="fade-up">
 
         <ul class="nav nav-tabs row gy-4 d-flex">
@@ -34,26 +28,26 @@
                 </div>
             <?php endif ?>
 
-            <li class="nav-item col-6 col-md-4 col-lg-4">
+            <li class="nav-item col-12 col-md-12 col-lg-4">
                 <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                    <i class="bi bi-binoculars color-cyan"></i>
+                    <i class="bi bi-cart-plus color-secondary"></i>
                     <h4>Log Peminjaman</h4>
                 </a>
             </li><!-- End Tab 1 Nav -->
 
-            <li class="nav-item col-6 col-md-4 col-lg-4">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-                    <i class="bi bi-box-seam color-indigo"></i>
-                    <h4>Edit Profil</h4>
-                </a>
-            </li><!-- End Tab 2 Nav -->
-
-            <li class="nav-item col-6 col-md-4 col-lg-4 log_masjid">
-                <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-3">
-                    <i class="bi bi-box-seam color-indigo"></i>
+            <li class="nav-item col-12 col-md-12 col-lg-4 log_masjid">
+                <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-2">
+                    <i class="bi bi-cart-plus color-secondary"></i>
                     <h4>Peminjaman Masjid</h4>
                 </a>
             </li><!-- End Tab 2 Nav -->
+
+            <li class="nav-item col-12 col-md-12 col-lg-4">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+                    <i class="bi bi-person color-secondary"></i>
+                    <h4>Edit Profil</h4>
+                </a>
+            </li><!-- End Tab 3 Nav -->
 
         </ul>
 
@@ -89,13 +83,15 @@
                                                     <td><?= $di->pesan; ?></td>
                                                     <td style="width: 15%;">
                                                         <?php if ($di->status_peminjaman == 'pending') : ?>
-                                                            <button type="button" class="btn btn-warning btn-sm"><i class="far fa-clock"></i> Sedang ditinjau</button>
+                                                            <button type="button" class="btn btn-warning btn-sm"><i class="bi bi-clock-history"></i> Sedang ditinjau</button>
 
                                                         <?php elseif ($di->status_peminjaman == 'accepted') :  ?>
-                                                            <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-clock"></i> Belum dikembalikan</button>
+                                                            <button type="button" class="btn btn-secondary btn-sm"><i class="bi bi-clock-history"></i> Belum dikembalikan</button>
 
                                                         <?php elseif ($di->status_peminjaman == 'done') :  ?>
-                                                            <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-double"></i> Proses Selesai</button>
+                                                            <button type="button" class="btn btn-success btn-sm">
+                                                                <i class="bi bi-check2-circle"></i> Proses Selesai
+                                                            </button>
 
                                                         <?php elseif ($di->status_peminjaman == 'rejected') :  ?>
                                                             <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
@@ -121,7 +117,7 @@
                 </div>
             </div><!-- End Tab Content 1 -->
 
-            <div class="tab-pane show" id="tab-3">
+            <div class="tab-pane show" id="tab-2">
                 <div class="row gy-4">
                     <section id="portfolo" class="portfolo" data-aos="fade-up">
                         <div class="container">
@@ -149,17 +145,17 @@
                                                     <td><?= $di->nama_kegiatan; ?></td>
                                                     <td><?= $di->tanggal_dipinjam; ?></td>
                                                     <td><?= $di->tanggal_selesai; ?></td>
-                                                    <td><?= $di->infaq; ?></td>
+                                                    <td><?= "Rp. " . number_format($di->infaq, 0, '.', '.'); ?></td>
                                                     <td><?= $di->pesan; ?></td>
                                                     <td style="width: 15%;">
                                                         <?php if ($di->status_peminjaman == 'pending') : ?>
-                                                            <button type="button" class="btn btn-warning btn-sm"><i class="far fa-clock"></i> Sedang ditinjau</button>
+                                                            <button type="button" class="btn btn-warning btn-sm"><i class="bi bi-clock-history"></i> Sedang ditinjau</button>
 
                                                         <?php elseif ($di->status_peminjaman == 'accepted') :  ?>
-                                                            <button type="button" class="btn btn-success btn-sm"><i class="far fa-clock"></i> Diizinkan</button>
+                                                            <button type="button" class="btn btn-success btn-sm"><i class="bi bi-clock-history"></i> Diizinkan</button>
 
                                                         <?php elseif ($di->status_peminjaman == 'done') :  ?>
-                                                            <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-double"></i> Proses Selesai</button>
+                                                            <button type="button" class="btn btn-success btn-sm"><i class="bi bi-check2-circle"></i> Proses Selesai</button>
 
                                                         <?php elseif ($di->status_peminjaman == 'rejected') :  ?>
                                                             <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
@@ -184,9 +180,9 @@
                                 </div>
                             </div>
                         </div>
-                    </section><!-- End Portfolio Section -->
+                    </section>
                 </div>
-            </div><!-- End Tab Content 1 -->
+            </div>
             <?= $this->include('pages/user/partials/profil'); ?>
         </div>
     </div>
@@ -224,12 +220,12 @@
 <?php endforeach ?>
 
 <!-- Modal -->
-<div class="modal fade" id="updateGambar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateGambar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-success">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Foto <?= user()->nama_lengkap; ?></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-primary">
+                <h1 class="modal-title fs-5 color-white" id="exampleModalLabel">Update Foto <?= user()->nama_lengkap; ?></h1>
+                <button data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle-fill"></i></button>
             </div>
             <div class="modal-body">
                 <form action="akun/foto/<?= user()->id; ?>" method="post" enctype="multipart/form-data">
@@ -237,7 +233,7 @@
                     <input type="hidden" name="_method" value="PUT">
                     <p class="image_upload">
                         <label for="userImage">
-                            <a class="btn btn-secondary btn-lg" rel="nofollow"><span class=''><i class="bi bi-upload"></i></span> Pilih Gambar</a>
+                            <a class="btn btn-secondary bg-secondary btn-lg" rel="nofollow"><span class=''><i class="bi bi-upload"></i></span> Pilih Gambar</a>
                         </label>
                         <input type="file" id="userImage" name="foto_user" onchange="readURL(this);" />
                     </p>
