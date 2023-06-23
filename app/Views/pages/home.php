@@ -361,7 +361,6 @@
                                 }
                                 ?></h4>
                         <a href="<?= base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" title="<?= $di->nama_inventaris; ?>" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a data-bs-toggle="modal" data-bs-target="#pinjamModal<?= $di->id_inventaris; ?>" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                     </div>
                 </div><!-- End inventaris Item -->
             <?php endforeach ?>
