@@ -1,0 +1,30 @@
+# fly.toml file
+
+app = "nama-proyek-anda"
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[env]
+APP_ENV = "production"
+APP_BASE_URL = "https://nama-proyek-anda.fly.dev"
+
+[build]
+  # untuk menghindari masalah dengan cache composer
+  # pastikan composer.lock disertakan dalam .gitignore
+  # dan jalankan composer update sebelum melakukan build
+  # sehingga file composer.lock dapat di-generate ulang
+  # pada saat build
+  # uncomment baris berikut jika Anda menggunakan composer
+#  prebuild = "composer update"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+
+  [[services.ports]]
+    handlers = ["http"]
