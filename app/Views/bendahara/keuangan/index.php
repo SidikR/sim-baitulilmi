@@ -22,7 +22,7 @@
                                     <!-- Awal Tab Untuk Menampilan Buku Besar -->
                                     <li class="nav-item col-12 col-md-4 col-lg-4 buku_besar">
                                         <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                                            <i class="bi bi-coin color-cyan"></i>
+                                            <i class="bi bi-coin color-secondary"></i>
                                             <h4>Buku Besar</h4>
                                         </a>
                                     </li>
@@ -31,7 +31,7 @@
                                     <!-- Awal Tab Untuk Menampilkan Tabel Pemasukan -->
                                     <li class="nav-item col-12 col-md-4 col-lg-4 masuk">
                                         <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-2">
-                                            <i class="bi bi-box-arrow-in-right color-indigo"></i>
+                                            <i class="bi bi-box-arrow-in-right color-secondary"></i>
                                             <h4>Pemasukan</h4>
                                         </a>
                                     </li><!-- End Tab 2 Nav -->
@@ -39,7 +39,7 @@
                                     <!-- Awal Tab Untuk Menampilkan Tabel Penegluaran -->
                                     <li class="nav-item col-12 col-md-4 col-lg-4 keluar">
                                         <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#tab-3">
-                                            <i class="bi bi-box-arrow-left color-indigo"></i>
+                                            <i class="bi bi-box-arrow-left color-secondary"></i>
                                             <h4>Pengeluaran</h4>
                                         </a>
                                     </li><!-- End Tab 2 Nav -->
@@ -249,9 +249,9 @@
                                                                 <?php endif; ?>
                                                             </td>
                                                             <td style="width: 15%;">
-                                                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#detailMasuk<?= $dp->id_keuangan; ?>"><i class="fas fa-file-alt"></i></button>
-                                                                <a href="<?= 'pemasukan/edit/' . $dp->id_keuangan; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button></a>
-                                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusMasuk<?= $dp->id_keuangan; ?>"><i class="fas fa-trash-alt"></i></button>
+                                                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#detailMasuk<?= $dp->id_keuangan; ?>"><i class="bi bi-book-fill"></i></button>
+                                                                <a href="<?= 'pemasukan/edit/' . $dp->id_keuangan; ?>"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></button></a>
+                                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusMasuk<?= $dp->id_keuangan; ?>"><i class="bi bi-trash3-fill"></i></button>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach ?>
@@ -298,9 +298,9 @@
                                                                 <?php endif; ?>
                                                             </td>
                                                             <td style="width: 15%;">
-                                                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#detailMasuk<?= $dp->id_keuangan; ?>"><i class="fas fa-file-alt"></i></button>
-                                                                <a href="<?= 'pengeluaran/edit/' . $dp->id_keuangan; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button></a>
-                                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusKeluar<?= $dp->id_keuangan; ?>"><i class="fas fa-trash-alt"></i></button>
+                                                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#detailMasuk<?= $dp->id_keuangan; ?>"><i class="bi bi-book-fill"></i></button>
+                                                                <a href="<?= 'pengeluaran/edit/' . $dp->id_keuangan; ?>"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></button></a>
+                                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusKeluar<?= $dp->id_keuangan; ?>"><i class="bi bi-trash3-fill"></i></button>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach ?>
@@ -334,8 +334,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Hapus Data Keuangan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Hapus Data Keuangan</h5>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <form action="keuangan/hapus/<?= $dp->id_keuangan; ?>" method="post">
@@ -344,8 +344,8 @@
                         <p>Yakin data keuangan <b><?= $dp->keterangan; ?></b> akan dihapus ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success btn-sm">Delete</button>
                 </div>
                 </form>
             </div>
@@ -358,8 +358,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Hapus Data Keuangan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Hapus Data Keuangan</h5>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <form action="keuangan/hapus/<?= $dp->id_keuangan; ?>" method="post">
@@ -368,8 +368,8 @@
                         <p>Yakin data keuangan <b><?= $dp->keterangan; ?></b> akan dihapus ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success btn-sm">Delete</button>
                 </div>
                 </form>
             </div>

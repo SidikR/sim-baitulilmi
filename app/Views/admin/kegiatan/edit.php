@@ -7,7 +7,7 @@
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
@@ -21,12 +21,12 @@
 
                             <div class="col-md-4 mt-auto mb-auto">
                                 <div class="col-md-12 mt-auto mb-auto ">
-                                    <div class="portfolio container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
-                                        <div class="portfolio-item">
+                                    <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                                        <div class="inventaris-item">
                                             <img style="max-width : 400px ; max-height : 400px ;  " src="<?php echo base_url('assets-admin/img/kegiatan/' . $daftar_kegiatan->foto_kegiatan); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
-                                            <div class="portfolio-info">
+                                            <div class="inventaris-info">
                                                 <h4><?= $daftar_kegiatan->nama_kegiatan; ?></h4>
-                                                <a href="<?php echo base_url('assets-admin/img/kegiatan/' . $daftar_kegiatan->foto_kegiatan); ?>" title="<?= $daftar_kegiatan->nama_kegiatan; ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                                <a href="<?php echo base_url('assets-admin/img/kegiatan/' . $daftar_kegiatan->foto_kegiatan); ?>" title="<?= $daftar_kegiatan->nama_kegiatan; ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                                                 <a title="Edit" class="details-link" data-bs-toggle="modal" data-bs-target="#updateGambar"><i class="bi bi-upload"></i></a>
                                             </div>
                                         </div>
@@ -72,8 +72,10 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <a href="<?php echo base_url('kegiatan'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
-                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        <div class="modal-footer p-0 m-0 py-2">
+                                            <a href="<?php echo base_url('kegiatan'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
+                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -91,7 +93,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
             </div>
             <div class="modal-body">
                 <form action="./foto/<?= $daftar_kegiatan->id_kegiatan; ?>" method="post" enctype="multipart/form-data">
@@ -104,7 +106,7 @@
                         <input type="file" id="userImage" name="foto_kegiatan" onchange="readURL(this);" />
                     </p>
                     <img id="image" width="50%" height="50%" />
-                    <div class="modal-footer">
+                    <div class="modal-footer p-0 m-0 py-2">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success">Simpan</button>
                     </div>

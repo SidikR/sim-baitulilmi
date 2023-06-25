@@ -7,7 +7,7 @@
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
@@ -21,12 +21,12 @@
 
                             <div class="col-md-12 col-lg-4 mt-auto mb-auto">
                                 <div class="col-md-12 mt-auto mb-auto ">
-                                    <div class="portfolio container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
-                                        <div class="portfolio-item">
+                                    <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                                        <div class="inventaris-item">
                                             <img style="max-width : 400px ; max-height : 400px ;  " src="<?php echo base_url('assets-admin/img/post/' . $daftar_post->foto_post); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
-                                            <div class="portfolio-info">
+                                            <div class="inventaris-info">
                                                 <h4><?= $daftar_post->nama_post; ?></h4>
-                                                <a href="<?php echo base_url('assets-admin/img/post/' . $daftar_post->foto_post); ?>" title="<?= $daftar_post->nama_post; ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                                <a href="<?php echo base_url('assets-admin/img/post/' . $daftar_post->foto_post); ?>" title="<?= $daftar_post->nama_post; ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                                                 <a title="Edit" class="details-link" data-bs-toggle="modal" data-bs-target="#updateGambar"><i class="bi bi-upload"></i></a>
                                             </div>
                                         </div>
@@ -49,13 +49,15 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="textAreaExample" class="form-label">Deskripsi Post</label>
-                                                        <textarea type="text" id="ckeditor" class="ckeditor form-control overflow-y: scroll" value='<?= $daftar_post->deskripsi_post; ?>' rows="10" name="deskripsi_post"><?= $daftar_post->deskripsi_post; ?></textarea>
+                                                        <textarea type="text" id="ckeditor" class="ckeditor form-control overflow-y: scroll" value='<?= $daftar_post->deskripsi_post; ?>' rows="15" name="deskripsi_post"><?= $daftar_post->deskripsi_post; ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <a href="<?php echo base_url('post'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
-                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        <div class="modal-footer p-0 m-0 py-2">
+                                            <a href="<?php echo base_url('post'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
+                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -73,7 +75,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
             </div>
             <div class="modal-body">
                 <form action="./foto/<?= $daftar_post->id_post; ?>" method="post" enctype="multipart/form-data">

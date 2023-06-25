@@ -7,13 +7,13 @@
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
                     <div class="container table-responsive">
-                        <a href="pengurus/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
-                                <i class="fas fa-plus"></i> Tambah
+                        <a href="pengurus/tambah"><button type="button" class="btn btn-primary my-3" data-bs-toggle="modal">
+                                <i class="bi bi-plus"></i> Tambah
                             </button></a>
 
                         <!-- ini notifikasi Berhasil ditambah -->
@@ -51,10 +51,7 @@
                                 <?php endforeach ?>
                             </tbody>
                         </table>
-
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -67,8 +64,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Hapus Data Pengurus</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Hapus Data Pengurus</h5>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <form action="pengurus/hapus/<?= $dp->id_pengurus; ?>" method="post">
@@ -77,8 +74,8 @@
                         <p>Yakin data Pengurus <b><?= $dp->nama_lengkap; ?></b> akan dihapus ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success btn-sm">Delete</button>
                 </div>
                 </form>
             </div>

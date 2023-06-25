@@ -67,6 +67,8 @@ class PengurusController extends BaseController
             'slug_pengurus' => $slug,
             'jenis_kelamin' => esc($this->request->getvar('jenis_kelamin')),
             'jabatan' => esc($this->request->getvar('nama_jabatan')),
+            'instagram' => esc($this->request->getvar('instagram')),
+            'linkedin' => esc($this->request->getvar('linkedin')),
             'nomor_telepon' => esc($this->request->getvar('nomor_telepon')),
             'alamat_pengurus' => esc($this->request->getvar('alamat_pengurus')),
             'foto_pengurus' => $namaGambar,
@@ -103,6 +105,8 @@ class PengurusController extends BaseController
             'slug_pengurus' => $slug,
             'jenis_kelamin' => esc($this->request->getvar('jenis_kelamin')),
             'jabatan' => esc($this->request->getvar('nama_jabatan')),
+            'instagram' => esc($this->request->getvar('instagram')),
+            'linkedin' => esc($this->request->getvar('linkedin')),
             'nomor_telepon' => esc($this->request->getvar('nomor_telepon')),
             'alamat_pengurus' => esc($this->request->getvar('alamat_pengurus')),
         ];

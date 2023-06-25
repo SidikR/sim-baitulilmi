@@ -5,12 +5,10 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
+
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
@@ -22,7 +20,7 @@
                     <form action="./pemasukan-save" method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-12 col-xl-6">
                                 <div class="mb-4">
                                     <label for="tanggal_transaksi" class="form-label">Tanggal Tansaksi</label>
                                     <input type="date" class="form-control <?= $validation->hasError('tanggal_transaksi') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="tanggal_transaksi">
@@ -72,7 +70,8 @@
                                 </div>
 
                             </div>
-                            <div class="col">
+
+                            <div class="col-12 col-xl-6">
                                 <div class="mb-4">
                                     <label for="keterangan" class="form-label">Keterangan</label>
                                     <textarea type="text" class="form-control <?= $validation->hasError('keterangan') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Keterangan Pemasukan" name="keterangan" rows="5"></textarea>
@@ -96,13 +95,12 @@
 
                                     <?php endif; ?>
                                 </div>
-
                             </div>
                         </div>
 
                         <div class="modal-footer">
                             <a href="/keuangan"><button type="button" class="btn btn-danger m-1" data-bs-dismiss="modal">Batal</button></a>
-                            <button type="submit" class="btn btn-primary ">Tambah</button>
+                            <button type="submit" class="btn btn-success ">Tambah</button>
                         </div>
                     </form>
                 </div>

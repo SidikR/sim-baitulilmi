@@ -10,7 +10,7 @@ class PengurusModel extends Model
     protected $primaryKey       = 'id_pengurus';
     protected $returnType       = 'object';
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_lengkap', 'slug_pengurus', 'jenis_kelamin', 'jabatan', 'nomor_telepon', 'alamat_pengurus', 'foto_pengurus'];
+    protected $allowedFields    = ['nama_lengkap', 'slug_pengurus', 'jenis_kelamin', 'jabatan', 'nomor_telepon', 'alamat_pengurus', 'foto_pengurus', 'instagram', 'linkedin'];
 
     // Dates
     protected $useTimestamps = true;

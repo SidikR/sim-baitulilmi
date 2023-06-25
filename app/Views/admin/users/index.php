@@ -7,7 +7,7 @@
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">

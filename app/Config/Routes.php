@@ -131,6 +131,9 @@ $routes->delete('/inventaris/hapus/(:segment)', 'Admin\InventarisController::del
 $routes->get('/inventaris/detail/(:segment)', 'Admin\InventarisController::detail/$1', ['filter' => 'role:admin']);
 $routes->get('/inventaris/edit/(:segment)', 'Admin\InventarisController::form_update/$1', ['filter' => 'role:admin']);
 
+// Feddback
+$routes->get('feedback', 'Admin\FeedbackController::index', ['filter' => 'role:admin']);
+
 $routes->get('list-peminjaman', 'Admin\PeminjamanController::index', ['filter' => 'role:admin']);
 $routes->get('list-peminjaman-ok/(:segment)', 'Admin\PeminjamanController::accept/$1', ['filter' => 'role:admin']);
 $routes->get('list-peminjaman-done/(:segment)', 'Admin\PeminjamanController::done/$1', ['filter' => 'role:admin']);

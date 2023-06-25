@@ -3,15 +3,15 @@
     <div class="modal fade" id="detailMasuk<?= $pemasukan->id_keuangan; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="create_pemasukanLabel" aria-hidden="true">
         <div class="modal-dialog  modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5 " id="create_pemasukanLabel">Detail Pemasukan</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <form>
                         <?= csrf_field(); ?>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-12 col-xl-6">
                                 <div class="mb-3">
                                     <label for="disabledTextInput" class="form-label">Tanggal Transaksi</label>
                                     <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $pemasukan->tanggal_transaksi; ?>'>

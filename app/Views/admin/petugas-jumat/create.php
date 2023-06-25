@@ -7,7 +7,7 @@
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
@@ -20,7 +20,7 @@
                         <?= csrf_field(); ?>
                         <div class="container">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-12 col-xl-4">
                                     <div class="mb-4">
                                         <label for="tanggal" class="form-label">Tanggal</label>
                                         <input type="date" class="form-control <?= $validation->hasError('tanggal') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Tanggal" name="tanggal">
@@ -45,7 +45,7 @@
                                     </div>
 
                                     <div class="mb-4">
-                                        <label for="jabatan_imam" class="form-label">Jabatan Imam</label>
+                                        <label for="jabatan_imam" class="form-label">Jabatan/Status/Prodi Imam</label>
                                         <input type="text" class="form-control <?= $validation->hasError('jabatan_imam') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Petugas-jumat" name="jabatan_imam">
 
                                         <?php if ($validation->hasError('jabatan_imam')) : ?>
@@ -55,7 +55,8 @@
 
                                         <?php endif; ?>
                                     </div>
-
+                                </div>
+                                <div class="col-12 col-xl-4">
                                     <div class="mb-4">
                                         <label for="nama_khatib" class="form-label">Nama Khatib</label>
                                         <input type="text" class="form-control <?= $validation->hasError('nama_khatib') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Petugas-jumat" name="nama_khatib">
@@ -69,7 +70,7 @@
                                     </div>
 
                                     <div class="mb-4">
-                                        <label for="jabatan_khatib" class="form-label">Jabatan Khatib</label>
+                                        <label for="jabatan_khatib" class="form-label">Jabatan/Status/Prodi Khatib</label>
                                         <input type="text" class="form-control <?= $validation->hasError('jabatan_khatib') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Petugas-jumat" name="jabatan_khatib">
 
                                         <?php if ($validation->hasError('jabatan_khatib')) : ?>
@@ -92,34 +93,35 @@
 
                                             <?php endif; ?>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xl-4">
+                                    <div class="mb-4">
+                                        <label for="jabatan_muadzin" class="form-label">Jabatan/Status/Prodi Muadzin</label>
+                                        <input type="text" class="form-control <?= $validation->hasError('jabatan_muadzin') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Petugas-jumat" name="jabatan_muadzin">
 
-                                        <div class="mb-4">
-                                            <label for="jabatan_muadzin" class="form-label">Jabatan Muadzin</label>
-                                            <input type="text" class="form-control <?= $validation->hasError('jabatan_muadzin') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Petugas-jumat" name="jabatan_muadzin">
+                                        <?php if ($validation->hasError('jabatan_muadzin')) : ?>
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('jabatan_muadzin'); ?>
+                                            </div>
 
-                                            <?php if ($validation->hasError('jabatan_muadzin')) : ?>
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('jabatan_muadzin'); ?>
-                                                </div>
+                                        <?php endif; ?>
+                                    </div>
 
-                                            <?php endif; ?>
-                                        </div>
+                                    <div class="mb-4">
+                                        <label for="poster" class="form-label">Poster</label>
+                                        <input type="file" class="form-control" id="formFile" placeholder="Nama Lengkap" name="poster" onchange="readURL(this);" required>
+                                    </div>
 
-                                        <div class="mb-4">
-                                            <label for="poster" class="form-label">Poster</label>
-                                            <input type="file" class="form-control" id="formFile" placeholder="Nama Lengkap" name="poster" onchange="readURL(this);" required>
-                                        </div>
-
-                                        <div class="mb-4">
-                                            <img id="image" width="30%" height="30%" class="rounded" />
-                                        </div>
+                                    <div class="mb-4">
+                                        <img id="image" width="30%" height="30%" class="rounded" />
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="modal-footer m-3">
-                                <button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary ">Tambah</button>
+                            <div class="modal-footer p-0 m-0 py-2">
+                                <a href="<?= base_url('petugas-jumat'); ?>" class="btn btn-danger">Batal</a>
+                                <button type="submit" class="btn btn-success ">Tambah</button>
                             </div>
                     </form>
                 </div>

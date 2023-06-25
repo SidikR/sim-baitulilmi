@@ -127,9 +127,9 @@
 
 
 
-            <div class="modal-footer m-3">
-                <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button></a>
-                <button type="submit" class="btn btn-primary ">Tambah</button>
+            <div class="modal-footer p-0 m-0 py-2">
+                <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button></a>
+                <button type="submit" class="btn btn-success ">Tambah</button>
             </div>
             </form>
         </div>

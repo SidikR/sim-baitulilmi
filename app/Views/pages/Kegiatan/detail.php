@@ -1,12 +1,20 @@
 <?= $this->extend('pages/layouts/template'); ?>
 
 <?= $this->section('content'); ?>
-<section id="hero-animated" class="hero-animated d-flex align-items-center">
-    <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-        <h1>Detail Data Dari</h1>
-        <h2><span><?= $kegiatan->nama_kegiatan; ?></span></h2>
+<div class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Detail dari <?= $kegiatan->nama_kegiatan; ?></h2>
+            <ol>
+                <li><a href="<?= base_url('home'); ?>">Home</a></li>
+                <li><a href="<?= base_url('kegiatan-guest'); ?>">Kegiatan</a></li>
+                <li><?= $kegiatan->nama_kegiatan; ?></li>
+            </ol>
+        </div>
+
     </div>
-</section>
+</div><!-- End Breadcrumbs -->
 
 <div class="container-fluid p-4">
     <div class="row m-3" style="max-width: 100%;">
@@ -21,7 +29,7 @@
                                     <span class="text-white">Foto <?= $kegiatan->nama_kegiatan; ?></span>
                                 </div>
                                 <div class="col">
-                                    <a href="<?php echo base_url('assets-admin/img/kegiatan/' . $kegiatan->foto_kegiatan); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                    <a href="<?php echo base_url('assets-admin/img/kegiatan/' . $kegiatan->foto_kegiatan); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +42,6 @@
             <div class=" card-body">
                 <form>
                     <fieldset disabled>
-                        <legend>Detail dari <b><?= $kegiatan->nama_kegiatan; ?></b></legend>
                         <div class="row">
                             <div class="col-md-12 col-xl-6">
                                 <div class="mb-3">

@@ -121,7 +121,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
             </div>
             <div class="modal-body">
                 <form action="/invoice/bukti-transfer/<?= $data_peminjaman_masjid->id_peminjaman; ?>" method="post" enctype="multipart/form-data">

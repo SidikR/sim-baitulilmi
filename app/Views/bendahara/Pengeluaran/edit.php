@@ -5,12 +5,10 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
+
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
@@ -21,9 +19,21 @@
                     <?php endif ?>
                     <div class="card mb-3 " style="max-width: 100%;">
                         <div class="row g-0 align-items-center offset-md-1 me-2 g-2">
-                            <div class="col-md-4 px-3">
-                                <img style="max-width : 350px ; max-height : 350px ;  " src="<?php echo base_url('assets-bendahara/img/foto-bukti/' . $daftar_pengeluaran->foto_bukti); ?>" class="img-fluid rounded float-start float-center ms-auto d-block " alt="foto <?= $daftar_pengeluaran->keterangan; ?>">
+                            <div class="col-md-4 mt-auto mb-auto">
+                                <div class="col-md-12 mt-auto mb-auto ">
+                                    <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                                        <div class="inventaris-item">
+                                            <img src="<?php echo base_url('assets-bendahara/img/foto-bukti/' . $daftar_pengeluaran->foto_bukti); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                                            <div class="inventaris-info">
+                                                <h4><?= $daftar_pengeluaran->keterangan; ?></h4>
+                                                <a href="<?php echo base_url('assets-admin/img/foto-inventaris/' . $daftar_pengeluaran->foto_bukti); ?>" title="<?= $daftar_pengeluaran->keterangan; ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
+                                                <a title="Edit" class="details-link" type="button" data-bs-toggle="modal" data-bs-target="#updateGambar"><i class="bi bi-upload"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <form action="./<?= $daftar_pengeluaran->id_keuangan; ?>" method="post" enctype="multipart/form-data">
@@ -111,8 +121,10 @@
                                             </div>
 
                                         </fieldset>
-                                        <a href="<?php echo base_url('pengeluaran'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
-                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        <div class="modal-footer p-0 m-0 py-2">
+                                            <a href="<?php echo base_url('keuangan'); ?>"><button type="button" class="btn btn-danger">Batal</button></a>
+                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -123,18 +135,7 @@
         </div>
 
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+
 </div>
 
 

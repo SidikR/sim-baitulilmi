@@ -7,7 +7,7 @@
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
@@ -20,7 +20,7 @@
                         <?= csrf_field(); ?>
                         <div class="container">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-12 col-xl-4">
                                     <div class="mb-4">
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                         <input type="text" class="form-control <?= $validation->hasError('nama_lengkap') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="nama_lengkap">
@@ -53,7 +53,7 @@
                                     <div class="mb-4">
                                         <label for="nama_jabatan" class="form-label">Jabatan</label>
 
-                                        <input type="text" class="form-control <?= $validation->hasError('nama_jabatan') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Nama Lengkap" name="nama_jabatan">
+                                        <input type="text" class="form-control <?= $validation->hasError('nama_jabatan') ? 'is-invalid' : null; ?>" id="exampleFormControlInput1" placeholder="Jabatan" name="nama_jabatan">
 
                                         <?php if ($validation->hasError('nama_jabatan')) : ?>
                                             <div class="invalid-feedback">
@@ -64,7 +64,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-xl-4">
                                     <div class="mb-4">
                                         <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
                                         <input type="text" class="form-control <?= $validation->hasError('nomor_telepon') ? 'is-invalid' : null; ?>" id="formFile" placeholder="Isikan Nomor Telepon  ex.0895...." name="nomor_telepon">
@@ -90,7 +90,17 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-12 col-xl-4">
+                                    <div class="mb-4">
+                                        <label for="instagram" class="form-label">Instagram</label>
+                                        <input type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Url Instagram" name="instagram">
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="linkedin" class="form-label">linkedin</label>
+                                        <input type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Url Linkedin" name="linkedin">
+                                    </div>
+
                                     <div class="mb-4">
                                         <label for="foto_pengurus" class="form-label">Foto Pengurus</label>
                                         <input type="file" class="form-control" id="formFile" placeholder="Nama Lengkap" name="foto_pengurus" onchange="readURL(this);" required>
@@ -103,9 +113,9 @@
                             </div>
                         </div>
 
-                        <div class="modal-footer m-3">
-                            <a href="<?= base_url('pengurus'); ?>"><button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button></a>
-                            <button type="submit" class="btn btn-primary ">Tambah</button>
+                        <div class="modal-footer p-0 m-0 py-2">
+                            <a href="<?= base_url('pengurus'); ?>"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button></a>
+                            <button type="submit" class="btn btn-success ">Tambah</button>
                         </div>
                     </form>
                 </div>
@@ -113,37 +123,5 @@
         </div>
     </main>
 </div>
-
-<!-- Modal Tambah Jabatan-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Form Tambah Jabatan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="././jabatan/tambah" method="post" enctype="multipart/form-data">
-                    <?= csrf_field(); ?>
-
-                    <div class="mb-4">
-                        <label for="nama_jabatan" class="form-label">Nama Jabatan</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama jabatan" name="nama_jabatan">
-
-                        <div class="mb-4">
-                            <label for="deskripsi_jabatan" class="form-label">Deskripsi</label>
-                            <input type="text" class="form-control" id="exampleFormControlTextarea1" placeholder="Isikan deskripsi Lengkap" name="deskripsi_jabatan" rows="3">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <?= $this->endSection() ?>

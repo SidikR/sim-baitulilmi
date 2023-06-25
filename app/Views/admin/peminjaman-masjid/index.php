@@ -5,17 +5,15 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
+
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
                     <a href="pengurus/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
-                            <i class="fas fa-plus"></i> Tambah
+                            <i class="bi bi-plus"></i> Tambah
                         </button></a>
 
                     <!-- ini notifikasi Berhasil ditambah -->
@@ -119,8 +117,8 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Detail Permohonan Peminjaman</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Detail Permohonan Peminjaman</h5>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -162,10 +160,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="row mb-3" style="width: 50%; height : 50%">
-                                                <a href="<?= base_url('assets-admin/img/peminjaman-masjid/foto-identitas/' . $dpi->foto_identitas); ?>" target="_blank"><img src="<?= base_url('assets-admin/img/peminjaman-masjid/foto-identitas/' . $dpi->foto_identitas); ?>" class="img-fluid glightbox preview-link" alt="Foto Identitas"></a>
+                                                <a href="<?= base_url('assets-admin/img/peminjaman-masjid/foto-identitas/' . $dpi->foto_identitas); ?>" target="_blank"><img src="<?= base_url('assets-admin/img/peminjaman-masjid/foto-identitas/' . $dpi->foto_identitas); ?>" class="img-fluid glightbox preview-link pe-3" alt="Foto Identitas"></a>
                                             </div>
                                             <div class="row mb-3" style="width: 50%; height : 50%">
-                                                <a href="<?= base_url('assets-admin/img/kegiatan/' . $dpi->foto_kegiatan); ?>" target="_blank"><img src="<?= base_url('assets-admin/img/kegiatan/' . $dpi->foto_kegiatan); ?>" class="img-fluid glightbox preview-link" alt="Foto Kegiatan"></a>
+                                                <a href="<?= base_url('assets-admin/img/kegiatan/' . $dpi->foto_kegiatan); ?>" target="_blank"><img src="<?= base_url('assets-admin/img/kegiatan/' . $dpi->foto_kegiatan); ?>" class="img-fluid glightbox preview-link pe-3" alt="Foto Kegiatan"></a>
                                             </div>
                                         </div>
 
@@ -175,8 +173,8 @@
                         </fieldset>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-success btn-sm">Delete</button>
                     </div>
                     </form>
                 </div>
@@ -191,8 +189,8 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Tolak Permohonan Peminjaman</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Tolak Permohonan Peminjaman</h5>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <h2 class="mt-3 mb-4">Silakan Isi Pesan Penolakan Permohonan</h2>
@@ -205,8 +203,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Selesai</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Selesai</button>
                         </div>
                     </form>
                 </div>
@@ -220,25 +218,25 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Bukti Transfer Modal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Bukti Transfer Modal</h5>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <form action="<?= 'peminjaman-masjid-bukti-transfer/' . $dpi->id_peminjaman; ?>" method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
 
-                        <div class="portfolio container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
-                            <div class="portfolio-item">
-                                <img style="max-width : 400px ; max-height : 400px ;  " src=" <?= base_url(); ?>/assets-admin/img/peminjaman-masjid/bukti-transfer/<?= $dpi->bukti_transfer; ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
-                                <div class="portfolio-info">
+                        <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                            <div class="inventaris-item">
+                                <img src=" <?= base_url(); ?>/assets-admin/img/peminjaman-masjid/bukti-transfer/<?= $dpi->bukti_transfer; ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                                <div class="inventaris-info">
                                     <h4><?= $dpi->nama_kegiatan; ?></h4>
-                                    <a href="<?php base_url(); ?>/assets-admin/img/peminjaman-masjid/bukti-transfer/<?= $dpi->bukti_transfer; ?>" title="<?= $dpi->nama_kegiatan; ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                    <a href="<?php base_url(); ?>/assets-admin/img/peminjaman-masjid/bukti-transfer/<?= $dpi->bukti_transfer; ?>" title="<?= $dpi->nama_kegiatan; ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success">Konfirmasi Pembayaran</button>
                         </div>
                     </form>

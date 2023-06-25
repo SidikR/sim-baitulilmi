@@ -5,17 +5,15 @@
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4"><?= $title; ?></h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
+
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
                     <a href="pengumuman/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
-                            <i class="fas fa-plus"></i> Tambah
+                            <i class="bi bi-plus"></i> Tambah
                         </button></a>
 
                     <!-- ini notifikasi Berhasil ditambah -->
@@ -44,9 +42,9 @@
                                     <td><?= $dk->judul; ?></td>
                                     <td><?= $dk->isi; ?></td>
                                     <td style="width: 15%;">
-                                        <a href="<?= 'pengumuman/detail/' . $dk->id_pengumuman; ?>"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-file-alt"></i></button></a>
-                                        <a href="<?= 'pengumuman/edit/' . $dk->id_pengumuman; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dk->id_pengumuman; ?>"><i class="fas fa-trash-alt"></i></button>
+                                        <a href="<?= 'pengumuman/detail/' . $dk->id_pengumuman; ?>"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-book-fill"></i></button></a>
+                                        <a href="<?= 'pengumuman/edit/' . $dk->id_pengumuman; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></button></a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dk->id_pengumuman; ?>"><i class="bi bi-trash3-fill"></i></button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -56,18 +54,7 @@
             </div>
         </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+
 </div>
 
 <!-- Modal Hapus -->
@@ -76,8 +63,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-trash-alt "></i> Hapus Data Pengumuman</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Hapus Data Pengumuman</h5>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <form action="pengumuman/hapus/<?= $dk->id_pengumuman; ?>" method="post">
@@ -86,8 +73,8 @@
                         <p>Yakin data Pengumuman <b><?= $dk->judul; ?></b> akan dihapus ?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success btn-sm">Delete</button>
                 </div>
                 </form>
             </div>

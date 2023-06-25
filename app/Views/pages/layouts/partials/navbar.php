@@ -25,19 +25,19 @@
                                                         ?> href="<?= base_url(""); ?>">Home</a></li>
 
                         <li class="nav-link p-0 m-0"><a <?php getactive('guest-keuangan');
-                                                        ?> class="scrollto" href="<?= base_url('#keuangan'); ?>">Transparansi Keuangan</a></li>
+                                                        ?> class="scrollto" href="<?= base_url('guest-keuangan'); ?>">Transparansi Keuangan</a></li>
 
                         <li class="nav-link p-0 m-0"><a <?php getactive('kegiatan-guest');
-                                                        ?> class="scrollto" href="<?= base_url('#kegiatan'); ?>">Kegiatan</a></li>
+                                                        ?> class="scrollto" href="<?= base_url('kegiatan-guest'); ?>">Kegiatan</a></li>
 
                         <li class="nav-link p-0 m-0"><a <?php getactive('pengurus-guest');
-                                                        ?> class="scrollto" href="<?= base_url('#team'); ?>">Pengurus</a></li>
+                                                        ?> class="scrollto" href="<?= base_url('pengurus-guest'); ?>">Pengurus</a></li>
 
                         <li class="nav-link p-0 m-0"><a <?php getactive('peminjaman');
-                                                        ?> class="scrollto" href="<?= base_url('#inventaris'); ?>">Peminjaman</a></li>
+                                                        ?> class="scrollto" href="<?= base_url('peminjaman'); ?>">Peminjaman</a></li>
 
                         <li class="nav-link p-0 m-0"><a <?php getactive('post-guest');
-                                                        ?> class="scrollto" href="<?= base_url('#recent-blog-posts'); ?>">Post</a></li>
+                                                        ?> class="scrollto" href="<?= base_url('post-guest'); ?>">Post</a></li>
 
                         <li class="nav-link p-0 m-0"><a class="scrollto" href="<?= base_url('#contact'); ?>">Contact</a></li>
 

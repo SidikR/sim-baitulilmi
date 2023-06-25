@@ -11,7 +11,7 @@
 <section id="team" class="team">
     <div class="container" data-aos="fade-up">
 
-        <div class="row gy-5 d-flex align-items-center justify-content-center">
+        <div class="row gy-5 d-flex align-items-start justify-content-center">
 
             <?php foreach ($daftar_pengurus as $dp) : ?>
                 <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
@@ -21,10 +21,8 @@
                         </div>
                         <div class="member-info">
                             <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href="https://www.instagram.com/fc_alam/" target="_blank"><i class="bi bi-instagram"></i></a>
-                                <a href="https://www.linkedin.com/in/firdha-cahya-alam" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <a href="<?= $dp->instagram; ?>" target="_blank"><i class="bi bi-instagram"></i></a>
+                                <a href="<?= $dp->linkedin; ?>" target="_blank"><i class="bi bi-linkedin"></i></a>
                             </div>
                             <a href="<?= base_url('detail-pengurus-' . $dp->slug_pengurus); ?>">
                                 <h4><?= $dp->nama_lengkap; ?></h4>

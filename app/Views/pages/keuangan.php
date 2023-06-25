@@ -9,15 +9,20 @@
     </div>
 </section>
 
-<section id="cta" class="cta mt-5">
+<!-- ======= KEuanagan Section ======= -->
+<section id="keuangan" class="keuangan mt-5">
     <div class="container text-center" data-aos="zoom-out">
         <div class="row g-5">
-            <div class="col-lg-12 col-md-6 content d-flex flex-column ">
-                <h3 class="p-3 text-uppercase">Keuangan Masjid</h3>
-                <p> Keuangan Masjid Baitul Ilmi ITERA dibagi menjadi tiga bagian yang berbeda, sesuai dengan ketentuan akad dengan donatur, berikut total keuangan masjid pada setaip akun keuangan</p>
+            <div class="col-lg-12 col-md-12 col-12 d-flex flex-column ">
+
+                <div class="section-header">
+                    <h2>Keuangan Masjid</h2>
+                    <p> Keuangan Masjid Baitul Ilmi ITERA dibagi menjadi tiga bagian yang berbeda, sesuai dengan ketentuan akad dengan donatur, berikut total keuangan masjid pada setaip akun keuangan</p>
+                </div>
+
                 <div class="row mt-3">
-                    <div class="col-xl-4 col-md-6">
-                        <div class="card bg-secondary text-white mb-4">
+                    <div class="col-xl-4 col-md-12">
+                        <div class="card bg-secondary text-white mb-4 rounded-4 tab-galeri">
                             <div class="card-body">
                                 <h4>Pembangunan</h4>
                             </div>
@@ -26,8 +31,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="card bg-secondary text-white mb-4">
+                    <div class="col-xl-4 col-md-12">
+                        <div class="card bg-secondary text-white mb-4 rounded-4 tab-galeri">
                             <div class="card-body">
                                 <h4>Sarana Prasarana</h4>
                             </div>
@@ -36,8 +41,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="card bg-secondary text-white mb-4">
+                    <div class="col-xl-4 col-md-12">
+                        <div class="card bg-secondary text-white mb-4 rounded-4 tab-galeri">
                             <div class="card-body">
                                 <h4>Operasional</h4>
                             </div>
@@ -49,7 +54,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-12 col-md-12">
-                        <div class="card bg-primary text-white mb-4">
+                        <div class="card bg-primary text-white mb-4 rounded-4 tab-galeri">
                             <div class="card-body">
                                 <h4 class="text-white"><b>Total Keuangan</b></h4>
                             </div>
@@ -62,7 +67,7 @@
             </div>
         </div>
     </div>
-</section><!-- End Call To Action Section -->
+</section><!-- End KEuanagan Section -->
 
 
 <div class="container">
@@ -311,4 +316,5 @@
         </section>
     </div>
 </div>
+
 <?= $this->endSection(); ?>

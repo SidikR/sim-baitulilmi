@@ -149,6 +149,7 @@
         </div>
 
         <div class="row gy-3 d-flex justify-content-center">
+
             <div class="col-12 col-xl-3 col-md-6 bg-primary p-4 rounded-3" data-aos="zoom-in" data-aos-delay="600">
                 <div class="service-item">
                     <div class="img">
@@ -158,10 +159,10 @@
                         <div class="icon">
                             <i class="bi bi-calendar4-week"></i>
                         </div>
-                        <a href="#" class="stretched-link">
+                        <a class="stretched-link">
                             <h3 class="color-primary"><?= "Sholat Jumat " . "<br>" . date("d-M-Y", strtotime($petugas_jumat[0]->tanggal)); ?></h3>
                         </a>
-                        <a href="#" class="stretched-link"></a>
+                        <a class="stretched-link"></a>
                         <div class="d-flex flex-column align-items-center justify-content-start">
                             <p>Imam : <?= $petugas_jumat[0]->nama_imam; ?></p>
                             <p>Khatib : <?= $petugas_jumat[0]->nama_khatib; ?></p>
@@ -171,6 +172,7 @@
                     </div>
                 </div>
             </div><!-- End Service Item -->
+
             <?php foreach ($daftar_kegiatan as $dk) : ?>
                 <div class="col-12 col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
                     <div class="service-item">
@@ -181,10 +183,10 @@
                             <div class="icon">
                                 <i class="bi bi-calendar4-week"></i>
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a href="<?= base_url('detail-kegiatan-' . $dk->slug_kegiatan); ?>" class="stretched-link">
                                 <h3 class="color-primary"><?= $dk->nama_kegiatan; ?></h3>
                             </a>
-                            <a href="#" class="stretched-link"></a>
+                            <a href="<?= base_url('detail-kegiatan-' . $dk->slug_kegiatan); ?>" class="stretched-link"></a>
                             <div class="d-flex flex-column align-items-center justify-content-start">
                                 <p>Penyelenggara : <?= $dk->penyelenggara_kegiatan; ?></p>
                                 <p>Waktu : <?= $dk->waktu_mulai_kegiatan; ?></p>
@@ -360,7 +362,7 @@
                                     echo 'Stok : ' . $di->stok_inventaris;
                                 }
                                 ?></h4>
-                        <a href="<?= base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" title="<?= $di->nama_inventaris; ?>" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="<?= base_url('assets-admin/img/foto-inventaris/' . $di->foto_inventaris); ?>" title="<?= $di->nama_inventaris; ?>" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                     </div>
                 </div><!-- End inventaris Item -->
             <?php endforeach ?>
@@ -414,7 +416,7 @@
 
                             echo $result;
                             ?></p>
-                        <a href="<?= base_url('detail/post-' . $post->id_post); ?>" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                        <a href="<?= base_url('detail/post-' . $post->slug_post); ?>" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             <?php endforeach ?>

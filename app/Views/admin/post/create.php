@@ -7,7 +7,7 @@
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4 mt-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
+                    <i class="bi bi-table me-1"></i>
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
@@ -79,9 +79,9 @@
                             </div>
                         </div>
 
-                        <div class="modal-footer m-3">
-                            <button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary ">Tambah</button>
+                        <div class="modal-footer p-0 m-0 py-2">
+                            <a href="<?= base_url('post'); ?>" class="btn btn-danger">Batal</a>
+                            <button type="submit" class="btn btn-success ">Tambah</button>
                         </div>
                     </form>
                 </div>

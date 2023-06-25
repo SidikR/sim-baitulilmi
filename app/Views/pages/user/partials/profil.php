@@ -5,7 +5,7 @@
                 <h1 class="mt-4"><?= $title; ?></h1>
                 <div class="card mb-4 mt-4">
                     <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
+                        <i class="bi bi-table me-1"></i>
                         <?= $title; ?>
                     </div>
                     <div class="card-body">
@@ -27,7 +27,7 @@
                                                             <span class="text-white">Foto <?= user()->nama_lengkap; ?></span>
                                                         </div>
                                                         <div class="col-4 g-2">
-                                                            <a href="<?php echo base_url('assets/img/foto-user/' . user()->foto_user); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                                            <a href="<?php echo base_url('assets/img/foto-user/' . user()->foto_user); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                                                             <a title="Edit" class="details-link" data-bs-toggle="modal" data-bs-target="#updateGambar"><i class="bi bi-upload"></i></a>
                                                         </div>
                                                     </div>

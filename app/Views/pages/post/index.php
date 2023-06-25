@@ -38,7 +38,7 @@
                                     </div>
 
                                     <h2 class="title">
-                                        <a href="<?= base_url('detail/post-' . $post->id_post); ?>"><?= $post->nama_post; ?></a>
+                                        <a href="<?= base_url('detail/post-' . $post->slug_post); ?>"><?= $post->nama_post; ?></a>
                                     </h2>
 
                                     <div class="meta-top">
@@ -79,7 +79,7 @@
                                     </div>
 
                                     <div class="read-more mt-auto align-self-end">
-                                        <a href="<?= base_url('detail/post-' . $post->id_post); ?>">Read More</a>
+                                        <a href="<?= base_url('detail/post-' . $post->slug_post); ?>">Read More</a>
                                     </div>
 
                                 </article>

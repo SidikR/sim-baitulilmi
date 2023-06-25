@@ -130,8 +130,8 @@
                     <input type="checkbox" name="agreement" value="true" class="form-check-input" required><a href="" target="_blank"> Saya Setuju dengan Peraturan Peminjaman Masjid</a>
                 </div>
 
-                <div class="modal-footer m-3">
-                    <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-secondary m-3" data-bs-dismiss="modal">Batal</button></a>
+                <div class="modal-footer p-0 m-0 py-2">
+                    <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button></a>
                     <button type="submit" class="btn btn-primary ">Kirim</button>
                 </div>
                 </form>

@@ -3,16 +3,26 @@
     <div class="modal fade" id="detailMasuk<?= $pengeluaran->id_keuangan; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="create_pengeluaranLabel" aria-hidden="true">
         <div class="modal-dialog  modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5 " id="create_pengeluaranLabel">Detail pengeluaran</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3 " style="max-width: 100%;">
                         <div class="row g-0 align-items-center offset-md-1 me-2 g-2">
-                            <div class="col-lg-4 px-3">
-                                <img style="max-width : 350px ; max-height : 350px ;  " src="<?php echo base_url('assets-bendahara/img/foto-bukti/' . $pengeluaran->foto_bukti); ?>" class="img-fluid rounded float-start float-center ms-auto d-block " alt="foto <?= $pengeluaran->keterangan; ?>">
+                            <div class="col-md-4 mt-auto mb-auto">
+                                <div class="col-md-12 mt-auto mb-auto ">
+                                    <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                                        <div class="inventaris-item">
+                                            <img src="<?php echo base_url('assets-bendahara/img/foto-bukti/' . $pengeluaran->foto_bukti); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                                            <div class="inventaris-info">
+                                                <a href="<?php echo base_url('assets-bendahara/img/foto-bukti/' . $pengeluaran->foto_bukti); ?>" title="<?= $pengeluaran->keterangan; ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="col-lg-8">
                                 <form>
                                     <fieldset disabled>
@@ -39,15 +49,13 @@
                                         </div>
                                     </fieldset>
                                 </form>
-                                <a href="<?php echo base_url('pengeluaran'); ?>"><button type="button" class="btn btn-danger">Kembali</button></a>
-                                <a href="<?= '.././edit/' . $pengeluaran->id_keuangan; ?>"><button type="submit" class="btn btn-primary">Edit</button></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger m-1" data-bs-dismiss="modal">Batal</button>
-                        <a href="<?= 'pengeluaran/edit/' . $pengeluaran->id_keuangan; ?>"><button type="button" class="btn btn-primary">Edit</button></a>
+                        <a href="<?= 'pengeluaran/edit/' . $pengeluaran->id_keuangan; ?>"><button type="button" class="btn btn-success">Edit</button></a>
                     </div>
                 </div>
             </div>
