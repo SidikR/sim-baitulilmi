@@ -182,4 +182,96 @@ class KeuanganController extends BaseController
 
         return redirect()->back()->with('success', 'Data Keuangan Berhasil Diubah');
     }
+
+    public function import()
+    {
+        $file = $this->request->getFile('import_keuangan');
+
+        $id_max = $this->KeuanganModel->getMaxId();
+
+        // Check if a file was uploaded
+        if ($file === null) {
+            return redirect()->back()->with('error', 'No file uploaded!');
+        }
+
+        // Check if the uploaded file is a valid Excel file
+        if (!$file->isValid() || $file->getClientMimeType() !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+            return redirect()->back()->with('error', 'Invalid file format!');
+        }
+
+        // Move the uploaded file to a writable directory
+        $filePath = WRITEPATH . 'uploads/' . $file->getName();
+        $file->move(WRITEPATH . 'uploads/', $file->getName());
+
+        // Load the spreadsheet reader library
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($filePath);
+
+        // Select the first worksheet
+        $worksheet = $spreadsheet->getActiveSheet();
+
+        // Get the highest row number in the worksheet
+        $highestRow = $worksheet->getHighestRow();
+
+        // Iterate through each row starting from row 3
+        foreach ($worksheet->getRowIterator($startRow = 2) as $row) {
+            // Get the cell values
+            $Tanggal = $worksheet->getCell('B' . $row->getRowIndex())->getValue();
+            $Akun = $worksheet->getCell('C' . $row->getRowIndex())->getValue();
+            $Akses = $worksheet->getCell('D' . $row->getRowIndex())->getValue();
+            $Keterangan = $worksheet->getCell('E' . $row->getRowIndex())->getValue();
+            $Masuk = $worksheet->getCell('F' . $row->getRowIndex())->getValue();
+            $Keluar = $worksheet->getCell('G' . $row->getRowIndex())->getValue();
+            $uuid4 = Uuid::uuid4();
+            $slug = $uuid4;
+
+            if ($Akun == "pembangunan") {
+                $setAkun = 1;
+            } elseif ($Akun == "operasional") {
+                $setAkun = 2;
+            } else $setAkun = 3;
+
+            if ($Akses == "Cash") {
+                $setAkses = 1;
+            } else $setAkses = 2;
+
+
+            $tanggalObj = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($Tanggal);
+            $tanggal = $tanggalObj->format('Y-m-d');
+
+
+            $data = [
+                'id_keuangan' => $uuid4,
+                'tanggal_transaksi' => $tanggal,
+                'keterangan' => $Keterangan,
+                'slug' => $slug,
+                'masuk' => $Masuk,
+                'keluar' => $Keluar,
+                'id_akunkeuangan' => $setAkun,
+                'id_akseskeuangan' => $setAkses,
+            ];
+
+            // Cek jika nilai keterangan kosong, lompati baris ini
+            if (empty($Keterangan)) {
+                continue;
+            }
+
+            // Check if the name already exists in the database
+            // if ($this->KeuanganModel->where('slug', $slug)->countAllResults() > 0) {
+            //     // Handle the duplicate name case
+            //     // For example, you can skip inserting or perform any desired action
+            //     continue; // Skip the current iteration and move to the next row
+            // }
+
+            // dd($data);
+
+            // Insert the data into the database
+            $this->KeuanganModel->insert($data);
+        }
+
+        // Delete the uploaded file after importing the data
+        unlink($filePath);
+
+        // Redirect or display a success message
+        return redirect()->to('/keuangan')->with('success', 'Data imported successfully!');
+    }
 }

@@ -73,6 +73,7 @@ $routes->delete('/pengurus/hapus/(:segment)', 'Admin\PengurusController::delete/
 $routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1', ['filter' => 'role:admin']);
 $routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1', ['filter' => 'role:admin']);
 $routes->put('/pengurus/edit/foto/(:segment)', 'Admin\PengurusController::update_foto/$1', ['filter' => 'role:admin']);
+$routes->post('pengurus-import', 'Admin\PengurusController::import', ['filter' => 'role:admin']);
 
 $routes->get('petugas-jumat', 'Admin\PetugasJumatController::index', ['filter' => 'role:admin']);
 $routes->post('/petugas-jumat/save', 'Admin\PetugasJumatController::save', ['filter' => 'role:admin']);
@@ -159,6 +160,7 @@ $routes->get('bendahara', 'Bendahara\DashboardController::index');
 
 // Routes Keuangan Bendahara
 $routes->get('keuangan', 'Bendahara\KeuanganController::index', ['filter' => 'role:bendahara']);
+$routes->post('keuangan-import', 'Bendahara\KeuanganController::import', ['filter' => 'role:bendahara']);
 
 // Routes Bendahara Pemasukan
 $routes->get('pemasukan', 'Bendahara\PemasukanController::index', ['filter' => 'role:bendahara']);

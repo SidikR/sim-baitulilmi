@@ -9,18 +9,20 @@
                     <h3>Keuangan Masjid</h3>
                 </div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row d-flex align-items-center">
                         <div class="col-md-2 d-grid gap-2 mb-3">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importModal"><i class="bi bi-database-add"></i> Import
+                            </button>
                             <a href='keuangan/tambah-pemasukan' class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Pemasukan</a>
                             <a href='keuangan/tambah-pengeluaran' class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Pengeluaran</a>
                         </div>
 
-                        <div class="col-md-10">
+                        <div class="col-md-10 ">
                             <section class="tabs">
-                                <ul class="nav nav-tabs row gy-4 d-flex">
+                                <ul class="nav nav-tabs gy-4  ">
 
                                     <!-- Awal Tab Untuk Menampilan Buku Besar -->
-                                    <li class="nav-item col-12 col-md-4 col-lg-4 buku_besar">
+                                    <li class="nav-item col-12 col-md-4 col-lg-4 buku_besar ">
                                         <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
                                             <i class="bi bi-coin color-secondary"></i>
                                             <h4>Buku Besar</h4>
@@ -65,7 +67,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card">
-                                <h5 class="card-header text-center bg-success text-white">Ringkasan Keuangan</h5>
+                                <h5 class="card-header text-center btn-success text-white">Ringkasan Keuangan</h5>
                                 <div class="card-body">
                                     <div class="row">
                                         <h5 class=" col-12 col-md-12 col-lg-6">Pembangunan</h5>
@@ -81,7 +83,7 @@
                                     </div>
                                     <div class="row">
                                         <h5 class=" col-12 col-md-12 col-lg-6">Total</h5>
-                                        <h5 class=" col-12 col-md-12 col-lg-6"><span class="badge bg-success">: Rp. <?= number_format($total_kas, 0, '.', '.'); ?></span></h5>
+                                        <h5 class=" col-12 col-md-12 col-lg-6"><span class="badge btn-success">: Rp. <?= number_format($total_kas, 0, '.', '.'); ?></span></h5>
                                     </div>
                                 </div>
                             </div>
@@ -376,6 +378,31 @@
         </div>
     </div>
 <?php endforeach ?>
+
+
+<div class="modal fade" id="importModal" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Hapus Data Pengurus</h5>
+                <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
+            </div>
+            <div class="modal-body">
+                <form action="keuangan-import" method="post" enctype="multipart/form-data">
+                    <?= csrf_field(); ?>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Unggah File Anda Seperti <a href="<?= base_url('assets/template/Import_Pengurus_Masjid.xlsx'); ?>">Template</a></label>
+                        <input class="form-control" type="file" id="formFile" name="import_keuangan" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success btn-sm">Import</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <?= $this->include('bendahara/pemasukan/modal_detail'); ?>

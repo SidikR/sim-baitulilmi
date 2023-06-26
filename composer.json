@@ -9,6 +9,7 @@
         "codeigniter4/framework": "^4.0",
         "dompdf/dompdf": "^2.0",
         "myth/auth": "^1.2",
+        "phpoffice/phpspreadsheet": "^1.29",
         "ramsey/uuid": "^4.7",
         "twbs/bootstrap": "5.2.3",
         "twbs/bootstrap-icons": "^1.10"

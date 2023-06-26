@@ -16,6 +16,9 @@
                                 <i class="bi bi-plus"></i> Tambah
                             </button></a>
 
+                        <button type="button" class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#importModal"><i class="bi bi-database-add"></i> Import
+                        </button>
+
                         <!-- ini notifikasi Berhasil ditambah -->
                         <?php if (session('success')) : ?>
                             <div class="alert alert-success" role="alert">
@@ -82,5 +85,32 @@
         </div>
     </div>
 <?php endforeach ?>
+
+<!-- Modal Hapus -->
+
+<div class="modal fade" id="importModal" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Hapus Data Pengurus</h5>
+                <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
+            </div>
+            <div class="modal-body">
+                <form action="pengurus-import" method="post" enctype="multipart/form-data">
+                    <?= csrf_field(); ?>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Unggah File Anda Seperti <a href="<?= base_url('assets/template/Import_Pengurus_Masjid.xlsx'); ?>">Template</a></label>
+                        <input class="form-control" type="file" id="formFile" name="import_pengurus" required>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success btn-sm">Import</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <?= $this->endSection() ?>

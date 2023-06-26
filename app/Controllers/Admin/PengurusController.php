@@ -173,4 +173,77 @@ class PengurusController extends BaseController
         }
         return view('admin/pengurus/detail', $data);
     }
+
+    public function import()
+    {
+        $file = $this->request->getFile('import_pengurus');
+
+        $id_max = $this->PengurusModel->getMaxId();
+
+        // Check if a file was uploaded
+        if ($file === null) {
+            return redirect()->back()->with('error', 'No file uploaded!');
+        }
+
+        // Check if the uploaded file is a valid Excel file
+        if (!$file->isValid() || $file->getClientMimeType() !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+            return redirect()->back()->with('error', 'Invalid file format!');
+        }
+
+        // Move the uploaded file to a writable directory
+        $filePath = WRITEPATH . 'uploads/' . $file->getName();
+        $file->move(WRITEPATH . 'uploads/', $file->getName());
+
+        // Load the spreadsheet reader library
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($filePath);
+
+        // Select the first worksheet
+        $worksheet = $spreadsheet->getActiveSheet();
+
+        // Get the highest row number in the worksheet
+        $highestRow = $worksheet->getHighestRow();
+
+        // Iterate through each row starting from row 3
+        foreach ($worksheet->getRowIterator($startRow = 2) as $row) {
+            // Get the cell values
+            $namaLengkap = $worksheet->getCell('B' . $row->getRowIndex())->getValue();
+            $jenisKelamin = $worksheet->getCell('C' . $row->getRowIndex())->getValue();
+            $jabatan = $worksheet->getCell('D' . $row->getRowIndex())->getValue();
+            $alamat = $worksheet->getCell('E' . $row->getRowIndex())->getValue();
+            $nomorTelepon = $worksheet->getCell('F' . $row->getRowIndex())->getValue();
+            $instagram = $worksheet->getCell('G' . $row->getRowIndex())->getValue();
+            $linkedin = $worksheet->getCell('H' . $row->getRowIndex())->getValue();
+            // Deklarasi Nailai Slug Pengurus
+            $slugy = url_title($namaLengkap, '-', TRUE);
+            $slug = $slugy . '-' . $id_max[0]->id_pengurus + 1;
+
+
+            $data = [
+                'nama_lengkap' => $namaLengkap,
+                'jenis_kelamin' => $jenisKelamin,
+                'slug_pengurus' => $slug,
+                'jabatan' => $jabatan,
+                'alamat_pengurus' => $alamat,
+                'nomor_telepon' => $nomorTelepon,
+                'instagram' => $instagram,
+                'linkedin' => $linkedin,
+            ];
+
+            // Check if the name already exists in the database
+            if ($this->PengurusModel->where('nama_lengkap', $namaLengkap)->countAllResults() > 0) {
+                // Handle the duplicate name case
+                // For example, you can skip inserting or perform any desired action
+                continue; // Skip the current iteration and move to the next row
+            }
+
+            // Insert the data into the database
+            $this->PengurusModel->insert($data);
+        }
+
+        // Delete the uploaded file after importing the data
+        unlink($filePath);
+
+        // Redirect or display a success message
+        return redirect()->to('/pengurus')->with('success', 'Data imported successfully!');
+    }
 }

@@ -125,4 +125,12 @@ class KeuanganModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    public function getMaxId()
+    {
+        $builder = $this->db->table('keuangan');
+        $builder->selectMax('id_keuangan');
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }
