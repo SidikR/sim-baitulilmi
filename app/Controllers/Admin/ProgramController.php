@@ -83,7 +83,7 @@ class ProgramController extends BaseController
         } {
             $this->ProgramModel->insert($data);
             //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../public/assets-admin/img/program', $namaGambar);
+            $gambar->move(WRITEPATH . '../../public_html/baim/assets-admin/img/program', $namaGambar);
             return redirect()->to('/program')->with('success', 'Data Program Berhasil Ditambahkan');
         }
     }
@@ -140,7 +140,7 @@ class ProgramController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->ProgramModel->update($id, $data);
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/program', $namaGambar);
+        $gambar->move(WRITEPATH . '../../public_html/baim/assets-admin/img/program', $namaGambar);
         return redirect()->to('program')->with('success', 'Data Program Berhasil Diubah');
     }
 
