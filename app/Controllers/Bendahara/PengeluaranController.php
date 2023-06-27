@@ -64,7 +64,7 @@ class PengeluaranController extends BaseController
         $namaGambar = $gambar->getName('');
 
         //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
 
         // Simpan Data ke DataBase
         $data = [
@@ -148,7 +148,7 @@ class PengeluaranController extends BaseController
         $namaGambar = $gambar->getName('');
 
         //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
 
         $data = [
             'tanggal_transaksi' => esc($this->request->getvar('tanggal_transaksi')),
@@ -195,7 +195,7 @@ class PengeluaranController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->KeuanganModel->update($id_keuangan, $data);
-        $gambar->move(WRITEPATH . '../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
         return redirect()->to('keuangan')->with('success', 'Data Kegiatan Berhasil Diubah');
     }
 }
