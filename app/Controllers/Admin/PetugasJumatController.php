@@ -81,7 +81,7 @@ class PetugasjumatController extends BaseController
         } {
             $this->PetugasJumatModel->insert($data);
             //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../../public_html/baim/assets-admin/img/petugas-jumat', $namaGambar);
+            $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/petugas-jumat', $namaGambar);
             return redirect()->to('/petugas-jumat')->with('success', 'Data Petugasjumat Berhasil Ditambahkan');
         }
     }
@@ -136,7 +136,7 @@ class PetugasjumatController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->PetugasJumatModel->update($id_petugas, $data);
-        $gambar->move(WRITEPATH . '../../public_html/baim/assets-admin/img/petugas-jumat', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/petugas-jumat', $namaGambar);
         return redirect()->to('petugas-jumat')->with('success', 'Data Foto Berhasil Diubah');
     }
 
