@@ -78,7 +78,7 @@ class PeminjamanInventarisController extends BaseController
             return view('pages/inventaris/index', $data);
         } {
             $this->PeminjamanInventarisModel->insert($data);
-            $gambar->move(WRITEPATH . '../public/assets-admin/img/peminjaman/foto-identitas', $namaGambar);
+            $gambar->move(WRITEPATH . '../../public_html/baim/assets-admin/img/peminjaman/foto-identitas', $namaGambar);
             return redirect()->to(base_url('peminjaman'))->with('success', 'Permintaan Telah dikirim, Silakan cek Log Peminjaman di Profile Anda!');
         }
     }

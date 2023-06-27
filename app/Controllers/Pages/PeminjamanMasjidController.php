@@ -82,8 +82,8 @@ class PeminjamanMasjidController extends BaseController
             return view('pages/inventaris/index', $data);
         } {
             $this->PeminjamanMasjidModel->insert($data);
-            $gambaridentitas->move(WRITEPATH . '../public/assets-admin/img/peminjaman-masjid/foto-identitas', $namaGambarIdentitas);
-            $gambarkegiatan->move(WRITEPATH . '../public/assets-admin/img/kegiatan/', $namaGambarKegiatan);
+            $gambaridentitas->move(WRITEPATH . '../../public_html/baim/assets-admin/img/peminjaman-masjid/foto-identitas', $namaGambarIdentitas);
+            $gambarkegiatan->move(WRITEPATH . '../../public_html/baim/assets-admin/img/kegiatan/', $namaGambarKegiatan);
 
             if ($metode_infaq == "TRANSFER") {
                 $id = $id_max[0]->id_peminjaman + 1;
@@ -111,7 +111,7 @@ class PeminjamanMasjidController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->PeminjamanMasjidModel->update($id_peminjaman, $data);
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/peminjaman-masjid/bukti-transfer/', $namaGambar);
+        $gambar->move(WRITEPATH . '../../public_html/baim/assets-admin/img/peminjaman-masjid/bukti-transfer/', $namaGambar);
         return redirect()->to('akun')->with('success', 'Bukti Transfer Berhasil Dikirim');
     }
 

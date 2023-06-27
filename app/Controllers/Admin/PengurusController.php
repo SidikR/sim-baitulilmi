@@ -89,7 +89,7 @@ class PengurusController extends BaseController
         } {
             $this->PengurusModel->insert($data);
             //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-pengurus', $namaGambar);
+            $gambar->move(WRITEPATH . '../../public_html/baim/assets-admin/img/foto-pengurus', $namaGambar);
             return redirect()->to('/pengurus')->with('success', 'Data Pengurus Berhasil Ditambahkan');
         }
     }
@@ -147,7 +147,7 @@ class PengurusController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->PengurusModel->update($id_pengurus, $data);
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-pengurus', $namaGambar);
+        $gambar->move(WRITEPATH . '../../public_html/baim/assets-admin/img/foto-pengurus', $namaGambar);
         return redirect()->to('pengurus')->with('success', 'Data Pengurus Berhasil Diubah');
     }
 
