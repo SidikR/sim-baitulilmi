@@ -19,7 +19,7 @@
 
                         <div class="col-md-10 ">
                             <section class="tabs">
-                                <ul class="nav nav-tabs gy-4  ">
+                                <ul class="nav nav-tabs gy-4 row gy-4 d-flex">
 
                                     <!-- Awal Tab Untuk Menampilan Buku Besar -->
                                     <li class="nav-item col-12 col-md-4 col-lg-4 buku_besar ">

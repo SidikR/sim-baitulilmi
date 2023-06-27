@@ -176,4 +176,26 @@ class PengeluaranController extends BaseController
             return redirect()->to('pengeluaran')->with('success', 'Data Pengeluaran Berhasil Diubah');
         }
     }
+
+    public function update_foto($id_keuangan)
+    {
+        // Ambil Gambar
+        $gambar = $this->request->getFile('foto_bukti');
+
+        //Ambil Nama Gambar
+        $namaGambar = $gambar->getName('');
+
+        $data = [
+            'title' => 'Tambah Foto Bukti',
+            'foto_bukti' => $namaGambar,
+            'validation' => \Config\Services::validation()
+        ];
+
+        if (empty($namaGambar)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
+        }
+        $this->KeuanganModel->update($id_keuangan, $data);
+        $gambar->move(WRITEPATH . '../public/assets-bendahara/img/foto-bukti', $namaGambar);
+        return redirect()->to('keuangan')->with('success', 'Data Kegiatan Berhasil Diubah');
+    }
 }

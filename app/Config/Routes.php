@@ -179,6 +179,7 @@ $routes->put('/pengeluaran/edit/(:segment)', 'Bendahara\PengeluaranController::u
 $routes->delete('/pengeluaran/hapus/(:segment)', 'Bendahara\PengeluaranController::delete/$1', ['filter' => 'role:bendahara']);
 $routes->get('/pengeluaran/detail/(:segment)', 'Bendahara\PengeluaranController::detail/$1', ['filter' => 'role:bendahara']);
 $routes->get('/pengeluaran/edit/(:segment)', 'Bendahara\PengeluaranController::form_update/$1', ['filter' => 'role:bendahara']);
+$routes->put('/pengeluaran/edit/foto/(:segment)', 'Bendahara\PengeluaranController::update_foto/$1', ['filter' => 'role:bendahara']);
 
 
 
