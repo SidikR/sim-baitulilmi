@@ -96,7 +96,7 @@ class AkunController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->AkunModel->update($id, $data);
-        $gambar->move(WRITEPATH . '../public/assets/img/foto-user', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets/img/foto-user', $namaGambar);
         return redirect()->to('akun')->with('success', 'Foto Akun Anda Berhasil Diubah');
     }
 }

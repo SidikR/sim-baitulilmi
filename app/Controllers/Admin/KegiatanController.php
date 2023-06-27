@@ -88,7 +88,7 @@ class KegiatanController extends BaseController
         } {
             $this->KegiatanModel->insert($data);
             //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../public/assets-admin/img/kegiatan', $namaGambar);
+            $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/kegiatan', $namaGambar);
             return redirect()->to('/kegiatan')->with('success', 'Data Kegiatan Berhasil Ditambahkan');
         }
     }
@@ -143,7 +143,7 @@ class KegiatanController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->KegiatanModel->update($id_kegiatan, $data);
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/kegiatan', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/kegiatan', $namaGambar);
         return redirect()->to('kegiatan')->with('success', 'Data Kegiatan Berhasil Diubah');
     }
 

@@ -81,7 +81,7 @@ class InventarisController extends BaseController
         } {
             $this->InventarisModel->insert($data);
             //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-inventaris', $namaGambar);
+            $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/foto-inventaris', $namaGambar);
             return redirect()->to('/inventaris')->with('success', 'Data inventaris Berhasil Ditambahkan');
         }
     }
@@ -160,7 +160,7 @@ class InventarisController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->InventarisModel->update($id_inventaris, $data);
-        $gambar->move(WRITEPATH . '../public/assets-admin/img/foto-inventaris', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/foto-inventaris', $namaGambar);
         return redirect()->to('inventaris')->with('success', 'Data Inventaris Berhasil Diubah');
     }
 }

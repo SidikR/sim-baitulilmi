@@ -83,7 +83,7 @@ class KeuanganController extends BaseController
         $namaGambar = $gambar->getName('');
 
         //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../public/assets-bendahara/img/foto-bukti', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
 
         $uuid4 = Uuid::uuid4();
 
@@ -166,7 +166,7 @@ class KeuanganController extends BaseController
         $namaGambar = $gambar->getName('');
 
         //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../public/assets-bendahara/img/foto-bukti', $namaGambar);
+        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
 
         $data = [
             'tanggal_transaksi' => esc($this->request->getvar('tanggal_transaksi')),

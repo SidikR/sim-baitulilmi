@@ -149,7 +149,7 @@ class PeminjamanController extends BaseController
     //     $namaGambar = $gambar->getName('');
 
     //     //Menuliskan ke direktori
-    //     $gambar->move(WRITEPATH . '../public/assets-admin/img/pengurus', $namaGambar);
+    //     $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/pengurus', $namaGambar);
 
     //     // Simpan Data ke DataBase
     //     $data = [
@@ -194,7 +194,7 @@ class PeminjamanController extends BaseController
     //     $namaGambar = $gambar->getName();
 
     //     //Menuliskan ke direktori
-    //     $gambar->move(WRITEPATH . '../public/assets-admin/img/pengurus', $namaGambar);
+    //     $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/pengurus', $namaGambar);
     //     $slug = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
     //     //$daftar_pengurus = $this->pengurusModel->getPengurus($slug_pengurus);
     //     $data = [
