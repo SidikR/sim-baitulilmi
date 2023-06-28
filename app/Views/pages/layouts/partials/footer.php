@@ -34,7 +34,7 @@
                     <ul>
                         <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('peminjaman'); ?>">Peminjaman Inventaris</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('peminjaman'); ?>">Peminjaman Masjid</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('keuangan-guest'); ?>">Transparansi Keuangan</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('guest-keuangan'); ?>">Transparansi Keuangan</a></li>
                     </ul>
                 </div>
             </div>
