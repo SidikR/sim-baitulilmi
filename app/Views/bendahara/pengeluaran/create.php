@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <label for="keluar" class="form-label">Dana Keluar</label>
-                                    <input type="text" class="form-control <?= $validation->hasError('keluar') ? 'is-invalid' : null; ?>" id="formFile" placeholder="Isikan Besarnya Pengeluaran" name="keluar">
+                                    <input type="number" class="form-control <?= $validation->hasError('keluar') ? 'is-invalid' : null; ?>" id="formFile" placeholder="Isikan Besarnya Pengeluaran" name="keluar">
 
                                     <?php if ($validation->hasError('keluar')) : ?>
                                         <div class="invalid-feedback">

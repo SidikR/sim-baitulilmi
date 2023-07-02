@@ -90,7 +90,7 @@
 
                                         <div class="mb-3">
                                             <label for="disabledTextInput" class="form-label">Nominal Pengeluaran</label>
-                                            <input name="keluar" type="text" id="disabledTextInput" class="form-control <?= $validation->hasError('keluar') ? 'is-invalid' : null; ?>" value="<?= $daftar_pengeluaran->keluar; ?>">
+                                            <input name="keluar" type="number" id="disabledTextInput" class="form-control <?= $validation->hasError('keluar') ? 'is-invalid' : null; ?>" value="<?= $daftar_pengeluaran->keluar; ?>">
 
                                             <?php if ($validation->hasError('keluar')) : ?>
                                                 <div class="invalid-feedback">

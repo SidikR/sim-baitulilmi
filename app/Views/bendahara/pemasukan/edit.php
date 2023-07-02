@@ -61,7 +61,7 @@
                                 <div class="col-12 col-xl-6">
                                     <div class="mb-3">
                                         <label for="disabledTextInput" class="form-label">Nominal Pemasukan</label>
-                                        <input name="masuk" type="text" id="disabledTextInput" class="form-control" value="<?= $daftar_pemasukan->masuk; ?>">
+                                        <input name="masuk" type="number" id="disabledTextInput" class="form-control" value="<?= $daftar_pemasukan->masuk; ?>">
                                     </div>
 
                                     <div class="mb-3">
