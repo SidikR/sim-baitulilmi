@@ -145,7 +145,7 @@
                         <label for="userImage">
                             <a class="btn btn-secondary btn-lg" rel="nofollow"><span class=''><i class="bi bi-upload"></i></span> Pilih Gambar</a>
                         </label>
-                        <input type="file" id="userImage" name="foto_bukti" onchange="readURL(this);" />
+                        <input type="file" id="userImage" name="foto_bukti" onchange="readURL(this);" required />
                     </p>
                     <img id="image" width="50%" height="50%" />
                     <div class="modal-footer p-0 m-0 py-2">
