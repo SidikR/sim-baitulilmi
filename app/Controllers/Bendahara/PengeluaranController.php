@@ -63,8 +63,7 @@ class PengeluaranController extends BaseController
         //Ambil Nama Gambar
         $namaGambar = $gambar->getName('');
 
-        //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
+
 
         // Simpan Data ke DataBase
         $data = [
@@ -97,6 +96,10 @@ class PengeluaranController extends BaseController
             return view('bendahara/pengeluaran/create', $data);
         } {
             $this->KeuanganModel->insert($data);
+            if ($namaGambar != null) {
+                //Menuliskan ke direktori
+                $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
+            }
             return redirect()->to('keuangan')->with('success', 'Data pengeluaran Berhasil Ditambahkan');
         }
     }
