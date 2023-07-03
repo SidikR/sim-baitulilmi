@@ -72,7 +72,7 @@
                                             </div>
                                         <?php endif; ?>
 
-                                        <div class="text-center pt-1 mb-5 pb-1 d-grid">
+                                        <div class="text-center pt-3 mb-5 pb-1 d-grid">
                                             <button class="btn btn-login btn-block fa-lg mb-3" type="submit"><?= lang('Auth.loginAction') ?></button>
                                             <!-- <?php if ($config->activeResetter) : ?>
                                                 <a class="text-muted" href="<?= url_to('forgot') ?>">Forgot password?</a>
