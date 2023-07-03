@@ -79,7 +79,7 @@
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
                                         <p class="mb-0 me-2">Sudah Punya Akun?</p>
-                                        <a href="<?= url_to('login') ?>" class="btn btn-outline-danger">Create New</a>
+                                        <a href="<?= url_to('login') ?>" class="btn btn-outline-danger">Login Now</a>
                                     </div>
 
                                     <div class="pb-4 d-grid">

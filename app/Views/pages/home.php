@@ -9,7 +9,7 @@
         <h2><span>Masjid Baitul Ilmi ITERA</span></h2>
         <p>Jln. Terusan Ryacudu, Desa Way Hui, Kec. Jati Agung, Lampung Selatan, Institut Teknologi Sumatera</p>
         <div class="d-flex">
-            <!-- <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+
             <a href="https://youtu.be/pvatqsfi6mg" class="glightbox btn-watch-video d-flex align-items-center text-primary"><i class="bi bi-play-circle"></i><span class="color-primary">Watch Video</span></a>
         </div>
     </div>
