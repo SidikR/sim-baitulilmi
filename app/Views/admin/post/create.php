@@ -53,7 +53,7 @@
                                                 <label class="input-group-text text-black" for="inputGroupSelect01">Kategori</label>
                                                 <select class="form-select" id="inputGroupSelect01" name="kategori_ck">
                                                     <option selected>Pilih Kategori</option>
-                                                    <?php foreach ($kategori[0] as $kt) : ?>
+                                                    <?php foreach ($uniqe_kategori as $kt) : ?>
                                                         <option value="<?= $kt->kategori; ?>"><?= $kt->kategori; ?></option>
                                                     <?php endforeach ?>
                                                 </select>
