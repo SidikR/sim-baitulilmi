@@ -25,7 +25,7 @@ class PeminjamanInventarisController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Peminjaman Inventaris',
+            'title' => 'Peminjaman',
             'daftar_inventaris' => $this->InventarisModel->orderBy('created_at', 'DESC')->findAll(),
             'validation' => \Config\Services::validation(),
 
