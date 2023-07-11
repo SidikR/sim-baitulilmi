@@ -9,10 +9,10 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Blog</h2>
+                <h2>Posts</h2>
                 <ol>
                     <li><a href="<?= base_url('home'); ?>">Home</a></li>
-                    <li>Blog</li>
+                    <li>Post</li>
                 </ol>
             </div>
 

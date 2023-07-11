@@ -16,8 +16,8 @@
             <?php foreach ($daftar_pengurus as $dp) : ?>
                 <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
                     <div class="team-member">
-                        <div class="member-img">
-                            <img src="<?php echo base_url(); ?>/assets-admin/img/foto-pengurus/<?= $dp->foto_pengurus; ?>" class="img-fluid" alt="">
+                        <div class="member-img img-box" style="width: 300px; height:300px">
+                            <img src=" <?php echo base_url(); ?>/assets-admin/img/foto-pengurus/<?= $dp->foto_pengurus; ?>" class="img-fluid" alt="">
                         </div>
                         <div class="member-info">
                             <div class="social">

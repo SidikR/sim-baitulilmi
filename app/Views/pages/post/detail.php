@@ -8,11 +8,11 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Blog Details</h2>
+                <h2>Post Details</h2>
                 <ol>
                     <li><a href=<?= base_url('home'); ?>>Home</a></li>
-                    <li><a href=<?= base_url('post-guest'); ?>>Blog</a></li>
-                    <li>Blog Details</li>
+                    <li><a href=<?= base_url('post-guest'); ?>>Post</a></li>
+                    <li>Post Details</li>
                 </ol>
             </div>
 

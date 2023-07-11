@@ -28,18 +28,12 @@
                                     </div>
 
                                     <?= view('Myth\Auth\Views\_message_block') ?>
-
                                     <form action="<?= url_to('register') ?>" method="post">
                                         <?= csrf_field() ?>
-
                                         <p>Silakan Isi Data-Data Dibawah Ini</p>
-
                                         <div class="form-floating mb-3">
-
                                             <input type="email" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="email" aria-describedby="emailHelp" id="floatingInput" placeholder=<?= lang('Auth.email') ?> value="<?= old('email') ?>">
-
                                             <label for="floatingInput"><?= lang('Auth.email') ?></label>
-
                                             <small id="emailHelp" class="form-text text-muted"><?= lang('Auth.weNeverShare') ?></small>
                                         </div>
 
