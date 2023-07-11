@@ -18,7 +18,6 @@
                     <?php endif ?>
                     <div class="card mb-3 " style="max-width: 100%;">
                         <div class="row m-3">
-
                             <div class="col-md-4 mt-auto mb-auto">
                                 <div class="col-md-12 mt-auto mb-auto ">
                                     <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">

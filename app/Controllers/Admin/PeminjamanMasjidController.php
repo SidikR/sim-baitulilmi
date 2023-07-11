@@ -34,7 +34,7 @@ class PeminjamanMasjidController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Daftar Peminjaman',
+            'title' => 'Daftar Peminjaman Masjid',
             'daftar_peminjaman_masjid' => $this->PeminjamanMasjidModel->getAll(),
         ];
 

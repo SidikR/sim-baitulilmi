@@ -34,7 +34,7 @@ class PeminjamanController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Daftar Peminjaman',
+            'title' => 'Daftar Peminjaman Inventaris',
             'daftar_peminjaman_inventaris' => $this->PeminjamanInventarisModel->getAll(),
             // 'validation' => \Config\Services::validation()
         ];
