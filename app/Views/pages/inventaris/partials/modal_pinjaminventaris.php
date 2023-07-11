@@ -123,7 +123,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Kirim</button>
+                        <button type="submit" class="btn btn-success px-2">Kirim</button>
                     </div>
                     </form>
                 </div>

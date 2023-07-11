@@ -125,11 +125,9 @@
 
             </div>
 
-
-
-            <div class="modal-footer">
+            <div class="d-flex gap-2 justify-content-end">
                 <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button></a>
-                <button type="submit" class="btn btn-success ">Tambah</button>
+                <button type="submit" class="btn btn-success">Kirim</button>
             </div>
             </form>
         </div>

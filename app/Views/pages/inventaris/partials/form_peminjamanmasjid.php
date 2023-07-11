@@ -53,40 +53,41 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="deskripsi_kegiatan" class="form-label">Deskripsi Kegiatan</label>
-                        <textarea type="text" class="form-control <?= $validation->hasError('deskripsi_kegiatan') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Deskripsi Kegiatan" name="deskripsi_kegiatan" rows="10" rows="10"></textarea>
+                        <label for="tanggal_dipinjam" class="form-label">Tanggal & Waktu Peminjaman</label>
+                        <input type="datetime-local" class="form-control <?= $validation->hasError('tanggal_dipinjam') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Tanggal di Pinjam" name="tanggal_dipinjam" rows="3">
 
-                        <?php if ($validation->hasError('deskripsi_kegiatan')) : ?>
+                        <?php if ($validation->hasError('tanggal_dipinjam')) : ?>
                             <div class="invalid-feedback">
-                                <?= $validation->getError('deskripsi_kegiatan'); ?>
+                                <?= $validation->getError('tanggal_dipinjam'); ?>
                             </div>
 
                         <?php endif; ?>
                     </div>
 
+                    <div class="mb-4">
+                        <label for="tanggal_selesai" class="form-label">Tanggal & Waktu Selesai</label>
+                        <input type="datetime-local" class="form-control <?= $validation->hasError('tanggal_selesai') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Tanggal selesai" name="tanggal_selesai" rows="2">
+
+                        <?php if ($validation->hasError('tanggal_selesai')) : ?>
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('tanggal_selesai'); ?>
+                            </div>
+
+                        <?php endif; ?>
+                    </div>
+
+
+
             </div>
 
             <div class="col">
-
                 <div class="mb-4">
-                    <label for="tanggal_dipinjam" class="form-label">Tanggal & Waktu Peminjaman</label>
-                    <input type="datetime-local" class="form-control <?= $validation->hasError('tanggal_dipinjam') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Tanggal di Pinjam" name="tanggal_dipinjam" rows="3">
+                    <label for="deskripsi_kegiatan" class="form-label">Deskripsi Kegiatan</label>
+                    <textarea type="text" class="form-control <?= $validation->hasError('deskripsi_kegiatan') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Deskripsi Kegiatan" name="deskripsi_kegiatan" rows="9" rows="10"></textarea>
 
-                    <?php if ($validation->hasError('tanggal_dipinjam')) : ?>
+                    <?php if ($validation->hasError('deskripsi_kegiatan')) : ?>
                         <div class="invalid-feedback">
-                            <?= $validation->getError('tanggal_dipinjam'); ?>
-                        </div>
-
-                    <?php endif; ?>
-                </div>
-
-                <div class="mb-4">
-                    <label for="tanggal_selesai" class="form-label">Tanggal & Waktu Selesai</label>
-                    <input type="datetime-local" class="form-control <?= $validation->hasError('tanggal_selesai') ? 'is-invalid' : null; ?>" id="exampleFormControlTextarea1" placeholder="Isikan Tanggal selesai" name="tanggal_selesai" rows="3">
-
-                    <?php if ($validation->hasError('tanggal_selesai')) : ?>
-                        <div class="invalid-feedback">
-                            <?= $validation->getError('tanggal_selesai'); ?>
+                            <?= $validation->getError('deskripsi_kegiatan'); ?>
                         </div>
 
                     <?php endif; ?>
@@ -125,15 +126,11 @@
                     <input type="file" class="form-control" id="formFile" name="foto_identitas" required>
                 </div>
 
-
-                <!-- <div class="mb-4">
-                    <input type="checkbox" name="agreement" value="true" class="form-check-input" required><a href="" target="_blank"> Saya Setuju dengan Peraturan Peminjaman Masjid</a>
-                </div> -->
-
-                <div class="modal-footer">
-                    <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button></a>
-                    <button type="submit" class="btn btn-success ">Kirim</button>
+                <div class="d-flex gap-2 justify-content-end">
+                    <a href="<?= base_url('peminjaman'); ?>"><button class="btn btn-danger" data-bs-dismiss="modal">Batal</button></a>
+                    <button type="submit" class="btn btn-success">Kirim</button>
                 </div>
+
                 </form>
             </div>
         </div>
