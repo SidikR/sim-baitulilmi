@@ -126,9 +126,9 @@
                 </div>
 
 
-                <div class="mb-4">
+                <!-- <div class="mb-4">
                     <input type="checkbox" name="agreement" value="true" class="form-check-input" required><a href="" target="_blank"> Saya Setuju dengan Peraturan Peminjaman Masjid</a>
-                </div>
+                </div> -->
 
                 <div class="modal-footer p-0 m-0 py-2">
                     <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button></a>

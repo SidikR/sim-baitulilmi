@@ -113,9 +113,9 @@
                                     <input type="file" class="form-control" id="formFile" name="foto_identitas" required>
                                 </div>
 
-                                <div class="mb-4">
+                                <!-- <div class="mb-4">
                                     <input type="checkbox" name="agreement" value="true" class="form-check-input" required><a href="" target="_blank"> Saya Setuju dengan Peraturan Peminjaman Inventaris Masjid</a>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
