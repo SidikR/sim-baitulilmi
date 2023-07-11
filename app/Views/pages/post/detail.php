@@ -40,7 +40,11 @@
                         </div>
 
                         <h2 class="title"><?= $post->nama_post; ?></h2>
+                        <?php
+                        $countComment = $commentModel->getCountCommentPost($post->id_post);
+                        $comments = $commentModel->getCommentsByPostId($post->id_post);
 
+                        ?>
                         <div class="meta-top">
                             <ul>
                                 <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="">Admin Masjid</a></li>

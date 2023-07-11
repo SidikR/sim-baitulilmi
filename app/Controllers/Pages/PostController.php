@@ -44,18 +44,18 @@ class PostController extends BaseController
     public function detail($id)
     {
         $u_kategori = $this->PostModel->getKategori();
-        $comments = $this->commentModel->getCommentsByPostId($id);
+        // $comments = $this->commentModel->getCommentsByPostId($id);
+        // $countComment = $this->commentModel->getCountCommentPost($id);
         $commentModel = new CommentModel();
-        $countComment = $this->commentModel->getCountCommentPost($id);
 
         $data = [
             'title' => 'Detail Post',
             'post' => $this->PostModel->getPost($id),
             'daftar_post' => $this->PostModel->paginate(6),
             'uniqe_kategori' => $u_kategori,
-            'comments' => $comments,
+            // 'comments' => $comments,
             'commentModel' => $commentModel,
-            'countComment' => $countComment
+            // 'countComments' => $countComment
 
         ];
 
@@ -68,7 +68,7 @@ class PostController extends BaseController
         return view('pages/post/detail', $data);
     }
 
-    public function store($id)
+    public function store()
     {
         $postID = $this->request->getVar('post_id');
         $userID = $this->request->getVar('user_id');
