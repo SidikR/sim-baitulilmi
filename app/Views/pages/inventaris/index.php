@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 <section id="hero-animated" class="hero-animated d-flex align-items-center">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-        <h1>Peminjaman Inventaris </h1>
+        <h1>Halaman Peminjaman</h1>
         <h2><span>Masjid Baitul Ilmi ITERA</span></h2>
     </div>
 </section>

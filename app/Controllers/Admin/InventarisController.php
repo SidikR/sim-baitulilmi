@@ -89,7 +89,7 @@ class InventarisController extends BaseController
     public function delete($id_inventaris)
     {
         $this->InventarisModel->join('akuninventaris', 'akuninventaris.id_akuninventaris = inventaris.id_akuninventaris')->join('aksesinventaris', 'aksesinventaris.id_aksesinventaris = inventaris.id_aksesinventaris')->where('id_inventaris', $id_inventaris)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil Dihapus');
+        return redirect()->to('/inventaris')->with('success', 'Data Berhasil Dihapus');
     }
 
 
