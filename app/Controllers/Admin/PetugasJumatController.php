@@ -107,7 +107,7 @@ class PetugasjumatController extends BaseController
     {
 
         $data = [
-            'title' => "Edit Data Petugasjumat",
+            'title' => "Edit Data Petugas Jumat",
             'daftar_petugasjumat' => $this->PetugasJumatModel->getPetugasJumat($id_petugas),
         ];
 
@@ -127,7 +127,7 @@ class PetugasjumatController extends BaseController
         $namaGambar = $gambar->getName('');
 
         $data = [
-            'title' => 'Tambah Foto Petugasjumat',
+            'title' => 'Tambah Foto Petugas Jumat',
             'poster' => $namaGambar,
             'validation' => \Config\Services::validation()
         ];
