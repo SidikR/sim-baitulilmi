@@ -14,7 +14,6 @@
                             <div class="col">
                                 <form action="./peminjaman/save" method="post" enctype="multipart/form-data">
                                     <?= csrf_field(); ?>
-
                                     <input type="hidden" class="form-control" id="exampleFormControlInput1" name="nama_inventaris" value="<?= $di->id_inventaris; ?>" required>
 
                                     <div class="mb-4">
@@ -25,9 +24,7 @@
                                             <div class="invalid-feedback">
                                                 <?= $validation->getError('qty'); ?>
                                             </div>
-
                                         <?php endif; ?>
-
                                     </div>
 
                                     <div class="mb-4">

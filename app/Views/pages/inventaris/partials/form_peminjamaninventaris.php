@@ -20,12 +20,10 @@
                                 <option value=<?= $jb->id_inventaris; ?>><?= $jb->nama_inventaris; ?></option>
                             <?php endforeach ?>
                         </select>
-
                         <?php if ($validation->hasError('nama_inventaris')) : ?>
                             <div class="invalid-feedback">
                                 <?= $validation->getError('nama_inventaris'); ?>
                             </div>
-
                         <?php endif; ?>
                     </div>
 

@@ -28,11 +28,11 @@
                                 <th>No</th>
                                 <th>Tanggal</th>
                                 <th>Nama Imam</th>
-                                <th>Asal Imam</th>
+                                <th>Asal/Prodi/Jabatan Imam</th>
                                 <th>Nama Khatib</th>
-                                <th>Asal Khatib</th>
+                                <th>Asal/Prodi/Jabatan Khatib</th>
                                 <th>Nama Muadzin</th>
-                                <th>Asal Muadzin</th>
+                                <th>Asal/Prodi/Jabatan Muadzin</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

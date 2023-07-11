@@ -104,7 +104,7 @@
 <div class="modal fade" id="updateGambar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-primary">
+            <div class="modal-header bg-primary text-white">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update Foto <?= $daftar_pengurus->nama_lengkap; ?></h1>
                 <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
             </div>

@@ -29,7 +29,6 @@
                                             <div class="invalid-feedback">
                                                 <?= $validation->getError('nama_kegiatan'); ?>
                                             </div>
-
                                         <?php endif; ?>
                                     </div>
 
