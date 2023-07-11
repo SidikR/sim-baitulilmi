@@ -1,5 +1,5 @@
 ---
 deployment:
     tasks:
-        - export DEPLOYPATH=/home/websites/baim.iterahero.com
+        - export DEPLOYPATH=/home/iteraher/repositories/sim-baitulilmi
         - /usr/bin/rsync -Paz * $DEPLOYPATH --delete
