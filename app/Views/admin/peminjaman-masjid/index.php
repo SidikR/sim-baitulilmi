@@ -54,11 +54,8 @@
                                         <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#lihatModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-book"></i></button>
 
                                         <?php if ($dpi->status_peminjaman == 'pending') : ?>
-
                                             <a href="<?= 'peminjaman-masjid-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-warning btn-sm" title="Terima Permohonan"><span class="bi bi-check-circle"></span></button></a>
-
                                             <button type="button" class="btn btn-danger btn-sm" title="Tolak Permohonan" data-bs-toggle="modal" data-bs-target="#tolakModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-x-square-fill"></i></button>
-
 
                                         <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq == 'belum bayar') :  ?>
                                             <a href="<?= 'peminjaman-masjid-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Selesai</button></a>

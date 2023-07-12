@@ -92,7 +92,6 @@
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('masuk'); ?>
                                         </div>
-
                                     <?php endif; ?>
                                 </div>
                             </div>

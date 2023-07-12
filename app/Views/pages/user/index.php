@@ -84,21 +84,16 @@
                                                     <td style="width: 15%;">
                                                         <?php if ($di->status_peminjaman == 'pending') : ?>
                                                             <button type="button" class="btn btn-warning btn-sm"><i class="bi bi-clock-history"></i> Sedang ditinjau</button>
-
                                                         <?php elseif ($di->status_peminjaman == 'accepted') :  ?>
                                                             <button type="button" class="btn btn-secondary btn-sm"><i class="bi bi-clock-history"></i> Belum dikembalikan</button>
-
                                                         <?php elseif ($di->status_peminjaman == 'done') :  ?>
                                                             <button type="button" class="btn btn-success btn-sm">
                                                                 <i class="bi bi-check2-circle"></i> Proses Selesai
                                                             </button>
-
                                                         <?php elseif ($di->status_peminjaman == 'rejected') :  ?>
                                                             <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
-
                                                         <?php elseif ($di->status_peminjaman == 'batal') :  ?>
                                                             <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Dibatalkan</button>
-
                                                         <?php endif ?>
                                                     </td>
                                                     <td style="width: 15%;">
@@ -150,19 +145,14 @@
                                                     <td style="width: 15%;">
                                                         <?php if ($di->status_peminjaman == 'pending') : ?>
                                                             <button type="button" class="btn btn-warning btn-sm"><i class="bi bi-clock-history"></i> Sedang ditinjau</button>
-
                                                         <?php elseif ($di->status_peminjaman == 'accepted') :  ?>
                                                             <button type="button" class="btn btn-success btn-sm"><i class="bi bi-clock-history"></i> Diizinkan</button>
-
                                                         <?php elseif ($di->status_peminjaman == 'done') :  ?>
                                                             <button type="button" class="btn btn-success btn-sm"><i class="bi bi-check2-circle"></i> Proses Selesai</button>
-
                                                         <?php elseif ($di->status_peminjaman == 'rejected') :  ?>
                                                             <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
-
                                                         <?php elseif ($di->status_peminjaman == 'batal') :  ?>
                                                             <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Dibatalkan</button>
-
                                                         <?php endif ?>
                                                     </td>
                                                     <td style="width: 15%;">
