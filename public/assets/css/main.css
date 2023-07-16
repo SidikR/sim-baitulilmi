@@ -2154,12 +2154,16 @@ section {
 }
 
 .services .details p {
+  color: white;
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
 }
 
 .services .service-item:hover .details h3 {
+  color: var(--color-primary);
+}
+.services .service-item:hover .details p {
   color: var(--color-primary);
 }
 
@@ -2170,6 +2174,29 @@ section {
 
 .services .service-item .details.box:hover h3 {
 color: var(--color-primary);
+}
+
+.services .service-item .details.box:hover p {
+color: var(--color-primary);
+}
+
+.services .service-item .details.box .btn {
+background-color: var(--color-secondary) ;
+border-color: var(--color-secondary);
+}
+
+.services .service-item .details.box:hover .btn {
+background-color: var(--color-primary) ;
+border-color: var(--color-primary);
+}
+
+.services .service-item .details.box hr {
+  border: none; /* Menghapus garis bawaan HR */
+  border-top: 2px solid white; /* Mengatur tebal garis atas HR */
+}
+
+.services .service-item .details.box:hover hr {
+  border-top: 2px solid var(--color-primary); /* Mengatur tebal garis atas HR saat hover */
 }
 
 .services .service-item:hover .details .icon {

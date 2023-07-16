@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<section id="hero-animated" class="hero-animated d-flex align-items-center">
+<section class="hero-animated d-flex align-items-center">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
         <img src=<?= base_url('assets/img/hero-carousel/baim-hero.webp'); ?> class="img-fluid animated">
         <h1>Sistem Informasi Manajemen </h1>
@@ -16,7 +16,7 @@
 </section>
 
 <!-- Our Service -->
-<section id="services" class="services">
+<section class="services">
     <div class="container" data-aos="fade-up">
         <div class="row d-flex flex-column">
 
@@ -29,43 +29,56 @@
 
             <div class="row d-flex">
 
-                <div class="col-12 col-xl-4 col-md-12 mb-5 pb-5  mt-5 pb-5" data-aos="zoom-in" data-aos-delay="200">
+                <div class="col-12 col-xl-4 col-md-12 mb-5 mt-5 pb-5" data-aos="zoom-in" data-aos-delay="200">
                     <div class="service-item">
-                        <div class="details box position-relative bg-primary">
+                        <div class="details box bg-primary pb-3 mb-0">
                             <div class="icon">
                                 <i class="bi bi-box-seam-fill"></i>
                             </div>
-                            <a href="<?= base_url('peminjaman'); ?>" class="stretched-link">
+                            <div>
                                 <h3>Peminjaman Aset</h3>
-                            </a>
-                            <!-- <p>Provident nihil minus qui.</p> -->
+                                <p>Anda dapat melakukan peminjaman inventaris dan masjid Baitul Ilmi ITERA..</p>
+                                <hr>
+                            </div>
+                            <div class="p-0 m-0">
+                                <a href="<?= base_url('peminjaman'); ?>" class="btn btn-success btn-sm px-3 rounded-3" role="button">Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                 </div><!-- End Service Item -->
 
                 <div class="col-12 col-xl-4 col-md-12 mb-5 pb-5 mt-5 pb-5" data-aos="zoom-in" data-aos-delay="200">
                     <div class="service-item ">
-                        <div class="details box position-relative bg-primary">
+                        <div class="details box bg-primary pb-3 mb-0">
                             <div class="icon">
                                 <i class="bi bi-currency-dollar"></i>
                             </div>
-                            <a href="<?= base_url('guest-keuangan'); ?>" class="stretched-link">
+                            <div>
                                 <h3>Transparansi Keuangan</h3>
-                            </a>
-                            <!-- <p>Provident nihil minus qui.</p> -->
+                                <p>Anda dapat melihat rekapitulasi keuangan masjid Baitul Ilmi ITERA...</p>
+                                <hr>
+                            </div>
+                            <div class="p-0 m-0">
+                                <a href="<?= base_url('guest-keuangan'); ?>" class="btn btn-success btn-sm px-3 rounded-3" role="button">Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
                 </div><!-- End Service Item -->
 
                 <div class="col-12 col-xl-4 col-md-12 mt-5 pb-5" data-aos="zoom-in" data-aos-delay="200">
                     <div class="service-item ">
-                        <div class="details box position-relative bg-primary">
+                        <div class="details box bg-primary pb-3 mb-0">
                             <div class="icon">
                                 <i class="bi bi-envelope-heart-fill"></i>
                             </div>
-                            <a href="<?= base_url('/'); ?>" class="stretched-link">
+                            <div>
                                 <h3>Amal</h3>
-                            </a>
+                                <p>Salurkan amal anda melalui masjid Baitul ilmi ITERA...</p>
+                                <hr>
+                            </div>
+                            <div class="p-0 m-0">
+                                <a href="<?= base_url('/'); ?>" class="btn btn-success btn-sm px-3 rounded-3" role="button">Selengkapnya</a>
+                            </div>
                             <!-- <p>Provident nihil minus qui.</p> -->
                         </div>
                     </div>
@@ -77,7 +90,7 @@
 <!-- End Our Service -->
 
 <!-- ======= KEuanagan Section ======= -->
-<section id="keuangan" class="keuangan mt-5 bg-img-primary">
+<section class="keuangan mt-5 bg-img-primary">
     <div class="container text-center" data-aos="zoom-out">
         <div class="row g-5">
             <div class="col-lg-12 col-md-12 col-12 d-flex flex-column ">
@@ -89,7 +102,7 @@
 
                 <div class="row mt-3">
                     <div class="col-xl-4 col-md-12">
-                        <div class="card bg-secondary text-white mb-4 rounded-4 tab-galeri">
+                        <div class="card bg-secondary text-white mb-4 rounded-4">
                             <div class="card-body">
                                 <h4>Pembangunan</h4>
                             </div>
@@ -99,7 +112,7 @@
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-12">
-                        <div class="card bg-secondary text-white mb-4 rounded-4 tab-galeri">
+                        <div class="card bg-secondary text-white mb-4 rounded-4">
                             <div class="card-body">
                                 <h4>Sarana Prasarana</h4>
                             </div>
@@ -109,7 +122,7 @@
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-12">
-                        <div class="card bg-secondary text-white mb-4 rounded-4 tab-galeri">
+                        <div class="card bg-secondary text-white mb-4 rounded-4">
                             <div class="card-body">
                                 <h4>Operasional</h4>
                             </div>
@@ -119,11 +132,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-12 col-md-12">
-                        <div class="card bg-primary text-white mb-4 rounded-4 tab-galeri">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card bg-primary text-white mb-4 rounded-4">
                             <div class="card-body">
-                                <h4 class="text-white"><b>Total Keuangan</b></h4>
+                                <h2 class="text-white"><b>Total Keuangan</b></h2>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-center">
                                 <h2><?= 'Rp. ' . number_format($total_kas, 0, '.', '.'); ?></h2>
@@ -140,7 +153,7 @@
 </section><!-- End KEuanagan Section -->
 
 <!-- ======= Services Section ======= -->
-<section id="kegiatan" class="kegiatan">
+<section class="kegiatan">
     <div class="container" data-aos="fade-up">
 
         <div class="section-header">
@@ -206,7 +219,7 @@
     </div>
 </section><!-- End Services Section -->
 
-<section id="galeri" class="tabs bg-img-primary">
+<section class="tabs bg-img-primary">
     <div class="container-fluid" data-aos="fade-up">
 
         <div class="">
@@ -270,7 +283,7 @@
     </div>
 </section><!-- End Features Section -->
 
-<section id="team" class="team">
+<section class="team">
     <div class="container" data-aos="fade-up">
 
         <div class="section-header">
@@ -342,7 +355,7 @@
 </section><!-- End Team Section -->
 
 <!-- ======= Services Section ======= -->
-<section id="inventaris" class="inventaris bg-img-primary" data-aos="fade-up">
+<section class="inventaris bg-img-primary" data-aos="fade-up">
 
     <div class="container">
         <div class="section-header">
@@ -376,7 +389,7 @@
 </section><!-- End Portfolio Section -->
 
 <!-- ======= Recent Blog Posts Section ======= -->
-<section id="recent-blog-posts" class="recent-blog-posts">
+<section class="recent-blog-posts">
 
     <div class="container" data-aos="fade-up">
 
@@ -431,7 +444,7 @@
 </section><!-- End Recent Blog Posts Section -->
 
 <!-- ======= Contact Section ======= -->
-<section id="contact" class="contact bg-img-primary">
+<section class="contact bg-img-primary">
     <div class="container">
 
         <div class="section-header">
