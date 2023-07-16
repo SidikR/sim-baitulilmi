@@ -2191,12 +2191,15 @@ border-color: var(--color-primary);
 }
 
 .services .service-item .details.box hr {
-  border: none; /* Menghapus garis bawaan HR */
-  border-top: 2px solid white; /* Mengatur tebal garis atas HR */
+  border: none;
+  /* Menghapus garis bawaan HR */
+  border-top: 2px solid white;
+  /* Mengatur tebal garis atas HR */
 }
 
 .services .service-item .details.box:hover hr {
-  border-top: 2px solid var(--color-primary); /* Mengatur tebal garis atas HR saat hover */
+  border-top: 2px solid var(--color-primary);
+  /* Mengatur tebal garis atas HR saat hover */
 }
 
 .services .service-item:hover .details .icon {

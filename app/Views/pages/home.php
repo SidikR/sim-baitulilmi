@@ -9,8 +9,7 @@
         <h2><span>Masjid Baitul Ilmi ITERA</span></h2>
         <p>Jln. Terusan Ryacudu, Desa Way Hui, Kec. Jati Agung, Lampung Selatan, Institut Teknologi Sumatera</p>
         <div class="d-flex">
-
-            <a href="https://youtu.be/pvatqsfi6mg" class="glightbox btn-watch-video d-flex align-items-center text-primary"><i class="bi bi-play-circle"></i><span class="color-primary">Watch Video</span></a>
+            <a href="https://youtu.be/pvatqsfi6mg" class="btn-watch-video d-flex align-items-center text-primary"><i class="bi bi-play-circle"></i><span class="color-primary">Watch Video</span></a>
         </div>
     </div>
 </section>
@@ -166,7 +165,7 @@
             <div class="col-12 col-xl-3 col-md-6 bg-primary p-4 rounded-3" data-aos="zoom-in" data-aos-delay="600">
                 <div class="service-item">
                     <div class="img">
-                        <img src="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="img-fluid" alt="">
+                        <img style="height: 300px;" src="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="img-fluid" alt="">
                     </div>
                     <div class="details position-relative">
                         <div class="icon">
@@ -190,7 +189,7 @@
                 <div class="col-12 col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
                     <div class="service-item">
                         <div class="img">
-                            <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
+                            <img style="height: 100%; width:300px;" src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
                         </div>
                         <div class="details position-relative">
                             <div class="icon">
@@ -210,8 +209,8 @@
                 </div><!-- End Service Item -->
             <?php endforeach ?>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 pt-3 mt-3 col-xl-2 ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 pt-3 mt-3 col-xl-2 d-flex justify-content-center align-items-center">
                 <a class="btn btn-lihat-selengkapnya" href="<?= base_url('kegiatan-guest'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
@@ -293,15 +292,13 @@
 
         <div class="row gy-5 d-flex align-items-center justify-content-center">
 
-            <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+            <div class="col-xl-4 col-md-6 d-flex justify-content-center align-items-center" data-aos="zoom-in" data-aos-delay="200">
                 <div class="team-member">
                     <div class="member-img">
                         <img src="<?php echo base_url(); ?>/assets/img/pengurus/alam.jpeg" class="img-fluid" alt="">
                     </div>
                     <div class="member-info">
                         <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
                             <a href="https://www.instagram.com/fc_alam/" target="_blank"><i class="bi bi-instagram"></i></a>
                             <a href="https://www.linkedin.com/in/firdha-cahya-alam" target="_blank"><i class="bi bi-linkedin"></i></a>
                         </div>
@@ -311,15 +308,13 @@
                 </div>
             </div><!-- End Team Member -->
 
-            <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
+            <div class="col-xl-4 col-md-6 d-flex justify-content-center align-items-center" data-aos="zoom-in" data-aos-delay="400">
                 <div class="team-member">
                     <div class="member-img">
                         <img src="<?php echo base_url(); ?>/assets/img/pengurus/selvi.jpeg" class="img-fluid" alt="">
                     </div>
                     <div class="member-info">
                         <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
                             <a href=""><i class="bi bi-instagram"></i></a>
                             <a href="https://www.linkedin.com/in/selvi-gustiana-1aa564188" target="_blank"><i class="bi bi-linkedin"></i></a>
                         </div>
@@ -329,15 +324,13 @@
                 </div>
             </div><!-- End Team Member -->
 
-            <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
+            <div class="col-xl-4 col-md-6 d-flex justify-content-center align-items-center" data-aos="zoom-in" data-aos-delay="600">
                 <div class="team-member">
                     <div class="member-img">
                         <img src="<?php echo base_url(); ?>/assets/img/pengurus/barra.png" class="img-fluid" alt="">
                     </div>
                     <div class="member-info">
                         <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
                             <a href="https://www.instagram.com/4l.barra/" target="_blank"><i class="bi bi-instagram"></i></a>
                             <a href="https://www.linkedin.com/in/4lbarra" target="_blank"><i class="bi bi-linkedin"></i></a>
                         </div>
@@ -347,8 +340,8 @@
                 </div>
             </div><!-- End Team Member -->
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 pt-3 mt-3 col-xl-2 ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 pt-3 mt-3 col-xl-2 d-flex justify-content-center align-items-center">
                 <a class="btn btn-lihat-selengkapnya" href="<?= base_url('pengurus-guest'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
@@ -380,8 +373,8 @@
                 </div><!-- End inventaris Item -->
             <?php endforeach ?>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 pt-3 mt-3 col-xl-2 ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 pt-3 mt-3 col-xl-2 d-flex justify-content-center align-items-center">
                 <a class="btn btn-lihat-selengkapnya" href="<?= base_url('peminjaman'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
@@ -434,8 +427,8 @@
                 </div>
             <?php endforeach ?>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 pt-3 mt-3 col-xl-2 ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 pt-3 mt-3 col-xl-2 d-flex justify-content-center align-items-center">
                 <a class="btn btn-lihat-selengkapnya" href="<?= base_url('post-guest'); ?>">Lihat Selengkapnya</a>
             </div>
         </div>
