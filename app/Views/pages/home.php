@@ -187,9 +187,9 @@
 
             <?php foreach ($daftar_kegiatan as $dk) : ?>
                 <div class="col-12 col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="service-item">
+                    <div class="service-item" style="height: 300px;">
                         <div class="img">
-                            <img style="height: 100%; width:300px;" src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
+                            <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
                         </div>
                         <div class="details position-relative">
                             <div class="icon">
