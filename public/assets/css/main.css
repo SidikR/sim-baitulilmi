@@ -2163,7 +2163,7 @@ section {
 .services .service-item:hover .details h3 {
   color: var(--color-primary);
 }
-.services .service-item:hover .details p {
+.services .service-item:hover .details p{
   color: var(--color-primary);
 }
 
