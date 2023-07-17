@@ -66,19 +66,4 @@ class HomeController extends BaseController
         ];
         return view('pages/home', $data);
     }
-
-
-    public function send_feedback()
-    {
-        $data = [
-            'nama' => esc($this->request->getVar('name')),
-            'no_telepon' => esc($this->request->getVar('no_telepon')),
-            'email' => esc($this->request->getVar('email')),
-            'subject' => esc($this->request->getVar('subject')),
-            'feedback' => esc($this->request->getVar('feedback'))
-        ];
-
-        $this->FeedbackModel->insert($data);
-        return redirect()->back()->with('succes', 'Feedback Anda Berhasil diKirim');
-    }
 }

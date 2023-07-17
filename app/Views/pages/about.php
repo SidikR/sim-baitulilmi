@@ -6,24 +6,27 @@
         <!-- <img src="assets/img/hero-carousel/baim-hero.png" class="img-fluid animated"> -->
         <h1>Tentang Masjid </h1>
         <h2><span>Masjid Baitul Ilmi ITERA</span></h2>
-        <p>Et voluptate esse accusantium accusamus natus reiciendis quidem voluptates similique aut.</p>
-        <!-- <div class="d-flex">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://youtu.be/pvatqsfi6mg" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-        </div> -->
     </div>
 </section>
+
+
+
 
 <!-- ======= Features Section ======= -->
 <section id="features" class="features">
     <div class="container" data-aos="fade-up">
+        <?php if (session('success')) : ?>
+            <div class="alert alert-success" role="alert">
+                <?= session('success'); ?>
+            </div>
+        <?php endif ?>
 
         <ul class="nav nav-tabs row gy-4 d-flex">
 
             <li class="nav-item col-6 col-md-4 col-lg-6">
                 <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                    <i class="bi bi-binoculars color-cyan"></i>
-                    <h4>Sejarah</h4>
+                    <i class="bi bi-chat-left-text"></i>
+                    <h4>Kirim Feedback</h4>
                 </a>
             </li><!-- End Tab 1 Nav -->
 
@@ -40,25 +43,27 @@
 
             <div class="tab-pane active show" id="tab-1">
                 <div class="row gy-4">
-                    <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-                        <h3>Modinest</h3>
-                        <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
-                        </p>
-                        <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                        </ul>
-                        <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum
-                        </p>
-                    </div>
-                    <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                        <img src="assets/img/features-1.svg" alt="" class="img-fluid">
+                    <div class="col-lg-12 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+                        <form action="/send-feedback" method="post" class="">
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control border-success rounded-2" name="name" id="name" placeholder="Isi Nama Anda" required>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6 form-group mt-md-0">
+                                    <input type="text" name="no_telepon" class="form-control border-success rounded-2" id="no_telepon" placeholder="Misal. 0895 xxx xxx" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-md-0 mt-3">
+                                    <input type="email" name="email" class="form-control border-success rounded-2" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control border-success rounded-2" name="subject" id="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control border-success rounded-2" name="feedback" placeholder="feedback" rows="10" required></textarea>
+                            </div>
+                            <div class="text-center pt-4"><button class="btn btn-lihat-selengkapnya" type="submit">Send Message</button></div>
+                        </form>
                     </div>
                 </div>
             </div><!-- End Tab Content 1 -->

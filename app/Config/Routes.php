@@ -44,7 +44,7 @@ $routes->get('/post-guest', 'Pages\PostController::index');
 $routes->get('/detail/post-(:segment)', 'Pages\PostController::detail/$1');
 $routes->post('comment/add/(:segment)', 'Pages\PostController::store/$1');
 $routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index');
-$routes->post('/send-feedback', 'Pages\HomeController::send_feedback');
+$routes->post('/send-feedback', 'Pages\AboutController::send_feedback');
 
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
 $routes->get('/akun', 'Pages\AkunController::index', ['filter' => 'role:user']);

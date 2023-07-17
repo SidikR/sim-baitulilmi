@@ -39,10 +39,8 @@
                         <li class="nav-link p-0 m-0"><a <?php getactive('post-guest');
                                                         ?> class="scrollto" href="<?= base_url('post-guest'); ?>">Post</a></li>
 
-                        <li class="nav-link p-0 m-0"><a class="scrollto" href="<?= base_url('#contact'); ?>">Contact</a></li>
-
                         <li class="nav-link p-0 m-0"><a <?php getactive('about');
-                                                        ?> href="<?= base_url('about'); ?>">About</a></li>
+                                                        ?> href="<?= base_url('about'); ?>">Kontak</a></li>
 
 
                         <?php if (!logged_in()) : ?>
