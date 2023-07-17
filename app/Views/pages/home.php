@@ -176,7 +176,7 @@
                         <a class="stretched-link">
                             <h3 class="color-primary"><?= "Sholat Jumat " . "<br>" . date("d-M-Y", strtotime($petugas_jumat[0]->tanggal)); ?></h3>
                         </a>
-                        <a class="stretched-link"></a>
+                        <a href="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="glightbox stretched-link" data-gallery="posterJumat"></a>
                         <div class="d-flex flex-column align-items-center justify-content-start">
                             <p>Imam : <?= $petugas_jumat[0]->nama_imam; ?></p>
                             <p>Khatib : <?= $petugas_jumat[0]->nama_khatib; ?></p>
