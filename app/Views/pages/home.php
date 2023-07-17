@@ -165,7 +165,9 @@
             <div class="col-12 col-xl-3 col-md-6 bg-primary p-4 rounded-3" data-aos="zoom-in" data-aos-delay="600">
                 <div class="service-item">
                     <div class="img">
-                        <img src="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="img-fluid" alt="">
+                        <div class="image-container">
+                            <img src="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="img-fluid" alt="">
+                        </div>
                     </div>
                     <div class="details position-relative">
                         <div class="icon">
@@ -189,7 +191,9 @@
                 <div class="col-12 col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
                     <div class="service-item" style="height: 300px;">
                         <div class="img">
-                            <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
+                            <div class="image-container">
+                                <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
+                            </div>
                         </div>
                         <div class="details position-relative">
                             <div class="icon">
