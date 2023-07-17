@@ -4389,3 +4389,24 @@ color: var(--color-primary);
   width: 100%;
   height: 100%;
 }
+
+.carousel-lg {
+  position: relative;
+  height:600px;
+  /* Atur tinggi carousel menjadi setara dengan satu layar */
+}
+
+.carousel-lg .carousel-inner,
+.carousel-lg .carousel-item {
+  height: 100%;
+}
+
+.carousel-lg .carousel-item img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  height: 100%;
+  z-index: 1;
+}

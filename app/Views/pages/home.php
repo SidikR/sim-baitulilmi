@@ -259,7 +259,7 @@
             <?php foreach ($daftar_filter as $df) : ?>
                 <div class="tab-pane <?= $indx == 0 ? 'active' : null; ?> show" id="<?= $df->filter; ?>">
                     <div class="carousel carousel-lg">
-                        <div id="carouselExampleCaptions<?= $df->filter; ?>" class="carousel slide " data-bs-ride="carousel">
+                        <div id="carouselExampleCaptions<?= $df->filter; ?>" class="carousel slide d-flex align-items-center justify-content-center" data-bs-ride="carousel">
                             <div class="carousel-inner rounded-3">
                                 <?php $no = 0 ?>
                                 <?php foreach ($daftar_program as $dp) : ?>
@@ -267,9 +267,9 @@
                                         <div class="carousel-item <?= $no == 0 ? 'active' : null; ?>" data-bs-interval="5000">
                                             <?php $no++ ?>
                                             <img src="<?= base_url('assets-admin/img/program/' . $dp->foto); ?>" class="d-block w-100" alt="<?= $dp->nama_program; ?>">
-                                            <div class="carousel-caption d-none d-md-block">
+                                            <div class="carousel-caption  d-flex align-items-center justify-content-center">
                                                 <div class="opacity-100">
-                                                    <h5><?= $dp->nama_program; ?></h5>
+                                                    <h2><?= $dp->nama_program; ?></h2>
                                                     <p><?= $dp->deskripsi_program; ?></p>
                                                 </div>
                                             </div>
