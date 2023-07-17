@@ -9,6 +9,7 @@ use CodeIgniter\Commands\Utilities\Publish;
 use CodeIgniter\Validation\Rules;
 use Config\App;
 use JetBrains\PhpStorm\Internal\ReturnTypeContract;
+use Config\Services;
 
 
 class ProgramController extends BaseController
@@ -50,6 +51,7 @@ class ProgramController extends BaseController
     {
         // Ambil Gambar
         $gambar = $this->request->getFile('foto');
+        $image = Services::image();
 
         //Ambil Nama Gambar
         $namaGambar = $gambar->getName('');
@@ -84,6 +86,10 @@ class ProgramController extends BaseController
             $this->ProgramModel->insert($data);
             //Menuliskan ke direktori
             $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/program', $namaGambar);
+            $filePath = "../../../public_html/baim/assets-admin/img/program/" . $namaGambar;
+            $image->withFile($filePath)
+                ->resize('auto', 600, true)
+                ->save($filePath);
             return redirect()->to('/program')->with('success', 'Data Program Berhasil Ditambahkan');
         }
     }
@@ -126,6 +132,7 @@ class ProgramController extends BaseController
     {
         // Ambil Gambar
         $gambar = $this->request->getFile('foto');
+        $image = Services::image();
 
         //Ambil Nama Gambar
         $namaGambar = $gambar->getName('');
@@ -141,6 +148,10 @@ class ProgramController extends BaseController
         }
         $this->ProgramModel->update($id, $data);
         $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/program', $namaGambar);
+        $filePath = "../../../public_html/baim/assets-admin/img/program/" . $namaGambar;
+        $image->withFile($filePath)
+            ->resize('auto', 600, true)
+            ->save($filePath);
         return redirect()->to('program')->with('success', 'Data Program Berhasil Diubah');
     }
 
