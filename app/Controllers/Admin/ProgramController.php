@@ -88,7 +88,7 @@ class ProgramController extends BaseController
             $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/program', $namaGambar);
             $filePath = WRITEPATH . "../../../public_html/baim/assets-admin/img/program/" . $namaGambar;
             $image->withFile($filePath)
-                ->resize('auto', 600, true)
+                ->resize(null, 600, true)
                 ->save($filePath);
             return redirect()->to('/program')->with('success', 'Data Program Berhasil Ditambahkan');
         }
