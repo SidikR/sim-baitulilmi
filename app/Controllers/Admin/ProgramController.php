@@ -86,7 +86,7 @@ class ProgramController extends BaseController
             $this->ProgramModel->insert($data);
             //Menuliskan ke direktori
             $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/program', $namaGambar);
-            $filePath = "../../../public_html/baim/assets-admin/img/program/" . $namaGambar;
+            $filePath = WRITEPATH . "../../../public_html/baim/assets-admin/img/program/" . $namaGambar;
             $image->withFile($filePath)
                 ->resize('auto', 600, true)
                 ->save($filePath);
