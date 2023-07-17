@@ -169,7 +169,7 @@
                             <img src="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="img-fluid" alt="">
                         </div>
                     </div>
-                    <div class="details position-relative" style="height: 250px;">
+                    <div class="details position-relative d-flex align-items-center justify-content-center" style="height: 250px;">
                         <div class="icon">
                             <i class="bi bi-calendar4-week"></i>
                         </div>
@@ -201,7 +201,7 @@
                                 <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
                             </div>
                         </div>
-                        <div class="details position-relative" style="height: 250px;">
+                        <div class="details position-relative d-flex align-items-center justify-content-center" style="height: 250px;">
                             <div class="icon">
                                 <i class="bi bi-calendar4-week"></i>
                             </div>
