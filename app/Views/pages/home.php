@@ -447,15 +447,11 @@
 
     </div>
 
-    <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.378277032061!2d105.3100171746343!3d-5.3591161946196575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c4a9dd27799f%3A0x93f2bd8e5315535!2sBaitul%20Ilmi%20Mosque!5e0!3m2!1sen!2sus!4v1684575604207!5m2!1sen!2sus" frameborder="0" allowfullscreen></iframe>
-    </div><!-- End Google Maps -->
-
     <div class="container">
 
-        <div class="row gy-5 gx-lg-5">
+        <div class="row gy-5 gx-lg-5 d-flex justify-content-center align-items-center">
 
-            <div class="col-lg-4">
+            <div class="col-lg-6">
 
                 <div class="info">
                     <h3>Get in touch</h3>
@@ -489,32 +485,36 @@
 
             </div>
 
-            <div class="col-lg-8">
-                <form action="/send-feedback" method="post" class="">
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control border-success rounded-2" name="name" id="name" placeholder="Isi Nama Anda" required>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6 form-group mt-md-0">
-                            <input type="text" name="no_telepon" class="form-control border-success rounded-2" id="no_telepon" placeholder="Misal. 0895 xxx xxx" required>
-                        </div>
-                        <div class="col-md-6 form-group mt-md-0 mt-3">
-                            <input type="email" name="email" class="form-control border-success rounded-2" placeholder="Your Email" required>
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control border-success rounded-2" name="subject" id="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group mt-3">
-                        <textarea class="form-control border-success rounded-2" name="feedback" placeholder="feedback" rows="10" required></textarea>
-                    </div>
-                    <div class="text-center pt-4"><button class="btn btn-lihat-selengkapnya" type="submit">Send Message</button></div>
-                </form>
+            <div class="col-lg-6">
+                <div class="map p-0 m-0">
+                    <iframe class="d-flex align-items-center" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.378277032061!2d105.3100171746343!3d-5.3591161946196575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c4a9dd27799f%3A0x93f2bd8e5315535!2sBaitul%20Ilmi%20Mosque!5e0!3m2!1sen!2sus!4v1684575604207!5m2!1sen!2sus" frameborder="0" allowfullscreen></iframe>
+                </div><!-- End Google Maps -->
             </div><!-- End Contact Form -->
 
         </div>
 
     </div>
 </section><!-- End Contact Section -->
+
+<!-- <form action="/send-feedback" method="post" class="">
+    <div class="form-group mt-3">
+        <input type="text" class="form-control border-success rounded-2" name="name" id="name" placeholder="Isi Nama Anda" required>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6 form-group mt-md-0">
+            <input type="text" name="no_telepon" class="form-control border-success rounded-2" id="no_telepon" placeholder="Misal. 0895 xxx xxx" required>
+        </div>
+        <div class="col-md-6 form-group mt-md-0 mt-3">
+            <input type="email" name="email" class="form-control border-success rounded-2" placeholder="Your Email" required>
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <input type="text" class="form-control border-success rounded-2" name="subject" id="subject" placeholder="Subject" required>
+    </div>
+    <div class="form-group mt-3">
+        <textarea class="form-control border-success rounded-2" name="feedback" placeholder="feedback" rows="10" required></textarea>
+    </div>
+    <div class="text-center pt-4"><button class="btn btn-lihat-selengkapnya" type="submit">Send Message</button></div>
+</form> -->
 
 <?= $this->endSection(); ?>
