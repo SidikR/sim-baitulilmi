@@ -162,7 +162,7 @@
 
         <div class="row gy-3 d-flex justify-content-center">
 
-            <div class="col-12 col-xl-3 col-md-6 bg-primary p-4 rounded-3" data-aos="zoom-in" data-aos-delay="600">
+            <div class="col-12 col-xl-3 col-md-6 rounded-3" data-aos="zoom-in" data-aos-delay="600">
                 <div class="service-item">
                     <div class="img">
                         <div class="image-container">
@@ -189,7 +189,7 @@
 
             <?php foreach ($daftar_kegiatan as $dk) : ?>
                 <div class="col-12 col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="service-item" style="height: 300px;">
+                    <div class="service-item">
                         <div class="img">
                             <div class="image-container">
                                 <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
