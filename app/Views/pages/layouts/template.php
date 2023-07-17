@@ -37,7 +37,7 @@
 
     <!-- Template Main CSS File -->
     <link type="text/css" href="<?php echo base_url('/assets/css/main.css'); ?>" rel="stylesheet">
-    <link type="text/css" href="<?php echo base_url('../../../public_html/baim/assets/css/main.css'); ?>" rel="stylesheet">
+    <link type="text/css" href="<?php echo base_url('../../repositories/sim-baitulilmi/public/assets/css/main.css'); ?>" rel="stylesheet">
 
     <!-- My CSS -->
     <link type="text/css" rel="stylesheet" href="<?php echo base_url('/assets/css/mystyle.css'); ?>">
