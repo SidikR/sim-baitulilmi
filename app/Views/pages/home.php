@@ -173,20 +173,22 @@
                         <div class="icon">
                             <i class="bi bi-calendar4-week"></i>
                         </div>
-                        <?php if ($petugas_jumat[0]->nama_imam == "-") : ?>
-                            <a href="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="glightbox stretched-link" data-gallery="posterJumat">
-                                <h3 class="color-primary">Sholat Jumat dipusatkan dimasjid Raya At-Tanwir</h3>
-                            </a>
-                        <?php else : ?>
-                            <a href="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="glightbox stretched-link" data-gallery="posterJumat">
-                                <h3 class="color-primary"><?= "Sholat Jumat " . "<br>" . date("d-M-Y", strtotime($petugas_jumat[0]->tanggal)); ?></h3>
-                            </a>
-                            <div class="d-flex flex-column align-items-center justify-content-start">
-                                <p>Imam : <?= $petugas_jumat[0]->nama_imam; ?></p>
-                                <p>Khatib : <?= $petugas_jumat[0]->nama_khatib; ?></p>
-                                <p>Muadzin : <?= $petugas_jumat[0]->nama_muadzin; ?></p>
-                            </div>
-                        <?php endif; ?>
+                        <div class="row d-flex align-items-center justify-content-center">
+                            <?php if ($petugas_jumat[0]->nama_imam == "-") : ?>
+                                <a href="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="glightbox stretched-link" data-gallery="posterJumat">
+                                    <h3 class="color-primary">Sholat Jumat dipusatkan dimasjid Raya At-Tanwir</h3>
+                                </a>
+                            <?php else : ?>
+                                <a href="<?php echo base_url('/assets-admin/img/petugas-jumat/' . $petugas_jumat[0]->poster); ?>" class="glightbox stretched-link" data-gallery="posterJumat">
+                                    <h3 class="color-primary"><?= "Sholat Jumat " . "<br>" . date("d-M-Y", strtotime($petugas_jumat[0]->tanggal)); ?></h3>
+                                </a>
+                                <div class="d-flex flex-column align-items-center justify-content-start">
+                                    <p>Imam : <?= $petugas_jumat[0]->nama_imam; ?></p>
+                                    <p>Khatib : <?= $petugas_jumat[0]->nama_khatib; ?></p>
+                                    <p>Muadzin : <?= $petugas_jumat[0]->nama_muadzin; ?></p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div><!-- End Service Item -->
@@ -203,13 +205,15 @@
                             <div class="icon">
                                 <i class="bi bi-calendar4-week"></i>
                             </div>
-                            <a href="<?= base_url('detail-kegiatan-' . $dk->slug_kegiatan); ?>" class="stretched-link">
-                                <h3 class="color-primary"><?= $dk->nama_kegiatan; ?></h3>
-                            </a>
-                            <a href="<?= base_url('detail-kegiatan-' . $dk->slug_kegiatan); ?>" class="stretched-link"></a>
-                            <div class="d-flex flex-column align-items-center justify-content-start">
-                                <p>Penyelenggara : <?= $dk->penyelenggara_kegiatan; ?></p>
-                                <p>Waktu : <?= $dk->waktu_mulai_kegiatan; ?></p>
+                            <div class="row d-flex align-items-center justify-content-center">
+                                <a href="<?= base_url('detail-kegiatan-' . $dk->slug_kegiatan); ?>" class="stretched-link ">
+                                    <h3 class="color-primary"><?= $dk->nama_kegiatan; ?></h3>
+                                </a>
+                                <a href="<?= base_url('detail-kegiatan-' . $dk->slug_kegiatan); ?>" class="stretched-link"></a>
+                                <div class="d-flex flex-column align-items-center justify-content-start">
+                                    <p>Penyelenggara : <?= $dk->penyelenggara_kegiatan; ?></p>
+                                    <p>Waktu : <?= $dk->waktu_mulai_kegiatan; ?></p>
+                                </div>
                             </div>
 
                         </div>
