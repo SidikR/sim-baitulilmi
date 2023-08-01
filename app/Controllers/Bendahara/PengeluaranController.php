@@ -16,6 +16,9 @@ class PengeluaranController extends BaseController
     protected $AksesKeuanganModel;
     protected $KeuanganModel;
     protected $helpers = ['form'];
+    protected $directoriImageDevelopment = "../public/assets-bendahara/img/foto-bukti";
+    protected $directoriImageProduction = "../../../public_html/baim/assets-bendahara/img/foto-bukti";
+
 
     public function __construct()
     {
@@ -98,7 +101,11 @@ class PengeluaranController extends BaseController
             $this->KeuanganModel->insert($data);
             if ($namaGambar != null) {
                 //Menuliskan ke direktori
-                $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
+                if ($this->development) {
+                    $gambar->move(WRITEPATH . $this->directoriImageDevelopment, $namaGambar);
+                } else {
+                    $gambar->move(WRITEPATH . $this->directoriImageProduction, $namaGambar);
+                }
             }
             return redirect()->to('keuangan')->with('success', 'Data pengeluaran Berhasil Ditambahkan');
         }
@@ -145,14 +152,6 @@ class PengeluaranController extends BaseController
 
     public function update($id_keuangan)
     {
-        $gambar = $this->request->getFile('foto_bukti');
-
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
-
-        //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
-
         $data = [
             'tanggal_transaksi' => esc($this->request->getvar('tanggal_transaksi')),
             'id_akunkeuangan' => esc($this->request->getvar('akunkeuangan')),
@@ -161,7 +160,6 @@ class PengeluaranController extends BaseController
             'keluar' => esc($this->request->getvar('keluar')),
             'slug' => url_title($this->request->getvar('keterangan'), '-', TRUE),
             'validation' => \Config\Services::validation(),
-            'foto_bukti' => $namaGambar,
         ];
 
         $rules = $this->validate([
@@ -198,7 +196,15 @@ class PengeluaranController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->KeuanganModel->update($id_keuangan, $data);
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
+        //Menuliskan ke direktori
+        if ($namaGambar != null) {
+            //Menuliskan ke direktori
+            if ($this->development) {
+                $gambar->move(WRITEPATH . $this->directoriImageDevelopment, $namaGambar);
+            } else {
+                $gambar->move(WRITEPATH . $this->directoriImageProduction, $namaGambar);
+            }
+        }
         return redirect()->to('keuangan')->with('success', 'Data Kegiatan Berhasil Diubah');
     }
 }

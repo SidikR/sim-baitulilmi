@@ -67,4 +67,12 @@ class PeminjamanInventarisModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    public function getMaxId()
+    {
+        $builder = $this->db->table('peminjaman_inventaris');
+        $builder->selectMax('id_peminjaman');
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

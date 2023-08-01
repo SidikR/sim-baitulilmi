@@ -5,3 +5,38 @@
     font-size: 14px;
     color: black;
 }
+
+/* Ganti warna latar belakang dan warna teks pada tombol Colvis */
+.dataTables_wrapper .ColVis_Button {
+    background-color: #337ab7;
+    /* Warna latar belakang */
+    color: #fff;
+    /* Warna teks */
+    border: 1px solid #2e6da4;
+    /* Gaya border */
+    border-radius: 5px;
+    /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+    padding: 5px 10px;
+    /* Atur padding untuk menyesuaikan ukuran tombol */
+}
+
+/* Ganti warna latar belakang dan warna teks pada dropdown ColVis */
+.dataTables_wrapper .ColVis_collectionBackground {
+    background-color: #f9f9f9;
+    /* Warna latar belakang */
+    color: #333;
+    /* Warna teks */
+    border: 1px solid #ccc;
+    /* Gaya border */
+}
+
+/* Ganti warna latar belakang ketika mengarahkan mouse ke opsi dropdown ColVis */
+.dataTables_wrapper .ColVis_collectionItem:hover {
+    background-color: red;
+    /* Warna latar belakang */
+}
+
+#submitButton3:disabled {
+    /* Atur kursor menjadi "not-allowed" */
+    cursor: not-allowed;
+}

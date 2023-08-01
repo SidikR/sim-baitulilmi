@@ -36,7 +36,7 @@
                     <article class="blog-details">
 
                         <div class="post-img">
-                            <img src="<?= base_url('assets-admin/img/post/' . $post->foto_post); ?>" alt="foto post" class="img-fluid">
+                            <img src="<?= base_url('assets-admin/img/foto-post/' . $post->foto_post); ?>" alt="foto post" class="img-fluid">
                         </div>
 
                         <h2 class="title"><?= $post->nama_post; ?></h2>

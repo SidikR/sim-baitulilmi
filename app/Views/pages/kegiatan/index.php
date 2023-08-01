@@ -17,7 +17,7 @@
                 <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="600">
                     <div class="service-item">
                         <div class="img">
-                            <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
+                            <img src="<?php echo base_url('/assets-admin/img/foto-kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
                         </div>
                         <div class="details position-relative">
                             <div class="icon">

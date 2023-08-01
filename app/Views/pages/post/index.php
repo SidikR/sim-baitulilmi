@@ -34,7 +34,7 @@
                                 <article class="d-flex flex-column">
 
                                     <div class="post-img">
-                                        <img src="<?= base_url('assets-admin/img/post/' . $post->foto_post); ?>" alt="" class="img-fluid">
+                                        <img src="<?= base_url('assets-admin/img/foto-post/' . $post->foto_post); ?>" alt="" class="img-fluid">
                                     </div>
 
                                     <h2 class="title">

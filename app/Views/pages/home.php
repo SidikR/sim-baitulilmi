@@ -243,7 +243,7 @@
                     </div>
                     <?php foreach ($daftar_filter as $df) : ?>
                         <li class="nav-item  col-6 col-md-3 col-lg-2">
-                            <a class="nav-link tab-galeri rounded-2 py-auto m-0 text-center <?= $no == 0 ? 'active' : null; ?> show" data-bs-toggle="tab" data-bs-target="<?= '#' . $df->filter; ?>">
+                            <a class="nav-link tab-galeri rounded-2 px-1 py-1 m-0 text-center <?= $no == 0 ? 'active' : null; ?> show" data-bs-toggle="tab" data-bs-target="<?= '#' . $df->filter; ?>">
                                 <h4 class="m-0"><?= ucwords(str_replace('_', ' ', $df->filter)); ?></h4>
                             </a>
                         </li><!-- End Tab 1 Nav -->
@@ -267,8 +267,8 @@
                                         <div class="carousel-item <?= $no == 0 ? 'active' : null; ?>" data-bs-interval="5000">
                                             <?php $no++ ?>
                                             <img src="<?= base_url('assets-admin/img/program/' . $dp->foto); ?>" class="d-block w-100" alt="<?= $dp->nama_program; ?>">
-                                            <div class="carousel-caption  d-flex align-items-center justify-content-center">
-                                                <div class="opacity-100">
+                                            <div class="carousel-caption d-sm-none d-md-block d-flex align-items-center justify-content-center">
+                                                <div class="opacity-100 d-none d-md-block">
                                                     <h2><?= $dp->nama_program; ?></h2>
                                                     <p><?= $dp->deskripsi_program; ?></p>
                                                 </div>
@@ -407,7 +407,7 @@
             <?php foreach ($daftar_post as $post) : ?>
                 <div class="col-lg-4 p-3" data-aos="fade-up" data-aos-delay="200">
                     <div class="post-box">
-                        <div class="post-img"><img src="<?= base_url('assets-admin/img/post/' . $post->foto_post); ?>" class="img-fluid" alt=""></div>
+                        <div class="post-img"><img src="<?= base_url('assets-admin/img/foto-post/' . $post->foto_post); ?>" class="img-fluid" alt=""></div>
                         <div class="meta">
                             <span class="post-date color-secondary"><i class="bi bi-clock"></i> <a><time>
                                         <?php $newFormat = date("d-M-Y", strtotime($post->created_at));
@@ -507,26 +507,5 @@
 
     </div>
 </section><!-- End Contact Section -->
-
-<!-- <form action="/send-feedback" method="post" class="">
-    <div class="form-group mt-3">
-        <input type="text" class="form-control border-success rounded-2" name="name" id="name" placeholder="Isi Nama Anda" required>
-    </div>
-    <div class="row mt-3">
-        <div class="col-md-6 form-group mt-md-0">
-            <input type="text" name="no_telepon" class="form-control border-success rounded-2" id="no_telepon" placeholder="Misal. 0895 xxx xxx" required>
-        </div>
-        <div class="col-md-6 form-group mt-md-0 mt-3">
-            <input type="email" name="email" class="form-control border-success rounded-2" placeholder="Your Email" required>
-        </div>
-    </div>
-    <div class="form-group mt-3">
-        <input type="text" class="form-control border-success rounded-2" name="subject" id="subject" placeholder="Subject" required>
-    </div>
-    <div class="form-group mt-3">
-        <textarea class="form-control border-success rounded-2" name="feedback" placeholder="feedback" rows="10" required></textarea>
-    </div>
-    <div class="text-center pt-4"><button class="btn btn-lihat-selengkapnya" type="submit">Send Message</button></div>
-</form> -->
 
 <?= $this->endSection(); ?>

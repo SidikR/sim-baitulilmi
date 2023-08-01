@@ -24,7 +24,7 @@
                                                         <span class="text-white">Foto <?= $pengurus->nama_lengkap; ?></span>
                                                     </div>
                                                     <div class="col">
-                                                        <a href="<?php echo base_url('assets-admin/img/foto-pengurus/' . $pengurus->foto_pengurus); ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
+                                                        <a href="<?php echo base_url('assets-admin/img/foto-pengurus/' . $pengurus->foto_pengurus); ?>" data-gallery="pengurus-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                                                     </div>
                                                 </div>
                                             </div>

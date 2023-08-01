@@ -55,4 +55,45 @@ class InventarisModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+    public function getMaxId()
+    {
+        $builder = $this->db->table('inventaris');
+        $builder->selectMax('id_inventaris');
+        $query = $builder->get();
+        return $query->getResult();
+    }
+
+    public function getNameFoto($id)
+    {
+        $builder = $this->db->table('inventaris');
+        $builder->select('foto_inventaris'); // Hanya mengambil kolom 'foto_petugas_ jumat'
+        $builder->where(['id_inventaris' => $id]);
+        $query = $builder->get();
+
+        // Pastikan ada hasil yang ditemukan sebelum mengambil data
+        if ($query->getResult()) {
+            // Jika Anda hanya ingin satu foto_inventaris, gunakan getRow() daripada getResult()
+            return $query->getRow()->foto_inventaris;
+        } else {
+            // Jika data tidak ditemukan, Anda bisa mengembalikan nilai null atau pesan error sesuai kebutuhan
+            return null;
+        }
+    }
+
+    public function getSlug($id)
+    {
+        $builder = $this->db->table('inventaris');
+        $builder->select('slug_inventaris'); // Hanya mengambil kolom 'slug_inventaris'
+        $builder->where(['id_inventaris' => $id]);
+        $query = $builder->get();
+
+        // Pastikan ada hasil yang ditemukan sebelum mengambil data
+        if ($query->getResult()) {
+            // Jika Anda hanya ingin satu foto_inventaris, gunakan getRow() daripada getResult()
+            return $query->getRow()->slug_inventaris;
+        } else {
+            // Jika data tidak ditemukan, Anda bisa mengembalikan nilai null atau pesan error sesuai kebutuhan
+            return null;
+        }
+    }
 }

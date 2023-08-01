@@ -45,4 +45,38 @@ class KegiatanModel extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    public function getNameFoto($id)
+    {
+        $builder = $this->db->table('kegiatan');
+        $builder->select('foto_kegiatan'); // Hanya mengambil kolom 'foto_petugas_ jumat'
+        $builder->where(['id_kegiatan' => $id]);
+        $query = $builder->get();
+
+        // Pastikan ada hasil yang ditemukan sebelum mengambil data
+        if ($query->getResult()) {
+            // Jika Anda hanya ingin satu foto_kegiatan, gunakan getRow() daripada getResult()
+            return $query->getRow()->foto_kegiatan;
+        } else {
+            // Jika data tidak ditemukan, Anda bisa mengembalikan nilai null atau pesan error sesuai kebutuhan
+            return null;
+        }
+    }
+
+    public function getSlug($id)
+    {
+        $builder = $this->db->table('kegiatan');
+        $builder->select('slug_kegiatan'); // Hanya mengambil kolom 'slug_kegiatan'
+        $builder->where(['id_kegiatan' => $id]);
+        $query = $builder->get();
+
+        // Pastikan ada hasil yang ditemukan sebelum mengambil data
+        if ($query->getResult()) {
+            // Jika Anda hanya ingin satu foto_kegiatan, gunakan getRow() daripada getResult()
+            return $query->getRow()->slug_kegiatan;
+        } else {
+            // Jika data tidak ditemukan, Anda bisa mengembalikan nilai null atau pesan error sesuai kebutuhan
+            return null;
+        }
+    }
 }

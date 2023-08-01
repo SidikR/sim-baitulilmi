@@ -15,6 +15,8 @@ class KeuanganController extends BaseController
     protected $AkunKeuanganModel;
     protected $AksesKeuanganModel;
     protected $helpers = ['form'];
+    protected $directoriImageDevelopment = "../public/assets-bendahara/img/foto-bukti";
+    protected $directoriImageProduction = "../../../public_html/baim/assets-bendahara/img/foto-bukti";
 
     public function __construct()
     {
@@ -82,9 +84,6 @@ class KeuanganController extends BaseController
         //Ambil Nama Gambar
         $namaGambar = $gambar->getName('');
 
-        //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
-
         $uuid4 = Uuid::uuid4();
 
 
@@ -115,6 +114,12 @@ class KeuanganController extends BaseController
             return view('bendahara/keuangan/create', $data);
         } {
             $this->KeuanganModel->insert($data);
+            //Menuliskan ke direktori
+            if ($this->development) {
+                $gambar->move(WRITEPATH . $this->directoriImageDevelopment, $namaGambar);
+            } else {
+                $gambar->move(WRITEPATH . $this->directoriImageProduction, $namaGambar);
+            }
             return redirect()->to('/keuangan')->with('success', 'Data keuangan Berhasil Ditambahkan');
         }
     }
@@ -165,9 +170,6 @@ class KeuanganController extends BaseController
         //Ambil Nama Gambar
         $namaGambar = $gambar->getName('');
 
-        //Menuliskan ke direktori
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-bendahara/img/foto-bukti', $namaGambar);
-
         $data = [
             'tanggal_transaksi' => esc($this->request->getvar('tanggal_transaksi')),
             'id_akunkeuangan' => esc($this->request->getvar('akunkeuangan')),
@@ -180,6 +182,12 @@ class KeuanganController extends BaseController
 
         $this->KeuanganModel->update($id_keuangan, $data);
 
+        //Menuliskan ke direktori
+        if ($this->development) {
+            $gambar->move(WRITEPATH . $this->directoriImageDevelopment, $namaGambar);
+        } else {
+            $gambar->move(WRITEPATH . $this->directoriImageProduction, $namaGambar);
+        }
         return redirect()->back()->with('success', 'Data Keuangan Berhasil Diubah');
     }
 
@@ -254,15 +262,6 @@ class KeuanganController extends BaseController
             if (empty($Keterangan)) {
                 continue;
             }
-
-            // Check if the name already exists in the database
-            // if ($this->KeuanganModel->where('slug', $slug)->countAllResults() > 0) {
-            //     // Handle the duplicate name case
-            //     // For example, you can skip inserting or perform any desired action
-            //     continue; // Skip the current iteration and move to the next row
-            // }
-
-            // dd($data);
 
             // Insert the data into the database
             $this->KeuanganModel->insert($data);

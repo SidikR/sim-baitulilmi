@@ -62,4 +62,38 @@ class PostModel extends Model
         $query = $this->db->table('post')->where('kategori', $kategori)->countAllResults();
         return $query;
     }
+
+    public function getNameFoto($id)
+    {
+        $builder = $this->db->table('post');
+        $builder->select('foto_post'); // Hanya mengambil kolom 'foto_petugas_ jumat'
+        $builder->where(['id_post' => $id]);
+        $query = $builder->get();
+
+        // Pastikan ada hasil yang ditemukan sebelum mengambil data
+        if ($query->getResult()) {
+            // Jika Anda hanya ingin satu foto_post, gunakan getRow() daripada getResult()
+            return $query->getRow()->foto_post;
+        } else {
+            // Jika data tidak ditemukan, Anda bisa mengembalikan nilai null atau pesan error sesuai kebutuhan
+            return null;
+        }
+    }
+
+    public function getSlug($id)
+    {
+        $builder = $this->db->table('post');
+        $builder->select('slug_post'); // Hanya mengambil kolom 'slug_post'
+        $builder->where(['id_post' => $id]);
+        $query = $builder->get();
+
+        // Pastikan ada hasil yang ditemukan sebelum mengambil data
+        if ($query->getResult()) {
+            // Jika Anda hanya ingin satu foto_post, gunakan getRow() daripada getResult()
+            return $query->getRow()->slug_post;
+        } else {
+            // Jika data tidak ditemukan, Anda bisa mengembalikan nilai null atau pesan error sesuai kebutuhan
+            return null;
+        }
+    }
 }

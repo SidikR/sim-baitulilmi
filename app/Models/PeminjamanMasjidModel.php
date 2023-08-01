@@ -13,7 +13,7 @@ class PeminjamanMasjidModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_user', 'foto_kegiatan', 'instansi_peminjam', 'nama_penanggungjawab', 'nama_kegiatan', 'deskripsi_kegiatan', 'tanggal_dipinjam', 'tanggal_selesai', 'infaq', 'metode_infaq', 'agreement', 'foto_identitas', 'status_peminjaman', 'bukti_transfer', 'status_infaq', 'pesan'];
+    protected $allowedFields    = ['id_user', 'foto_kegiatan', 'instansi_peminjam', 'nama_penanggungjawab', 'nama_kegiatan', 'deskripsi_kegiatan', 'tanggal_dipinjam', 'tanggal_selesai', 'infaq', 'metode_infaq', 'foto_identitas', 'status_peminjaman', 'bukti_transfer', 'status_infaq', 'pesan'];
 
     // Dates
     protected $useTimestamps = true;

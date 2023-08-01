@@ -12,6 +12,7 @@ use App\Models\KeuanganModel;
 use App\Models\AkunKeuanganModel;
 use App\Models\AksesKeuanganModel;
 use App\Models\PeminjamanMasjidModel;
+use Intervention\Image\ImageManagerStatic as Image;
 
 
 
@@ -42,6 +43,9 @@ abstract class BaseController extends Controller
     protected $AkunKeuanganModel;
     protected $AksesKeuanganModel;
     protected $PeminjamanMasjidModel;
+    protected $development = false;
+
+
 
 
     /**

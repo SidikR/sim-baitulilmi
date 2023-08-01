@@ -12,10 +12,6 @@
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
-                    <a href="pengurus/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
-                            <i class="bi bi-plus"></i> Tambah
-                        </button></a>
-
                     <!-- ini notifikasi Berhasil ditambah -->
                     <?php if (session('success')) : ?>
                         <div class="alert alert-success" role="alert">

@@ -47,7 +47,6 @@
                                     </li><!-- End Tab 2 Nav -->
                                 </ul>
                             </section>
-
                         </div>
                     </div>
                 </div>

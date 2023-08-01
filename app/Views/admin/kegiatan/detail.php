@@ -15,12 +15,12 @@
                         <div class="row">
                             <div class="col-md-4 mt-auto mb-auto">
                                 <div class="col-md-12 mt-auto mb-auto ">
-                                    <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
-                                        <div class="inventaris-item">
-                                            <img src="<?php echo base_url('assets-admin/img/kegiatan/' . $kegiatan->foto_kegiatan); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
-                                            <div class="inventaris-info">
+                                    <div class="foto container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                                        <div class="foto-item mt-3 mb-3" style="width: 90%;">
+                                            <img src="<?php echo base_url('assets-admin/img/foto-kegiatan/' . $kegiatan->foto_kegiatan); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                                            <div class="foto-info">
                                                 <h4><?= $kegiatan->nama_kegiatan; ?></h4>
-                                                <a href="<?php echo base_url('assets-admin/img/kegiatan/' . $kegiatan->foto_kegiatan); ?>" title="<?= $kegiatan->nama_kegiatan; ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
+                                                <a href="<?php echo base_url('assets-admin/img/foto-kegiatan/' . $kegiatan->foto_kegiatan); ?>" title="<?= $kegiatan->nama_kegiatan; ?>" data-gallery="foto-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                                             </div>
                                         </div>
                                     </div>

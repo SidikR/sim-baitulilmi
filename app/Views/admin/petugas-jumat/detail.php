@@ -15,12 +15,16 @@
                         <div class="row">
                             <div class="col-md-4 mt-auto mb-auto">
                                 <div class="col-md-12 mt-auto mb-auto ">
-                                    <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
+                                    <div class="inventaris container-fluid mt-3 mb-3" style="width : 80% ; height : 80% ;  ">
                                         <div class="inventaris-item">
                                             <img src="<?php echo base_url('assets-admin/img/petugas-jumat/' . $petugasjumat->poster); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
                                             <div class="inventaris-info">
-                                                <h4><?= $petugasjumat->nama_imam; ?></h4>
-                                                <a href="<?php echo base_url('assets-admin/img/petugas-jumat/' . $petugasjumat->poster); ?>" title="<?= $petugasjumat->nama_imam; ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
+                                                <div class="row d-flex ">
+                                                    <div class="col justify-content-between m-0 p-0">
+                                                        <h4 class="m-0 p-0"><?= $petugasjumat->nama_imam; ?></h4>
+                                                        <a href="<?php echo base_url('assets-admin/img/petugas-jumat/' . $petugasjumat->poster); ?>" title="<?= $petugasjumat->nama_imam; ?>" data-gallery="jadwal_jumat" class="glightbox preview-link m-0 p-0"><i class="bi bi-zoom-in"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

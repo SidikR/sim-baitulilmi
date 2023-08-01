@@ -9,12 +9,15 @@ use CodeIgniter\Commands\Utilities\Publish;
 use CodeIgniter\Validation\Rules;
 use Config\App;
 use JetBrains\PhpStorm\Internal\ReturnTypeContract;
+use Intervention\Image\ImageManagerStatic as Image;
 
 
 class PetugasjumatController extends BaseController
 {
     protected $PetugasJumatModel;
     protected $helpers = ['form', 'auth'];
+    protected $directoriImageDevelopment = "../public/assets-admin/img/petugas-jumat";
+    protected $directoriImageProduction = "../../../public_html/baim/assets-admin/img/petugas-jumat";
 
 
     public function __construct()
@@ -47,17 +50,24 @@ class PetugasjumatController extends BaseController
 
     public function save()
     {
-        // Ambil Gambar
-        $gambar = $this->request->getFile('poster');
+        $id_max = $this->PetugasJumatModel->getMaxId();
 
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
+        // Deklarasi Nailai Slug Pengurus
+        $slugy = url_title($this->request->getvar('tanggal'), '-', TRUE);
+        $slug = $slugy . '-' . $id_max[0]->id_petugas + 1;
+
+        $gambar = $this->request->getVar('croppedImage');
+        $namaGambar = $slug . '.webp';
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
 
         // Simpan Data ke DataBase
         $data = [
             'daftar_petugasjumat' => $this->PetugasJumatModel->orderBy('id_petugas', 'DESC')->findAll(),
-            'title' => 'Tambah Petugasjumat',
+            'title' => 'Tambah Petugas Jumat',
             'tanggal' => esc($this->request->getvar('tanggal')),
+            'slug_petugas' => $slug,
             'nama_imam' => esc($this->request->getvar('nama_imam')),
             'jabatan_imam' => esc($this->request->getvar('jabatan_imam')),
             'nama_khatib' => esc($this->request->getvar('nama_khatib')),
@@ -80,8 +90,13 @@ class PetugasjumatController extends BaseController
             return view('admin/petugas-jumat/create', $data);
         } {
             $this->PetugasJumatModel->insert($data);
-            //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/petugas-jumat', $namaGambar);
+            // Convert and save the image as PNG
+            $img = Image::make($decoded_data);
+            if ($this->development) {
+                $img->save(WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar);
+            } else {
+                $img->save(WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar);
+            }
             return redirect()->to('/petugas-jumat')->with('success', 'Data Petugasjumat Berhasil Ditambahkan');
         }
     }
@@ -120,11 +135,23 @@ class PetugasjumatController extends BaseController
 
     public function update_foto($id_petugas)
     {
-        // Ambil Gambar
-        $gambar = $this->request->getFile('poster');
+        $slug = $this->PetugasJumatModel->getSlug($id_petugas);
+        $gambar = $this->request->getVar('croppedImage');
+        $namaGambar = $this->PetugasJumatModel->getNameFoto($id_petugas);
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
 
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
+        if ($this->development) {
+            $filepath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+        } else {
+            $filepath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+        }
+
+        if ($namaGambar != 'defaultposter.svg') {
+            unlink($filepath);
+            $namaGambar = $slug . '.webp';
+        }
 
         $data = [
             'title' => 'Tambah Foto Petugas Jumat',
@@ -136,13 +163,27 @@ class PetugasjumatController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->PetugasJumatModel->update($id_petugas, $data);
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/petugas-jumat', $namaGambar);
+        $img = Image::make($decoded_data);
+        if ($this->development) {
+            $img->save(WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar);
+        } else {
+            $img->save(WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar);
+        }
         return redirect()->to('petugas-jumat')->with('success', 'Data Foto Berhasil Diubah');
     }
 
 
     public function delete($id_petugas)
     {
+        $namaGambar = $this->PetugasJumatModel->getNameFoto($id_petugas);
+        if ($this->development) {
+            $filepath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+        } else {
+            $filepath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+        }
+        if ($namaGambar != 'defaultposter.svg') {
+            unlink($filepath);
+        }
         $this->PetugasJumatModel->where('id_petugas', $id_petugas)->delete();
         return redirect()->back()->with('success', 'Data Berhasil Dihapus');
     }

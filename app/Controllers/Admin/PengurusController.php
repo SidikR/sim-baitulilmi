@@ -9,12 +9,15 @@ use CodeIgniter\Commands\Utilities\Publish;
 use CodeIgniter\Validation\Rules;
 use Config\App;
 use JetBrains\PhpStorm\Internal\ReturnTypeContract;
+use Intervention\Image\ImageManagerStatic as Image;
 
 
 class PengurusController extends BaseController
 {
     protected $PengurusModel;
     protected $helpers = ['form'];
+    protected $directoriImageDevelopment = "../public/assets-admin/img/foto-pengurus";
+    protected $directoriImageProduction = "../../../public_html/baim/assets-admin/img/foto-pengurus";
 
 
     public function __construct()
@@ -53,11 +56,11 @@ class PengurusController extends BaseController
         $slugy = url_title($this->request->getvar('nama_lengkap'), '-', TRUE);
         $slug = $slugy . '-' . $id_max[0]->id_pengurus + 1;
 
-        // Ambil Gambar
-        $gambar = $this->request->getFile('foto_pengurus');
-
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
+        $gambar = $this->request->getVar('croppedImage');
+        $namaGambar = $slug . '.webp';
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
 
         // Simpan Data ke DataBase
         $data = [
@@ -88,8 +91,13 @@ class PengurusController extends BaseController
             return view('admin/pengurus/create', $data);
         } {
             $this->PengurusModel->insert($data);
-            //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/foto-pengurus', $namaGambar);
+            // Convert and save the image as PNG
+            $img = Image::make($decoded_data);
+            if ($this->development) {
+                $img->save(WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar);
+            } else {
+                $img->save(WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar);
+            }
             return redirect()->to('/pengurus')->with('success', 'Data Pengurus Berhasil Ditambahkan');
         }
     }
@@ -109,9 +117,22 @@ class PengurusController extends BaseController
             'linkedin' => esc($this->request->getvar('linkedin')),
             'nomor_telepon' => esc($this->request->getvar('nomor_telepon')),
             'alamat_pengurus' => esc($this->request->getvar('alamat_pengurus')),
+            'validation' => \Config\Services::validation()
         ];
-        $this->PengurusModel->update($id_pengurus, $data);
-        return redirect()->to('pengurus')->with('success', 'Data Pengurus Berhasil Diubah');
+        $rules = $this->validate([
+            'nama_lengkap' => 'required',
+            'jenis_kelamin' => 'required',
+            'nomor_telepon' => 'required',
+            'nama_jabatan' => 'required',
+            'alamat_pengurus' => 'required'
+        ]);
+
+        if (!$rules) {
+            return redirect()->back()->with('failed', 'Data Pengurus Gagal Diubah');
+        } {
+            $this->PengurusModel->update($id_pengurus, $data);
+            return redirect()->to('pengurus')->with('success', 'Data Pengurus Berhasil Diubah');
+        }
     }
 
     public function form_update($slug_pengurus)
@@ -120,6 +141,7 @@ class PengurusController extends BaseController
         $data = [
             'title' => "Edit Data Pengurus",
             'daftar_pengurus' => $this->PengurusModel->getPengurus($slug_pengurus),
+            'validation' => \Config\Services::validation()
         ];
 
         if (empty($data['daftar_pengurus'])) {
@@ -131,11 +153,23 @@ class PengurusController extends BaseController
 
     public function update_foto($id_pengurus)
     {
-        // Ambil Gambar
-        $gambar = $this->request->getFile('foto_pengurus');
+        $slug = $this->PengurusModel->getSlug($id_pengurus);
+        $gambar = $this->request->getVar('croppedImage');
+        $namaGambar = $this->PengurusModel->getNameFoto($id_pengurus);
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
 
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
+        if ($this->development) {
+            $filepath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+        } else {
+            $filepath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+        }
+
+        if ($namaGambar != 'defaultpengurus.svg') {
+            unlink($filepath);
+            $namaGambar = $slug . '.webp';
+        }
 
         $data = [
             'title' => 'Tambah Foto Pengurus',
@@ -147,13 +181,28 @@ class PengurusController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->PengurusModel->update($id_pengurus, $data);
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/foto-pengurus', $namaGambar);
+        // Convert and save the image as PNG
+        $img = Image::make($decoded_data);
+        if ($this->development) {
+            $img->save(WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar);
+        } else {
+            $img->save(WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar);
+        }
         return redirect()->to('pengurus')->with('success', 'Data Pengurus Berhasil Diubah');
     }
 
 
     public function delete($id_pengurus)
     {
+        $namaGambar = $this->PengurusModel->getNameFoto($id_pengurus);
+        if ($this->development) {
+            $filepath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+        } else {
+            $filepath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+        }
+        if ($namaGambar != 'defaultpengurus.svg') {
+            unlink($filepath);
+        }
         $this->PengurusModel->where('id_pengurus', $id_pengurus)->delete();
         return redirect()->back()->with('success', 'Data Berhasil Dihapus');
     }
@@ -204,7 +253,7 @@ class PengurusController extends BaseController
         $highestRow = $worksheet->getHighestRow();
 
         // Iterate through each row starting from row 3
-        foreach ($worksheet->getRowIterator($startRow = 2) as $row) {
+        foreach ($worksheet->getRowIterator($startRow = 3) as $row) {
             // Get the cell values
             $namaLengkap = $worksheet->getCell('B' . $row->getRowIndex())->getValue();
             $jenisKelamin = $worksheet->getCell('C' . $row->getRowIndex())->getValue();
@@ -244,6 +293,43 @@ class PengurusController extends BaseController
         unlink($filePath);
 
         // Redirect or display a success message
-        return redirect()->to('/pengurus')->with('success', 'Data imported successfully!');
+        return redirect()->to('/pengurus')->with('success', 'File berhasil diimpor!');
+    }
+
+    public function deleteMultiple()
+    {
+        $ids = $this->request->getPost('ids');
+
+        // Lakukan validasi data jika diperlukan
+
+        // Lakukan penghapusan data berdasarkan ID yang diterima
+        $pengurusModel = new \App\Models\PengurusModel();
+
+        // Ambil data gambar sebelum melakukan penghapusan
+        $gambarData = $pengurusModel->whereIn('id_pengurus', $ids)->findAll();
+
+        // Hapus data berdasarkan ID yang diterima
+        $deleted = $pengurusModel->delete($ids);
+
+        if ($deleted) {
+            // Hapus gambar terkait jika ada
+            foreach ($gambarData as $data) {
+                $namaGambar = $data['nama_gambar'];
+                if ($namaGambar != 'defaultpengurus.png') {
+                    if ($this->development) {
+                        $filepath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+                    } else {
+                        $filepath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+                    }
+                    unlink($filepath);
+                }
+            }
+
+            $response = ['status' => 'success', 'message' => 'Data terpilih berhasil dihapus.'];
+        } else {
+            $response = ['status' => 'error', 'message' => 'Gagal menghapus data terpilih.'];
+        }
+
+        return $this->response->setJSON($response);
     }
 }

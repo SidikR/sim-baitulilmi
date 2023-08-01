@@ -22,14 +22,14 @@
             <div class="col-md-12">
                 <div class="portfolio container-fluid" style="width : 90% ; height : 90% ;  ">
                     <div class="portfolio-item ">
-                        <img style="max-width : 90% ; max-height : 90% ;  " src="<?php echo base_url('assets-admin/img/kegiatan/' . $kegiatan->foto_kegiatan); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                        <img style="max-width : 90% ; max-height : 90% ;  " src="<?php echo base_url('assets-admin/img/foto-kegiatan/' . $kegiatan->foto_kegiatan); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
                         <div class="portfolio-info container-fluid">
                             <div class="row ">
                                 <div class="col">
                                     <span class="text-white">Foto <?= $kegiatan->nama_kegiatan; ?></span>
                                 </div>
                                 <div class="col">
-                                    <a href="<?php echo base_url('assets-admin/img/kegiatan/' . $kegiatan->foto_kegiatan); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
+                                    <a href="<?php echo base_url('assets-admin/img/foto-kegiatan/' . $kegiatan->foto_kegiatan); ?>" data-gallery="portfolio-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>
                                 </div>
                             </div>
                         </div>

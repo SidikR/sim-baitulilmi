@@ -6,11 +6,14 @@ use App\Controllers\BaseController;
 use App\Models\InventarisModel;
 use CodeIgniter\Database\Database;
 use CodeIgniter\Validation\Rules;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class InventarisController extends BaseController
 {
     protected $InventarisModel;
     protected $helpers = ['form'];
+    protected $directoriImageDevelopment = "../public/assets-admin/img/foto-inventaris";
+    protected $directoriImageProduction = "../../../public_html/baim/assets-admin/img/foto-inventaris";
 
     public function __construct()
     {
@@ -20,7 +23,7 @@ class InventarisController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Inventaris BAIM',
+            'title' => 'Inventaris Masjid',
             'daftar_inventaris' => $this->InventarisModel->orderBy('created_at', 'DESC')->findAll()
         ];
         return view('admin/inventaris/index', $data);
@@ -42,17 +45,17 @@ class InventarisController extends BaseController
     // Fungsi Simpan 
     public function save()
     {
-        // Deklarasi Nailai Slug Jabatan
-        $slug = url_title($this->request->getvar('nama_inventaris'), '-', TRUE);
 
-        // Deklarasi Tabel Jabatan
         $daftar_inventaris = $this->InventarisModel->orderBy('created_at', 'DESC')->findAll();
-
-        // Ambil Gambar
-        $gambar = $this->request->getFile('foto_inventaris');
-
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
+        $id_max = $this->InventarisModel->getMaxId();
+        // Deklarasi Nailai Slug Pengurus
+        $slugy = url_title($this->request->getvar('nama_inventaris'), '-', TRUE);
+        $slug = $slugy . '-' . $id_max[0]->id_inventaris + 1;
+        $gambar = $this->request->getVar('croppedImage');
+        $namaGambar = $slug . '.webp';
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
 
 
         // Simpan Data ke DataBase
@@ -80,14 +83,27 @@ class InventarisController extends BaseController
             return view('admin/inventaris/create', $data);
         } {
             $this->InventarisModel->insert($data);
-            //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/foto-inventaris', $namaGambar);
+            $img = Image::make($decoded_data);
+            if ($this->development) {
+                $img->save(WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar);
+            } else {
+                $img->save(WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar);
+            }
             return redirect()->to('/inventaris')->with('success', 'Data inventaris Berhasil Ditambahkan');
         }
     }
 
     public function delete($id_inventaris)
     {
+        $namaGambar = $this->InventarisModel->getNameFoto($id_inventaris);
+        if ($this->development) {
+            $filepath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+        } else {
+            $filepath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+        }
+        if ($namaGambar != 'defaultinventaris.svg') {
+            unlink($filepath);
+        }
         $this->InventarisModel->join('akuninventaris', 'akuninventaris.id_akuninventaris = inventaris.id_akuninventaris')->join('aksesinventaris', 'aksesinventaris.id_aksesinventaris = inventaris.id_aksesinventaris')->where('id_inventaris', $id_inventaris)->delete();
         return redirect()->to('/inventaris')->with('success', 'Data Berhasil Dihapus');
     }
@@ -144,11 +160,23 @@ class InventarisController extends BaseController
 
     public function update_foto($id_inventaris)
     {
-        // Ambil Gambar
-        $gambar = $this->request->getFile('foto_inventaris');
+        $slug = $this->InventarisModel->getSlug($id_inventaris);
+        $gambar = $this->request->getVar('croppedImage');
+        $namaGambar = $this->InventarisModel->getNameFoto($id_inventaris);
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
 
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
+        if ($this->development) {
+            $filepath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+        } else {
+            $filepath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+        }
+
+        if ($namaGambar != 'defaultinventaris.svg') {
+            unlink($filepath);
+            $namaGambar = $slug . '.webp';
+        }
 
         $data = [
             'title' => 'Tambah inventaris',
@@ -160,7 +188,13 @@ class InventarisController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->InventarisModel->update($id_inventaris, $data);
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/foto-inventaris', $namaGambar);
+        //Menuliskan ke direktori
+        $img = Image::make($decoded_data);
+        if ($this->development) {
+            $img->save(WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar);
+        } else {
+            $img->save(WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar);
+        }
         return redirect()->to('inventaris')->with('success', 'Data Inventaris Berhasil Diubah');
     }
 }

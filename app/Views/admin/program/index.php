@@ -12,7 +12,7 @@
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
-                    <a href="program/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
+                    <a href="program/tambah"><button type="button" class="btn btn-tambah mb-3" data-bs-toggle="modal">
                             <i class="bi bi-plus"></i> Tambah
                         </button></a>
 
@@ -42,9 +42,9 @@
                                     <td><?= $dk->filter; ?></td>
                                     <td><?= $dk->deskripsi_program; ?></td>
                                     <td style="width: 15%;">
-                                        <a href="<?= 'program/detail/' . $dk->id; ?>"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-book-fill"></i></button></a>
-                                        <a href="<?= 'program/edit/' . $dk->id; ?>"><button type="button" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></button></a>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dk->id; ?>"><i class="bi bi-trash3-fill"></i></button>
+                                        <a href="<?= 'program/detail/' . $dk->id; ?>"><button type="button" class="btn btn-read btn-sm"><i class="bi bi-book-fill"></i></button></a>
+                                        <a href="<?= 'program/edit/' . $dk->id; ?>"><button type="button" class="btn btn-edit btn-sm"><i class="bi bi-pencil-square"></i></button></a>
+                                        <button type="button" class="btn btn-delete btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?= $dk->id; ?>"><i class="bi bi-trash3-fill"></i></button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

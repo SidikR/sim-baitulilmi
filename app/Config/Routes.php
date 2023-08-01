@@ -54,6 +54,10 @@ $routes->post('peminjaman/batal/(:segment)', 'Pages\AkunController::batal/$1', [
 $routes->post('peminjaman-masjid/batal/(:segment)', 'Pages\AkunController::batal_masjid/$1', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanMasjidController::save_masjid', ['filter' => 'role:user']);
 
+$routes->get("image-crop", "ImageController::imageCrop");
+$routes->post("crop-submit", "ImageController::imageCropPost");
+
+
 
 
 // Routes Admin Dashboard
@@ -70,6 +74,7 @@ $routes->post('/pengurus/save', 'Admin\PengurusController::save', ['filter' => '
 $routes->get('/pengurus/tambah', 'Admin\PengurusController::create', ['filter' => 'role:admin']);
 $routes->put('/pengurus/edit/(:segment)', 'Admin\PengurusController::update/$1', ['filter' => 'role:admin']);
 $routes->delete('/pengurus/hapus/(:segment)', 'Admin\PengurusController::delete/$1', ['filter' => 'role:admin']);
+$routes->post('/pengurus/hapus-multiple', 'Admin\PengurusController::deleteMultiple', ['filter' => 'role:admin']);
 $routes->get('/pengurus/detail/(:segment)', 'Admin\PengurusController::detail/$1', ['filter' => 'role:admin']);
 $routes->get('/pengurus/edit/(:segment)', 'Admin\PengurusController::form_update/$1', ['filter' => 'role:admin']);
 $routes->put('/pengurus/edit/foto/(:segment)', 'Admin\PengurusController::update_foto/$1', ['filter' => 'role:admin']);

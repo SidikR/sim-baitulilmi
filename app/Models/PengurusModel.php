@@ -21,6 +21,8 @@ class PengurusModel extends Model
     protected $useSoftDeletes = false;
 
 
+
+
     // Fungsi Untuk Mengambil Data sesuai Slug
     public function getPengurus($slug_pengurus = false)
     {
@@ -36,5 +38,39 @@ class PengurusModel extends Model
         $builder->selectMax('id_pengurus');
         $query = $builder->get();
         return $query->getResult();
+    }
+
+    public function getNameFoto($id)
+    {
+        $builder = $this->db->table('pengurus');
+        $builder->select('foto_pengurus'); // Hanya mengambil kolom 'foto_pengurus'
+        $builder->where(['id_pengurus' => $id]);
+        $query = $builder->get();
+
+        // Pastikan ada hasil yang ditemukan sebelum mengambil data
+        if ($query->getResult()) {
+            // Jika Anda hanya ingin satu foto_pengurus, gunakan getRow() daripada getResult()
+            return $query->getRow()->foto_pengurus;
+        } else {
+            // Jika data tidak ditemukan, Anda bisa mengembalikan nilai null atau pesan error sesuai kebutuhan
+            return null;
+        }
+    }
+
+    public function getSlug($id)
+    {
+        $builder = $this->db->table('pengurus');
+        $builder->select('slug_pengurus'); // Hanya mengambil kolom 'foto_pengurus'
+        $builder->where(['id_pengurus' => $id]);
+        $query = $builder->get();
+
+        // Pastikan ada hasil yang ditemukan sebelum mengambil data
+        if ($query->getResult()) {
+            // Jika Anda hanya ingin satu foto_pengurus, gunakan getRow() daripada getResult()
+            return $query->getRow()->slug_pengurus;
+        } else {
+            // Jika data tidak ditemukan, Anda bisa mengembalikan nilai null atau pesan error sesuai kebutuhan
+            return null;
+        }
     }
 }

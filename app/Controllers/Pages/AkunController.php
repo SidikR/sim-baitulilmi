@@ -16,6 +16,8 @@ class AkunController extends BaseController
     protected $PeminjamanMasjidModel;
     protected $AkunModel;
     protected $helpers = ['form', 'auth'];
+    protected $directoriImageDevelopment = "../public/assets/img/foto-user";
+    protected $directoriImageProduction = "../../../public_html/baim/assets/img/foto-user";
 
     public function __construct()
     {
@@ -96,7 +98,14 @@ class AkunController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->AkunModel->update($id, $data);
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets/img/foto-user', $namaGambar);
+        if ($namaGambar != null) {
+            //Menuliskan ke direktori
+            if ($this->development) {
+                $gambar->move(WRITEPATH . $this->directoriImageDevelopment, $namaGambar);
+            } else {
+                $gambar->move(WRITEPATH . $this->directoriImageProduction, $namaGambar);
+            }
+        }
         return redirect()->to('akun')->with('success', 'Foto Akun Anda Berhasil Diubah');
     }
 }

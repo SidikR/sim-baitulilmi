@@ -12,7 +12,7 @@
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
-                    <a href="post/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
+                    <a href="post/tambah"><button type="button" class="btn btn-tambah mb-3" data-bs-toggle="modal">
                             <i class="bi bi-plus"></i> Tambah
                         </button></a>
 

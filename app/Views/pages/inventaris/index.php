@@ -57,4 +57,8 @@
             <?= $this->include('pages/inventaris/partials/form_peminjamanmasjid'); ?>
             <?= $this->include('pages/inventaris/partials/modal_pinjaminventaris'); ?>
 
-            <?= $this->endSection(); ?>
+        </div>
+    </div>
+</section>
+
+<?= $this->endSection(); ?>

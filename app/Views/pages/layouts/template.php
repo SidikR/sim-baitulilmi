@@ -33,6 +33,7 @@
     <link type="text/css" href="<?php echo base_url('/assets/vendor/aos/aos.css'); ?>" rel="stylesheet">
     <link type="text/css" href="<?php echo base_url('/assets/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet">
     <link type="text/css" href="<?php echo base_url('/assets/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href=<?= base_url("assets/vendor/cropper/cropper.min.css"); ?>>
 
 
     <!-- Template Main CSS File -->
@@ -50,6 +51,33 @@
             display: none;
         }
     </style>
+    <style>
+        #image-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            /* Rasio 16x9 (9 / 16 * 100) */
+        }
+
+        #crop-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            /* Lebar awal crop box */
+            height: calc(100% - 20px);
+            border: 2px dashed #000;
+        }
+
+        #preview-image {
+            max-width: 100%;
+            max-height: calc(100vh - 200px);
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src=<?= base_url("assets/js/utils/validations.js"); ?>></script>
 </head>
 
 <body>
@@ -68,6 +96,7 @@
     <script type="text/javascript" src=<?php echo base_url('/assets/vendor/glightbox/js/glightbox.min.js'); ?>></script>
     <script type="text/javascript" src=<?php echo base_url('/assets/vendor/isotope-layout/isotope.pkgd.min.js'); ?>></script>
     <script type="text/javascript" src=<?php echo base_url('/assets/vendor/swiper/swiper-bundle.min.js'); ?>></script>
+    <script src=<?= base_url("assets/vendor/cropper/cropper.min.js"); ?>></script>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -404,13 +433,7 @@
                         },
                         download: 'open',
                     },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6]
-                        }
-                    },
-                    'colvis'
+                                        'colvis'
                 ],
                 lengthMenu: [
                     [10, 25, 50, -1],
@@ -623,12 +646,7 @@
                         },
                         download: 'open',
                     },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
+                    
                     'colvis'
                 ],
                 lengthMenu: [
@@ -838,12 +856,7 @@
                         },
                         download: 'open',
                     },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
+                
                     'colvis'
                 ],
                 lengthMenu: [
@@ -1050,12 +1063,6 @@
 
                         },
                         download: 'open',
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
                     },
                     'colvis'
                 ],

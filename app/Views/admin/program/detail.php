@@ -18,7 +18,7 @@
                                 <div class="col-md-12 mt-auto mb-auto ">
                                     <div class="inventaris container-fluid mt-auto mb-auto" style="width : 100% ; height : 100% ;  ">
                                         <div class="inventaris-item">
-                                            <img style="max-width : 400px ; max-height : 400px ;  " src="<?php echo base_url('assets-admin/img/program/' . $program->foto); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
+                                            <img src="<?php echo base_url('assets-admin/img/program/' . $program->foto); ?>" class="img-fluid rounded float-center ms-auto me-auto d-block mb-3" alt="">
                                             <div class="inventaris-info">
                                                 <h4><?= $program->nama_program; ?></h4>
                                                 <a href="<?php echo base_url('assets-admin/img/program/' . $program->foto); ?>" title="<?= $program->nama_program; ?>" data-gallery="inventaris-gallery" class="glightbox preview-link pe-3"><i class="bi bi-zoom-in"></i></a>

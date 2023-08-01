@@ -7,6 +7,7 @@ use App\Database\Migrations\PeminjamanInventaris;
 use App\Models\InventarisModel;
 use App\Models\PeminjamanInventarisModel;
 use App\Models\PeminjamanMasjidModel;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PeminjamanInventarisController extends BaseController
 {
@@ -14,6 +15,9 @@ class PeminjamanInventarisController extends BaseController
     protected $PeminjamanInventarisModel;
     protected $PeminjamanMasjidModel;
     protected $helpers = ['form', 'auth'];
+    protected $directoriImageDevelopment = "../public/assets-admin/img/peminjaman/foto-identitas";
+    protected $directoriImageProduction = "../../../public_html/baim/assets-admin/img/peminjaman/foto-identitas";
+
 
     public function __construct()
     {
@@ -35,13 +39,15 @@ class PeminjamanInventarisController extends BaseController
 
     public function save()
     {
-        // Ambil Gambar
-        $gambar = $this->request->getFile('foto_identitas');
-
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
-
-        //Menuliskan ke direktori
+        $id_max = $this->PeminjamanInventarisModel->getMaxId();
+        // Deklarasi Nailai Slug Pengurus
+        $slugy = url_title($this->request->getvar('nama_penanggungjawab'), '-', TRUE);
+        $slug = $slugy . '-' . $id_max[0]->id_peminjaman + 1;
+        $gambar = $this->request->getVar('croppedImageInventaris');
+        $namaGambar = $slug . '.webp';
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
 
 
         $data = [
@@ -57,7 +63,6 @@ class PeminjamanInventarisController extends BaseController
             'infaq' => esc($this->request->getvar('infaq')),
             'metode_infaq' => esc($this->request->getvar('metode_infaq')),
             'foto_identitas' => $namaGambar,
-            'agreement' => esc($this->request->getvar('agreement')),
             'validation' => \Config\Services::validation(),
             'daftar_inventaris' => $this->InventarisModel->orderBy('created_at', 'DESC')->findAll()
         ];
@@ -78,7 +83,12 @@ class PeminjamanInventarisController extends BaseController
             return view('pages/inventaris/index', $data);
         } {
             $this->PeminjamanInventarisModel->insert($data);
-            $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/peminjaman/foto-identitas', $namaGambar);
+            $img = Image::make($decoded_data);
+            if ($this->development) {
+                $img->save(WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar);
+            } else {
+                $img->save(WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar);
+            }
             return redirect()->to(base_url('peminjaman'))->with('success', 'Permintaan Telah dikirim, Silakan cek Log Peminjaman di Profile Anda!');
         }
     }

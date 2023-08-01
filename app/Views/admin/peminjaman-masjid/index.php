@@ -12,9 +12,6 @@
                     <?= $title; ?>
                 </div>
                 <div class="card-body">
-                    <a href="pengurus/tambah"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal">
-                            <i class="bi bi-plus"></i> Tambah
-                        </button></a>
 
                     <!-- ini notifikasi Berhasil ditambah -->
                     <?php if (session('success')) : ?>
@@ -160,7 +157,7 @@
                                                 <a href="<?= base_url('assets-admin/img/peminjaman-masjid/foto-identitas/' . $dpi->foto_identitas); ?>" target="_blank"><img src="<?= base_url('assets-admin/img/peminjaman-masjid/foto-identitas/' . $dpi->foto_identitas); ?>" class="img-fluid glightbox preview-link pe-3" alt="Foto Identitas"></a>
                                             </div>
                                             <div class="row mb-3" style="width: 50%; height : 50%">
-                                                <a href="<?= base_url('assets-admin/img/kegiatan/' . $dpi->foto_kegiatan); ?>" target="_blank"><img src="<?= base_url('assets-admin/img/kegiatan/' . $dpi->foto_kegiatan); ?>" class="img-fluid glightbox preview-link pe-3" alt="Foto Kegiatan"></a>
+                                                <a href="<?= base_url('assets-admin/img/foto-kegiatan/' . $dpi->foto_kegiatan); ?>" target="_blank"><img src="<?= base_url('assets-admin/img/foto-kegiatan/' . $dpi->foto_kegiatan); ?>" class="img-fluid glightbox preview-link pe-3" alt="Foto Kegiatan"></a>
                                             </div>
                                         </div>
 

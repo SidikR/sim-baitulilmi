@@ -27,17 +27,24 @@
                         <li class="nav-link p-0 m-0"><a <?php getactive('guest-keuangan');
                                                         ?> class="scrollto" href="<?= base_url('guest-keuangan'); ?>">Transparansi Keuangan</a></li>
 
-                        <li class="nav-link p-0 m-0"><a <?php getactive('kegiatan-guest');
-                                                        ?> class="scrollto" href="<?= base_url('kegiatan-guest'); ?>">Kegiatan</a></li>
-
                         <li class="nav-link p-0 m-0"><a <?php getactive('pengurus-guest');
                                                         ?> class="scrollto" href="<?= base_url('pengurus-guest'); ?>">Pengurus</a></li>
 
                         <li class="nav-link p-0 m-0"><a <?php getactive('peminjaman');
                                                         ?> class="scrollto" href="<?= base_url('peminjaman'); ?>">Peminjaman</a></li>
 
-                        <li class="nav-link p-0 m-0"><a <?php getactive('post-guest');
-                                                        ?> class="scrollto" href="<?= base_url('post-guest'); ?>">Post</a></li>
+                        <li class="nav-item dropdown">
+                            <a <?php getactive('kegiatan-guest') || getactive('post-guest');
+                                ?> class="nav-link dropdown-toggle" href="#" id="postDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Post
+                            </a>
+                            <div class="user">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="<?= base_url('kegiatan-guest'); ?>"><i class="bi bi-calendar2-event-fill pe-2 color-primary"></i>Kegiatan</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?= base_url('post-guest'); ?>"><i class="bi bi-mailbox2 pe-2 color-primary"></i>Berita</a>
+                                </div>
+                        </li>
 
                         <li class="nav-link p-0 m-0"><a <?php getactive('about');
                                                         ?> href="<?= base_url('about'); ?>">Kontak</a></li>

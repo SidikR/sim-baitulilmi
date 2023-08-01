@@ -10,12 +10,16 @@ use CodeIgniter\Validation\Rules;
 use Config\App;
 use JetBrains\PhpStorm\Internal\ReturnTypeContract;
 use Config\Services;
+use Ramsey\Uuid\Rfc4122\UuidV4;
+use Ramsey\Uuid\Uuid;
 
 
 class ProgramController extends BaseController
 {
     protected $ProgramModel;
     protected $helpers = ['form'];
+    protected $directoriImageDevelopment = "../public/assets-admin/img/program";
+    protected $directoriImageProduction = "../../../public_html/baim/assets-admin/img/program";
 
 
     public function __construct()
@@ -26,7 +30,7 @@ class ProgramController extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Daftar Program',
+            'title' => 'Daftar Foto Galeri Program',
             'daftar_program' => $this->ProgramModel->orderBy('id', 'DESC')->findAll(),
         ];
 
@@ -39,7 +43,7 @@ class ProgramController extends BaseController
     {
         $data = [
             'daftar_program' => $this->ProgramModel->findAll(),
-            'title' => 'Tambah Program',
+            'title' => 'Tambah Foto Galeri',
             'daftar_filter' => $this->ProgramModel->getFilter(),
             'validation' => \Config\Services::validation()
         ];
@@ -49,18 +53,20 @@ class ProgramController extends BaseController
 
     public function save()
     {
+        $uuid4 = Uuid::uuid4();
         // Ambil Gambar
-        $gambar = $this->request->getFile('foto');
-        $image = Services::image();
-
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
-
         $filter = $this->request->getVar('filter_op');
 
         if ($filter == "Pilih Filter" || $filter == " ") {
             $filter = $this->request->getVar('filter_br');
         }
+
+        $gambar = $this->request->getVar('croppedImage');
+        $namaGambar = 'gambar.' . $uuid4->toString() . '.webp';
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
+
 
         // Simpan Data ke DataBase
         $data = [
@@ -83,10 +89,16 @@ class ProgramController extends BaseController
             session()->setFlashdata('failed', 'Data Program gagal ditambahkan !');
             return view('admin/program/create', $data);
         } {
-            $this->ProgramModel->insert($data);
             //Menuliskan ke direktori
-            $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/program', $namaGambar);
-            $filePath = WRITEPATH . "../../../public_html/baim/assets-admin/img/program/" . $namaGambar;
+            if ($this->development) {
+                $svgFilePath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+                // $gambar->move(WRITEPATH . $this->directoriImageDevelopment, $namaGambar);
+            } else {
+                $svgFilePath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+                // $gambar->move(WRITEPATH . $this->directoriImageProduction, $namaGambar);
+            }
+            file_put_contents($svgFilePath, $decoded_data);
+            $this->ProgramModel->insert($data);
             return redirect()->to('/program')->with('success', 'Data Program Berhasil Ditambahkan');
         }
     }
@@ -127,12 +139,12 @@ class ProgramController extends BaseController
 
     public function update_foto($id)
     {
-        // Ambil Gambar
-        $gambar = $this->request->getFile('foto');
-        $image = Services::image();
-
-        //Ambil Nama Gambar
-        $namaGambar = $gambar->getName('');
+        $uuid4 = Uuid::uuid4();
+        $gambar = $this->request->getVar('croppedImage');
+        $namaGambar = 'gambar.' . $uuid4->toString() . '.webp';
+        $data_start_index = strpos($gambar, ',') + 1;
+        $base64_data = substr($gambar, $data_start_index);
+        $decoded_data = base64_decode($base64_data);
 
         $data = [
             'title' => 'Tambah Foto Program',
@@ -144,11 +156,16 @@ class ProgramController extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Anda tidak Mengupload Gambar Apapun!  - Silakan Pilih Foto Anda');
         }
         $this->ProgramModel->update($id, $data);
-        $gambar->move(WRITEPATH . '../../../public_html/baim/assets-admin/img/program', $namaGambar);
-        $filePath = "../../../public_html/baim/assets-admin/img/program/" . $namaGambar;
-        $image->withFile($filePath)
-            ->resize('auto', 600, true)
-            ->save($filePath);
+        //Menuliskan ke direktori
+        if ($this->development) {
+            $svgFilePath = WRITEPATH . $this->directoriImageDevelopment . '/' . $namaGambar;
+            // $gambar->move(WRITEPATH . $this->directoriImageDevelopment, $namaGambar);
+        } else {
+            $svgFilePath = WRITEPATH . $this->directoriImageProduction . '/' . $namaGambar;
+            // $gambar->move(WRITEPATH . $this->directoriImageProduction, $namaGambar);
+        }
+        file_put_contents($svgFilePath, $decoded_data);
+
         return redirect()->to('program')->with('success', 'Data Program Berhasil Diubah');
     }
 
