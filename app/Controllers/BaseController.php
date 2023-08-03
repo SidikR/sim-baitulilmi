@@ -43,7 +43,7 @@ abstract class BaseController extends Controller
     protected $AkunKeuanganModel;
     protected $AksesKeuanganModel;
     protected $PeminjamanMasjidModel;
-    protected $development = true;
+    protected $development = false;
 
 
 
