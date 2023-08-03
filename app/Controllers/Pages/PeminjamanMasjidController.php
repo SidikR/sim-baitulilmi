@@ -36,26 +36,27 @@ class PeminjamanMasjidController extends BaseController
             'data_peminjaman_masjid' => $daftar_peminjaman_masjid,
         ];
 
-        return view('pages/inventaris/transfer', $data);
+        return view('pages/inventaris/transfer_peminjamanmasjid', $data);
     }
 
     public function save_masjid()
     {
-        // Ambil Gambar
-        $gambaridentitas = $this->request->getFile('foto_identitas');
-        //Ambil Nama Gambar
-        $namaGambarIdentitas = $gambaridentitas->getName('');
         $metode_infaq = esc($this->request->getvar('metode_infaq'));
-
 
         $id_max = $this->PeminjamanMasjidModel->getMaxId();
         $slugy = url_title($this->request->getvar('nama_kegiatan'), '-', TRUE);
         $slug = $slugy . '-' . $id_max[0]->id_peminjaman + 1;
-        $gambarkegiatan = $this->request->getVar('croppedImage');
+        $gambarkegiatan = $this->request->getVar('croppedImageMasjid');
         $namaGambarKegiatan = $slug . '.webp';
-        $data_start_index = strpos($gambarkegiatan, ',') + 1;
-        $base64_data = substr($gambarkegiatan, $data_start_index);
-        $decoded_data = base64_decode($base64_data);
+        $data_start_index_poster = strpos($gambarkegiatan, ',') + 1;
+        $base64_data_poster = substr($gambarkegiatan, $data_start_index_poster);
+        $decoded_data_poster = base64_decode($base64_data_poster);
+
+        $gambaridentitas = $this->request->getVar('croppedImageMasjidKTP');
+        $namaGambarIdentitas = $slug . '.webp';
+        $data_start_index_ktp = strpos($gambaridentitas, ',') + 1;
+        $base64_data_ktp = substr($gambaridentitas, $data_start_index_ktp);
+        $decoded_data_ktp = base64_decode($base64_data_ktp);
 
         $data = [
             'title' => 'Pinjam Masjid',
@@ -90,23 +91,18 @@ class PeminjamanMasjidController extends BaseController
             return view('pages/inventaris/index', $data);
         } {
             $this->PeminjamanMasjidModel->insert($data);
-            $img = Image::make($decoded_data);
+            $img_poster = Image::make($decoded_data_poster);
+            $img_ktp = Image::make($decoded_data_ktp);
             if ($this->development) {
-                $img->save(WRITEPATH . $this->directoriImageDevelopmentKegiatan . '/' . $namaGambarKegiatan);
+                $img_poster->save(WRITEPATH . $this->directoriImageDevelopmentKegiatan . '/' . $namaGambarKegiatan);
+                $img_ktp->save(WRITEPATH . $this->directoriImageDevelopmentIdentitas . '/' . $namaGambarIdentitas);
             } else {
-                $img->save(WRITEPATH . $this->directoriImageProductionKegiatan . '/' . $namaGambarKegiatan);
-            }
-            if ($gambaridentitas != null) {
-                //Menuliskan ke direktori
-                if ($this->development) {
-                    $gambaridentitas->move(WRITEPATH . $this->directoriImageDevelopmentIdentitas, $namaGambarIdentitas);
-                } else {
-                    $gambaridentitas->move(WRITEPATH . $this->directoriImageProductionIdentitas, $namaGambarIdentitas);
-                }
+                $img_poster->save(WRITEPATH . $this->directoriImageProductionKegiatan . '/' . $namaGambarKegiatan);
+                $img_ktp->save(WRITEPATH . $this->directoriImageProductionIdentitas . '/' . $namaGambarIdentitas);
             }
             if ($metode_infaq == "TRANSFER") {
                 $id = $id_max[0]->id_peminjaman + 1;
-                return redirect()->to(base_url("transfer/" . $id))->with('success', 'Permintaan Telah dikirim, Silakan cek Log Peminjaman di Profile Anda!');
+                return redirect()->to(base_url("invoice-peminjaman-masjid/" . $id))->with('success', 'Permintaan Telah dikirim, Silakan cek Log Peminjaman di Profile Anda!');
             } {
                 return redirect()->to(base_url('peminjaman'))->with('success', 'Permintaan Telah dikirim, Silakan cek Log Peminjaman di Profile Anda!');
             }
@@ -139,43 +135,5 @@ class PeminjamanMasjidController extends BaseController
             }
         }
         return redirect()->to('akun')->with('success', 'Bukti Transfer Berhasil Dikirim');
-    }
-
-    public function pdfinvoice($id_peminjaman)
-    {
-        $daftar_peminjaman_masjid = $this->PeminjamanMasjidModel->getPeminjaman($id_peminjaman);
-        $data = [
-            'title' => "Transfer Infaq",
-            'data_peminjaman_masjid' => $daftar_peminjaman_masjid,
-        ];
-        return view('pages/inventaris/pdfinvoice', $data);
-    }
-
-    public function generate($id_peminjaman)
-    {
-        $daftar_peminjaman_masjid = $this->PeminjamanMasjidModel->getPeminjaman($id_peminjaman);
-        $data = [
-            'title' => "Transfer Infaq",
-            'data_peminjaman_masjid' => $daftar_peminjaman_masjid,
-        ];
-
-        return view('pages/inventaris/pdfinvoice', $data);
-
-        $filename = date('y-m-d-H-i-s') . '-qadr-labs-report';
-
-        // instantiate and use the dompdf class
-        $dompdf = new Dompdf();
-
-        // load HTML content
-        $dompdf->loadHtml(view('pages/inventaris/pdfinvoice', $data));
-
-        // (optional) setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
-
-        // render html as PDF
-        $dompdf->render();
-
-        // output the generated pdf
-        $dompdf->stream($filename);
     }
 }

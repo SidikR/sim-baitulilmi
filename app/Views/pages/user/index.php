@@ -69,6 +69,7 @@
                                                 <th>Pesan</th>
                                                 <th>Status</th>
                                                 <th>Aksi</th>
+                                                <th>Invoice</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -83,23 +84,24 @@
                                                     <td><?= $di->pesan; ?></td>
                                                     <td style="width: 15%;">
                                                         <?php if ($di->status_peminjaman == 'pending') : ?>
-                                                            <button type="button" class="btn btn-warning btn-sm"><i class="bi bi-clock-history"></i> Sedang ditinjau</button>
+                                                            <span class="badge bg-warning"><i class="bi bi-clock-history"> Sedang ditinjau</i></span>
                                                         <?php elseif ($di->status_peminjaman == 'accepted') :  ?>
-                                                            <button type="button" class="btn btn-secondary btn-sm"><i class="bi bi-clock-history"></i> Belum dikembalikan</button>
+                                                            <span class="badge bg-secondary-light"><i class="bi bi-clock-history"> Belum dikembalikan</i></span>
                                                         <?php elseif ($di->status_peminjaman == 'done') :  ?>
-                                                            <button type="button" class="btn btn-success btn-sm">
-                                                                <i class="bi bi-check2-circle"></i> Proses Selesai
-                                                            </button>
+                                                            <span class="badge bg-success"><i class="bi bi-check2-circle"> Proses selesai</i></span>
                                                         <?php elseif ($di->status_peminjaman == 'rejected') :  ?>
-                                                            <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
+                                                            <span class="badge bg-danger"><i class="bi bi-x-circle"> Proses ditolak</i></span>
                                                         <?php elseif ($di->status_peminjaman == 'batal') :  ?>
-                                                            <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Dibatalkan</button>
+                                                            <span class="badge bg-danger"><i class="bi bi-x-circle"> Dibatalkan</i></span>
                                                         <?php endif ?>
                                                     </td>
                                                     <td style="width: 15%;">
                                                         <?php if ($di->status_peminjaman == 'pending') : ?>
                                                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#batalModal<?= $di->id_peminjaman; ?>"><i class="bi bi-x-square-fill"></i> Batal</button>
                                                         <?php endif ?>
+                                                    </td>
+                                                    <td style="width: 3%;">
+                                                        <a href="<?= base_url("invoice-peminjaman-inventaris/$di->id_peminjaman"); ?>" target="_blank"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-receipt"></i></button></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
@@ -144,15 +146,15 @@
                                                     <td><?= $di->pesan; ?></td>
                                                     <td style="width: 15%;">
                                                         <?php if ($di->status_peminjaman == 'pending') : ?>
-                                                            <button type="button" class="btn btn-warning btn-sm"><i class="bi bi-clock-history"></i> Sedang ditinjau</button>
+                                                            <span class="badge bg-warning"><i class="bi bi-clock-history"> Sedang ditinjau</i></span>
                                                         <?php elseif ($di->status_peminjaman == 'accepted') :  ?>
-                                                            <button type="button" class="btn btn-success btn-sm"><i class="bi bi-clock-history"></i> Diizinkan</button>
+                                                            <span class="badge bg-success"><i class="bi bi-clock-history"> Sedang ditinjau</i></span>
                                                         <?php elseif ($di->status_peminjaman == 'done') :  ?>
-                                                            <button type="button" class="btn btn-success btn-sm"><i class="bi bi-check2-circle"></i> Proses Selesai</button>
+                                                            <span class="badge bg-success"><i class="bi bi-check2-circle"> Proses selesai</i></span>
                                                         <?php elseif ($di->status_peminjaman == 'rejected') :  ?>
-                                                            <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
+                                                            <span class="badge bg-danger"><i class="bi bi-x-circle"> Proses ditolak</i></span>
                                                         <?php elseif ($di->status_peminjaman == 'batal') :  ?>
-                                                            <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Dibatalkan</button>
+                                                            <span class="badge bg-danger"><i class="bi bi-x-circle"> Dibatalkan</i></span>
                                                         <?php endif ?>
                                                     </td>
                                                     <td style="width: 15%;">
@@ -160,8 +162,8 @@
                                                             <a><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#batalModal<?= $di->id_peminjaman; ?>"><i class="bi bi-x-square-fill"></i> Batal</button></a>
                                                         <?php endif ?>
                                                     </td>
-                                                    <td style="width: 15%;">
-                                                        <a href="<?= base_url("invoice/$di->id_peminjaman"); ?>" target="_blank"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-receipt"></i></button></a>
+                                                    <td style="width: 3%;">
+                                                        <a href="<?= base_url("invoice-peminjaman-masjid/$di->id_peminjaman"); ?>" target="_blank"><button type="button" class="btn btn-success btn-sm"><i class="bi bi-receipt"></i></button></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
@@ -194,7 +196,7 @@
                         <?= csrf_field(); ?>
 
                         <div class="mb-4">
-                            <label for="pesan" class="form-label">Example textarea</label>
+                            <label for="pesan" class="form-label">Pesan Penolakan</label>
                             <textarea class="form-control" rows="4" type="textarea" class="form-control" placeholder="Isikan Alasan Pembatalan Permohonan " name="pesan" required></textarea>
                         </div>
 

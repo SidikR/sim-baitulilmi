@@ -48,50 +48,46 @@
                                     <td><?= $dpi->tanggal_dipinjam; ?></td>
                                     <td><?= $dpi->tanggal_selesai; ?></td>
                                     <td style="width: 15%;">
-                                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#lihatModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-book"></i></button>
+                                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#lihatModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-book"> Detail</i></button>
 
                                         <?php if ($dpi->status_peminjaman == 'pending') : ?>
-                                            <a href="<?= 'peminjaman-masjid-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-warning btn-sm" title="Terima Permohonan"><span class="bi bi-check-circle"></span></button></a>
-                                            <button type="button" class="btn btn-danger btn-sm" title="Tolak Permohonan" data-bs-toggle="modal" data-bs-target="#tolakModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-x-square-fill"></i></button>
+                                            <a href="<?= 'peminjaman-masjid-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-warning btn-sm mt-2" title="Terima Permohonan"><span class="bi bi-check-circle"> Terima</span></button></a>
+                                            <button type="button" class="btn btn-danger btn-sm mt-2" title="Tolak Permohonan" data-bs-toggle="modal" data-bs-target="#tolakModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-x-square-fill"> Tolak</i></button>
 
                                         <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq == 'belum bayar') :  ?>
-                                            <a href="<?= 'peminjaman-masjid-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Selesai</button></a>
-                                            <a href="<?= 'peminjaman-masjid-infaq-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-success btn-sm" title="Infaq"><i class="fas fa-check-double"></i> Konfirmasi Infaq</button></a>
+                                            <a href="<?= 'peminjaman-masjid-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm mt-2" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Selesai</button></a>
+                                            <a href="<?= 'peminjaman-masjid-infaq-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-success btn-sm mt-2" title="Infaq"><i class="fas fa-check-double"></i> Konfirmasi Infaq</button></a>
 
                                         <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq != 'belum bayar') : ?>
-                                            <a href="<?= 'peminjaman-masjid-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Selesai</button></a>
+                                            <a href="<?= 'peminjaman-masjid-done/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm mt-2" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Selesai</button></a>
+                                        <?php endif ?>
 
-                                        <?php elseif ($dpi->status_peminjaman == 'done' && $dpi->status_infaq == 'belum bayar') : ?>
-                                            <a href="<?= 'peminjaman-masjid-infaq-ok/' . $dpi->id_peminjaman; ?>"><button type="button" class="btn btn-secondary btn-sm" title="Konfirmasi Pengembalian"><i class="far fa-clock"></i> Konfirmasi Infaq</button></a>
-
+                                        <?php if ($dpi->bukti_transfer != null && $dpi->metode_infaq == 'TRANSFER') : ?>
+                                            <a><button type="button" class="btn btn-success btn-sm mt-2" title="Lihat Transfer" data-bs-toggle="modal" data-bs-target="#BuktiTransferModal<?= $dpi->id_peminjaman; ?>"><i class="bi bi-receipt"></i> Lihat Bukti Transfer</button></a>
                                         <?php endif ?>
                                     </td>
                                     <td style="width: 15%;">
-                                        <?php if ($dpi->bukti_transfer != null && $dpi->status_infaq == 'belum bayar') : ?>
-                                            <a><button type="button" class="btn btn-secondary btn-sm" title="Lihat Transfer" data-bs-toggle="modal" data-bs-target="#BuktiTransferModal<?= $dpi->id_peminjaman; ?>"><i class="far fa-clock"></i> Sudah Transfer</button></a>
-                                        <?php elseif ($dpi->bukti_transfer != null && $dpi->status_infaq == 'belum bayar' && $dpi->status_peminjaman == 'accepted') : ?><a><button type="button" class="btn btn-secondary btn-sm" title="Lihat Transfer" data-bs-toggle="modal" data-bs-target="#BuktiTransferModal<?= $dpi->id_peminjaman; ?>"><i class="far fa-clock"></i> Sudah Transfer</button></a>
-                                        <?php endif ?>
 
                                         <?php if ($dpi->status_peminjaman == 'pending') : ?>
-                                            <button type="button" class="btn btn-warning btn-sm"><i class="far fa-clock"></i> Ditinjau</button>
+                                            <span class="badge bg-warning"><i class="bi bi-clock-history"> Sedang ditinjau</i></span>
 
                                         <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq != 'belum bayar') :  ?>
-                                            <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-clock"></i> Belum Selesai, sudah infaq</button>
+                                            <span class="badge bg-secondary-light"><i class="bi bi-clock-history"> Belum Selesai, sudah infaq</i></span>
 
                                         <?php elseif ($dpi->status_peminjaman == 'accepted' && $dpi->status_infaq == 'belum bayar') :  ?>
-                                            <button type="button" class="btn btn-secondary btn-sm"><i class="far fa-clock"></i> Belum Selesai, belum infaq</button>
+                                            <span class="badge bg-secondary-light"><i class="bi bi-clock-history"> Belum selesai, belum infaq</i></span>
 
                                         <?php elseif ($dpi->status_peminjaman == 'done' && $dpi->status_infaq != 'belum bayar') :  ?>
-                                            <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-double"></i> Proses Selesai</button>
+                                            <span class="badge bg-success"><i class="bi bi-check2-circle"> Proses Selesai</i></span>
 
                                         <?php elseif ($dpi->status_peminjaman == 'done' && $dpi->status_infaq == 'belum bayar') :  ?>
-                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-check-double"></i> Proses Selesai Belum Bayar</button>
+                                            <span class="badge bg-danger"><i class="bi bi-check2-circle"> Proses Selesai Belum Bayar</i></span>
 
                                         <?php elseif ($dpi->status_peminjaman == 'rejected') :  ?>
-                                            <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Proses ditolak</button>
+                                            <span class="badge bg-danger"><i class="bi bi-x-circle"> Proses ditolak</i></span>
 
                                         <?php elseif ($dpi->status_peminjaman == 'batal') :  ?>
-                                            <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-x-square"></i> Dibatalkan</button>
+                                            <span class="badge bg-danger"><i class="bi bi-x-square"> Dibatalkan</i></span>
 
                                         <?php endif ?>
                                     </td>
@@ -107,7 +103,7 @@
 
 <!-- Modal Detail Pengajuan Peminjaman Inventaris -->
 <?php foreach ($daftar_peminjaman_masjid as $dpi) : ?>
-    <div class="modal fade" id="lihatModal<?= $dpi->id_peminjaman; ?>" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="lihatModal<?= $dpi->id_peminjaman; ?>" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
@@ -116,7 +112,7 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <fieldset disabled>
+                        <fieldset>
                             <legend>Detail Permohonan Peminjaman Masjid Acara : <b><?= $dpi->nama_kegiatan; ?></b></legend>
                             <div class="container">
                                 <div class="row">
@@ -149,8 +145,13 @@
                                             <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $dpi->infaq; ?>'>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="disabledTextInput" class="form-label">Metode Infaq</label>
-                                            <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $dpi->metode_infaq; ?>'>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label for="disabledTextInput" class="form-label">Metode Infaq</label>
+                                                    <input type="text" id="disabledTextInput" class="form-control" placeholder='<?= $dpi->metode_infaq; ?>'>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="row mb-3" style="width: 50%; height : 50%">
@@ -168,7 +169,6 @@
                     </form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success btn-sm">Delete</button>
                     </div>
                     </form>
                 </div>
@@ -192,12 +192,12 @@
                         <?= csrf_field(); ?>
 
                         <div class="mb-4">
-                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                            <label for="exampleFormControlTextarea1" class="form-label">Pesan Penolakan</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" type="textarea" class="form-control" placeholder="Isikan Alasan Penolakan" name="pesan" required></textarea>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kembali</button>
                             <button type="submit" class="btn btn-success">Selesai</button>
                         </div>
                     </form>
@@ -212,7 +212,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Bukti Transfer Modal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-trash3-fill "></i> Bukti Transfer</h5>
                     <span><i type="button" class="bi bi-x-square text-center fs-5" data-bs-dismiss="modal" aria-label="Close"></i></span>
                 </div>
                 <div class="modal-body">
@@ -230,8 +230,10 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Konfirmasi Pembayaran</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kembali</button>
+                            <?php if ($dpi->bukti_transfer != null && $dpi->status_infaq != 'terbayar') : ?>
+                                <button type="submit" class="btn btn-success">Konfirmasi Pembayaran</button>
+                            <?php endif ?>
                         </div>
                     </form>
                 </div>

@@ -84,15 +84,21 @@ class PeminjamanController extends BaseController
 
         $slug = url_title($keterangan);
 
+        $id_akseskeuangan = 2;
+
+        if ($dpi->metode_infaq == 'COD') {
+            $id_akseskeuangan = 1;
+        }
+
         $uuid4 = Uuid::uuid4();
 
 
         // Simpan Data ke DataBase
         $data = [
             'id_keuangan' => $uuid4->toString(),
-            'tanggal_transaksi' => $dpi->tanggal_pengembalian,
-            'id_akunkeuangan' => 1,
-            'id_akseskeuangan' => 1,
+            'tanggal_transaksi' => date('Y-m-d'),
+            'id_akunkeuangan' => 2,
+            'id_akseskeuangan' => $id_akseskeuangan,
             'keterangan' => esc($keterangan),
             'masuk' => esc($dpi->infaq),
             'slug' => $slug,

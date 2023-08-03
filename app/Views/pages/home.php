@@ -198,7 +198,7 @@
                     <div class="service-item">
                         <div class="img">
                             <div class="image-container">
-                                <img src="<?php echo base_url('/assets-admin/img/kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
+                                <img src="<?php echo base_url('/assets-admin/img/foto-kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
                             </div>
                         </div>
                         <div class="details position-relative d-flex align-items-center justify-content-center" style="height: 250px;">
@@ -375,7 +375,7 @@
                     <div class="inventaris-info">
                         <h4><?= $di->nama_inventaris; ?></h4>
                         <h4> <?php if ($di->stok_inventaris == 0) {
-                                    'Stok : Habis';
+                                    echo 'Stok : Habis';
                                 } else {
                                     echo 'Stok : ' . $di->stok_inventaris;
                                 }

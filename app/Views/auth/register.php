@@ -45,6 +45,13 @@
 
                                         </div>
 
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control <?php if (session('errors.nama_lengkap')) : ?>is-invalid<?php endif ?>" name="nama_lengkap" id="floatingInput" placeholder=<?= lang('Auth.nama_lengkap') ?> value="<?= old('nama_lengkap') ?>">
+
+                                            <label for="floatingInput"><?= lang('Nama Lengkap') ?></label>
+
+                                        </div>
+
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-floating mb-4">

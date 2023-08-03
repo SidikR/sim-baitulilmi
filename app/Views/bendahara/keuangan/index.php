@@ -21,14 +21,14 @@
                             <section class="tabs">
                                 <ul class="nav nav-tabs gy-4 row gy-4 d-flex">
 
-                                    <!-- Awal Tab Untuk Menampilan Buku Besar -->
+                                    <!-- Awal Tab Untuk Menampilan Keuangan -->
                                     <li class="nav-item col-12 col-md-4 col-lg-4 buku_besar ">
                                         <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
                                             <i class="bi bi-coin color-secondary"></i>
-                                            <h4>Buku Besar</h4>
+                                            <h4>Keuangan</h4>
                                         </a>
                                     </li>
-                                    <!-- End Tab Buku Besar -->
+                                    <!-- End Tab Keuangan -->
 
                                     <!-- Awal Tab Untuk Menampilkan Tabel Pemasukan -->
                                     <li class="nav-item col-12 col-md-4 col-lg-4 masuk">
@@ -171,11 +171,11 @@
                     <div class="row">
                         <section class="tables">
                             <div data-aos="fade-up">
-                                <!-- Tab Pertama -> Buku Besar -->
+                                <!-- Tab Pertama -> Keuangan -->
                                 <div class="tab-content">
                                     <div class="tab-pane active show mb-5" id="tab-1">
                                         <div class="col-md-12">
-                                            <h2 class="mb-3">Buku Besar</h2>
+                                            <h2 class="mb-3">Keuangan</h2>
                                             <table id="datatables_userkeuangan" class="display" style="width:100%">
                                                 <thead>
                                                     <tr>
@@ -186,11 +186,13 @@
                                                         <th>Keterangan</th>
                                                         <th>Masuk</th>
                                                         <th>Keluar</th>
+                                                        <!-- <th>Saldo</th> -->
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php $no = 1; ?>
-                                                    <?php foreach ($daftar_keuangan as $dp) : ?>
+                                                    <?php $no = 1;
+                                                    $saldo = 0; ?>
+                                                    <?php foreach ($daftar_keuangan as $dp) : $saldo += $dp->masuk - $dp->keluar; ?>
                                                         <tr>
                                                             <td><?= $no++; ?></td>
                                                             <td><?= $dp->tanggal_transaksi; ?></td>
@@ -205,6 +207,7 @@
                                                                     <?= 'Rp. ' . number_format($dp->keluar, 0, '.', '.'); ?>
                                                                 <?php endif; ?>
                                                             </td>
+                                                            <!-- <td><?= 'Rp. ' . number_format($saldo, 0, '.', '.'); ?></td> -->
                                                         </tr>
                                                     <?php endforeach ?>
                                                 </tbody>
@@ -213,12 +216,13 @@
                                                         <td colspan="5"></td>
                                                         <td></td>
                                                         <td></td>
+                                                        <!-- <td></td> -->
                                                     </tr>
                                                 </tfoot>
                                             </table>
                                         </div>
                                     </div>
-                                    <!-- Akhir dari Buku Besar -->
+                                    <!-- Akhir dari Keuangan -->
 
                                     <!-- Tab 2 -> Pemasukan -->
                                     <div class="tab-pane show mb-5" id="tab-2">
@@ -390,7 +394,7 @@
                 <form action="keuangan-import" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Unggah File Anda Seperti <a href="<?= base_url('assets/template/Import_Pengurus_Masjid.xlsx'); ?>">Template</a></label>
+                        <label for="formFile" class="form-label">Unggah File Anda Seperti <a href="<?= base_url('assets/template/Import_Keuangan.xlsx'); ?>">Template</a></label>
                         <input class="form-control" type="file" id="formFile" name="import_keuangan" required>
                     </div>
             </div>

@@ -8,7 +8,7 @@
                 </div>
             </div>
 
-            <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
+            <div class="container" data-aos="fade-up" data-aos-delay="200">
                 <div class="inventaris-isotope" data-inventaris-filter="*" data-inventaris-layout="masonry" data-inventaris-sort="original-order">
                     <div class="row g-0 inventaris-container">
                         <?php foreach ($daftar_inventaris as $di) :  ?>
@@ -17,7 +17,7 @@
                                 <div class="inventaris-info">
                                     <h4><?= $di->nama_inventaris; ?></h4>
                                     <h4> <?php if ($di->stok_inventaris == 0) {
-                                                'Stok : Habis';
+                                                echo 'Stok : Habis';
                                             } else {
                                                 echo 'Stok : ' . $di->stok_inventaris;
                                             }

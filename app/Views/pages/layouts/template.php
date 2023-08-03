@@ -82,7 +82,7 @@
 
 <body>
     <?= $this->include('pages/layouts/partials/navbar'); ?>
-    <?= $this->renderSection('content'); ?>`
+    <?= $this->renderSection('content'); ?>
     <?= $this->include('pages/layouts/partials/footer'); ?>
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -279,12 +279,6 @@
                         },
                         download: 'open',
                     },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6]
-                        }
-                    },
                     'colvis'
                 ],
                 lengthMenu: [
@@ -433,7 +427,7 @@
                         },
                         download: 'open',
                     },
-                                        'colvis'
+                    'colvis'
                 ],
                 lengthMenu: [
                     [10, 25, 50, -1],
@@ -450,6 +444,7 @@
                         data;
                     var currentPosition1 = api.colReorder.transpose(5);
                     var currentPosition2 = api.colReorder.transpose(6);
+                    var currentPosition3 = api.colReorder.transpose(7);
 
                     // Remove the formatting to get integer data for summation
                     var intVal = function(i) {
@@ -478,17 +473,15 @@
                             return intVal(a) + intVal(b);
                         }, 0);
 
+                    var saldo = pageTotalMasuk - pageTotalKeluar;
                     var formattedTotalMasuk = "Rp. " + formatNumber(pageTotalMasuk);
                     var formattedTotalKeluar = "Rp. " + formatNumber(pageTotalKeluar);
+                    var formattedSaldo = "Rp. " + formatNumber(saldo);
 
                     // Update footer
-                    $(api.column(currentPosition1).footer()).html(
-                        formattedTotalMasuk
-                    );
-
-                    $(api.column(currentPosition2).footer()).html(
-                        formattedTotalKeluar
-                    );
+                    $(api.column(currentPosition1).footer()).html(formattedTotalMasuk);
+                    $(api.column(currentPosition2).footer()).html(formattedTotalKeluar);
+                    $(api.column(currentPosition3).footer()).html(formattedSaldo);
 
                 },
                 dom: 'Blfrtip',
@@ -509,7 +502,7 @@
                         extend: 'pdfHtml5',
                         footer: true,
                         exportOptions: {
-                            columns: ':visible'
+                            columns: [0, 1, 2, 3, 4, 5,6]
                         },
                         customize: function(doc) {
 
@@ -535,15 +528,25 @@
                             var min = $('.date_range_filter').val();
                             var max = $('.date_range_filter2').val();
 
-                            doc.content.push({
+                            var content = [];
+
+                            if (min !== '') {
+                            content.push({
                                 text: 'Tanggal Awal : ' + min,
                                 alignment: 'left',
                                 margin: [0, 30, 0, 12] // Atur margin top (0), right (0), bottom (0), dan left (12)
-                            }, {
+                            });
+                            }
+
+                            if (max !== '') {
+                            content.push({
                                 text: 'Tanggal Akhir : ' + max,
                                 alignment: 'left',
                                 margin: [0, 0, 0, 12] // Atur margin top (0), right (0), bottom (0), dan left (12)
                             });
+                            }
+
+                            doc.content.push(content);
 
 
                             doc.styles.tableHeader.bold = true;

@@ -100,7 +100,7 @@ class PeminjamanMasjidController extends BaseController
 
         $data_keuangan = [
             'id_keuangan' => $uuid4->toString(),
-            'tanggal_transaksi' => $dpi->tanggal_dipinjam,
+            'tanggal_transaksi' => date('Y-m-d'),
             'id_akunkeuangan' => 2,
             'id_akseskeuangan' => $id_akseskeuangan,
             'keterangan' => esc($keterangan),

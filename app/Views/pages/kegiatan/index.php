@@ -19,7 +19,7 @@
                         <div class="img">
                             <img src="<?php echo base_url('/assets-admin/img/foto-kegiatan/' . $dk->foto_kegiatan); ?>" class="img-fluid" alt="">
                         </div>
-                        <div class="details position-relative">
+                        <div class="details position-relative text-black">
                             <div class="icon">
                                 <i class="bi bi-calendar4-week"></i>
                             </div>
@@ -27,8 +27,8 @@
                                 <h3 class="color-primary"><?= $dk->nama_kegiatan; ?></h3>
                             </a>
                             <div class="d-flex flex-column align-items-center justify-content-start">
-                                <p>Penyelenggara : <?= $dk->penyelenggara_kegiatan; ?></p>
-                                <p>Waktu : <?= $dk->waktu_mulai_kegiatan; ?></p>
+                                <p class="color-black">Penyelenggara : <?= $dk->penyelenggara_kegiatan; ?></p>
+                                <p class="color-black">Waktu : <?= $dk->waktu_mulai_kegiatan; ?></p>
                             </div>
 
                         </div>

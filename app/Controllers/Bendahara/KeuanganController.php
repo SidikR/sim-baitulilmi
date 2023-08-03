@@ -221,7 +221,7 @@ class KeuanganController extends BaseController
         $highestRow = $worksheet->getHighestRow();
 
         // Iterate through each row starting from row 3
-        foreach ($worksheet->getRowIterator($startRow = 2) as $row) {
+        foreach ($worksheet->getRowIterator($startRow = 3) as $row) {
             // Get the cell values
             $Tanggal = $worksheet->getCell('B' . $row->getRowIndex())->getValue();
             $Akun = $worksheet->getCell('C' . $row->getRowIndex())->getValue();
@@ -232,9 +232,9 @@ class KeuanganController extends BaseController
             $uuid4 = Uuid::uuid4();
             $slug = $uuid4;
 
-            if ($Akun == "pembangunan") {
+            if ($Akun == "pembangunan" || $Akun == "pem") {
                 $setAkun = 1;
-            } elseif ($Akun == "operasional") {
+            } elseif ($Akun == "operasional" || $Akun == "op") {
                 $setAkun = 2;
             } else $setAkun = 3;
 

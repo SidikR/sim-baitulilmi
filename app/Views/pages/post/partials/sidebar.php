@@ -23,7 +23,7 @@
         <div class="mt-3">
             <?php foreach ($daftar_post as $post) : ?>
                 <div class="post-item mt-3">
-                    <img src="<?= base_url('assets-admin/img/post/' . $post->foto_post); ?>" alt="" class="flex-shrink-0">
+                    <img src="<?= base_url('assets-admin/img/foto-post/' . $post->foto_post); ?>" alt="" class="">
                     <div>
                         <h4><a href="<?= base_url('detail/post-' . $post->slug_post); ?>"><?= $post->nama_post; ?></a></h4>
                         <time><?php $newFormat = date("d-M-Y", strtotime($post->created_at));

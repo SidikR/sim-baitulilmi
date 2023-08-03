@@ -12,6 +12,53 @@
     <div class="container" data-aos="fade-up">
 
         <div class="row gy-5 d-flex align-items-start justify-content-center">
+            <div class="col-xl-3 col-md-6 d-flex justify-content-center align-items-center" data-aos="zoom-in" data-aos-delay="200">
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="<?php echo base_url(); ?>/assets/img/pengurus/alam.jpeg" class="img-fluid" alt="">
+                    </div>
+                    <div class="member-info">
+                        <div class="social">
+                            <a href="https://www.instagram.com/fc_alam/" target="_blank"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/firdha-cahya-alam" target="_blank"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        <h4>Firdha Cahya Alam</h4>
+                        <span>Ketua DKM</span>
+                    </div>
+                </div>
+            </div><!-- End Team Member -->
+
+            <div class="col-xl-3 col-md-6 d-flex justify-content-center align-items-center" data-aos="zoom-in" data-aos-delay="400">
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="<?php echo base_url(); ?>/assets/img/pengurus/selvi.jpeg" class="img-fluid" alt="">
+                    </div>
+                    <div class="member-info">
+                        <div class="social">
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/selvi-gustiana-1aa564188" target="_blank"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        <h4>Selvi Gustiana</h4>
+                        <span>Bendahara</span>
+                    </div>
+                </div>
+            </div><!-- End Team Member -->
+
+            <div class="col-xl-3 col-md-6 d-flex justify-content-center align-items-center" data-aos="zoom-in" data-aos-delay="600">
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="<?php echo base_url(); ?>/assets/img/pengurus/barra.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="member-info">
+                        <div class="social">
+                            <a href="https://www.instagram.com/4l.barra/" target="_blank"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/4lbarra" target="_blank"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        <h4>Al Barra Harahap</h4>
+                        <span>Sekretaris</span>
+                    </div>
+                </div>
+            </div><!-- End Team Member -->
 
             <?php foreach ($daftar_pengurus as $dp) : ?>
                 <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">

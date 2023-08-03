@@ -50,15 +50,15 @@
             </li><!-- End Tab 2 Nav -->
 
         </ul>
-
-        <div class="tab-content">
-            <?= $this->include('pages/inventaris/partials/daftar_inventaris'); ?>
-            <?= $this->include('pages/inventaris/partials/form_peminjamaninventaris'); ?>
-            <?= $this->include('pages/inventaris/partials/form_peminjamanmasjid'); ?>
-            <?= $this->include('pages/inventaris/partials/modal_pinjaminventaris'); ?>
-
-        </div>
     </div>
+
+    <div class="tab-content">
+        <?= $this->include('pages/inventaris/partials/daftar_inventaris'); ?>
+        <?= $this->include('pages/inventaris/partials/form_peminjamaninventaris'); ?>
+        <?= $this->include('pages/inventaris/partials/form_peminjamanmasjid'); ?>
+        <?= $this->include('pages/inventaris/partials/modal_pinjaminventaris'); ?>
+    </div>
+
 </section>
 
 <?= $this->endSection(); ?>

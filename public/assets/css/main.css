@@ -4283,3 +4283,192 @@ color: var(--color-primary);
   background-size: cover;
 }
 
+.dataTables_paginate.paging_simple_numbers span {
+  color: black;
+}
+
+.dataTables_paginate.paging_simple_numbers .paginate_button.current {
+  background-color: var(--color-secondary);
+  /* Warna latar belakang */
+  color: white !important;
+  /* Warna teks */
+  border: 1px solid var(--color-secondary);
+  /* Gaya border */
+  border-radius: 5px;
+  /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+}
+
+.dataTables_paginate.paging_simple_numbers .paginate_button.current:hover {
+  background-color: var(--color-primary);
+  color: white !important;
+}
+
+.dataTables_paginate.paging_simple_numbers .paginate_button {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.dataTables_paginate.paging_simple_numbers span a.paginate_button:hover {
+  background-color: var(--color-primary) !important;
+}
+
+.btn-tambah {
+  background-color: var(--color-secondary);
+  /* Warna latar belakang */
+  color: #fff;
+  /* Warna teks */
+  border: 1px solid var(--color-secondary);
+  /* Gaya border */
+  border-radius: 5px;
+  /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+  padding: 5px 10px;
+  /* Atur padding untuk menyesuaikan ukuran tombol */
+}
+
+.btn-tambah:hover {
+  background-color: var(--color-primary);
+  color: white;
+  /* Warna latar belakang */
+  border: 1px solid var(--color-primary);
+}
+
+.dt-button.buttons-copy.buttons-html5 {
+  background-color: var(--color-secondary);
+  /* Warna latar belakang */
+  color: #fff;
+  /* Warna teks */
+  border: 1px solid var(--color-secondary);
+  /* Gaya border */
+  border-radius: 5px;
+  /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+  padding: 5px 10px;
+  /* Atur padding untuk menyesuaikan ukuran tombol */
+}
+
+.dt-button.buttons-copy.buttons-html5:hover {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.dt-button.buttons-excel.buttons-html5 {
+  background-color: var(--color-secondary);
+  /* Warna latar belakang */
+  color: #fff;
+  /* Warna teks */
+  border: 1px solid var(--color-secondary);
+  /* Gaya border */
+  border-radius: 5px;
+  /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+  padding: 5px 10px;
+  /* Atur padding untuk menyesuaikan ukuran tombol */
+}
+
+.dt-button.buttons-excel.buttons-html5:hover {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.dt-button.buttons-pdf.buttons-html5 {
+  background-color: var(--color-secondary);
+  /* Warna latar belakang */
+  color: #fff;
+  /* Warna teks */
+  border: 1px solid var(--color-secondary);
+  /* Gaya border */
+  border-radius: 5px;
+  /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+  padding: 5px 10px;
+  /* Atur padding untuk menyesuaikan ukuran tombol */
+}
+
+.dt-button.buttons-pdf.buttons-html5:hover {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+
+
+/* Ganti warna latar belakang dan warna teks pada tombol Colvis */
+.dt-button.buttons-collection.buttons-colvis {
+  background-color: var(--color-secondary);
+  /* Warna latar belakang */
+  color: #fff;
+  /* Warna teks */
+  border: 1px solid var(--color-secondary);
+  /* Gaya border */
+  border-radius: 5px;
+  /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+  padding: 5px 10px;
+  /* Atur padding untuk menyesuaikan ukuran tombol */
+}
+
+.dt-button.buttons-collection.buttons-colvis .dt-down-arrow {
+  color: white;
+}
+
+.dt-button.buttons-collection.buttons-colvis:hover {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+  padding: 5px 10px;
+  /* Atur padding untuk menyesuaikan ukuran tombol */
+  position: relative;
+  /* Atur posisi tombol ke posisi relatif */
+}
+
+.dt-button.buttons-columnVisibility {
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  /* Tambahkan border-radius untuk membuat tombol lebih bulat */
+  padding: 5px 10px;
+  /* Atur padding untuk menyesuaikan ukuran tombol */
+  position: relative;
+  /* Atur posisi tombol ke posisi relatif */
+}
+
+/* Tambahkan checkbox */
+.dt-button.buttons-columnVisibility::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  border-radius: 10px;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+/* Tambahkan tanda centang */
+.dt-button.buttons-columnVisibility::after {
+  content: '\2713';
+  /* Unicode untuk tanda centang */
+  position: absolute;
+  border-radius: 10px;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%) scale(0);
+  /* Set scale(0) untuk menyembunyikan awalnya */
+}
+
+/* Gaya ketika tombol aktif (checkbox dicentang) */
+.dt-button.buttons-columnVisibility.active::before {
+  padding: 3px;
+  background-color: var(--color-secondary);
+  /* Misalnya, warna latar belakang saat aktif */
+  border-color: var(--color-secondary);
+  /* Misalnya, warna border saat aktif */
+}
+
+/* Gaya ketika tombol aktif (checkbox dicentang) */
+.dt-button.buttons-columnVisibility.active::after {
+  transform: translateY(-50%) scale(1);
+  /* Set scale(1) untuk menampilkan tanda centang */
+  color: white;
+  /* Warna tanda centang saat aktif */
+}
+

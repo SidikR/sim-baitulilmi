@@ -54,9 +54,6 @@ $routes->post('peminjaman/batal/(:segment)', 'Pages\AkunController::batal/$1', [
 $routes->post('peminjaman-masjid/batal/(:segment)', 'Pages\AkunController::batal_masjid/$1', ['filter' => 'role:user']);
 $routes->post('/peminjaman/save-masjid', 'Pages\PeminjamanMasjidController::save_masjid', ['filter' => 'role:user']);
 
-$routes->get("image-crop", "ImageController::imageCrop");
-$routes->post("crop-submit", "ImageController::imageCropPost");
-
 
 
 
@@ -145,6 +142,7 @@ $routes->get('list-peminjaman-ok/(:segment)', 'Admin\PeminjamanController::accep
 $routes->get('list-peminjaman-done/(:segment)', 'Admin\PeminjamanController::done/$1', ['filter' => 'role:admin']);
 $routes->get('list-peminjaman-infaq-ok/(:segment)', 'Admin\PeminjamanController::infaqok/$1', ['filter' => 'role:admin']);
 $routes->post('list-peminjaman-no/(:segment)', 'Admin\PeminjamanController::no/$1', ['filter' => 'role:admin']);
+$routes->post('peminjaman-inventaris-bukti-transfer/(:segment)', 'Admin\PeminjamanController::infaqok/$1', ['filter' => 'role:admin']);
 
 
 $routes->get('peminjaman-masjid', 'Admin\PeminjamanMasjidController::index', ['filter' => 'role:admin']);
@@ -154,9 +152,10 @@ $routes->get('peminjaman-masjid-infaq-ok/(:segment)', 'Admin\PeminjamanMasjidCon
 $routes->post('peminjaman-masjid-no/(:segment)', 'Admin\PeminjamanMasjidController::no/$1', ['filter' => 'role:admin']);
 $routes->post('peminjaman-masjid-bukti-transfer/(:segment)', 'Admin\PeminjamanMasjidController::infaqok/$1', ['filter' => 'role:admin']);
 
-$routes->get('invoice/(:segment)', 'Pages\PeminjamanMasjidController::index_transfer/$1');
-$routes->put('invoice/bukti-transfer/(:segment)', 'Pages\PeminjamanMasjidController::bukti_transfer/$1');
-$routes->get('pdfinvoice/(:segment)', 'Pages\PeminjamanMasjidController::generate/$1');
+$routes->get('invoice-peminjaman-masjid/(:segment)', 'Pages\PeminjamanMasjidController::index_transfer/$1');
+$routes->put('invoice-peminjaman-masjid/bukti-transfer/(:segment)', 'Pages\PeminjamanMasjidController::bukti_transfer/$1');
+$routes->get('invoice-peminjaman-inventaris/(:segment)', 'Pages\PeminjamanInventarisController::index_transfer/$1');
+$routes->put('invoice-peminjaman-inventaris/bukti-transfer/(:segment)', 'Pages\PeminjamanInventarisController::bukti_transfer/$1');
 
 
 

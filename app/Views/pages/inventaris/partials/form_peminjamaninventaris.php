@@ -28,18 +28,17 @@
                             <div id="validationMessage" class="invalid-feedback" style="display: none;">Pilih barang inventaris </div>
                         </div>
 
-
                         <div class="mb-4">
-                            <label for="tanggal_dipinjam" class="form-label">Tanggal Dipinjam</label>
-                            <input type="date" class="form-control <?= $validation->hasError('tanggal_dipinjam') ? 'is-invalid' : null; ?>" id="tanggal_dipinjam" placeholder="Isikan Tanggal di Pinjam" name="tanggal_dipinjam" required>
+                            <label for="tanggal_dipinjam_inventaris" class="form-label">Tanggal Dipinjam</label>
+                            <input type="date" class="form-control <?= $validation->hasError('tanggal_dipinjam') ? 'is-invalid' : null; ?>" id="tanggal_dipinjam_inventaris" placeholder="Isikan Tanggal di Pinjam" name="tanggal_dipinjam" required>
 
                             <?php if ($validation->hasError('tanggal_dipinjam')) : ?>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('tanggal_dipinjam'); ?>
                                 </div>
                             <?php endif; ?>
-                            <div class="invalid-feedback" id="tanggal_dipinjam-error"></div>
-                            <div class="valid-feedback" id="tanggal_dipinjam-success"></div>
+                            <div class="invalid-feedback" id="tanggal_dipinjam_inventaris-error"></div>
+                            <div class="valid-feedback" id="tanggal_dipinjam_inventaris-success"></div>
                         </div>
 
                         <div class="mb-4">
@@ -72,7 +71,7 @@
                     <div class="col-6">
                         <div class="mb-4">
                             <label for="qty-form" class="form-label">Quantitas</label>
-                            <input type="text" class="form-control <?= $validation->hasError('qty') ? 'is-invalid' : null; ?>" id="qty-form" name="qty" required>
+                            <input type="text" class="form-control <?= $validation->hasError('qty') ? 'is-invalid' : null; ?>" id="qty-form" name="qty" placeholder="Isi quantitas barang" required>
 
                             <?php if ($validation->hasError('qty')) : ?>
                                 <div class="invalid-feedback">
@@ -85,16 +84,16 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="tanggal_kembali" class="form-label">Tanggal Pengembalian</label>
-                            <input type="date" class="form-control <?= $validation->hasError('tanggal_kembali') ? 'is-invalid' : null; ?>" id="tanggal_kembali" placeholder="Isikan Tanggal Kembali" name="tanggal_kembali" required>
+                            <label for="tanggal_kembali_inventaris" class="form-label">Tanggal Pengembalian</label>
+                            <input type="date" class="form-control <?= $validation->hasError('tanggal_kembali') ? 'is-invalid' : null; ?>" id="tanggal_kembali_inventaris" placeholder="Isikan Tanggal Kembali" name="tanggal_kembali" required>
 
                             <?php if ($validation->hasError('tanggal_kembali')) : ?>
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('tanggal_kembali'); ?>
                                 </div>
                             <?php endif; ?>
-                            <div class="invalid-feedback" id="tanggal_kembali-error"></div>
-                            <div class="valid-feedback" id="tanggal_kembali-success"></div>
+                            <div class="invalid-feedback" id="tanggal_kembali_inventaris-error"></div>
+                            <div class="valid-feedback" id="tanggal_kembali_inventaris-success"></div>
                         </div>
 
                         <div class="mb-4">
@@ -115,7 +114,7 @@
                             <select type="number" class="form-control <?= $validation->hasError('metode_infaq') ? 'is-invalid' : null; ?>" id="metode_infaq" placeholder="Isikan Alamat Lengkap" name="metode_infaq" id="" required>
                                 <option value="" selected>--Pilih--</option>
                                 <option value="COD">COD</option>
-                                <option value="COD">TRANSFER</option>
+                                <option value="TRANSFER">TRANSFER</option>
                             </select>
 
                             <?php if ($validation->hasError('metode_infaq')) : ?>
@@ -150,16 +149,15 @@
 
                 <div class="d-flex gap-2 justify-content-end">
                     <a href="<?= base_url('peminjaman'); ?>"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button></a>
-                    <button type="submit" class="btn btn-success" id="addSubmitButtonPeminjamanInventaris-form">Kirim</button>
+                    <button type="submit" class="btn btn-success" id="addSubmitButtonPeminjamanInventaris_form">Kirim</button>
                 </div>
             </form>
         </div>
     </div>
-
     <!-- Akhir Script untuk Validasi Form -->
     <script>
         $(document).ready(function() {
-
+            $("#addSubmitButtonPeminjamanInventaris_form").prop("disabled", true);
             const validationMessage = document.getElementById('validationMessage');
 
             $('#infaq-form').on('input', function() {
@@ -184,11 +182,11 @@
                 let maxStok = $("option:selected", this).attr("stok"); // Ambil nilai atribut "stok" dari elemen option yang dipilih
                 inputQty.placeholder = selectedOption !== "Pilih Inventaris" ? "Maksimal peminjaman " + maxStok + ' unit' : "Isi jumlah barang dipinjam";
                 if (this.value === 'Pilih Inventaris' || this.value === '') {
-                    // $("#addSubmitButtonPeminjamanInventaris-form").prop("disabled", true);
+                    // $("#addSubmitButtonPeminjamanInventaris_form").prop("disabled", true);
                     validationMessage.style.display = 'block';
                     inputQty.value = "";
                 } else {
-                    // $("#addSubmitButtonPeminjamanInventaris-form").prop("disabled", false);
+                    // $("#addSubmitButtonPeminjamanInventaris_form").prop("disabled", false);
                     validationMessage.style.display = 'none';
                 }
                 let qty_value = $('#qty-form').val();
@@ -203,13 +201,26 @@
                 validateMax(qty_value, 'qty-form', maxStok);
             });
 
+            $('#tanggal_kembali_inventaris').on('input', function() {
+                let tanggal_kembali_inventaris = new Date($(this).val().trim());
+                let tanggal_dipinjam_inventaris = new Date($('#tanggal_dipinjam_inventaris').val().trim());
+                validateDateRange(tanggal_kembali_inventaris, 'tanggal_kembali_inventaris', tanggal_dipinjam_inventaris);
+                checkInvalidElements();
+            });
+
+            $('#tanggal_dipinjam_inventaris').on('input', function() {
+                let tanggal_dipinjam_inventaris = new Date($(this).val().trim());
+                validateDateStart(tanggal_dipinjam_inventaris, 'tanggal_dipinjam_inventaris');
+                checkInvalidElements();
+            });
+
             // Fungsi untuk memeriksa apakah ada elemen dengan kelas "is-invalid"
             function checkInvalidElements() {
                 // Cari elemen dengan kelas "is-invalid" atau "invalid-feedback"
                 let hasInvalidElements = $('.is-invalid').length > 0;
 
-                // Cari elemen dengan ID "addSubmitButtonPeminjamanInventaris-form"
-                let submitButton = $('#addSubmitButtonPeminjamanInventaris-form');
+                // Cari elemen dengan ID "addSubmitButtonPeminjamanInventaris_form"
+                let submitButton = $('#addSubmitButtonPeminjamanInventaris_form');
 
                 // Aktifkan atau nonaktifkan tombol "Kirim" berdasarkan hasil pengecekan
                 if (hasInvalidElements) {
@@ -221,82 +232,69 @@
 
             checkInvalidElements();
 
-            // Panggil fungsi checkInvalidElements() setiap kali terjadi perubahan pada input form
-            // $('#addPeminjamanInventaris-form :input').on('input', function() {
-            //     checkInvalidElements();
-            // });
-
-            // $('#addPeminjamanInventaris-form :select').on('change', function() {
-            //     checkInvalidElements();
-            // });
             $('#addPeminjamanInventaris-form :input, #addPeminjamanInventaris-form select').on('input change', function() {
                 checkInvalidElements();
             });
 
+            let cropper;
+            document.getElementById('cropButton_form').addEventListener('click', function() {
+                let canvas = cropper.getCroppedCanvas();
+                // Simpan data gambar yang di-crop sebagai file
+                canvas.toBlob(function(blob) {
+                    // Convert the blob to WebP format and split the data URL
+                    let webpDataURL = canvas.toDataURL('image/webp', 1.0).split(',')[1];
+
+                    // Create a new Blob with the WebP data
+                    let webpBlob = new Blob([blob], {
+                        type: 'image/webp'
+                    });
+
+                    // Create FormData object to send the file to the server
+                    let formData = new FormData();
+                    formData.append('croppedImageInventaris', webpBlob);
+                }, 'image/jpeg');
+
+
+                // Ganti src gambar yang di-crop dengan URL gambar yang di-crop
+                let croppedImageView_form = document.getElementById('croppedImageView-form');
+                croppedImageView_form.src = canvas.toDataURL('image/jpeg'); // Change 'croppedImage' to 'croppedImageView-form'
+                let inputValue = document.getElementById("croppedImageInput-form");
+                inputValue.value = canvas.toDataURL('image/jpeg');
+                let submitButton = $('#addSubmitButtonPeminjamanInventaris_form');
+                submitButton.prop('disabled', true);
+
+                // Tampilkan kontainer preview dan gambar yang di-crop
+                document.getElementById('previewContainer-form').style.display = 'block';
+
+                $("#addSubmitButtonPeminjamanInventaris_form").prop("disabled", false);
+            });
+
+            document.getElementById('imageFormPeminjamanInventaris-form').addEventListener('change', function(e) {
+                document.getElementById('croppingArea-form').style.display = 'block';
+                document.getElementById('images-form').style.display = 'block';
+                if (cropper) {
+                    cropper.destroy();
+                }
+                let submitButton = $('#addSubmitButtonPeminjamanInventaris_form');
+                submitButton.prop('disabled', true);
+
+                let files = e.target.files;
+                let reader = new FileReader();
+                reader.onload = function() {
+                    let image = document.getElementById('previewImagePeminjamanInventaris_form');
+                    image.src = reader.result;
+
+                    cropper = new Cropper(image, {
+                        aspectRatio: NaN, // Set rasio 16:9
+                        viewMode: 1 // Sesuaikan mode tampilan sesuai kebutuhan Anda
+                    });
+
+                    // Tampilkan tombol Crop
+                    document.getElementById('cropButton_form').style.display = 'block';
+                };
+                reader.readAsDataURL(files[0]);
+            });
+
         });
     </script>
-    <!-- Akhir Script untuk Validasi Form -->
-
-    <!-- Awal Script untuk Cropping Gambar -->
-    <script>
-        // let cropper;
-        document.getElementById('cropButton_form').addEventListener('click', function() {
-            let canvas = cropper.getCroppedCanvas();
-            // Simpan data gambar yang di-crop sebagai file
-            canvas.toBlob(function(blob) {
-                // Convert the blob to WebP format and split the data URL
-                let webpDataURL = canvas.toDataURL('image/webp', 1.0).split(',')[1];
-
-                // Create a new Blob with the WebP data
-                let webpBlob = new Blob([blob], {
-                    type: 'image/webp'
-                });
-
-                // Create FormData object to send the file to the server
-                let formData = new FormData();
-                formData.append('croppedImageInventaris', webpBlob);
-            }, 'image/jpeg');
-
-
-            // Ganti src gambar yang di-crop dengan URL gambar yang di-crop
-            let croppedImageView_form = document.getElementById('croppedImageView-form');
-            croppedImageView_form.src = canvas.toDataURL('image/jpeg'); // Change 'croppedImage' to 'croppedImageView-form'
-            let inputValue = document.getElementById("croppedImageInput-form");
-            inputValue.value = canvas.toDataURL('image/jpeg');
-
-            // Tampilkan kontainer preview dan gambar yang di-crop
-            document.getElementById('previewContainer-form').style.display = 'block';
-
-            // Sembunyikan gambar preview
-            document.getElementById('previewImagePeminjamanInventaris_form').style.display = 'none';
-            $("#addSubmitButtonPeminjamanInventaris-form").prop("disabled", false);
-        });
-
-        document.getElementById('imageFormPeminjamanInventaris-form').addEventListener('change', function(e) {
-            document.getElementById('croppingArea-form').style.display = 'block';
-            document.getElementById('images-form').style.display = 'block';
-            // $("#addSubmitButtonPeminjamanInventaris-form").prop("disabled", true);
-            if (cropper) {
-                cropper.destroy();
-            }
-
-            let files = e.target.files;
-            let reader = new FileReader();
-            reader.onload = function() {
-                let image = document.getElementById('previewImagePeminjamanInventaris_form');
-                image.src = reader.result;
-
-                cropper = new Cropper(image, {
-                    aspectRatio: 16 / 9, // Set rasio 16:9
-                    viewMode: 1 // Sesuaikan mode tampilan sesuai kebutuhan Anda
-                });
-
-                // Tampilkan tombol Crop
-                document.getElementById('cropButton_form').style.display = 'block';
-            };
-            reader.readAsDataURL(files[0]);
-        });
-    </script>
-    <!-- Akhir Script Cropping Gambar  -->
-
 </div><!-- End Tab Content 2 -->

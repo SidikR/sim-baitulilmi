@@ -214,6 +214,46 @@
             }
     }
 
+    function validateDateRange(value, id, date) {
+    let errorMessage = $(`#${id}-error`);
+    let successMessage = $(`#${id}-success`);
+    let label = getLabelFromInputId(`${id}`);
+
+    // Menggunakan operasi pembanding langsung untuk membandingkan tanggal
+    if (value < date) {
+        $(`#${id}`).addClass("is-invalid");
+        errorMessage.text(`${label} Tidak boleh lebih kecil dari tanggal dipinjam (${date})`);
+        errorMessage.show();
+        successMessage.hide();
+    } else {
+        $(`#${id}`).removeClass("is-invalid");
+        errorMessage.hide();
+        successMessage.text(`${label} valid!`);
+        successMessage.show();
+    }
+}
+
+function validateDateStart(date, id) {
+    let errorMessage = $(`#${id}-error`);
+    let successMessage = $(`#${id}-success`);
+    let label = getLabelFromInputId(`${id}`);
+
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Set jam menjadi 00:00:00 untuk membandingkan tanggal saja
+
+    if (date < currentDate) {
+        $(`#${id}`).addClass("is-invalid");
+        errorMessage.text(`${label} Tidak boleh lebih kecil dari tanggal sekarang`);
+        errorMessage.show();
+        successMessage.hide();
+    } else {
+        $(`#${id}`).removeClass("is-invalid");
+        errorMessage.hide();
+        successMessage.text(`${label} valid!`);
+        successMessage.show();
+    }
+}
+
     function validateMax(value, id, max){
     let errorMessage = $(`#${id}-error`);
     let successMessage = $(`#${id}-success`);
@@ -243,4 +283,9 @@
         successMessage.show();
     }
     }
+
+    function formatDate(date) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('id-ID', options);
+}
 
