@@ -42,8 +42,9 @@ $routes->get('/kegiatan-guest', 'Pages\KegiatanController::index');
 $routes->get('/detail-kegiatan-(:segment)', 'Pages\KegiatanController::detail/$1');
 $routes->get('/post-guest', 'Pages\PostController::index');
 $routes->get('/detail/post-(:segment)', 'Pages\PostController::detail/$1');
-$routes->post('comment/add/(:segment)', 'Pages\PostController::store/$1');
-$routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index');
+$routes->post('comment/add/(:segment)', 'Pages\PostController::store/$1', ['filter' => ['role:user', 'role:admin']]);
+$routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index', ['filter' => 'role:user']);
+$routes->get('/peminjaman-admin', 'Pages\HomeController::index', ['filter' => 'role:admin']);
 $routes->post('/send-feedback', 'Pages\AboutController::send_feedback');
 
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);

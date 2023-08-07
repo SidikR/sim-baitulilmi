@@ -32,6 +32,12 @@
                         <?php if (in_groups('user')) : ?>
                             <li class="nav-link p-0 m-0"><a <?php getactive('peminjaman');
                                                             ?> class="scrollto" href="<?= base_url('peminjaman'); ?>">Peminjaman</a></li>
+                        <?php elseif (in_groups('bendahara' || 'admin')) : ?>
+                            <li class="nav-link p-0 m-0"><a <?php getactive('peminjaman');
+                                                            ?> class="scrollto" href="<?= base_url('/peminjaman-admin'); ?>">Peminjaman</a></li>
+                        <?php else : ?>
+                            <li class="nav-link p-0 m-0"><a <?php getactive('login');
+                                                            ?> class="scrollto" href="<?= base_url('/login'); ?>">Peminjaman</a></li>
                         <?php endif ?>
 
                         <li class="nav-item dropdown">
