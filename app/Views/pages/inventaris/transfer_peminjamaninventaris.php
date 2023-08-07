@@ -133,12 +133,12 @@
                         <label for="userImage">
                             <a class="btn btn-primary btn-lg" rel="nofollow" name="bukti_transfer"><span class=''><i class="bi bi-upload"></i></span> Pilih Bukti Transfer</a>
                         </label>
-                        <input type="file" id="userImage" name="bukti_transfer" onchange="readURL(this);" />
+                        <input type="file" id="userImage" name="bukti_transfer" required />
                     </p>
                     <img id="image" width="50%" height="50%" />
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="submit" class="btn btn-success">Kirim</button>
                     </div>
                 </form>
             </div>
