@@ -26,6 +26,7 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('kegiatan-guest'); ?>">Kegiatan Masjid</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('peminjaman'); ?>">Inventaris Masjid</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('post-guest'); ?>">New Post</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="<?= base_url('manual-book'); ?>" target="_blank">Manual Book</a></li>
                     </ul>
                 </div>
 

@@ -66,4 +66,10 @@ class HomeController extends BaseController
         ];
         return view('pages/home', $data);
     }
+
+    public function ManualBook()
+    {
+        $link = 'assets/template/Manual_Book_SIM_BAIM.pdf';
+        return $link;
+    }
 }

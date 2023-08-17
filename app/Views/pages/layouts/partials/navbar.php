@@ -40,6 +40,15 @@
                                                             ?> class="scrollto" href="<?= base_url('/login'); ?>">Peminjaman</a></li>
                         <?php endif ?>
 
+                        <?php if (in_groups('user')) : ?>
+                            <li class="nav-link p-0 m-0"><a <?php getactive('oprec-marbot');
+                                                            ?> href="<?= base_url('oprec-marbot'); ?>">Oprec Marbot</a></li>
+                        <?php else : ?>
+                            <li class="nav-link p-0 m-0"><a <?php getactive('oprec-marbot');
+                                                            ?> href="<?= base_url('login'); ?>">Oprec Marbot</a></li>
+                        <?php endif ?>
+
+
                         <li class="nav-item dropdown">
                             <a <?php getactive('kegiatan-guest') || getactive('post-guest');
                                 ?> class="nav-link dropdown-toggle" href="#" id="postDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
