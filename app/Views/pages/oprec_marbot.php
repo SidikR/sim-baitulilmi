@@ -85,11 +85,18 @@
                             <span>Poin lain akan disampaikan ketika wawancara</span>
                         </div>
                     </div>
-                    <div class="alert alert-warning" role="alert">
-                        <p>(*) Jika Masih Semester 1, maka lampirkan Ijazah, jika semester 3 keatas, maka Transkip</p>
-                        <p>(**) Jika ada, bisa dari guru, dosen, atau lainnya</p>
-                        <p>Link Grub : <span><a target="_blank" href="https://chat.whatsapp.com/EHcRZqPLXeq4p5Up5mfltY"> Grub Whatsapps</a></span></p>
-                    </div>
+
+                    <?php if (!logged_in()) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <p>Silakan Login terlebih dahulu untuk melanjutkan pendaftaran</p>
+                        </div>
+                    <?php else : ?>
+
+                        <div class="alert alert-warning" role="alert">
+                            <p>(*) Jika Masih Semester 1, maka lampirkan Ijazah, jika semester 3 keatas, maka Transkip</p>
+                            <p>(**) Jika ada, bisa dari guru, dosen, atau lainnya</p>
+                            <p>Link Grub : <span><a target="_blank" href="https://chat.whatsapp.com/EHcRZqPLXeq4p5Up5mfltY"> Grub Whatsapps</a></span></p>
+                        </div>
                 </div>
 
             </div>
@@ -97,6 +104,7 @@
                 <p class="row justify-content-center align-items-center">Silakan Isi Form Pendaftaran dibawah ini dengan sebenar-benarnya</p>
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe-2sUhDmW1M2HsifhP8929vLpHzDtFOCqk1E4Ms2b4Z5wc6g/viewform?embedded=true" width="100%" height="800">Memuat…</iframe>
             </div>
+        <?php endif ?>
         </div>
     </div>
 </section>
