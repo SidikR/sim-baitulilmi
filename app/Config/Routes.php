@@ -33,7 +33,9 @@ $routes->set404Override();
 // Routes Pertama Kali di Eksekusi
 // Bisa diakses Tanpa Login
 $routes->get('/', 'Pages\HomeController::index');
-$routes->get('/oprec-marbot', 'Pages\OprecController::index', ['filter' => 'role:user']);
+$routes->get('/oprec-marbot', 'Pages\OprecController::index');
+$routes->post('/oprec-marbot/daftar', 'Pages\OprecController::daftar', ['filter' => 'role:user']);
+$routes->post('/oprec-marbot/update/(:segment)', 'Pages\OprecController::update/$1', ['filter' => 'role:user']);
 $routes->get('/home', 'Pages\HomeController::index');
 $routes->get('/manual-book', 'Pages\HomeController::ManualBook');
 $routes->get('/about', 'Pages\AboutController::index');
@@ -48,6 +50,9 @@ $routes->post('comment/add/(:segment)', 'Pages\PostController::store/$1', ['filt
 $routes->get('/peminjaman', 'Pages\PeminjamanInventarisController::index', ['filter' => 'role:user']);
 $routes->get('/peminjaman-admin', 'Pages\HomeController::index', ['filter' => 'role:admin']);
 $routes->post('/send-feedback', 'Pages\AboutController::send_feedback');
+$routes->get('/peran-pemuda', function () {
+    return redirect()->to('https://itera-ac-id.zoom.us/j/92835985349?pwd=WnZCZVNrUWZmSEdsYmVzNlFyS1o3UT09');
+});
 
 $routes->post('/peminjaman/save', 'Pages\PeminjamanInventarisController::save', ['filter' => 'role:user']);
 $routes->get('/akun', 'Pages\AkunController::index', ['filter' => 'role:user']);
