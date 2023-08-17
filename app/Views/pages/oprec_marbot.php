@@ -26,7 +26,7 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Rabu, 17 Agustus 2023 - Kamis, 24 Agustus 2023</td>
+                                <td>Kamis, 17 Agustus 2023 - Kamis, 24 Agustus 2023</td>
                                 <td>Pendaftaran</td>
                             </tr>
                             <tr>
