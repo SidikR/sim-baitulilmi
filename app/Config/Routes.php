@@ -33,9 +33,7 @@ $routes->set404Override();
 // Routes Pertama Kali di Eksekusi
 // Bisa diakses Tanpa Login
 $routes->get('/', 'Pages\HomeController::index');
-$routes->get('/oprec-marbot', 'Pages\OprecController::index');
-$routes->post('/oprec-marbot/daftar', 'Pages\OprecController::daftar', ['filter' => 'role:user']);
-$routes->post('/oprec-marbot/update/(:segment)', 'Pages\OprecController::update/$1', ['filter' => 'role:user']);
+$routes->get('/oprec-marbot', 'Pages\OprecController::index', ['filter' => 'role:user']);
 $routes->get('/home', 'Pages\HomeController::index');
 $routes->get('/manual-book', 'Pages\HomeController::ManualBook');
 $routes->get('/about', 'Pages\AboutController::index');
