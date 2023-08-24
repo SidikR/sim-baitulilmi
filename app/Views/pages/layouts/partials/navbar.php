@@ -74,7 +74,7 @@
                         <?php else : ?>
                             <div class="row d-flex justify-content-between flex-column d-block d-sm-none">
                                 <li class="col">
-                                    <a href="<?= base_url('login'); ?>">
+                                    <a href="<?= base_url('akun'); ?>">
                                         <button type="button" class="btn btn-login">
                                             Profil
                                         </button>
